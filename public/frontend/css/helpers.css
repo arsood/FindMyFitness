@@ -1,0 +1,56 @@
+/*Gradients*/
+
+.gray-gradient {
+	background: #f2f5f6; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f2f5f6 0%, #aaaaaa 86%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(86%,#aaaaaa)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f2f5f6 0%,#aaaaaa 86%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f2f5f6 0%,#aaaaaa 86%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f2f5f6 0%,#aaaaaa 86%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f2f5f6 0%,#aaaaaa 86%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#aaaaaa',GradientType=0 ); /* IE6-9 */
+}
+
+/*Alignments*/
+
+.txt-center {
+	text-align:center;
+}
+
+.txt-right {
+	text-align:right;
+}
+
+/*Margins*/
+
+.margin-top-10 {
+	margin-top:10px;
+}
+
+.margin-top-5 {
+	margin-top:5px;
+}
+
+/*Paddings*/
+
+.padding-10 {
+	padding:10px;
+}
+
+/*Text Decorations*/
+
+.white-text {
+	color:#FFF;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+/*Border Radius*/
+
+.radius-5 {
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
