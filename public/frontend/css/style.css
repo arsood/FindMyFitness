@@ -1,8 +1,8 @@
 .fmf-navbar {
 	background-color:#444;
-	-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.75);
-	box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 5px 15px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 5px 15px 0px rgba(50, 50, 50, 0.75);
 }
 
 .fmf-nav-menu {
@@ -13,6 +13,10 @@
 .fmf-nav-menu li {
 	display:inline;
 	margin-left:30px;
+}
+
+.logo {
+	padding-top:20px;
 }
 
 .fmf-nav-menu a {
@@ -40,13 +44,12 @@
 	-webkit-border-radius:3px;
 }
 
-.fmf-ellipse-search-button {
+#fmf-ellipse-search-button {
 	border:none;
 	padding:10px 20px;
-	border-top-left-radius:20px;
-	border-bottom-left-radius:3px;
-	border-top-right-radius:3px;
-	border-bottom-right-radius:20px;
+	border-radius:20px 3px 20px 3px;
+	-moz-border-radius:20px 3px 20px 3px;
+	-webkit-border-radius:20px 3px 20px 3px;
 	color:#FFF;
 	background: #8bdcf4; /* Old browsers */
 	background: -moz-linear-gradient(top,  #8bdcf4 0%, #0fb4e7 99%); /* FF3.6+ */
