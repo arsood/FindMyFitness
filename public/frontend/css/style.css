@@ -29,6 +29,12 @@
 	font-weight:bold;
 }
 
+.medium-white-title {
+	color:#FFF;
+	font-size:1.3em;
+	font-weight:bold;
+}
+
 .fmf-nav-menu a {
 	text-decoration:none;
 }
@@ -150,4 +156,21 @@
 	position:absolute;
 	top:15px;
 	right:20px;
+}
+
+/*Footer*/
+
+.footer-wrapper {
+	width:100%;
+	overflow:hidden;
+	background-color:#444;
+	border-top:#06C 4px solid;
+}
+
+.footer-container {
+	width:100%;
+	max-width:700px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:30px;
 }
