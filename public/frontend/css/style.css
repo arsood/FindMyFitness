@@ -21,6 +21,12 @@
 
 .large-title {
 	font-size:1.6em;
+	font-weight:bold;
+}
+
+.medium-title {
+	font-size:1.3em;
+	font-weight:bold;
 }
 
 .fmf-nav-menu a {
@@ -124,4 +130,24 @@
 	-webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.light-blue-large-button {
+	background-color:#4f85bb;
+	padding:10px 0;
+	color:#FFF;
+	position:relative;
+	font-size:1.2em;
+	border:none;
+	width:100%;
+}
+
+.light-blue-large-button:hover {
+	cursor:pointer;
+}
+
+.light-blue-large-button i {
+	position:absolute;
+	top:15px;
+	right:20px;
 }
