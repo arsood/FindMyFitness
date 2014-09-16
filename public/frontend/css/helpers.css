@@ -59,6 +59,10 @@
 	font-weight:bold;
 }
 
+.italic {
+	font-style:italic;
+}
+
 /*Text Sizes*/
 
 .regular-text {
@@ -84,4 +88,10 @@
 
 .white-link, .white-link:hover {
 	color:#FFF;
+}
+
+/*Visibility*/
+
+.hide {
+	display:none;
 }

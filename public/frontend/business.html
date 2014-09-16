@@ -105,101 +105,172 @@
 			<!--/Gym Stars-->
 
 			<div class="clearfix margin-top-20 gray-rollover-menu">
-				<div class="col-sm-4 gray-rollover-menu-item txt-center">
+				<div id="toggle-bus-info" class="col-sm-4 gray-rollover-menu-item txt-center gray-rollover-menu-item-active">
 					INFO
 				</div>
-				<div class="col-sm-4 gray-rollover-menu-item txt-center">
+				<div id="toggle-bus-reviews" class="col-sm-4 gray-rollover-menu-item txt-center">
 					REVIEWS
 				</div>
-				<div class="col-sm-4 gray-rollover-menu-item txt-center">
+				<div id="toggle-bus-photos" class="col-sm-4 gray-rollover-menu-item txt-center">
 					PHOTOS
 				</div>
 			</div>
 
 			<!--Info and Contact Info-->
-			<div class="row margin-top-20">
-				<div class="col-sm-6">
-					<div class="medium-title">
-						123 Elm Street
-					</div>
-					<div class="medium-title">
-						San Francisco, CA
-					</div>
+			<div id="business-info" class="margin-top-20">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="medium-title">
+							123 Elm Street
+						</div>
+						<div class="medium-title">
+							San Francisco, CA
+						</div>
 
-					<div class="margin-top-20">
-						M-F 6am - 10pm
-					</div>
-					<div>
-						Sat 10am - 4pm
-					</div>
-					<div class="margin-top-20">
-						(222) 222 - 2222
-					</div>
+						<div class="margin-top-20">
+							M-F 6am - 10pm
+						</div>
+						<div>
+							Sat 10am - 4pm
+						</div>
+						<div class="margin-top-20">
+							(222) 222 - 2222
+						</div>
 
-					<div class="margin-top-20">
-						<a href="#">www.gymawesome.com</a>
-					</div>
+						<div class="margin-top-20">
+							<a href="#">www.gymawesome.com</a>
+						</div>
 
-					<div class="margin-top-20 bold">
-						Services:
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<div>
-								Weights
+						<div class="margin-top-20 bold">
+							Services:
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div>
+									Weights
+								</div>
+								<div>
+									Running Track
+								</div>
+								<div>
+									Swimming Pool
+								</div>
 							</div>
-							<div>
-								Running Track
-							</div>
-							<div>
-								Swimming Pool
+							<div class="col-sm-6">
+								<div>
+									Fitness Classes
+								</div>
+								<div>
+									Personal Instructors
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-6">
-							<div>
-								Fitness Classes
-							</div>
-							<div>
-								Personal Instructors
-							</div>
+
+						<div class="margin-top-50">
+							<hr />
 						</div>
 					</div>
+					<div class="col-sm-6">
+						<div>
+							<img src="http://placehold.it/300x300" />
+						</div>
+						<div>
+							<button class="light-blue-large-button txt-center">
+								Get directions <i class="fa fa-angle-double-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
 
-					<div class="margin-top-50">
-						<hr />
+				<div class="margin-top-20">
+					<div class="medium-title">
+						Description
+					</div>
+					<div class="margin-top-10">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat. Donec gravida bibendum elit commodo iaculis. Maecenas gravida nisi felis, et pulvinar leo aliquet hendrerit. Vivamus in felis finibus, ornare mauris at, consequat justo.
 					</div>
 				</div>
-				<div class="col-sm-6">
-					<div>
-						<img src="http://placehold.it/300x300" />
-					</div>
-					<div>
-						<button class="light-blue-large-button txt-center">
-							Get directions <i class="fa fa-angle-double-right"></i>
-						</button>
-					</div>
+
+				<div class="margin-top-20">
+					<button type="button" class="fmf-ellipse-dark-blue-button regular-text">Get deals now</button>
 				</div>
+
+				<div class="margin-top-20">
+					<a href="#">
+						<i class="fa fa-angle-double-left"></i> Go back to search
+					</a>
+				</div>
+				<!--/Info and Contact Info-->
 			</div>
 
-			<div class="margin-top-20">
+			<!--Reviews-->
+			<div id="business-reviews" class="margin-top-20" style="display:none;">
 				<div class="medium-title">
-					Description
+					Recent Reviews
 				</div>
-				<div class="margin-top-10">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat. Donec gravida bibendum elit commodo iaculis. Maecenas gravida nisi felis, et pulvinar leo aliquet hendrerit. Vivamus in felis finibus, ornare mauris at, consequat justo.
+
+				<div class="row margin-top-20">
+					<div class="col-sm-6">
+						<div>
+							<img src="img/stars/stars3.png" />
+						</div>
+
+						<div class="row margin-top-10">
+							<div class="col-sm-3">
+								<img src="img/temp/profile-pic.jpg" class="img-responsive" />
+							</div>
+							<div class="col-sm-9">
+								<div class="bold">
+									Susan Parker
+								</div>
+								<div class="italic">
+									Member since 2012
+								</div>
+							</div>
+						</div>
+
+						<div class="margin-top-10">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat.
+						</div>
+
+						<div class="margin-top-10 pull-right">
+							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div>
+							<img src="img/stars/stars4.png" />
+						</div>
+
+						<div class="row margin-top-10">
+							<div class="col-sm-3">
+								<img src="img/temp/profile-pic.jpg" class="img-responsive" />
+							</div>
+							<div class="col-sm-9">
+								<div class="bold">
+									Susan Parker
+								</div>
+								<div class="italic">
+									Member since 2012
+								</div>
+							</div>
+						</div>
+
+						<div class="margin-top-10">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat.
+						</div>
+
+						<div class="margin-top-10 pull-right">
+							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="write-review-button txt-center margin-top-20">
+					<a href="#">Write a review...</a>
 				</div>
 			</div>
-
-			<div class="margin-top-20">
-				<button type="button" class="fmf-ellipse-dark-blue-button regular-text">Get deals now</button>
-			</div>
-
-			<div class="margin-top-20">
-				<a href="#">
-					<i class="fa fa-angle-double-left"></i> Go back to search
-				</a>
-			</div>
-			<!--/Info and Contact Info-->
+			<!--/Reviews-->
 		</div>
 		<!--/Main Column One-->
 
