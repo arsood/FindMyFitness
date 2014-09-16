@@ -18,3 +18,9 @@ $(document).on("click", "#toggle-bus-reviews", function() {
 	$("#business-reviews").fadeIn();
 	$("#business-photos").hide();
 });
+
+$(document).on("click", "#toggle-bus-photos", function() {
+	$("#business-info").hide();
+	$("#business-reviews").hide();
+	$("#business-photos").fadeIn();
+});
