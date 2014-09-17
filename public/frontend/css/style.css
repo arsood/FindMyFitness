@@ -168,6 +168,10 @@
 	border-bottom:#CCC 1px solid;
 }
 
+#galleria {
+	width:100%;
+}
+
 /*Footer*/
 
 .footer-wrapper {
