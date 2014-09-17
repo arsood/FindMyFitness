@@ -6,6 +6,7 @@
 	<meta charset="utf8" />
 	<link rel="stylesheet" href="libraries/bootstrap-3.2.0/css/bootstrap.css" />
 	<link rel="stylesheet" href="libraries/font-awesome-4.2.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="libraries/lightslider/css/lightSlider.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/helpers.css" />
 </head>
@@ -292,8 +293,15 @@
 			<!--/Reviews-->
 
 			<!--Photos-->
-			<div id="business-photos" class="margin-top-20" style="display:none;">
-				
+			<div id="business-photos" class="margin-top-20">
+				<ul id="imageGallery">
+					<li data-thumb="img/temp/slide1.jpg">
+						<img src="img/temp/slide1.jpg" />
+					</li>
+					<li data-thumb="img/temp/slide2.jpg">
+						<img src="img/temp/slide2.jpg" />
+					</li>
+				</ul>
 			</div>
 			<!--/Photos-->
 		</div>
@@ -404,7 +412,20 @@
 
 <script src="libraries/jquery-2.1.1/jquery.js"></script>
 <script src="libraries/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+<script src="libraries/lightslider/js/jquery.lightSlider.js"></script>
 <script src="js/fmf.js"></script>
+
+<script>
+$(document).ready(function() {
+	$('#imageGallery').lightSlider({
+		gallery:true,
+		mode:'fade',
+		controls:false,
+		auto:true,
+		easing:'ease-in-out'
+	});  
+});
+</script>
 
 </body>
 
