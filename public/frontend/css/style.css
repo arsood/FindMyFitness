@@ -109,7 +109,7 @@
 	background-color:#166DC4;
 }
 
-.gray-rollover-menu-item {
+.gray-menu-item {
 	background-color:#999;
 	padding:10px 0;
 	font-weight:bold;
@@ -117,11 +117,11 @@
 	border-right:#CCC 1px solid;
 }
 
-.gray-rollover-menu-item:hover {
+.gray-menu-item.clickable:hover {
 	cursor:pointer;
 }
 
-.gray-rollover-menu-item-active {
+.gray-menu-item-active {
 	background: #9e9e9e; /* Old browsers */
 	background: -moz-linear-gradient(top,  #9e9e9e 0%, #515151 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9e9e9e), color-stop(100%,#515151)); /* Chrome,Safari4+ */
@@ -170,6 +170,24 @@
 
 #galleria {
 	width:100%;
+}
+
+.galleria-theme-classic {
+	background:#333;
+}
+
+/*Full Calendar Custom*/
+
+.fc-day-number {
+	text-align:center !important;
+	font-size:1.7em;
+	color:#999;
+	font-family:"Lucida Sans Unicode";
+	padding-top:10px !important;
+}
+
+.fc-day-number:hover {
+	cursor:pointer;
 }
 
 /*Footer*/

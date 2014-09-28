@@ -1,5 +1,4 @@
 Galleria.loadTheme('libraries/galleria-1.4.2/themes/classic/galleria.classic.min.js');
-Galleria.run('#galleria');
 
 function resizeGalleria() {
 	var galleriaWidth = $("#galleria").width();
@@ -7,8 +6,6 @@ function resizeGalleria() {
 	
 	$("#galleria").css("height",newGalleriaHeight);
 }
-
-resizeGalleria();
 
 $(window).on("resize", function() {
 	resizeGalleria();
