@@ -93,9 +93,107 @@
 			<div class="gray-menu-item padding-left-20">
 				Categories
 			</div>
+
+			<div class="left-sidebar-menu">
+				<a href="#">All</a>
+				<a href="#">Classes</a>
+				<a href="#">Runs / Walks</a>
+				<a href="#">Lectures</a>
+				<a href="#">Workshops</a>
+			</div>
+
+			<div class="margin-top-20">
+				<button class="fmf-ellipse-turquoise-button">Create an Event</button>
+			</div>
 		</div>
 		<div class="col-sm-7">
+			<!--Events Calendar-->
 			<div id="event-calendar"></div>
+			<!--/Events Calendar-->
+
+			<!--One Event-->
+			<div class="row margin-top-20 single-event">
+				<div class="col-sm-4">
+					<img src="img/temp/slide1.jpg" class="img-responsive" />
+				</div>
+				<div class="col-sm-8">
+					<div>
+						<a class="big-link" href="#">Milpitas kickboxing night</a>
+					</div>
+					<div>
+						June 11, 2014
+					</div>
+					<div class="margin-top-10">
+						Curves Gym
+					</div>
+					<div>
+						123 Elsm Street, San Francisco, CA
+					</div>
+					<div class="margin-top-10">
+						This is an example text that can be a description of the event...
+					</div>
+					<div class="margin-top-10">
+						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--/One Event-->
+
+			<!--One Event-->
+			<div class="row margin-top-20 single-event">
+				<div class="col-sm-4">
+					<img src="img/temp/slide1.jpg" class="img-responsive" />
+				</div>
+				<div class="col-sm-8">
+					<div>
+						<a class="big-link" href="#">Milpitas kickboxing night</a>
+					</div>
+					<div>
+						June 11, 2014
+					</div>
+					<div class="margin-top-10">
+						Curves Gym
+					</div>
+					<div>
+						123 Elsm Street, San Francisco, CA
+					</div>
+					<div class="margin-top-10">
+						This is an example text that can be a description of the event...
+					</div>
+					<div class="margin-top-10">
+						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--/One Event-->
+
+			<!--One Event-->
+			<div class="row margin-top-20 single-event">
+				<div class="col-sm-4">
+					<img src="img/temp/slide1.jpg" class="img-responsive" />
+				</div>
+				<div class="col-sm-8">
+					<div>
+						<a class="big-link" href="#">Milpitas kickboxing night</a>
+					</div>
+					<div>
+						June 11, 2014
+					</div>
+					<div class="margin-top-10">
+						Curves Gym
+					</div>
+					<div>
+						123 Elsm Street, San Francisco, CA
+					</div>
+					<div class="margin-top-10">
+						This is an example text that can be a description of the event...
+					</div>
+					<div class="margin-top-10">
+						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--/One Event-->
 		</div>
 	</div>
 </div>
@@ -203,7 +301,6 @@ $(document).ready(function() {
 			center:"title",
 			right:"next"
 		},
-		aspectRatio:2.15,
 		dayClick: function(date, jsEvent, view) {
 			$(".fc-day").css("background-color", "");
 			$(this).css("background-color", "#E6F0F7");

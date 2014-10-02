@@ -35,6 +35,10 @@
 	font-weight:bold;
 }
 
+.big-link {
+	font-size:1.4em;
+}
+
 .fmf-nav-menu a {
 	text-decoration:none;
 }
@@ -205,4 +209,31 @@
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:30px;
+}
+
+/*Left Sidebar*/
+
+.left-sidebar-menu a {
+	display:block;
+	padding:10px;
+	color:#777;
+}
+
+.left-sidebar-menu a:hover {
+	text-decoration:none;
+}
+
+.left-sidebar-menu .active {
+	background-color:#DAE8F7;
+}
+
+/*Events*/
+
+.single-event {
+	border-bottom:#999 1px solid;
+	padding:20px 0;
+}
+
+.single-event:last-child {
+	border-bottom:none;
 }

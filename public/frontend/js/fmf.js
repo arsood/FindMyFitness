@@ -29,3 +29,10 @@ $(document).on("click", "#toggle-bus-photos", function() {
 	resizeGalleria();
 	Galleria.run('#galleria');
 });
+
+//Change background color of left sidebar menu items
+
+$(document).on("click", ".left-sidebar-menu a", function() {
+	$(".left-sidebar-menu a").removeClass("active");
+	$(this).addClass("active");
+});
