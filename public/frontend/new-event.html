@@ -89,111 +89,111 @@
 <!--Main-->
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="row">
-		<div class="col-sm-3">
-			<div class="gray-menu-item padding-left-20">
-				Categories
-			</div>
-
-			<div class="left-sidebar-menu">
-				<a href="#">All</a>
-				<a href="#">Classes</a>
-				<a href="#">Runs / Walks</a>
-				<a href="#">Lectures</a>
-				<a href="#">Workshops</a>
+		<div class="col-sm-9">
+			<div class="large-title">
+				Create an Event
 			</div>
 
 			<div class="margin-top-20">
-				<button class="fmf-ellipse-turquoise-button">Create an Event</button>
+				<input type="text" class="form-control" placeholder="Event Name" />
+			</div>
+
+			<div class="margin-top-10">
+				<textarea placeholder="Type your event description here." class="new-event-text"></textarea>
+			</div>
+
+			<div class="margin-top-10">
+				What type of event is this?
+			</div>
+
+			<div class="margin-top-10">
+				<select class="new-event-select">
+					<option>Choose a Category</option>
+				</select>
+			</div>
+
+			<div class="margin-top-20">
+				<button class="fmf-ellipse-turquoise-button">Create Event</button>
+			</div>
+
+			<div class="margin-top-10">
+				<a href="#">Cancel</a>
 			</div>
 		</div>
-		<div class="col-sm-9">
-			<!--Events Calendar-->
-			<div id="event-calendar"></div>
-			<!--/Events Calendar-->
+		<div class="col-sm-3">
+			<div class="large-title">
+				Date and Time
+			</div>
 
-			<!--One Event-->
-			<div class="row margin-top-20 single-event">
-				<div class="col-sm-4">
-					<img src="img/temp/slide1.jpg" class="img-responsive" />
-				</div>
-				<div class="col-sm-8">
-					<div>
-						<a class="big-link" href="#">Milpitas kickboxing night</a>
+			<div class="margin-top-10">
+				<div class="row">
+					<div class="col-sm-4">
+						<select class="form-control">
+							<option>Jan</option>
+							<option>Feb</option>
+							<option>Mar</option>
+							<option>Apr</option>
+							<option>May</option>
+							<option>Jun</option>
+							<option>Jul</option>
+							<option>Aug</option>
+							<option>Sep</option>
+							<option>Oct</option>
+							<option>Nov</option>
+							<option>Dec</option>
+						</select>
 					</div>
-					<div>
-						June 11, 2014
+					<div class="col-sm-4">
+						<select class="form-control">
+							<option>1</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+							<option>11</option>
+							<option>12</option>
+							<option>13</option>
+							<option>14</option>
+							<option>15</option>
+							<option>16</option>
+							<option>17</option>
+							<option>18</option>
+							<option>19</option>
+							<option>20</option>
+							<option>21</option>
+							<option>22</option>
+							<option>23</option>
+							<option>24</option>
+							<option>25</option>
+							<option>26</option>
+							<option>27</option>
+							<option>28</option>
+							<option>29</option>
+							<option>30</option>
+							<option>31</option>
+						</select>
 					</div>
-					<div class="margin-top-10">
-						Curves Gym
-					</div>
-					<div>
-						123 Elsm Street, San Francisco, CA
-					</div>
-					<div class="margin-top-10">
-						This is an example text that can be a description of the event...
-					</div>
-					<div class="margin-top-10">
-						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+					<div class="col-sm-4">
+						<select class="form-control">
+							<option>2014</option>
+							<option>2015</option>
+							<option>2016</option>
+						</select>
 					</div>
 				</div>
 			</div>
-			<!--/One Event-->
 
-			<!--One Event-->
-			<div class="row margin-top-20 single-event">
-				<div class="col-sm-4">
-					<img src="img/temp/slide1.jpg" class="img-responsive" />
-				</div>
-				<div class="col-sm-8">
-					<div>
-						<a class="big-link" href="#">Milpitas kickboxing night</a>
-					</div>
-					<div>
-						June 11, 2014
-					</div>
-					<div class="margin-top-10">
-						Curves Gym
-					</div>
-					<div>
-						123 Elsm Street, San Francisco, CA
-					</div>
-					<div class="margin-top-10">
-						This is an example text that can be a description of the event...
-					</div>
-					<div class="margin-top-10">
-						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
-					</div>
-				</div>
+			<div class="large-title margin-top-20">
+				Location
 			</div>
-			<!--/One Event-->
 
-			<!--One Event-->
-			<div class="row margin-top-20 single-event">
-				<div class="col-sm-4">
-					<img src="img/temp/slide1.jpg" class="img-responsive" />
-				</div>
-				<div class="col-sm-8">
-					<div>
-						<a class="big-link" href="#">Milpitas kickboxing night</a>
-					</div>
-					<div>
-						June 11, 2014
-					</div>
-					<div class="margin-top-10">
-						Curves Gym
-					</div>
-					<div>
-						123 Elsm Street, San Francisco, CA
-					</div>
-					<div class="margin-top-10">
-						This is an example text that can be a description of the event...
-					</div>
-					<div class="margin-top-10">
-						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
-					</div>
-				</div>
+			<div class="margin-top-10">
+				<input type="text" placeholder="e.g. 123 Grand Ave., San Francisco, CA" class="form-control" />
 			</div>
-			<!--/One Event-->
 		</div>
 	</div>
 </div>

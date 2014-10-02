@@ -237,3 +237,18 @@
 .single-event:last-child {
 	border-bottom:none;
 }
+
+.new-event-text {
+	width:100%;
+	height:250px;
+	padding:10px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:#CCC 1px solid;
+}
+
+.new-event-select {
+	width:250px;
+	padding:10px;
+}
