@@ -227,6 +227,11 @@
 	background-color:#DAE8F7;
 }
 
+.gray-header-background {
+	background-color:#EBEBEB;
+	padding-bottom:10px;
+}
+
 /*Events*/
 
 .single-event {
