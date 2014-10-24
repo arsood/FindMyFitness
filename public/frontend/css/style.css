@@ -90,6 +90,20 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#10c1f2', endColorstr='#0fb4e7',GradientType=0 ); /* IE6-9 */
 }
 
+.fmf-ellipse-gray-button {
+	background-color:#CCC;
+	border:none;
+	padding:10px 20px;
+	border-radius:20px 3px 20px 3px;
+	-moz-border-radius:20px 3px 20px 3px;
+	-webkit-border-radius:20px 3px 20px 3px;
+	color:#FFF;
+}
+
+.fmf-ellipse-gray-button:hover {
+	background-color:#AAA;
+}
+
 .fmf-ellipse-dark-blue-button {
 	background-color:#4f85bb;
 	border:none;
@@ -228,6 +242,11 @@
 	font-size:1.2em;
 }
 
+.bus-left-sidebar-menu a:hover {
+	background-color:#777;
+	text-decoration:none;
+}
+
 .left-sidebar-menu a:hover {
 	text-decoration:none;
 }
@@ -321,4 +340,11 @@
 
 .profile-review-wrapper:last-child, .profile-saves-wrapper:last-child {
 	border:none;
+}
+
+/*Business Admin*/
+
+.bus-description-edit {
+	background-color:#DDD;
+	min-height:150px;
 }
