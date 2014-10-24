@@ -32,7 +32,9 @@ $(document).on("click", "#toggle-bus-photos", function() {
 
 //Change background color of left sidebar menu items
 
-$(document).on("click", ".left-sidebar-menu a", function() {
+$(document).on("click", ".left-sidebar-menu a", function(event) {
+	event.preventDefault();
+	
 	$(".left-sidebar-menu a").removeClass("active");
 	$(this).addClass("active");
 });
