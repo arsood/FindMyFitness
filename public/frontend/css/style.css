@@ -19,11 +19,6 @@
 	padding-top:20px;
 }
 
-.large-title {
-	font-size:1.6em;
-	font-weight:bold;
-}
-
 .medium-title {
 	font-size:1.3em;
 	font-weight:bold;
@@ -221,6 +216,16 @@
 	display:block;
 	padding:10px;
 	color:#777;
+}
+
+.bus-left-sidebar-menu a {
+	display:block;
+	padding:30px 10px;
+	background-color:#999;
+	color:#FFF;
+	margin-top:10px;
+	text-align:center;
+	font-size:1.2em;
 }
 
 .left-sidebar-menu a:hover {
