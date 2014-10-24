@@ -308,3 +308,12 @@
 	color:#FFF;
 	font-size:2em;
 }
+
+.profile-review-wrapper, .profile-saves-wrapper {
+	padding:20px 0;
+	border-bottom:#CCC 1px solid;
+}
+
+.profile-review-wrapper:last-child, .profile-saves-wrapper:last-child {
+	border:none;
+}
