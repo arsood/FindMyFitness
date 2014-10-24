@@ -36,3 +36,21 @@ $(document).on("click", ".left-sidebar-menu a", function() {
 	$(".left-sidebar-menu a").removeClass("active");
 	$(this).addClass("active");
 });
+
+//Change class for profile edit buttons
+
+$(document).on("click", "#profile-edit-on", function(event) {
+	event.preventDefault();
+
+	$("#profile-edit-off").removeClass("btn-primary").addClass("btn-default");
+	$(this).addClass("btn-primary");
+	$(".profile-photos-container i").removeClass("hide");
+});
+
+$(document).on("click", "#profile-edit-off", function(event) {
+	event.preventDefault();
+
+	$("#profile-edit-on").removeClass("btn-primary").addClass("btn-default");
+	$(this).addClass("btn-primary");
+	$(".profile-photos-container i ").addClass("hide");
+});
