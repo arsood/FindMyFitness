@@ -278,3 +278,24 @@
 	height:400px;
 	background-size:cover !important;
 }
+
+/*Profile*/
+
+.profile-notification-entry {
+	padding:20px 10px;
+	border-bottom:#CCC 1px solid;
+}
+
+.profile-notification-entry:last-child {
+	border:none;
+}
+
+.profile-notification-entry.active {
+	background-color:#DAE8F7;
+}
+
+.profile-photos-container {
+	width:100%;
+	height:200px;
+	background-size:cover !important;
+}

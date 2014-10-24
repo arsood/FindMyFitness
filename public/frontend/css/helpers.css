@@ -57,10 +57,18 @@
 	padding-left:20px;
 }
 
+.padding-top-10 {
+	padding-top:10px;
+}
+
 /*Text Decorations*/
 
 .white-text {
 	color:#FFF;
+}
+
+.gray-text {
+	color:#999;
 }
 
 .bold {
