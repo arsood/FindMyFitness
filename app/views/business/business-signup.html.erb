@@ -107,7 +107,7 @@
 						Business Type:
 					</div>
 					<div class="margin-top-10">
-						<select class="form-control" name="business[type]">
+						<select class="form-control" name="business[business_type]">
 							<option value="Yoga">Yoga</option>
 							<option value="Gyms">Gyms</option>
 							<option value="Martial Arts">Martial Arts</option>
@@ -165,28 +165,14 @@
 					<div class="margin-top-20 bold">
 						Phone Number:
 					</div>
-					<div class="margin-top-10 row">
-						<div class="col-sm-2">
-							<input type="text" class="form-control" />
-						</div>
-						<div class="col-sm-1 large-title">
-							-
-						</div>
-						<div class="col-sm-2">
-							<input type="text" class="form-control" />
-						</div>
-						<div class="col-sm-1 large-title">
-							-
-						</div>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" />
-						</div>
+					<div class="margin-top-10">
+						<input type="tel" name="business[phone]" class="form-control" placeholder="Phone Number" />
 					</div>
 					<div class="margin-top-20 bold">
 						Website:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" placeholder="Website" />
+						<input type="text" name="business[website]" class="form-control" placeholder="Website" />
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -212,13 +198,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[monday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[monday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -231,13 +265,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[tuesday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[tuesday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -250,13 +332,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[wednesday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[wednesday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -269,13 +399,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[thursday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[thursday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -288,13 +466,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[friday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[friday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -307,13 +533,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[saturday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[saturday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -326,13 +600,61 @@
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[sunday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 						<div class="col-sm-4">
-							<select class="form-control">
-								<option>6 AM</option>
+							<select name="business[sunday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
 							</select>
 						</div>
 					</div>
@@ -344,12 +666,12 @@
 					Description
 				</div>
 				<div class="margin-top-10">
-					<textarea class="form-control bus-description-edit"></textarea>
+					<textarea name="business[description]" class="form-control bus-description-edit"></textarea>
 				</div>
 			</div>
 			<div class="margin-top-20 pull-right">
 				<button class="fmf-ellipse-gray-button">Cancel</button>
-				<button class="fmf-ellipse-turquoise-button margin-left-20">Submit Business</button>
+				<button class="fmf-ellipse-turquoise-button margin-left-20" type="submit">Submit Business</button>
 			</div>
 		</div>
 	</div>

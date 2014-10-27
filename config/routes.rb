@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "signup" => "business#signup"
+  get "business-signup" => "business#signup"
+
+  post "business-signup" => "business#signup_process"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
