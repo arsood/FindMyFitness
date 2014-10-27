@@ -98,6 +98,9 @@
 	-moz-border-radius:20px 3px 20px 3px;
 	-webkit-border-radius:20px 3px 20px 3px;
 	color:#FFF;
+	-webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 3px 0px rgba(50, 50, 50, 0.75);
 }
 
 .fmf-ellipse-gray-button:hover {
