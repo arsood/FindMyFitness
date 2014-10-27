@@ -4,8 +4,15 @@ class BusinessController < ApplicationController
 	end
 
 	def signup_process
+		#Create a new business with some strong parameters
+
 		newBus = Business.create(bus_params)
 		redirect_to "/"
+	end
+
+	def business_show
+		@business_info = Business.find(params[:id])
+		render "business-show"
 	end
 
 	private

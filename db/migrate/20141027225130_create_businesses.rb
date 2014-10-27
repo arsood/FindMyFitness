@@ -24,7 +24,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :sunday_start
       t.string :sunday_end
       t.text :description
-      t.integer :views
+      t.integer :views, :default => 0
 
       t.timestamps
     end
