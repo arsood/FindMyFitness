@@ -115,10 +115,17 @@
 							<option value="Other">Other</option>
 						</select>
 					</div>
+
+					<div class="bold margin-top-20">
+						Hours and Availability:
+					</div>
+					<div class="margin-top-10">
+						<textarea name="business[availability]" class="form-control" placeholder="Example: M - F 8 AM to 9 PM"></textarea>
+					</div>
 				</div>
 				<div class="col-sm-8 business-signup-services">
 					<div class="bold">
-						Business Services
+						Select Your Business Services:
 					</div>
 					<div class="margin-top-10">
 						<div class="row">
@@ -183,7 +190,7 @@
 							<div class="col-sm-2">
 								<div class="checkbox">
 									<label for="check-massage">
-										<input type="checkbox" name="services[massage]" value="Massage" id="check-massage"> Massage
+										<input type="checkbox" name="services[massage]" value="Massage" id="check-massage"> Massage Service
 									</label>
 								</div>
 							</div>
@@ -209,10 +216,55 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="row margin-top-10">
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-towels">
+										<input type="checkbox" name="services[towels]" value="Towels" id="check-towels"> Towels
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-steam">
+										<input type="checkbox" name="services[steam]" value="Steam Room" id="check-steam"> Steam Room
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-cafe">
+										<input type="checkbox" name="services[cafe]" value="Cafeteria" id="check-cafe"> Cafeteria
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-child-care">
+										<input type="checkbox" name="services[child-care]" value="Child Care" id="check-child-care"> Child Care
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-diet">
+										<input type="checkbox" name="services[diet]" value="Dietary Consults" id="check-diet"> Dietary Consults
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-meditation">
+										<input type="checkbox" name="services[meditation]" value="Meditation Areas" id="check-meditation"> Meditation Areas
+									</label>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row margin-top-50">
+			<div class="row margin-top-20">
 				<div class="col-sm-6">
 					<div class="medium-title">
 						Location
@@ -251,7 +303,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="margin-top-20 medium-title">
+				</div>
+				<div class="col-sm-6">
+					<div class="medium-title">
 						Contact Information
 					</div>
 					<div class="margin-top-20 bold">
@@ -266,491 +320,6 @@
 					<div class="margin-top-10">
 						<input type="text" name="business[website]" class="form-control" placeholder="Website" />
 					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="medium-title">
-						Business Hours
-					</div>
-					<div class="row margin-top-20">
-						<div class="col-sm-4 bold">
-							Day:
-						</div>
-						<div class="col-sm-4 bold">
-							Start Time:
-						</div>
-						<div class="col-sm-4 bold">
-							End Time:
-						</div>
-					</div>
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Monday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[monday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[monday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Tuesday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[tuesday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[tuesday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Wednesday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[wednesday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[wednesday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Thursday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[thursday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[thursday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Friday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[friday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[friday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Saturday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[saturday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[saturday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
-					<!--/One Day-->
-					<div class="row margin-top-20">
-						<div class="col-sm-4">
-							<select class="form-control">
-								<option>Sunday</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[sunday_start]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-						<div class="col-sm-4">
-							<select name="business[sunday_end]" class="form-control">
-								<option value="12 AM">12 AM</option>
-								<option value="1 AM">1 AM</option>
-								<option value="2 AM">2 AM</option>
-								<option value="3 AM">3 AM</option>
-								<option value="4 AM">4 AM</option>
-								<option value="5 AM">5 AM</option>
-								<option value="6 AM">6 AM</option>
-								<option value="7 AM">7 AM</option>
-								<option value="8 AM">8 AM</option>
-								<option value="9 AM">9 AM</option>
-								<option value="10 AM">10 AM</option>
-								<option value="11 AM">11 AM</option>
-								<option value="12 AM">12 AM</option>
-								<option value="1 PM">1 PM</option>
-								<option value="2 PM">2 PM</option>
-								<option value="3 PM">3 PM</option>
-								<option value="4 PM">4 PM</option>
-								<option value="5 PM">5 PM</option>
-								<option value="6 PM">6 PM</option>
-								<option value="7 PM">7 PM</option>
-								<option value="8 PM">8 PM</option>
-								<option value="9 PM">9 PM</option>
-								<option value="10 PM">10 PM</option>
-								<option value="11 PM">11 PM</option>
-								<option value="12 PM">12 PM</option>
-							</select>
-						</div>
-					</div>
-					<!--/One Day-->
 				</div>
 			</div>
 			<div class="margin-top-50">

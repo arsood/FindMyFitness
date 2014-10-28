@@ -115,11 +115,9 @@
 						</div>
 
 						<div class="margin-top-20">
-							M-F 6am - 10pm
+							<%= simple_format(@business_info.availability) %>
 						</div>
-						<div>
-							Sat 10am - 4pm
-						</div>
+						
 						<div class="margin-top-20">
 							<%= @business_info.phone %>
 						</div>
@@ -158,6 +156,23 @@
 							</div>
 							<div class="col-sm-6">
 								<% for i in 9..11 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6">
+								<% for i in 12..14 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
+							</div>
+							<div class="col-sm-6">
+								<% for i in 15..17 %>
 									<div>
 										<%= @services_info[i].try(:bus_service) %>
 									</div>

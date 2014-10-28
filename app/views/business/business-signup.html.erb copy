@@ -1,0 +1,859 @@
+<!--Navbar-->
+<div class="fmf-navbar">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 logo">
+				<a href="#"><%= image_tag("logo.png") %></a>
+			</div>
+			<div class="col-sm-6">
+				<ul class="fmf-nav-menu pull-right">
+					<li><a href="#">Events</a></li>
+					<li><a href="#">Blogs</a></li>
+					<li class="txt-right"><a href="#" class="btn btn-primary">Hi, Susan! | <i class="fa fa-chevron-down"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Navbar-->
+
+<!--/Header Gray Wrap-->
+<div class="gray-header-background">
+	<!--Header Search Boxes-->
+	<div class="fmf-header-search container">
+		<div class="gray-gradient radius-5 padding-10">
+			<div class="row">
+				<div class="col-sm-4">
+					<input class="header-search-input margin-top-5" type="text" placeholder="Name, category..." />
+				</div>
+				<div class="col-sm-1 txt-center margin-top-10 white-text">
+					NEAR
+				</div>
+				<div class="col-sm-5">
+					<input class="header-search-input margin-top-5" type="text" placeholder="Location, neighborhood, etc..." />
+				</div>
+				<div class="col-sm-2 txt-center">
+					<button class="fmf-ellipse-turquoise-button">Search</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="margin-top-10 row">
+			<div class="col-sm-1 bold">
+				Categories:
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Yoga</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Gyms</a>
+			</div>
+			<div class="col-sm-2 txt-center">
+				<a href="#">Martial Arts</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Boxing</a>
+			</div>
+			<div class="col-sm-2 txt-center">
+				<a href="#">Rock Climbing</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Pilates</a>
+			</div>
+			<div class="col-sm-2 txt-center">
+				<a href="#">Dance</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Other</a>
+			</div>
+		</div>
+	</div>
+	<!--/Header Search Boxes-->
+
+	<!--Inner Sub Header-->
+	<div class="container margin-top-50 margin-bottom-30">
+		<div class="extra-large-title">
+			Welcome to FindMyFitness!
+		</div>
+		<div class="italic">
+			Signup Here
+		</div>
+	</div>
+	<!--/Inner Sub Header-->
+</div>
+<!--/Header Gray Wrap-->
+
+<!--Main-->
+<%= form_tag do %>
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="extra-large-title">
+				Create Your Business Profile
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-4">
+					<div class="bold">
+						Name:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" name="business[name]" class="form-control" placeholder="Your Business Name" />
+					</div>
+
+					<div class="bold margin-top-20">
+						Business Type:
+					</div>
+					<div class="margin-top-10">
+						<select class="form-control" name="business[business_type]">
+							<option value="Yoga">Yoga</option>
+							<option value="Gyms">Gyms</option>
+							<option value="Martial Arts">Martial Arts</option>
+							<option value="Boxing">Boxing</option>
+							<option value="Rock Climbing">Rock Climbing</option>
+							<option value="Pilates">Pilates</option>
+							<option value="Dance">Dance</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-8 business-signup-services">
+					<div class="bold">
+						Business Services
+					</div>
+					<div class="margin-top-10">
+						<div class="row">
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-weights">
+										<input type="checkbox" name="services[weights]" value="Weights" id="check-weights"> Weights
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-running-track">
+										<input type="checkbox" name="services[track]" value="Running Track" id="check-running-track"> Running Track
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-pool">
+										<input type="checkbox" name="services[pool]" value="Swimming Pool" id="check-pool"> Swimming Pool
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-classes">
+										<input type="checkbox" name="services[classes]" value="Fitness Classes" id="check-classes"> Fitness Classes
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-instructors">
+										<input type="checkbox" name="services[instructors]" value="Personal Instructors" id="check-instructors"> Personal Instructors
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-pilates">
+										<input type="checkbox" name="services[pilates]" value="Pilates" id="check-pilates"> Pilates
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="row margin-top-10">
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-spa">
+										<input type="checkbox" name="services[spa]" value="Spa" id="check-spa"> Spa
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-sauna">
+										<input type="checkbox" name="services[sauna]" value="Sauna" id="check-sauna"> Sauna	
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-massage">
+										<input type="checkbox" name="services[massage]" value="Massage" id="check-massage"> Massage
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-cycling">
+										<input type="checkbox" name="services[cycling]" value="Cycling" id="check-cycling"> Cycling
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-courts">
+										<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts"> Sport Courts
+									</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="checkbox">
+									<label for="check-cardio">
+										<input type="checkbox" name="services[cardio]" value="Cardio" id="check-cardio"> Cardio
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-top-50">
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Location
+					</div>
+					<div class="margin-top-20 bold">
+						Address:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" name="business[address]" class="form-control" placeholder="Address" />
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="bold">
+								City:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" name="business[city]" class="form-control" placeholder="City" />
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								State:
+							</div>
+							<div class="margin-top-10">
+								<select class="form-control" name="business[state]">
+									<option>CA</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								Zipcode:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" name="business[zipcode]" class="form-control" placeholder="Zipcode" />
+							</div>
+						</div>
+					</div>
+					<div class="margin-top-20 medium-title">
+						Contact Information
+					</div>
+					<div class="margin-top-20 bold">
+						Phone Number:
+					</div>
+					<div class="margin-top-10">
+						<input type="tel" name="business[phone]" class="form-control" placeholder="Phone Number" />
+					</div>
+					<div class="margin-top-20 bold">
+						Website:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" name="business[website]" class="form-control" placeholder="Website" />
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Business Hours
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4 bold">
+							Day:
+						</div>
+						<div class="col-sm-4 bold">
+							Start Time:
+						</div>
+						<div class="col-sm-4 bold">
+							End Time:
+						</div>
+					</div>
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Monday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[monday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[monday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Tuesday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[tuesday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[tuesday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Wednesday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[wednesday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[wednesday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Thursday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[thursday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[thursday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Friday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[friday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[friday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Saturday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[saturday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[saturday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+					<!--/One Day-->
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<select class="form-control">
+								<option>Sunday</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[sunday_start]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<select name="business[sunday_end]" class="form-control">
+								<option value="12 AM">12 AM</option>
+								<option value="1 AM">1 AM</option>
+								<option value="2 AM">2 AM</option>
+								<option value="3 AM">3 AM</option>
+								<option value="4 AM">4 AM</option>
+								<option value="5 AM">5 AM</option>
+								<option value="6 AM">6 AM</option>
+								<option value="7 AM">7 AM</option>
+								<option value="8 AM">8 AM</option>
+								<option value="9 AM">9 AM</option>
+								<option value="10 AM">10 AM</option>
+								<option value="11 AM">11 AM</option>
+								<option value="12 AM">12 AM</option>
+								<option value="1 PM">1 PM</option>
+								<option value="2 PM">2 PM</option>
+								<option value="3 PM">3 PM</option>
+								<option value="4 PM">4 PM</option>
+								<option value="5 PM">5 PM</option>
+								<option value="6 PM">6 PM</option>
+								<option value="7 PM">7 PM</option>
+								<option value="8 PM">8 PM</option>
+								<option value="9 PM">9 PM</option>
+								<option value="10 PM">10 PM</option>
+								<option value="11 PM">11 PM</option>
+								<option value="12 PM">12 PM</option>
+							</select>
+						</div>
+					</div>
+					<!--/One Day-->
+				</div>
+			</div>
+			<div class="margin-top-50">
+				<div class="medium-title">
+					Description
+				</div>
+				<div class="margin-top-10">
+					<textarea name="business[description]" class="form-control bus-description-edit"></textarea>
+				</div>
+			</div>
+			<div class="margin-top-20 pull-right">
+				<a href="/">
+					<button class="fmf-ellipse-gray-button">Cancel</button>
+				</a>
+				<button class="fmf-ellipse-turquoise-button margin-left-20" type="submit">Submit Business</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->
+<% end %>
+
+<!--Footer-->
+<div class="footer-wrapper">
+	<div class="footer-container margin-top-20">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="medium-white-title bottom-white-border">
+					Links
+				</div>
+
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">About Us</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Site Feedback</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">FAQs</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Advertise With Us</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Contact Us</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Terms of Use</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Careers</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Site Map</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="medium-white-title bottom-white-border">
+					Categories
+				</div>
+
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Yoga</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Rock Climbing</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Gyms</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Pilates</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Martial Arts</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Dance</a>
+					</div>
+				</div>
+				<div class="row margin-top-10">
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Boxing</a>
+					</div>
+					<div class="col-sm-6">
+						<a href="#" class="white-link">Other</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Footer-->

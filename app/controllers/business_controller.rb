@@ -18,13 +18,14 @@ class BusinessController < ApplicationController
 	def business_show
 		@business_info = Business.find(params[:id])
 		@services_info = BusinessService.where(bus_id: @business_info.id)
+
 		render "business-show"
 	end
 
 	private
 
 	def bus_params
-		params.require(:business).permit(:name, :business_type, :address, :city, :state, :zipcode, :phone, :website, :monday_start, :monday_end, :tuesday_start, :tuesday_end, :wednesday_start, :wednesday_end, :thursday_start, :thursday_end, :friday_start, :friday_end, :saturday_start, :saturday_end, :sunday_start, :sunday_end, :description)
+		params.require(:business).permit(:name, :business_type, :address, :city, :state, :zipcode, :phone, :website, :description, :availability)
 	end
 
 	def service_params
