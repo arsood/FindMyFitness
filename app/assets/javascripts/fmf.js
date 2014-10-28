@@ -56,3 +56,5 @@ $(document).on("click", "#profile-edit-off", function(event) {
 	$(this).addClass("btn-primary");
 	$(".profile-photos-container i ").addClass("hide");
 });
+
+//Save business to save list
