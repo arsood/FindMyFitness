@@ -133,23 +133,35 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<div>
-									Weights
-								</div>
-								<div>
-									Running Track
-								</div>
-								<div>
-									Swimming Pool
-								</div>
+								<% for i in 0..2 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
 							</div>
 							<div class="col-sm-6">
-								<div>
-									Fitness Classes
-								</div>
-								<div>
-									Personal Instructors
-								</div>
+								<% for i in 3..5 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6">
+								<% for i in 6..8 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
+							</div>
+							<div class="col-sm-6">
+								<% for i in 9..11 %>
+									<div>
+										<%= @services_info[i].try(:bus_service) %>
+									</div>
+								<% end %>
 							</div>
 						</div>
 
