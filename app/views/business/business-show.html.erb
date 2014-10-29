@@ -79,7 +79,9 @@
 					<%= @business_info.name %>
 				</div>
 				<div class="col-sm-6 txt-right">
-					<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button">+</button>
+					<%= form_tag do %>
+						<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button">+</button>
+					<% end %>
 				</div>
 			</div>
 
@@ -119,7 +121,7 @@
 						</div>
 						
 						<div class="margin-top-20">
-							<%= @business_info.phone %>
+							<%= number_to_phone(@business_info.phone, area_code: true) %>
 						</div>
 
 						<div class="margin-top-20">
@@ -205,9 +207,9 @@
 					</div>
 				</div>
 
-				<div class="margin-top-20">
+				<!-- <div class="margin-top-20">
 					<button type="button" class="fmf-ellipse-dark-blue-button regular-text">Get deals now</button>
-				</div>
+				</div> -->
 
 				<div class="margin-top-20">
 					<a href="#">

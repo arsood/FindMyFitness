@@ -22,6 +22,10 @@ class BusinessController < ApplicationController
 		render "business-show"
 	end
 
+	def save_business
+		render :text => "Worked"
+	end
+
 	private
 
 	def bus_params
