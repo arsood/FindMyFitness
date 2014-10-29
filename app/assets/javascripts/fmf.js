@@ -57,6 +57,23 @@ $(document).on("click", "#profile-edit-off", function(event) {
 	$(".profile-photos-container i ").addClass("hide");
 });
 
+//Toggle login form show
+
+$(document).on("click", "#login-toggle-button", function(event) {
+	event.preventDefault();
+
+	$("#login-top-menu").fadeToggle(100);
+});
+
+//Toggle signup window show
+
+$(document).on("click", "#signup-toggle-button", function(event) {
+	event.preventDefault();
+
+	$("#login-top-menu").fadeOut(100);
+	$("#signup-modal").modal("show");
+});
+
 //Save business to save list
 
 $(document).on("click", "#business-save-button", function() {
