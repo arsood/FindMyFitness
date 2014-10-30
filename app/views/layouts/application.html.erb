@@ -263,6 +263,7 @@
 <!--Signup Modal-->
 <div class="modal fade" id="signup-modal">
 	<div class="modal-dialog modal-lg">
+		<%= form_tag("/newuser") do %>
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="large-title">
@@ -284,7 +285,6 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<%= form_tag do %>
 							<div class="medium-title">
 								New User
 							</div>
@@ -375,15 +375,15 @@
 									</label>
 								</div>
 							</div>
-						<% end %>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Signup</button>
+				<button type="submit" class="btn btn-primary">Signup</button>
 			</div>
 		</div><!-- /.modal-content -->
+		<% end %>
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--/Signup Modal-->
