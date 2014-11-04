@@ -199,7 +199,9 @@
 					<a href="#">Write a review...</a>
 				</div>
 
-				<% for i in 2..@business_reviews.length - 1 %>
+				<% for i in 2..@business_reviews.length - 1 
+					current_user = User.find(@business_reviews[i].user_id)
+				%>
 				<!--One Review-->
 				<div class="review-wrapper">
 					<div class="row">
@@ -208,10 +210,10 @@
 						</div>
 						<div class="col-sm-9">
 							<div class="bold">
-								Susan Parker
+								<%= current_user.first_name %> <%= current_user.last_name %>
 							</div>
 							<div class="italic">
-								Member since 2012
+								Member since <%= current_user.created_at %>
 							</div>
 							<div class="margin-top-10">
 								<%= @business_reviews[i].review_text %>
