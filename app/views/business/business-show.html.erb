@@ -193,13 +193,13 @@
 					<!--/One Review Column-->
 					<% end %>
 				</div>
-
 				<% end %>
 
 				<div class="write-review-button txt-center margin-top-20">
 					<a href="#">Write a review...</a>
 				</div>
 
+				<% for i in 2..@business_reviews.length - 1 %>
 				<!--One Review-->
 				<div class="review-wrapper">
 					<div class="row">
@@ -214,12 +214,13 @@
 								Member since 2012
 							</div>
 							<div class="margin-top-10">
-								
+								<%= @business_reviews[i].review_text %>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--/One Review-->
+				<% end %>
 			</div>
 			<!--/Reviews-->
 
