@@ -19,6 +19,8 @@ class BusinessController < ApplicationController
 		@business_info = Business.find(params[:id])
 		@services_info = BusinessService.where(bus_id: @business_info.id)
 
+		@business_reviews = Review.where(bus_id: @business_info.id).order(created_at: :desc)
+
 		render "business-show"
 	end
 

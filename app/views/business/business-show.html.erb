@@ -155,66 +155,52 @@
 				</div>
 
 				<div class="row margin-top-20">
+					<% 
+					#Show the first two reviews if there are more than 2
+
+					if @business_reviews.length > 2 
+						for i in 0..1 do
+							current_user = User.find(@business_reviews[i].user_id)
+					%>
+					<!--One Review Column-->
 					<div class="col-sm-6">
 						<div>
-							<%= image_tag("stars/stars3.png") %>
+							<%= image_tag("stars/stars" + @business_reviews[i].star_rating.to_s + ".png") %>
 						</div>
 
 						<div class="row margin-top-10">
 							<div class="col-sm-3">
-								<img src="img/temp/profile-pic.jpg" class="img-responsive" />
+								<img src="/assets/temp/profile-pic.jpg" class="img-responsive" />
 							</div>
 							<div class="col-sm-9">
 								<div class="bold">
-									Susan Parker
+									<%= current_user.first_name %> <%= current_user.last_name %>
 								</div>
 								<div class="italic">
-									Member since 2012
+									Member since <%= current_user.created_at %>
 								</div>
 							</div>
 						</div>
 
 						<div class="margin-top-10">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat.
+							<%= @business_reviews[i].review_text %>
 						</div>
 
 						<div class="margin-top-10 pull-right">
 							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<div>
-							<img src="img/stars/stars4.png" />
-						</div>
-
-						<div class="row margin-top-10">
-							<div class="col-sm-3">
-								<img src="img/temp/profile-pic.jpg" class="img-responsive" />
-							</div>
-							<div class="col-sm-9">
-								<div class="bold">
-									Susan Parker
-								</div>
-								<div class="italic">
-									Member since 2012
-								</div>
-							</div>
-						</div>
-
-						<div class="margin-top-10">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat.
-						</div>
-
-						<div class="margin-top-10 pull-right">
-							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
-						</div>
-					</div>
+					<!--/One Review Column-->
+					<% end %>
 				</div>
+
+				<% end %>
 
 				<div class="write-review-button txt-center margin-top-20">
 					<a href="#">Write a review...</a>
 				</div>
 
+				<!--One Review-->
 				<div class="review-wrapper">
 					<div class="row">
 						<div class="col-sm-3">
@@ -228,11 +214,12 @@
 								Member since 2012
 							</div>
 							<div class="margin-top-10">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sollicitudin fringilla ante eu egestas. Integer vestibulum ac enim et dictum. Aliquam porttitor eu nulla eu mattis. Duis id molestie enim, eget tristique erat.
+								
 							</div>
 						</div>
 					</div>
 				</div>
+				<!--/One Review-->
 			</div>
 			<!--/Reviews-->
 
