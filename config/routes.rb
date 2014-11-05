@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  get "business-signup" => "business#signup"
+
+  #Business
 
   post "business-signup" => "business#signup_process"
   post "business/save" => "business#save_business"
 
+  get "business-signup" => "business#signup"
+  get "business/:id" => "business#business_show"
+
+  #User signup
+
   post "/newuser" => "user#signup_process"
 
-  get "business/:id" => "business#business_show"
+  #Event
+
+  get "event/new" => "event#new"
+  post "event/new" => "event#new_event_process"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

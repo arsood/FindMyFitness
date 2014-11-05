@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029233516) do
+ActiveRecord::Schema.define(version: 20141105185526) do
 
   create_table "business_saves", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20141029233516) do
     t.string   "availability"
     t.text     "description"
     t.integer  "views",         default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "event_name"
+    t.text     "event_description"
+    t.string   "event_category"
+    t.string   "event_location"
+    t.datetime "event_date"
+    t.string   "event_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
