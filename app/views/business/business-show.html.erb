@@ -154,15 +154,16 @@
 					Recent Reviews
 				</div>
 
-				<% 
-				#Show the first two reviews if there are more than 2
-
-				if @business_reviews.length > 2 
-					for i in 0..1 do
-						current_user = User.find(@business_reviews[i].user_id)
-				%>
-
 				<div class="row margin-top-20">
+
+					<% 
+					#Show the first two reviews if there are more than 2
+
+					if @business_reviews.length > 2 
+						for i in 0..1 do
+							current_user = User.find(@business_reviews[i].user_id)
+					%>
+
 					<!--One Review Column-->
 					<div class="col-sm-6">
 						<div>
@@ -192,9 +193,9 @@
 						</div>
 					</div>
 					<!--/One Review Column-->
-				</div>
+						<% end %>
 					<% end %>
-				<% end %>
+				</div>
 
 				<div class="write-review-button txt-center margin-top-20">
 					<a href="#">Write a review...</a>
