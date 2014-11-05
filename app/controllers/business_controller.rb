@@ -16,10 +16,13 @@ class BusinessController < ApplicationController
 	end
 
 	def business_show
+		#Pull basic business info
 		@business_info = Business.find(params[:id])
 		
+		#Pull all services related to that business
 		@services_info = BusinessService.where(bus_id: @business_info.id)
 
+		#Pull all related reviews
 		@business_reviews = Review.where(bus_id: @business_info.id).order(created_at: :desc)
 
 		render "business-show"
