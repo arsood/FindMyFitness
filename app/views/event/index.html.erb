@@ -1,0 +1,51 @@
+<!--Main-->
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="gray-menu-item">
+				Categories
+			</div>
+
+			<div class="left-sidebar-menu">
+				<a href="#">All</a>
+				<a href="#">Classes</a>
+				<a href="#">Runs / Walks</a>
+				<a href="#">Lectures</a>
+				<a href="#">Workshops</a>
+			</div>
+
+			<div class="margin-top-20">
+				<a href="/event/new" class="fmf-ellipse-turquoise-button">Create an Event</a>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<% @events.each do |event| %>
+			<!--One Event-->
+			<div class="row margin-top-20 single-event">
+				<div class="col-sm-4">
+					<img src="img/temp/slide1.jpg" class="img-responsive" />
+				</div>
+				<div class="col-sm-8">
+					<div>
+						<a class="big-link" href="#"><%= event.event_name %></a>
+					</div>
+					<div>
+						<%= event.event_date.strftime("%B %-d, %Y") %>
+					</div>
+					<div class="margin-top-10">
+						<%= event.event_location %>
+					</div>
+					<div class="margin-top-10">
+						<%= event.event_description %>
+					</div>
+					<div class="margin-top-10">
+						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--/One Event-->
+			<% end %>
+		</div>
+	</div>
+</div>
+<!--/Main-->

@@ -153,7 +153,7 @@
 
 .gray-menu-item {
 	background-color:#999;
-	padding:10px 0;
+	padding:10px 0 10px 20px;
 	font-weight:bold;
 	color:#FFF;
 	border-right:#CCC 1px solid;

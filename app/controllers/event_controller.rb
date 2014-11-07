@@ -1,12 +1,18 @@
 class EventController < ApplicationController
 
+	def index
+		@events = Event.all
+
+		render "index"
+	end
+
 	def new
 		render "new"
 	end
 
 	def new_event_process
 		Event.create_event(event_params)
-		
+
 		redirect_to "/"
 	end
 
