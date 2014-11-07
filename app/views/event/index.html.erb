@@ -23,7 +23,7 @@
 			<!--One Event-->
 			<div class="row margin-top-20 single-event">
 				<div class="col-sm-4">
-					<img src="img/temp/slide1.jpg" class="img-responsive" />
+					<%= image_tag("temp/slide1.jpg", { class: "img-responsive" }) %>
 				</div>
 				<div class="col-sm-8">
 					<div>
@@ -36,7 +36,7 @@
 						<%= event.event_location %>
 					</div>
 					<div class="margin-top-10">
-						<%= event.event_description %>
+						<%= event.event_description[0..150] + "..." %>
 					</div>
 					<div class="margin-top-10">
 						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
@@ -45,6 +45,10 @@
 			</div>
 			<!--/One Event-->
 			<% end %>
+		</div>
+
+		<div class="margin-top-20">
+			<%= will_paginate @events %>
 		</div>
 	</div>
 </div>
