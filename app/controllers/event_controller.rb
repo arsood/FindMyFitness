@@ -18,6 +18,10 @@ class EventController < ApplicationController
 		redirect_to "/"
 	end
 
+	def image_upload
+		render :text => "ok"
+	end
+
 	private
 
 	def event_params

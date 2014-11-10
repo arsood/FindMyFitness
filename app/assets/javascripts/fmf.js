@@ -92,3 +92,13 @@ $(document).on("click", "#business-save-button", function() {
 		}
 	});
 });
+
+//Initiate Dropzone
+
+$("div#drop-area").dropzone({
+	url: "images",
+	params: {
+		authenticity_token: $("input[name='authenticity_token']").val()
+	},
+	addRemoveLinks: true
+});
