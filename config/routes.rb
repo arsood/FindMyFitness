@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   get "business-signup" => "business#signup"
   get "business/:id" => "business#business_show"
 
-  #User signup
+  #User
 
   post "/newuser" => "user#signup_process"
+  post "/login" => "user#login_process"
+  get "/logout" => "user#logout_process"
 
   #Event
 

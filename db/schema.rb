@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105185526) do
+ActiveRecord::Schema.define(version: 20141115064030) do
 
   create_table "business_saves", force: true do |t|
     t.integer  "user_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20141105185526) do
     t.datetime "updated_at"
   end
 
+  create_table "event_photos", force: true do |t|
+    t.string   "event_id"
+    t.integer  "contributor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "event_photo_file_name"
+    t.string   "event_photo_content_type"
+    t.integer  "event_photo_file_size"
+    t.datetime "event_photo_updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "event_name"
     t.text     "event_description"
@@ -50,6 +61,7 @@ ActiveRecord::Schema.define(version: 20141105185526) do
     t.string   "event_location"
     t.datetime "event_date"
     t.string   "event_time"
+    t.string   "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,6 +82,7 @@ ActiveRecord::Schema.define(version: 20141105185526) do
     t.text     "about_me"
     t.string   "username"
     t.string   "password"
+    t.string   "password_digest"
     t.string   "user_type"
     t.string   "city"
     t.string   "state"

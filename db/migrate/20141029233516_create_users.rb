@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :about_me
       t.string :username
       t.string :password
+      t.string :password_digest
       t.string :user_type
       t.string :city
       t.string :state

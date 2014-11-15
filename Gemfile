@@ -18,6 +18,8 @@ gem "bcrypt"
 
 gem 'tzinfo-data'
 
+gem "paperclip", "~> 4.2"
+
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

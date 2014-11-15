@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
 		date_obj = DateTime.parse(params[:event_date_year] + "-" + params[:event_date_month] + "-" + params[:event_date_day])
 
 		new_event.event_date = date_obj
+		new_event.event_id = params[:event_id]
 		new_event.save
 	end
 

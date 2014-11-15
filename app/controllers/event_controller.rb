@@ -1,5 +1,7 @@
 class EventController < ApplicationController
 
+	require 'digest/md5'
+
 	def index
 		#Paginate the events!!!
 
@@ -9,6 +11,9 @@ class EventController < ApplicationController
 	end
 
 	def new
+		#Generate random hash to be associated with images
+		@event_id = Digest::MD5.hexdigest(Time.now.to_s)
+
 		render "new"
 	end
 
@@ -19,13 +24,17 @@ class EventController < ApplicationController
 	end
 
 	def image_upload
-		render :text => "ok"
+		if EventPhoto.create(event_photo: params[:file], event_id: params[:event_id], contributor_id: session[:user_id])
+			render :text => "ok"
+		else
+			render :text => "not ok"
+		end
 	end
 
 	private
 
 	def event_params
-		params.require(:event).permit(:event_name, :event_description, :event_category, :event_date_month, :event_date_day, :event_date_year, :event_time, :event_location)
+		params.require(:event).permit(:event_name, :event_description, :event_category, :event_date_month, :event_date_day, :event_date_year, :event_time, :event_location, :event_id)
 	end
 
 end

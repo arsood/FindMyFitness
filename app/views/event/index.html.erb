@@ -20,10 +20,16 @@
 		</div>
 		<div class="col-sm-9">
 			<% @events.each do |event| %>
+				<% 
+
+				#Get one photo for the event show
+				event_photo = EventPhoto.where(event_id: event.event_id).first 
+
+				%>
 			<!--One Event-->
 			<div class="row margin-top-20 single-event">
 				<div class="col-sm-4">
-					<%= image_tag("temp/slide1.jpg", { class: "img-responsive" }) %>
+					<%= image_tag(event_photo.event_photo.url(:medium), { class: "img-responsive" }) %>
 				</div>
 				<div class="col-sm-8">
 					<div>
