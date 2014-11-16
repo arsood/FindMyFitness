@@ -27,7 +27,9 @@ $(document).on("click", "#toggle-bus-photos", function() {
 	//Run gallery on click
 
 	resizeGalleria();
-	Galleria.run('#galleria');
+	Galleria.run('#galleria', {
+		wait: true
+	});
 });
 
 //Change background color of left sidebar menu items

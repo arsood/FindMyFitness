@@ -5,7 +5,7 @@ class EventController < ApplicationController
 	def index
 		#Paginate the events!!!
 
-		@events = Event.paginate(:page => params[:page]).order(created_at: :desc)
+		@events = Event.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "index"
 	end

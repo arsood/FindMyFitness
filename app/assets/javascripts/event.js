@@ -3,16 +3,25 @@
 
 //Initiate Dropzone for events
 
-$("div#drop-area").dropzone({
-	url: "images",
-	params: {
-		authenticity_token: $("input[name='authenticity_token']").val(),
-		event_id: $("input[name='event[event_id]']").val()
-	},
-	addRemoveLinks: true
-});
+if ($("#drop-area").length) {
+	$("div#drop-area").dropzone({
+		url: "images",
+		params: {
+			authenticity_token: $("input[name='authenticity_token']").val(),
+			event_id: $("input[name='event[event_id]']").val()
+		},
+		addRemoveLinks: true
+	});
+}
 
 $(document).ready(function() {
-	resizeGalleria();
-	Galleria.run('#galleria');
+	if ($("#event-save-button").length) {
+		resizeGalleria();
+
+		Galleria.run('#galleria', {
+			wait: true
+		});
+	} else {
+		return false;
+	}
 });
