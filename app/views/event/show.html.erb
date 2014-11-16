@@ -36,13 +36,16 @@
 		<div>
 			<%= @event.event_time %>
 		</div>
-		<div class="margin-top-20">
+		<div class="margin-top-20" id="map-canvas">
+		</div>
+		<div>
 			<button class="light-blue-large-button txt-center">
 				Get directions <i class="fa fa-angle-double-right"></i>
 			</button>
 		</div>
 		<div class="margin-top-20">
 			<%= @event.event_location %>
+			<input type="hidden" id="event-location" value="<%= @event.event_location %>" />
 		</div>
 	</div>
 </div>

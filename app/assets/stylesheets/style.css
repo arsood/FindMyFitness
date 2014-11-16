@@ -315,6 +315,11 @@
 	font-size:1.3em;
 }
 
+#map-canvas {
+	width:100%;
+	height:230px;
+}
+
 /*Blog*/
 
 .blog-item {
