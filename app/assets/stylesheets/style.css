@@ -292,6 +292,10 @@
 	padding:20px 0;
 }
 
+.single-event:first-child {
+	padding-top:0;
+}
+
 .single-event:last-child {
 	border-bottom:none;
 }

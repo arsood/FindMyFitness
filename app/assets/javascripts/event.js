@@ -11,3 +11,8 @@ $("div#drop-area").dropzone({
 	},
 	addRemoveLinks: true
 });
+
+$(document).ready(function() {
+	resizeGalleria();
+	Galleria.run('#galleria');
+});

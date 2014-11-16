@@ -27,13 +27,13 @@
 
 				%>
 			<!--One Event-->
-			<div class="row margin-top-20 single-event">
+			<div class="row single-event">
 				<div class="col-sm-4">
-					<%= image_tag(event_photo.event_photo.url(:medium), { class: "img-responsive" }) %>
+					<a href="/events/<%= event.id %>"><%= image_tag(event_photo.event_photo.url(:medium), { class: "img-responsive" }) %></a>
 				</div>
 				<div class="col-sm-8">
 					<div>
-						<a class="big-link" href="#"><%= event.event_name %></a>
+						<a class="big-link" href="/events/<%= event.id %>"><%= event.event_name %></a>
 					</div>
 					<div>
 						<%= event.event_date.strftime("%B %-d, %Y") %>
@@ -45,7 +45,7 @@
 						<%= event.event_description[0..150] + "..." %>
 					</div>
 					<div class="margin-top-10">
-						<a href="#">View event <i class="fa fa-angle-double-right"></i></a>
+						<a href="/events/<%= event.id %>">View event <i class="fa fa-angle-double-right"></i></a>
 					</div>
 				</div>
 			</div>

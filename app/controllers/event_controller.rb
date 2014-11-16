@@ -31,6 +31,11 @@ class EventController < ApplicationController
 		end
 	end
 
+	def show
+		@event = Event.find(params[:id])
+		@event_photos = EventPhoto.where(event_id: @event.event_id)
+	end
+
 	private
 
 	def event_params
