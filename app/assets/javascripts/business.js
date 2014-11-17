@@ -6,7 +6,7 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 //Get business map
 
 $.ajax({
-	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD0JurFAyESl2TlZc2rDMHRIFDKGYMmvqY&address=" + encodeURIComponent($("#business-address").val()),
+	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAnfmjbf-Fz9g-6i1q6tBE5GMSHXqwPLpk&address=" + encodeURIComponent($("#business-address").val()),
 	type: "GET",
 	success: function(data) {
 		initializeMap(
@@ -42,3 +42,16 @@ $(document).on("click", "#business-get-directions", function() {
 //Close condition that business show page
 
 } });
+
+$(document).on("click", "#toggle-bus-photos", function() {
+	$("#business-info").hide();
+	$("#business-reviews").hide();
+	$("#business-photos").fadeIn();
+
+	//Run gallery on click
+
+	resizeGalleria();
+	Galleria.run('#galleria', {
+		wait: true
+	});
+});

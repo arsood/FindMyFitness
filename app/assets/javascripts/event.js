@@ -43,14 +43,16 @@ if ($("#event-save-button").length) {
 
 //Initialize Galleria
 
-resizeGalleria();
+if ($("#galleria").length) {
+	resizeGalleria();
 
-Galleria.run('#galleria', {
-	wait: true
-});
+	Galleria.run('#galleria', {
+		wait: true
+	});
+}
 
 $.ajax({
-	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD0JurFAyESl2TlZc2rDMHRIFDKGYMmvqY&address=" + encodeURIComponent($("#event-location").val()),
+	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAnfmjbf-Fz9g-6i1q6tBE5GMSHXqwPLpk&address=" + encodeURIComponent($("#event-location").val()),
 	type: "GET",
 	success: function(data) {
 		initializeMap(

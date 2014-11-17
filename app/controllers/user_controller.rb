@@ -1,7 +1,9 @@
 class UserController < ApplicationController
 
 	def signup_process
-		new_user = User.create(user_params)
+		new_user_data = user_params.merge(avatar: params[:avatar])
+
+		new_user = User.create(new_user_data)
 
 		if params[:user][:user_type] == "business"
 			session[:business_user_id] = new_user.id
@@ -36,7 +38,7 @@ class UserController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:username, :password, :first_name, :last_name, :email_address, :city, :state, :user_type)
+		params.require(:user).permit(:username, :password, :first_name, :last_name, :email_address, :city, :state, :user_type, :avatar)
 	end
 
 end

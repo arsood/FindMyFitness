@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "home#index"
+
   #Business
 
   post "business-signup" => "business#signup_process"

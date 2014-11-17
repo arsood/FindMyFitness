@@ -42,7 +42,7 @@
 					<li><a href="/events">Events</a></li>
 					<li><a href="#">Blogs</a></li>
 					<li class="login-top-button txt-right login-top-button">
-						<a id="login-toggle-button" data-toggle="dropdown" href="#" class="btn btn-primary">Login or Signup | <i class="fa fa-chevron-down"></i></a>
+						<a id="login-toggle-button" href="#" class="btn btn-primary">Login or Signup | <i class="fa fa-chevron-down"></i></a>
 						<%= form_tag("/login") do %>
 						<div id="login-top-menu">
 							<div>
@@ -212,7 +212,7 @@
 <!--Signup Modal-->
 <div class="modal fade" id="signup-modal">
 	<div class="modal-dialog modal-lg">
-		<%= form_tag("/newuser") do %>
+		<%= form_tag("/newuser", multipart: true) do %>
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="large-title">
@@ -231,6 +231,12 @@
 							<a class="fmf-ellipse-turquoise-button">
 								<i class="fa fa-facebook"></i> | Sign Up With Facebook
 							</a>
+						</div>
+						<div class="margin-top-50 medium-title">
+							Upload Profile Image
+						</div>
+						<div class="margin-top-20">
+							<input id="avatar" name="avatar" type="file" />
 						</div>
 					</div>
 					<div class="col-sm-6">

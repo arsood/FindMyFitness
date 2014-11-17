@@ -19,19 +19,6 @@ $(document).on("click", "#toggle-bus-reviews", function() {
 	$("#business-photos").hide();
 });
 
-$(document).on("click", "#toggle-bus-photos", function() {
-	$("#business-info").hide();
-	$("#business-reviews").hide();
-	$("#business-photos").fadeIn();
-
-	//Run gallery on click
-
-	resizeGalleria();
-	Galleria.run('#galleria', {
-		wait: true
-	});
-});
-
 //Change background color of left sidebar menu items
 
 $(document).on("click", ".left-sidebar-menu a", function(event) {
@@ -63,7 +50,10 @@ $(document).on("click", "#profile-edit-off", function(event) {
 
 $(document).on("click", "#login-toggle-button", function(event) {
 	event.preventDefault();
+	event.stopPropagation();
 
+	$("input[name='username']").val("");
+	$("input[name='password']").val("");
 	$("#login-top-menu").fadeToggle(100);
 });
 
@@ -71,6 +61,7 @@ $(document).on("click", "#login-toggle-button", function(event) {
 
 $(document).on("click", "#signup-toggle-button", function(event) {
 	event.preventDefault();
+	event.stopPropagation();
 
 	$("#login-top-menu").fadeOut(100);
 	$("#signup-modal").modal("show");
