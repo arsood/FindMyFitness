@@ -19,6 +19,7 @@
 			<%= simple_format(@event.event_description) %>
 		</div>
 
+		<% if @event_photos.first %>
 		<div class="margin-top-20 medium-title">
 			Photos
 		</div>
@@ -28,6 +29,7 @@
 				<img src="<%= photo.event_photo %>" />
 			<% end %>
 		</div>
+		<% end %>
 	</div>
 	<div class="col-sm-4 col-sm-offset-1">
 		<div class="medium-title">
