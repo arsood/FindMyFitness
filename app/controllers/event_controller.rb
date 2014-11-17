@@ -3,9 +3,11 @@ class EventController < ApplicationController
 	require 'digest/md5'
 
 	def index
-		#Paginate the events!!!
-
-		@events = Event.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		if params[:category]
+			@events = Event.where(event_category: params[:category]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		else
+			@events = Event.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		end
 
 		render "index"
 	end

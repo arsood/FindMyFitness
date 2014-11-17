@@ -3,6 +3,8 @@
 $(document).ready(function() {
 if ($("#page_id").length && $("#page_id").val() === "business_show") {
 
+//Get business map
+
 $.ajax({
 	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD0JurFAyESl2TlZc2rDMHRIFDKGYMmvqY&address=" + encodeURIComponent($("#business-address").val()),
 	type: "GET",

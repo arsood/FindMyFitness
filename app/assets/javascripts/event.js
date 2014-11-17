@@ -1,3 +1,26 @@
+//Execute only when events page is shown
+
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "events") {
+
+//Change search based on category
+
+$(document).on("click", ".left-sidebar-menu a", function(event) {
+	event.preventDefault();
+	
+	$(".left-sidebar-menu a").removeClass("active");
+	$(this).addClass("active");
+
+	if ($(this).attr("data-category") === "All") {
+		window.location.href="/events";
+	} else {
+		window.location.href = "/events?category=" + encodeURIComponent($(this).attr("data-category"));
+	}
+});
+
+//Close condition that page is events
+} });
+
 //Initiate Dropzone for events
 
 $(document).ready(function() {
