@@ -1,0 +1,42 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="new_blog_post" />
+
+<%= form_tag do %>
+<input type="hidden" name="post[post_id]" value="<%= @post_id %>" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-8">
+			<div>
+				<input name="post[post_title]" type="text" class="form-control" placeholder="Title" />
+			</div>
+			<div class="margin-top-20">
+				Select one or more post images (optional)
+			</div>
+			<div class="margin-top-10 dropzone" id="drop-area"></div>
+			<div class="margin-top-20">
+				<textarea name="post[post_text]" class="form-control new-blog-textarea" placeholder="Type your post here."></textarea>
+			</div>
+			<div class="margin-top-20">
+				Categorize Your Post
+			</div>
+			<div class="margin-top-20">
+				<select name="post[post_category]" class="medium-select">
+					<option>Category</option>
+				</select>
+			</div>
+			<div class="margin-top-20 new-blog-privacy">
+				<label class="radio-inline">
+					<input type="radio" name="post[post_privacy]" id="privacy-public" value="public" checked> Public
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="post[post_privacy]" id="privacy-private" value="private"> Private
+				</label>
+			</div>
+			<div class="margin-top-20">
+				<button type="submit" class="fmf-ellipse-turquoise-button">Post It!</button>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

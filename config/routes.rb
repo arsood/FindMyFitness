@@ -23,6 +23,12 @@ Rails.application.routes.draw do
   get "events/:id" => "event#show"
   post "event/new" => "event#new_event_process"
   post "event/images" => "event#image_upload"
+
+  #Blog
+
+  get "blog/new" => "blog#new"
+  post "blog/new" => "blog#create"
+  post "blog/images" => "blog#image_upload"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

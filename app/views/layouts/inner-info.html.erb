@@ -71,56 +71,84 @@
 <!--/Navbar-->
 <% end %>
 
-<!--Header Search Boxes-->
-<div class="fmf-header-search container">
-	<div class="gray-gradient radius-5 padding-10">
-		<div class="row">
-			<div class="col-sm-4">
-				<input class="header-search-input margin-top-5" type="text" placeholder="Name, category..." />
+<!--/Header Gray Wrap-->
+<div class="gray-header-background">
+	<!--Header Search Boxes-->
+	<div class="fmf-header-search container">
+		<div class="gray-gradient radius-5 padding-10">
+			<div class="row">
+				<div class="col-sm-4">
+					<input class="header-search-input margin-top-5" type="text" placeholder="Name, category..." />
+				</div>
+				<div class="col-sm-1 txt-center margin-top-10 white-text">
+					NEAR
+				</div>
+				<div class="col-sm-5">
+					<input class="header-search-input margin-top-5" type="text" placeholder="Location, neighborhood, etc..." />
+				</div>
+				<div class="col-sm-2 txt-center">
+					<button class="fmf-ellipse-turquoise-button">Search</button>
+				</div>
 			</div>
-			<div class="col-sm-1 txt-center margin-top-10 white-text">
-				NEAR
+		</div>
+
+		<div class="margin-top-10 row">
+			<div class="col-sm-1 bold">
+				Categories:
 			</div>
-			<div class="col-sm-5">
-				<input class="header-search-input margin-top-5" type="text" placeholder="Location, neighborhood, etc..." />
+			<div class="col-sm-1 txt-center">
+				<a href="#">Yoga</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Gyms</a>
 			</div>
 			<div class="col-sm-2 txt-center">
-				<button class="fmf-ellipse-turquoise-button">Search</button>
+				<a href="#">Martial Arts</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Boxing</a>
+			</div>
+			<div class="col-sm-2 txt-center">
+				<a href="#">Rock Climbing</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Pilates</a>
+			</div>
+			<div class="col-sm-2 txt-center">
+				<a href="#">Dance</a>
+			</div>
+			<div class="col-sm-1 txt-center">
+				<a href="#">Other</a>
 			</div>
 		</div>
 	</div>
+	<!--/Header Search Boxes-->
 
-	<div class="margin-top-10 row">
-		<div class="col-sm-1 bold">
-			Categories:
-		</div>
-		<div class="col-sm-1 txt-center">
-			<a href="#">Yoga</a>
-		</div>
-		<div class="col-sm-1 txt-center">
-			<a href="#">Gyms</a>
-		</div>
-		<div class="col-sm-2 txt-center">
-			<a href="#">Martial Arts</a>
-		</div>
-		<div class="col-sm-1 txt-center">
-			<a href="#">Boxing</a>
-		</div>
-		<div class="col-sm-2 txt-center">
-			<a href="#">Rock Climbing</a>
-		</div>
-		<div class="col-sm-1 txt-center">
-			<a href="#">Pilates</a>
-		</div>
-		<div class="col-sm-2 txt-center">
-			<a href="#">Dance</a>
-		</div>
-		<div class="col-sm-1 txt-center">
-			<a href="#">Other</a>
+	<!--Inner Sub Header-->
+	<div class="container margin-top-50 margin-bottom-30">
+		<div class="row">
+			<div class="col-sm-2">
+				<img src="img/temp/profile-pic.jpg" class="img-responsive" />
+			</div>
+			<div class="col-sm-8">
+				<div class="medium-title">
+					Susan T.
+				</div>
+				<div class="italic">
+					Member Since 6/6/2014
+				</div>
+				<div class="margin-top-10">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden.
+				</div>
+			</div>
+			<div class="col-sm-2 txt-right">
+				<button class="fmf-ellipse-turquoise-button" type="button">Edit Profile</button>
+			</div>
 		</div>
 	</div>
+	<!--/Inner Sub Header-->
 </div>
-<!--/Header Search Boxes-->
+<!--/Header Gray Wrap-->
 
 <%= yield %>
 
