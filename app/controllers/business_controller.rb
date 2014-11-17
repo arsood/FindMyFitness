@@ -1,16 +1,24 @@
 class BusinessController < ApplicationController
 	def signup
-		render "business-signup"
+		if session[:business_user_id]
+			render "business-signup"
+		else
+			redirect_to "/"
+		end
 	end
 
 	def signup_process
 		#Create a new business with some strong parameters
 
-		newBus = Business.create(bus_params)
+		business_params = bus_params.merge(user_id: session[:business_user_id])
+
+		newBus = Business.create(business_params)
 		
 		service_params.each do |service|
 			BusinessService.create("bus_id" => newBus.id ,"bus_service" => service[1])
 		end
+
+		reset_session
 		
 		redirect_to "/"
 	end

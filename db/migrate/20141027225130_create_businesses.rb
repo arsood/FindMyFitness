@@ -11,6 +11,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :website
       t.string :availability
       t.text :description
+      t.integer :user_id
       t.integer :views, :default => 0
 
       t.timestamps

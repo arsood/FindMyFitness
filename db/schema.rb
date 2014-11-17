@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20141115064030) do
     t.string   "website"
     t.string   "availability"
     t.text     "description"
+    t.integer  "user_id"
     t.integer  "views",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"

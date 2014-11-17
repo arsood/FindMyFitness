@@ -1,8 +1,14 @@
 class UserController < ApplicationController
 
 	def signup_process
-		User.create(user_params)
-		redirect_to "/"
+		new_user = User.create(user_params)
+
+		if params[:user][:user_type] == "business"
+			session[:business_user_id] = new_user.id
+			redirect_to "/business-signup"
+		else
+			redirect_to "/"
+		end
 	end
 
 	def login_process
@@ -12,6 +18,7 @@ class UserController < ApplicationController
 			if user.authenticate(params[:password])
 				session[:user_id] = user.id
 				session[:first_name] = user.first_name
+				
 				redirect_to "/"
 			else
 				render :text => "Nope sorry"
@@ -22,7 +29,7 @@ class UserController < ApplicationController
 	end
 
 	def logout_process
-		session[:user_id] = false
+		reset_session
 		redirect_to "/"
 	end
 

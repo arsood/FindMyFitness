@@ -20,6 +20,19 @@
 			</div>
 		</div>
 		<div class="col-sm-9">
+			
+			<% if @category %>
+				<div class="medium-title">
+					<%= @category %>
+				</div>
+			<% end %>
+
+			<% if !@events.first %>
+				<div class="large-title">
+					Nothing found... Try again.
+				</div>
+			<% end %>
+
 			<% @events.each do |event| %>
 				<% 
 
