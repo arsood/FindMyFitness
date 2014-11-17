@@ -1,10 +1,14 @@
 class BlogController < ApplicationController
 	def new
-		@header_text = "Write a Post"
-		#Generate random hash to be associated with images
-		@post_id = Digest::MD5.hexdigest(Time.now.to_s)
+		if session[:user_id]
+			@header_text = "Write a Post"
+			#Generate random hash to be associated with images
+			@post_id = Digest::MD5.hexdigest(Time.now.to_s)
 
-		render "new", layout: "inner-basic"
+			render "new", layout: "inner-basic"
+		else
+			redirect_to "/login"
+		end
 	end
 
 	def create
