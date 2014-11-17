@@ -1,20 +1,22 @@
-//Only execute this when event page is active
+//Initiate Dropzone for events
+
+$(document).ready(function() {
+	if ($("#drop-area").length) {
+		$("div#drop-area").dropzone({
+			url: "images",
+			params: {
+				authenticity_token: $("input[name='authenticity_token']").val(),
+				event_id: $("input[name='event[event_id]']").val()
+			},
+			addRemoveLinks: true
+		});
+	}
+});
+
+//Only execute this when event show page is active
 
 $(document).ready(function() {
 if ($("#event-save-button").length) {
-
-//Initiate Dropzone for events
-
-if ($("#drop-area").length) {
-	$("div#drop-area").dropzone({
-		url: "images",
-		params: {
-			authenticity_token: $("input[name='authenticity_token']").val(),
-			event_id: $("input[name='event[event_id]']").val()
-		},
-		addRemoveLinks: true
-	});
-}
 
 //Initialize Galleria
 
@@ -25,7 +27,7 @@ Galleria.run('#galleria', {
 });
 
 $.ajax({
-	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD0JurFAyESl2TlZc2rDMHRIFDKGYMmvqY&address=" + $("#event-location").val(),
+	url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD0JurFAyESl2TlZc2rDMHRIFDKGYMmvqY&address=" + encodeURIComponent($("#event-location").val()),
 	type: "GET",
 	success: function(data) {
 		initializeMap(
@@ -50,10 +52,13 @@ function initializeMap(lat, lng) {
 
 	var marker = new google.maps.Marker({
 		position: myLatlng,
-		map: map,
-		title: 'Hello World!'
+		map: map
 	});
 }
+
+$(document).on("click", "#event-get-directions", function() {
+	window.open("https://google.com/maps/search/" + encodeURIComponent($("#event-location").val()));
+});
 
 //Close document ready and event page condition
 

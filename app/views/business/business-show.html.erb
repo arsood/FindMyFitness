@@ -1,4 +1,5 @@
 <!--Main-->
+<input type="hidden" id="page_id" value="business_show" />
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="row">
 		<!--Main Column One-->
@@ -22,6 +23,7 @@
 			</div>
 			<!--/Gym Stars-->
 
+			<!--Business Menu-->
 			<div class="clearfix margin-top-20 gray-rollover-menu">
 				<div id="toggle-bus-info" class="col-sm-4 gray-menu-item clickable txt-center gray-menu-item-active">
 					INFO
@@ -33,6 +35,7 @@
 					PHOTOS
 				</div>
 			</div>
+			<!--/Business Menu-->
 
 			<!--Info and Contact Info-->
 			<div id="business-info" class="margin-top-20">
@@ -40,6 +43,7 @@
 					<div class="col-sm-6">
 						<div class="medium-title">
 							<%= @business_info.address %>
+							<input type="hidden" id="business-address" value="<%= @business_info.address %>" />
 						</div>
 						<div class="medium-title">
 							<%= @business_info.city %>, <%= @business_info.state %>
@@ -116,11 +120,9 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
+						<div id="map-canvas"></div>
 						<div>
-							<img src="http://placehold.it/300x300" />
-						</div>
-						<div>
-							<button class="light-blue-large-button txt-center">
+							<button id="business-get-directions" class="light-blue-large-button txt-center">
 								Get directions <i class="fa fa-angle-double-right"></i>
 							</button>
 						</div>
