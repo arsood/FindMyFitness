@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get "blog/new" => "blog#new"
   post "blog/new" => "blog#create"
   post "blog/images" => "blog#image_upload"
+  get "blog/me" => "blog#index_personal"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

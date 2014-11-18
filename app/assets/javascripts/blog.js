@@ -7,18 +7,16 @@ if ($("#page_id").length && $("#page_id").val() === "new_blog_post") {
 
 //Initiate Dropzone for events
 
-$(document).ready(function() {
-	if ($("#drop-area").length) {
-		$("div#drop-area").dropzone({
-			url: "images",
-			params: {
-				authenticity_token: $("input[name='authenticity_token']").val(),
-				blog_post_id: $("input[name='post[post_id]']").val()
-			},
-			addRemoveLinks: true
-		});
-	}
-});
+if ($("#drop-area").length) {
+	$("div#drop-area").dropzone({
+		url: "images",
+		params: {
+			authenticity_token: $("input[name='authenticity_token']").val(),
+			blog_post_id: $("input[name='post[post_id]']").val()
+		},
+		addRemoveLinks: true
+	});
+}
 
 //Close condition that has to be new blog post page
 } });

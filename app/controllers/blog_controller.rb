@@ -11,6 +11,18 @@ class BlogController < ApplicationController
 		end
 	end
 
+	def index_personal
+		@blogs = Blog.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+
+		render "index-personal"
+	end
+
+	def index_public
+		@blogs = Blog.all
+
+		render "index-public"
+	end
+
 	def create
 		new_blog = blog_params.merge(user_id: session[:user_id])
 
