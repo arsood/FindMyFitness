@@ -128,21 +128,21 @@
 	<div class="container margin-top-50 margin-bottom-30">
 		<div class="row">
 			<div class="col-sm-2">
-				<img src="img/temp/profile-pic.jpg" class="img-responsive" />
+				<img src="<%= @user.avatar.url(:medium) %>" class="img-responsive" />
 			</div>
 			<div class="col-sm-8">
 				<div class="medium-title">
-					Susan T.
+					<%= @user.first_name %> <%= @user.last_name[0] %>.
 				</div>
 				<div class="italic">
-					Member Since 6/6/2014
+					Member Since <%= @user.created_at.strftime("%m/%-d/%Y") %>
 				</div>
 				<div class="margin-top-10">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden.
+					<%= @user.about_me %>
 				</div>
 			</div>
 			<div class="col-sm-2 txt-right">
-				<button class="fmf-ellipse-turquoise-button" type="button">Edit Profile</button>
+				<a href="/profile/edit/<%= @user.id %>"><button class="fmf-ellipse-turquoise-button" type="button">Edit Profile</button></a>
 			</div>
 		</div>
 	</div>
