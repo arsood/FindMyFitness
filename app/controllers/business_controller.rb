@@ -10,7 +10,9 @@ class BusinessController < ApplicationController
 	def signup_process
 		#Create a new business with some strong parameters
 
-		business_params = bus_params.merge(user_id: session[:business_user_id])
+		business_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:business][:address] + ", " + params[:business][:city] + ", " + params[:business][:state] + " " + params[:business][:zipcode])
+
+		business_params = bus_params.merge(user_id: session[:business_user_id], lat: business_geo.lat, lng: business_geo.lng)
 
 		newBus = Business.create(business_params)
 		

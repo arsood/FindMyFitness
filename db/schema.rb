@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20141117230941) do
     t.string   "availability"
     t.text     "description"
     t.integer  "user_id"
+    t.float    "lat"
+    t.float    "lng"
     t.integer  "views",         default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
