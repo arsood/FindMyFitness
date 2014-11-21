@@ -75,22 +75,24 @@
 <div class="gray-header-background">
 	<!--Header Search Boxes-->
 	<div class="fmf-header-search container">
+		<%= form_tag("/businesses/find", method: "GET") do %>
 		<div class="gray-gradient radius-5 padding-10">
 			<div class="row">
 				<div class="col-sm-4">
-					<input class="header-search-input margin-top-5" type="text" placeholder="Name, category..." />
+					<input name="query" class="header-search-input margin-top-5" type="text" placeholder="Name, category..." />
 				</div>
 				<div class="col-sm-1 txt-center margin-top-10 white-text">
 					NEAR
 				</div>
 				<div class="col-sm-5">
-					<input class="header-search-input margin-top-5" type="text" placeholder="Location, neighborhood, etc..." />
+					<input name="location" class="header-search-input margin-top-5" type="text" placeholder="Location, neighborhood, etc..." />
 				</div>
 				<div class="col-sm-2 txt-center">
-					<button class="fmf-ellipse-turquoise-button">Search</button>
+					<button type="submit" class="fmf-ellipse-turquoise-button">Search</button>
 				</div>
 			</div>
 		</div>
+		<% end %>
 
 		<div class="margin-top-10 row">
 			<div class="col-sm-1 bold">
