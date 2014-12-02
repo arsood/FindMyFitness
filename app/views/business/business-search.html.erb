@@ -1,5 +1,6 @@
 <!--Main-->
 <input type="hidden" id="page_id" value="business_search" />
+
 <% if params[:location] %>
 <input type="hidden" id="location-address" value="<%= params[:location] %>" />
 <% end %>
@@ -15,7 +16,7 @@
 		<% @businesses.each do |business| %>
 		<div class="row one-business-search">
 			<div class="col-sm-4">
-				<img src="/assets/temp/slide1.jpg" class="img-responsive" />
+				<a href="/business/<%= business.id %>"><img src="/assets/temp/slide1.jpg" class="img-responsive" /></a>
 			</div>
 			<div class="col-sm-8">
 				<div class="medium-title">
@@ -40,6 +41,10 @@
 		<% if @businesses.length == 0 %>
 		<h1>Nothing Found :(</h1>
 		<% end %>
+
+		<div class="margin-top-20">
+			<%= will_paginate @businesses %>
+		</div>
 	</div>
 	<div class="col-sm-4">
 		<div id="map-canvas"></div>
