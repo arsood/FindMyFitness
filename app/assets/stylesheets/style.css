@@ -416,3 +416,14 @@
 	background-color:#E1EDFA;
 	border-radius:5px;
 }
+
+/*Business Search*/
+
+.one-business-search {
+	border-bottom:#CCC 1px solid;
+	padding:20px 0;
+}
+
+.one-business-search:last-child {
+	border-bottom:none;
+}

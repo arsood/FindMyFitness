@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "business-signup" => "business#signup"
   get "business/:id" => "business#business_show"
 
+  get "businesses/find" => "business#search"
+
   #User
 
   post "/newuser" => "user#signup_process"

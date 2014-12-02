@@ -1,0 +1,43 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_show" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="col-sm-8">
+		<% if params[:query] != "" %>
+		<div class="medium-title">
+			Search Query: <%= params[:query] %>
+		</div>
+		<% end %>
+		<!--One Business-->
+		<% @businesses.each do |business| %>
+		<div class="row one-business-search">
+			<div class="col-sm-4">
+				<img src="/assets/temp/slide1.jpg" class="img-responsive" />
+			</div>
+			<div class="col-sm-8">
+				<div class="medium-title">
+					<a href="/business/<%= business.id %>"><%= business.name %></a>
+				</div>
+				<div>
+					Category: <a href="#"><%= business.business_type %></a>
+				</div>
+				<div class="margin-top-10">
+					<%= business.address %>
+				</div>
+				<div>
+					<%= number_to_phone(business.phone, area_code: true) %>
+				</div>
+				<div class="margin-top-10">
+					<%= business.description[0..145] %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		<!--/One Business-->
+		<% if @businesses.length == 0 %>
+		<h1>Nothing Found :(</h1>
+		<% end %>
+	</div>
+	<div class="col-sm-4">
+	</div>
+</div>
+<!--/Main-->
