@@ -12,11 +12,15 @@ class BlogController < ApplicationController
 	end
 
 	def index_personal
-		@blogs = Blog.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+		if session[:user_id]
+			@blogs = Blog.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
 
-		@user = User.find(session[:user_id])
+			@user = User.find(session[:user_id])
 
-		render "index-personal", layout: "inner-info"
+			render "index-personal", layout: "inner-info"
+		else
+			redirect_to "/"
+		end
 	end
 
 	def index_public

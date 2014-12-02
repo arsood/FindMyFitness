@@ -14,32 +14,45 @@
 		<% end %>
 		<!--One Business-->
 		<% @businesses.each do |business| %>
-		<div class="row one-business-search">
-			<div class="col-sm-4">
-				<a href="/business/<%= business.id %>"><img src="/assets/temp/slide1.jpg" class="img-responsive" /></a>
-			</div>
-			<div class="col-sm-8">
-				<div class="medium-title">
-					<a href="/business/<%= business.id %>"><%= business.name %></a>
+		<div>
+			<div class="row one-business-search">
+				<div class="col-sm-4">
+					<a href="/business/<%= business.id %>"><img src="/assets/temp/slide1.jpg" class="img-responsive" /></a>
 				</div>
-				<div>
-					Category: <a href="#"><%= business.business_type %></a>
-				</div>
-				<div class="margin-top-10">
-					<%= business.address %>
-				</div>
-				<div>
-					<%= number_to_phone(business.phone, area_code: true) %>
-				</div>
-				<div class="margin-top-10">
-					<%= business.description[0..145] %>
+				<div class="col-sm-8">
+					<div class="medium-title">
+						<a href="/business/<%= business.id %>"><%= business.name %></a>
+					</div>
+					<div>
+						Category: <a href="#"><%= business.business_type %></a>
+					</div>
+					<div class="margin-top-10">
+						<%
+						bus_avg_rating(business.id) 
+						if @average_reviews %>
+						<img src="/assets/stars/stars<%= @average_reviews %>.png" />
+						<% end %>
+					</div>
+					<div class="margin-top-10">
+						<%= business.address %>
+					</div>
+					<div>
+						<%= number_to_phone(business.phone, area_code: true) %>
+					</div>
+					<div class="margin-top-10">
+						<%= business.description[0..145] %>
+					</div>
 				</div>
 			</div>
 		</div>
 		<% end %>
 		<!--/One Business-->
+		
 		<% if @businesses.length == 0 %>
 		<h1>Nothing Found :(</h1>
+		<div class="margin-top-20">
+			<a href="<%= request.referrer %>"><< Go back</a>
+		</div>
 		<% end %>
 
 		<div class="margin-top-20">

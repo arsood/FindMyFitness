@@ -16,11 +16,16 @@
 			</div>
 
 			<!--Gym Stars-->
+			<%
+			bus_avg_rating(@business_info.id)
+			if @average_rating
+			%>
 			<div class="row">
 				<div class="col-sm-12">
-					<%= image_tag("stars/stars4.png") %>
+					<img src="/assets/stars/stars<%= @average_rating %>.png" />
 				</div>
 			</div>
+			<% end %>
 			<!--/Gym Stars-->
 
 			<!--Business Menu-->
