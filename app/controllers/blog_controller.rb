@@ -32,7 +32,15 @@ class BlogController < ApplicationController
 	def create
 		new_blog = blog_params.merge(user_id: session[:user_id])
 
-		Blog.create(new_blog)
+		added_blog = Blog.create(new_blog)
+
+		#Save blog tags to db
+
+		blog_tags_array = params[:post_tags].split(",")
+
+		blog_tags_array.each do |tag|
+			BlogTag.create(blog_id: added_blog.id, blog_tag: tag)
+		end
 
 		redirect_to "/"
 	end

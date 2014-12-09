@@ -5,7 +5,6 @@ class CreateBlogs < ActiveRecord::Migration
       t.string :post_id
       t.text :post_text
       t.string :post_title
-      t.string :post_category
       t.string :post_privacy, default: "public"
 
       t.timestamps

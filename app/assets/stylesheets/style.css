@@ -365,6 +365,10 @@
 	font-weight:bold;
 }
 
+.bootstrap-tagsinput {
+	width:100%;
+}
+
 /*Profile*/
 
 .profile-notification-entry {
@@ -393,6 +397,10 @@
 	right:10px;
 	color:#FFF;
 	font-size:2em;
+}
+
+.profile-photos-container i:hover {
+	cursor:pointer;
 }
 
 .profile-review-wrapper, .profile-saves-wrapper {
