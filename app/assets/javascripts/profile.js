@@ -30,7 +30,9 @@ $(document).on("click", "#profile-edit-off", function(event) {
 
 //Handle photo delete
 
-$(document).on("click", ".profile-photos-container i", function() {
+$(document).on("click", ".profile-photos-container i", function(event) {
+	event.preventDefault();
+	
 	var deleteConfirm = confirm("Are you sure you want to delete this photo?");
 
 	if (deleteConfirm) {
