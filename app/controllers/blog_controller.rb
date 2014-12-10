@@ -24,7 +24,7 @@ class BlogController < ApplicationController
 	end
 
 	def index_public
-		@blogs = Blog.all.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		@header_text = "Blog - Inspirational posts from people like you."
 
@@ -52,6 +52,7 @@ class BlogController < ApplicationController
 		@user = User.find(@post.user_id)
 
 		@post_photos = BlogPhoto.where(post_id: @post.post_id)
+
 		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "post"
