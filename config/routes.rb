@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   post "blog/images" => "blog#image_upload"
   get "blog/me" => "blog#index_personal"
   get "blogs" => "blog#index_public"
+  get "post/:id" => "blog#post_show"
   
   #Profile
 

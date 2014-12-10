@@ -20,3 +20,20 @@ if ($("#drop-area").length) {
 
 //Close condition that has to be new blog post page
 } });
+
+//Condition that has to be post show page
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "show_post") {
+
+//Initialize Galleria for post images
+
+if ($("#galleria").length) {
+	resizeGalleria();
+
+	Galleria.run('#galleria', {
+		wait: true
+	});
+}
+
+//Close condition that has to be post show page
+} });

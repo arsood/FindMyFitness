@@ -1,0 +1,56 @@
+<!--Main-->
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-9">
+
+			<% @blogs.in_groups_of(2, false) do |group| %>
+			<div class="row">
+				<!--One Blog Feed Item-->
+				<% group.each do |blog| 
+
+					user = User.find(blog.user_id)
+
+					picture = BlogPhoto.where(post_id: blog.post_id).try(:first)
+
+				%>
+				<div class="col-sm-6">
+					<div class="blog-item">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="medium-title">
+									<a href="/post/<%= blog.id %>"><%= blog.post_title %></a>
+								</div>
+							</div>
+						</div>
+						<div>
+							<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>
+						</div>
+						<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= picture.try(:post_photo) %>) no-repeat;"></div>
+						<div class="margin-top-10">
+							<%= blog.post_text[0..150] %>
+						</div>
+						<div class="margin-top-10">
+							<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="#">Share</a>
+						</div>
+					</div>
+					<!--/One Blog Feed Item-->
+				</div>
+				<% end %>
+			</div>
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate @blogs %>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="left-sidebar-menu">
+				<a href="#">Reviews</a>
+				<a href="#">Your Posts</a>
+				<a href="#">Saves</a>
+				<a href="#">Events</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

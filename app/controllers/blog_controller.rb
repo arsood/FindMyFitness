@@ -24,9 +24,11 @@ class BlogController < ApplicationController
 	end
 
 	def index_public
-		@blogs = Blog.all
+		@blogs = Blog.all.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "index-public"
+		@header_text = "Blog - Inspirational posts from people like you."
+
+		render "index-public", layout: "inner-basic"
 	end
 
 	def create
@@ -43,6 +45,15 @@ class BlogController < ApplicationController
 		end
 
 		redirect_to "/"
+	end
+
+	def post_show
+		@post = Blog.find(params[:id])
+		@user = User.find(@post.user_id)
+
+		@post_photos = BlogPhoto.where(post_id: @post.post_id)
+
+		render "post"
 	end
 
 	def image_upload

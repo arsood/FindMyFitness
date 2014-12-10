@@ -4,6 +4,10 @@
 <% if params[:location] %>
 <input type="hidden" id="location-address" value="<%= params[:location] %>" />
 <% end %>
+<% if !params[:location] %>
+<input type="hidden" id="location-address" value="<%= @user_loc.full_address %>" />
+<% end %>
+
 <input type="hidden" id="page_id" value="business_show" />
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="col-sm-8">

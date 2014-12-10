@@ -357,6 +357,10 @@
 	background-size:cover !important;
 }
 
+.blog-feed-image-small {
+	height:200px;
+}
+
 .new-blog-textarea {
 	min-height:360px !important;
 }
