@@ -52,8 +52,15 @@ class BlogController < ApplicationController
 		@user = User.find(@post.user_id)
 
 		@post_photos = BlogPhoto.where(post_id: @post.post_id)
+		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "post"
+	end
+
+	def save_comment
+		blog_comment = BlogComment.create(blog_id: params[:id], commentor_id: session[:user_id], blog_comment: params[:comment_text])
+
+		redirect_to "/post/" + params[:id]
 	end
 
 	def image_upload

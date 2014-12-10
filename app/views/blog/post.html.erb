@@ -25,6 +25,39 @@
 				</div>
 			</div>
 			<!--/One Blog Feed Item-->
+
+			<% if session[:user_id] %>
+				<div class="write-review-button txt-center margin-top-20">
+					<a href="#" data-toggle="modal" data-target="#write-post-comment">Write a Comment</a>
+				</div>
+
+				<% @post_comments.each do |post| 
+
+					user = User.find(post.commentor_id)
+
+				%>
+				<!--One Comment-->
+				<div class="row margin-top-20">
+					<div class="col-sm-2">
+						<%= image_tag(user.avatar.url(:thumb), class: "img-responsive") %>
+					</div>
+					<div class="col-sm-10">
+						<div class="bold">
+							<%= user.first_name %> <%= user.last_name %>
+						</div>
+						<div class="margin-top-10">
+							<%= simple_format(post.blog_comment) %>
+						</div>
+					</div>
+				</div>
+				<!--/One Comment-->
+				<% end %>
+
+				<div class="margin-top-20">
+					<%= will_paginate(@post_comments) %>
+				</div>
+			<% end %>
+
 		</div>
 		<div class="col-sm-4">
 			<div class="left-sidebar-menu">
@@ -36,4 +69,31 @@
 		</div>
 	</div>
 </div>
+
+<% if session[:user_id] %>
+<!--Write Comment Modal-->
+<div class="modal fade" id="write-post-comment">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<%= form_tag("/comments/" + @post.id.to_s) do %>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Write Your Comment</h4>
+			</div>
+			<div class="modal-body">
+				<div class="margin-top-10">
+					<textarea name="comment_text" placeholder="Your comment here" class="form-control"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save Comment</button>
+			</div>
+			<% end %>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Write Comment Modal-->
+<% end %>
+
 <!--/Main-->

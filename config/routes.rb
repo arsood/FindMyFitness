@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get "blog/me" => "blog#index_personal"
   get "blogs" => "blog#index_public"
   get "post/:id" => "blog#post_show"
+  post "comments/:id" => "blog#save_comment"
   
   #Profile
 
