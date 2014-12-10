@@ -52,9 +52,10 @@ class BusinessController < ApplicationController
 	end
 
 	def search
-		search_query = "%" + params[:query].downcase + "%"
-
-		search_location = params[:location]
+		if params[:query] && params[:location]
+			search_query = "%" + params[:query].downcase + "%"
+			search_location = params[:location]
+		end
 
 		#Get location from query or from IP geocode
 
@@ -63,7 +64,13 @@ class BusinessController < ApplicationController
 		else
 			user_loc = Geokit::Geocoders::IpGeocoder.geocode(request.remote_ip)
 
-			@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(5, :origin => [user_loc.lat, user_loc.lng]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			#User category parameter if present
+
+			if params[:category]
+				@businesses = Business.where(business_type: params[:category]).within(5, :origin => [user_loc.lat, user_loc.lng]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			else
+				@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(5, :origin => [user_loc.lat, user_loc.lng]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			end
 		end
 
 		render "business-search"

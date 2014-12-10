@@ -7,7 +7,7 @@
 <input type="hidden" id="page_id" value="business_show" />
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="col-sm-8">
-		<% if params[:query] != "" %>
+		<% if params[:query] && params[:query] != "" %>
 		<div class="medium-title">
 			Search Query: <%= params[:query] %>
 		</div>

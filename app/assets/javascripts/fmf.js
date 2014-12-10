@@ -49,6 +49,16 @@ $(document).on("click", "#signup-toggle-button", function(event) {
 	$("#signup-modal").modal("show");
 });
 
+//Click on nav menu categories
+
+$(document).on("click", "#bus-category-top-options div a", function(event) {
+	event.preventDefault();
+
+	var newCat = encodeURIComponent($(this).html());
+
+	location.href = "/businesses/find?category=" + newCat;
+});
+
 //Save business to save list
 
 $(document).on("click", "#business-save-button", function() {
