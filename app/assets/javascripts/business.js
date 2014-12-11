@@ -39,6 +39,28 @@ $(document).on("click", "#business-get-directions", function() {
 	window.open("https://google.com/maps/search/" + encodeURIComponent($("#business-address").val()));
 });
 
+//Change stars selected for business reviews
+
+$(document).on("click", ".review-star", function() {
+	$(".review-star").removeClass("fa-star").addClass("fa-star-o");
+
+	var starNumber = $(this).attr("id").split("review-star-")[1];
+	
+	for (var i = 1; i <= starNumber; i++) {
+		$("#review-star-" + i).removeClass("fa-star-o").addClass("fa-star");
+	}
+
+	$("#review-star-value").val(starNumber);
+});
+
+//Close review modal and remove data
+
+$(document).on("hidden.bs.modal", "#review-modal", function() {
+	$(".review-star").removeClass("fa-star").addClass("fa-star-o");
+
+	$("#review-text").val("");
+});
+
 //Close condition that business show page
 
 } });

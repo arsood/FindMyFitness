@@ -15,11 +15,16 @@
 				<div>
 					<a href="/profile/<%= @user.id %>"><%= @user.first_name %> <%= @user.last_name %></a>
 				</div>
-				<div class="margin-top-20" id="galleria">
-					<% @post_photos.each do |photo| %>
-						<img src="<%= photo.post_photo %>" />
-					<% end %>
-				</div>
+
+				<% if @post_photos.any? %>
+					<div class="margin-top-20" id="galleria">
+						<% @post_photos.each do |photo| %>
+							<img src="<%= photo.post_photo %>" />
+						<% end %>
+					</div>
+				<% end %>
+
+
 				<div class="margin-top-20">
 					<%= simple_format(@post.post_text) %>
 				</div>
@@ -60,11 +65,29 @@
 
 		</div>
 		<div class="col-sm-4">
-			<div class="left-sidebar-menu">
-				<a href="#">Reviews</a>
-				<a href="#">Your Posts</a>
-				<a href="#">Saves</a>
-				<a href="#">Events</a>
+			<div class="margin-top-50">
+				<div class="gray-menu-item txt-center">
+					About the Author
+				</div>
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-4">
+					<%= image_tag(@user.avatar.url(:thumb), class: "img-responsive") %>
+				</div>
+				<div class="col-sm-8">
+					<div class="bold">
+						<%= @user.first_name %> <%= @user.last_name[0] %>.
+					</div>
+					<div class="margin-top-10">
+						<a href="#">10 Followers</a>
+					</div>
+					<div>
+						<a href="#">10 Following</a>
+					</div>
+					<div class="margin-top-10">
+						<a href="#">Follow <%= @user.first_name %></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

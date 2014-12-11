@@ -31,25 +31,33 @@
 			</div>
 
 			<%= form_tag("/profile", id: "photo-form") do end %>
-			
-			<% @my_photos.in_groups_of(4, false).each do |group| %>
-			<div class="row margin-top-20">
-				<% group.each do |photo| %>
-				<!--One Photo-->
-				<div class="col-sm-3" id="photo<%= photo.id %>">
-					<div class="profile-photos-container" style="background:url(<%= photo.public_send(@photo_col).url %>) no-repeat;">
-						<i class="fa fa-times-circle hide" data-id="<%= photo.id %>" data-type="<%= @photo_col %>"></i>
-					</div>
-					<div class="margin-top-10">
-						<a href="#">Working Out...</a>
-					</div>
-					<div>
-						<a href="#">24 Hour Fitness</a>
+
+			<% if @my_photos.empty? %>
+				<div class="margin-top-20">
+					<div class="large-title">
+						No photos to show
 					</div>
 				</div>
-				<!--/One Photo-->
-				<% end %>
-			</div>
+			<% end %>
+			
+			<% @my_photos.in_groups_of(4, false).each do |group| %>
+				<div class="row margin-top-20">
+					<% group.each do |photo| %>
+					<!--One Photo-->
+					<div class="col-sm-3" id="photo<%= photo.id %>">
+						<div class="profile-photos-container" style="background:url(<%= photo.public_send(@photo_col).url %>) no-repeat;">
+							<i class="fa fa-times-circle hide" data-id="<%= photo.id %>" data-type="<%= @photo_col %>"></i>
+						</div>
+						<div class="margin-top-10">
+							<a href="#">Working Out...</a>
+						</div>
+						<div>
+							<a href="#">24 Hour Fitness</a>
+						</div>
+					</div>
+					<!--/One Photo-->
+					<% end %>
+				</div>
 			<% end %>
 
 			<div class="margin-top-10">

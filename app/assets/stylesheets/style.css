@@ -305,6 +305,37 @@
 	padding-bottom:10px;
 }
 
+/*Business*/
+
+.business-review-modal-stars {
+	font-size:2.5em;
+	color:#CCC;
+}
+
+.business-review-modal-stars i:hover {
+	cursor:pointer;
+}
+
+#review-star-1 {
+	color:#4191BC;
+}
+
+#review-star-2 {
+	color:#3AB7BF;
+}
+
+#review-star-3 {
+	color:#41BD99;
+}
+
+#review-star-4 {
+	color:#50BA52;
+}
+
+#review-star-5 {
+	color:#8DC63F;
+}
+
 /*Events*/
 
 .single-event {
