@@ -30,7 +30,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Generate digests for assets URLs.
-  config.assets.digest = true
+  config.assets.digest = false
 
   # `config.assets.precompile` has moved to config/initializers/assets.rb
 
@@ -71,7 +71,7 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  config.assets.precompile = ['*.js', '*.css', '*.css.erb']
+  config.assets.precompile = ['*.js', '*.css', '*.css.erb', '*.png', '*.jpg', '*.woff', '*.ttf']
 
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false

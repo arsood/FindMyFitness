@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem "will_paginate", "~> 3.0"
 
+gem "non-stupid-digest-assets"
+
 gem "bcrypt"
 
 gem 'tzinfo-data'
