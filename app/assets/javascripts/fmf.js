@@ -58,22 +58,3 @@ $(document).on("click", "#bus-category-top-options div a", function(event) {
 
 	location.href = "/businesses/find?category=" + newCat;
 });
-
-//Save business to save list
-
-$(document).on("click", "#business-save-button", function() {
-	$.ajax({
-		url:"http://localhost:3000/business/save",
-		type:"POST",
-		data: {
-			businessId: $(this).attr("data-business"),
-			authenticity_token: $("input[name=authenticity_token]").val()
-		},
-		success:function() {
-			$("#business-save-button").attr("style", "background:#5cb85c;");
-		},
-		error:function() {
-			alert("There was something wrong processing your request.");
-		}
-	});
-});

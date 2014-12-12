@@ -39,6 +39,25 @@ $(document).on("click", "#business-get-directions", function() {
 	window.open("https://google.com/maps/search/" + encodeURIComponent($("#business-address").val()));
 });
 
+//Save business to save list
+
+$(document).on("click", "#business-save-button", function() {
+	$.ajax({
+		url:"http://localhost:3000/business/save",
+		type:"POST",
+		data: {
+			business_id: $(this).attr("data-business"),
+			authenticity_token: $("input[name=authenticity_token]").val()
+		},
+		success:function() {
+			$("#business-save-button").attr("style", "background:#5cb85c;");
+		},
+		error:function() {
+			alert("There was something wrong processing your request.");
+		}
+	});
+});
+
 //Change stars selected for business reviews
 
 $(document).on("click", ".review-star", function() {

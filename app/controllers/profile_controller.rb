@@ -31,4 +31,10 @@ class ProfileController < ApplicationController
 			render :json => { error: "Could not delete photo." }
 		end
 	end
+
+	def notifications
+		@user = User.find(session[:user_id])
+
+		render "profile-notifications", layout: "inner-info"
+	end
 end
