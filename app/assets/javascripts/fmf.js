@@ -32,7 +32,6 @@ $(document).on("click", ".left-sidebar-menu a", function(event) {
 
 $(document).on("click", "#login-toggle-button", function(event) {
 	event.preventDefault();
-	event.stopPropagation();
 
 	$("input[name='username']").val("");
 	$("input[name='password']").val("");
