@@ -9,27 +9,8 @@
 			<div class="col-sm-6">
 				<ul class="fmf-nav-menu pull-right">
 					<li><a href="/events">Events</a></li>
-					<li><a href="/blog/me">Blogs</a></li>
-					<li class="txt-right options-top-button"><a id="options-menu-toggle" href="#" class="btn btn-primary">Hi, <%= session[:first_name] %>! | <i class="fa fa-chevron-down"></i></a>
-						<div id="options-top-menu">
-							<div class="row">
-								<div class="col-sm-4">
-									<%= image_tag(get_profile_pic_thumb(session[:user_id]), class: "img-responsive") %>
-								</div>
-								<div class="col-sm-8">
-									<div class="bold txt-left">
-										<%= session[:first_name] %> <%= session[:last_name] %>
-									</div>
-									<div class="txt-left">
-										<a href="#">15 Notifications</a>
-									</div>
-								</div>
-							</div>
-							<div class="margin-top-20">
-								<a href="/logout" class="btn btn-primary btn-block">Logout</a>
-							</div>
-						</div>
-					</li>
+					<li><a href="/blogs">Blogs</a></li>
+					<%= render "partials/headers/dropdowns/logged_in_dropdown" %>
 				</ul>
 			</div>
 		</div>

@@ -19,6 +19,7 @@ class UserController < ApplicationController
 		if user
 			if user.authenticate(params[:password])
 				session[:user_id] = user.id
+				session[:user_type] = user.user_type
 				session[:first_name] = user.first_name
 				session[:last_name] = user.last_name
 				
