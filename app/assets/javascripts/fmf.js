@@ -39,6 +39,14 @@ $(document).on("click", "#login-toggle-button", function(event) {
 	$("#login-top-menu").fadeToggle(100);
 });
 
+//Toggle options menu show
+
+$(document).on("click", "#options-menu-toggle", function(event) {
+	event.preventDefault();
+
+	$("#options-top-menu").fadeToggle(100);
+});
+
 //Toggle signup window show
 
 $(document).on("click", "#signup-toggle-button", function(event) {
