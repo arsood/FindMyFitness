@@ -9,7 +9,7 @@
 					<%= session[:first_name] %> <%= session[:last_name] %>
 				</div>
 				<div class="txt-left">
-					<a href="#">15 Notifications</a>
+					<a href="/profile">15 Notifications</a>
 				</div>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 
 		<% if session[:user_type] == "business" %>
 			<div class="margin-top-10">
-				<a href="/admin" class="btn btn-success btn-block">Business Admin</a>
+				<a href="/business-admin" class="btn btn-success btn-block">Business Admin</a>
 			</div>
 		<% end %>
 

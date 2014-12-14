@@ -1,0 +1,257 @@
+<!--Main-->
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="bus-left-sidebar-menu">
+				<a href="#">Profile</a>
+				<a href="#">Reviews</a>
+				<a href="#">Photos</a>
+				<a href="#">Deals</a>
+				<a href="#">Analytics</a>
+			</div>
+		</div>
+		<div class="col-sm-10">
+			<div class="extra-large-title">
+				Editing Gym Awesome Profile
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-6">
+					<div class="bold">
+						Name:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" class="form-control" placeholder="Your Business Name" value="<%= @business.name %>" />
+					</div>
+				</div>
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-6">
+					<div class="bold">
+						Business Type:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" class="form-control" placeholder="Business Type" value="<%= @business.business_type %>" />
+					</div>
+				</div>
+			</div>
+			<div class="row margin-top-50">
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Location
+					</div>
+					<div class="margin-top-20 bold">
+						Address:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" class="form-control" placeholder="Address" value="<%= @business.address %>" />
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="bold">
+								City:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" class="form-control" placeholder="City" value="<%= @business.city %>" />
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								State:
+							</div>
+							<div class="margin-top-10">
+								<select class="form-control">
+									<option>CA</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								Zipcode:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" class="form-control" placeholder="Zipcode" value="<%= @business.zipcode %>" />
+							</div>
+						</div>
+					</div>
+					<div class="margin-top-20 medium-title">
+						Contact Information
+					</div>
+					<div class="margin-top-20 bold">
+						Phone Number:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" class="form-control" value="<%= @business.phone %>" />
+					</div>
+					<div class="margin-top-20 bold">
+						Website:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" class="form-control" placeholder="Website" value="<%= @business.website %>" />
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Business Hours
+					</div>
+					<div class="margin-top-20">
+						<textarea name="business[availability]" class="form-control" placeholder="Example: M-F 8am to 9pm"><%= @business.availability %></textarea>
+					</div>
+					<div class="medium-title margin-top-20">
+						Business Services
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-weights">
+									<input type="checkbox" name="services[weights]" id="check-weights" /> Weights
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-running-track">
+									<input type="checkbox" name="services[track]" id="check-running-track" /> Running Track
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-pool">
+									<input type="checkbox" name="services[pool]" id="check-pool" /> Swimming Pool
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-classes">
+									<input type="checkbox" name="services[classes]" value="Fitness Classes" id="check-classes"> Fitness Classes
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-instructors">
+									<input type="checkbox" name="services[instructors]" value="Personal Instructors" id="check-instructors"> Personal Instructors
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-pilates">
+									<input type="checkbox" name="services[pilates]" value="Pilates" id="check-pilates"> Pilates
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-spa">
+									<input type="checkbox" name="services[spa]" value="Spa" id="check-spa"> Spa
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-sauna">
+									<input type="checkbox" name="services[sauna]" value="Sauna" id="check-sauna"> Sauna	
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-massage">
+									<input type="checkbox" name="services[massage]" value="Massage" id="check-massage"> Massage Service
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-cycling">
+									<input type="checkbox" name="services[cycling]" value="Cycling" id="check-cycling"> Cycling
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-courts">
+									<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts"> Sport Courts
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-cardio">
+									<input type="checkbox" name="services[cardio]" value="Cardio" id="check-cardio"> Cardio
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-towels">
+									<input type="checkbox" name="services[towels]" value="Towels" id="check-towels"> Towels
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-steam">
+									<input type="checkbox" name="services[steam]" value="Steam Room" id="check-steam"> Steam Room
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-cafe">
+									<input type="checkbox" name="services[cafe]" value="Cafeteria" id="check-cafe"> Cafeteria
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-child-care">
+									<input type="checkbox" name="services[child-care]" value="Child Care" id="check-child-care"> Child Care
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-diet">
+									<input type="checkbox" name="services[diet]" value="Dietary Consults" id="check-diet"> Dietary Consults
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-meditation">
+									<input type="checkbox" name="services[meditation]" value="Meditation Areas" id="check-meditation"> Meditation Areas
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="margin-top-50">
+				<div class="medium-title">
+					Description
+				</div>
+				<div class="margin-top-10">
+					<textarea class="form-control bus-description-edit"><%= @business.description %></textarea>
+				</div>
+			</div>
+			<div class="margin-top-20 pull-right">
+				<button class="fmf-ellipse-gray-button">Cancel</button>
+				<button class="fmf-ellipse-turquoise-button margin-left-20">Finish Editing</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

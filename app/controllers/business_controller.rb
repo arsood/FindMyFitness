@@ -86,6 +86,12 @@ class BusinessController < ApplicationController
 		redirect_to :back
 	end
 
+	def admin_index
+		@business = Business.where(user_id: session[:user_id]).first
+
+		render "edit-profile"
+	end
+
 	private
 
 	def bus_params

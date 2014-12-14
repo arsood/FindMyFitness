@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get "businesses/find" => "business#search"
   post "review/new" => "business#new_review"
 
+  #Business admin
+
+  get "business-admin" => "business#admin_index"
+
   #User
 
   post "/newuser" => "user#signup_process"
@@ -42,4 +46,7 @@ Rails.application.routes.draw do
   get "profile/photos" => "profile#my_photos"
   post "profile/photos/delete" => "profile#delete_photo"
   get "profile" => "profile#notifications"
+
+  #Login
+  get "login" => "login#index"
 end

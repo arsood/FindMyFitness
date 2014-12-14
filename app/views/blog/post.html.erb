@@ -84,9 +84,12 @@
 					<div>
 						<a href="#">10 Following</a>
 					</div>
-					<div class="margin-top-10">
-						<a href="#">Follow <%= @user.first_name %></a>
-					</div>
+
+					<% if @user.id != session[:user_id] %>
+						<div class="margin-top-10">
+							<a href="#">Follow <%= @user.first_name %></a>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

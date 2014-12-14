@@ -474,3 +474,16 @@
 .one-business-search:last-child {
 	border-bottom:none;
 }
+
+/*Login*/
+
+.login-wrapper {
+	max-width:600px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#EBEBEB;
+	padding:20px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
