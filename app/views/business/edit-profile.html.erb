@@ -10,6 +10,13 @@
 			</div>
 		</div>
 		<div class="col-sm-10">
+			<% if flash[:bus_update_success] %>
+				<div class="alert alert-success">
+					Business updated successfully!
+				</div>
+			<% end %>
+
+			<%= form_tag("businesses/edit") do %>
 			<div class="extra-large-title">
 				Editing <%= @business.name %> Profile
 			</div>
@@ -19,7 +26,7 @@
 						Name:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" placeholder="Your Business Name" value="<%= @business.name %>" />
+						<input type="text" name="business[name]" class="form-control" placeholder="Your Business Name" value="<%= @business.name %>" />
 					</div>
 				</div>
 			</div>
@@ -51,7 +58,7 @@
 						Address:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" placeholder="Address" value="<%= @business.address %>" />
+						<input type="text" name="business[address]" class="form-control" placeholder="Address" value="<%= @business.address %>" />
 					</div>
 					<div class="row margin-top-20">
 						<div class="col-sm-4">
@@ -59,7 +66,7 @@
 								City:
 							</div>
 							<div class="margin-top-10">
-								<input type="text" class="form-control" placeholder="City" value="<%= @business.city %>" />
+								<input name="business[city]" type="text" class="form-control" placeholder="City" value="<%= @business.city %>" />
 							</div>
 						</div>
 						<div class="col-sm-4">
@@ -67,7 +74,7 @@
 								State:
 							</div>
 							<div class="margin-top-10">
-								<select class="form-control">
+								<select name="business[state]" class="form-control">
 									<option>CA</option>
 								</select>
 							</div>
@@ -77,7 +84,7 @@
 								Zipcode:
 							</div>
 							<div class="margin-top-10">
-								<input type="text" class="form-control" placeholder="Zipcode" value="<%= @business.zipcode %>" />
+								<input name="business[zipcode]" type="text" class="form-control" placeholder="Zipcode" value="<%= @business.zipcode %>" />
 							</div>
 						</div>
 					</div>
@@ -88,13 +95,13 @@
 						Phone Number:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" value="<%= @business.phone %>" />
+						<input name="business[phone]" type="text" class="form-control" value="<%= @business.phone %>" />
 					</div>
 					<div class="margin-top-20 bold">
 						Website:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" placeholder="Website" value="<%= @business.website %>" />
+						<input name="business[website]" type="text" class="form-control" placeholder="Website" value="<%= @business.website %>" />
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -111,21 +118,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-weights">
-									<input type="checkbox" name="services[weights]" id="check-weights" <%= if @services.include? "Weights" then "checked" end %> /> Weights
+									<input type="checkbox" name="services[weights]" id="check-weights" value="Weights" <%= if @services.include? "Weights" then "checked" end %> /> Weights
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-running-track">
-									<input type="checkbox" name="services[track]" id="check-running-track" <%= if @services.include? "Running Track" then "checked" end %> /> Running Track
+									<input type="checkbox" name="services[track]" id="check-running-track" value="Running Track" <%= if @services.include? "Running Track" then "checked" end %> /> Running Track
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-pool">
-									<input type="checkbox" name="services[pool]" id="check-pool" <%= if @services.include? "Swimming Pool" then "checked" end %> /> Swimming Pool
+									<input type="checkbox" name="services[pool]" id="check-pool" value="Swimming Pool" <%= if @services.include? "Swimming Pool" then "checked" end %> /> Swimming Pool
 								</label>
 							</div>
 						</div>
@@ -171,7 +178,7 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-massage">
-									<input type="checkbox" name="services[massage]" value="Massage" id="check-massage" <%= if @services.include? "Massage Service" then "checked" end %>> Massage Service
+									<input type="checkbox" name="services[massage]" value="Massage" id="check-massage" <%= if @services.include? "Massage" then "checked" end %>> Massage Service
 								</label>
 							</div>
 						</div>
@@ -187,7 +194,7 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-courts">
-									<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts" <%= if @services.include? "Sports Courts" then "checked" end %>> Sport Courts
+									<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts" <%= if @services.include? "Sport Courts" then "checked" end %>> Sport Courts
 								</label>
 							</div>
 						</div>
@@ -226,7 +233,7 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-child-care">
-									<input type="checkbox" name="services[child-care]" value="Child Care" id="check-child-care" <%= if @services.include? "Child Care" then "checked" end %>> Child Care
+									<input type="checkbox" name="services[child_care]" value="Child Care" id="check-child-care" <%= if @services.include? "Child Care" then "checked" end %>> Child Care
 								</label>
 							</div>
 						</div>
@@ -252,14 +259,14 @@
 					Description
 				</div>
 				<div class="margin-top-10">
-					<textarea class="form-control bus-description-edit"><%= @business.description %></textarea>
+					<textarea name="business[description]" class="form-control bus-description-edit"><%= @business.description %></textarea>
 				</div>
 			</div>
 			<div class="margin-top-20 pull-right">
-				<button class="fmf-ellipse-gray-button">Cancel</button>
-				<button class="fmf-ellipse-turquoise-button margin-left-20">Finish Editing</button>
+				<button type="submit" class="fmf-ellipse-turquoise-button margin-left-20">Finish Editing</button>
 			</div>
 		</div>
+		<% end %>
 	</div>
 </div>
 <!--/Main-->

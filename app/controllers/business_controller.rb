@@ -8,7 +8,6 @@ class BusinessController < ApplicationController
 	end
 
 	def signup_process
-		
 		#Geocode a business address before creating it
 
 		business_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:business][:address] + ", " + params[:business][:city] + ", " + params[:business][:state] + " " + params[:business][:zipcode])
@@ -30,6 +29,34 @@ class BusinessController < ApplicationController
 		reset_session
 		
 		redirect_to "/"
+	end
+
+	def update
+		business = Business.where(user_id: session[:user_id]).first
+
+		#Geocode a business address before updating it
+
+		business_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:business][:address] + ", " + params[:business][:city] + ", " + params[:business][:state] + " " + params[:business][:zipcode])
+
+		#Merge geocode results into the business params
+
+		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng)
+
+		#Update the business
+
+		business.update(business_params)
+		
+		#Add services to the business
+
+		BusinessService.where(bus_id: business.id).destroy_all
+
+		service_params.each do |service|
+			BusinessService.create("bus_id" => business.id ,"bus_service" => service[1])
+		end
+		
+		flash[:bus_update_success] = true
+
+		redirect_to "/business-admin"
 	end
 
 	def business_show
@@ -109,6 +136,6 @@ class BusinessController < ApplicationController
 	end
 
 	def service_params
-		params.require(:services).permit(:weights, :track, :pool, :classes, :instructors, :pilates, :spa, :sauna, :massage, :cycling, :courts, :cardio)
+		params.require(:services).permit(:weights, :track, :pool, :classes, :instructors, :pilates, :spa, :sauna, :massage, :cycling, :courts, :cardio, :diet, :towels, :steam, :cafe, :child_care, :meditation)
 	end
 end

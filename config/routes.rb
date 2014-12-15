@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   #Business admin
 
   get "business-admin" => "business#admin_index"
+  post "businesses/edit" => "business#update"
 
   #User
 
