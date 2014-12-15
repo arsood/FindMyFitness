@@ -89,8 +89,16 @@ class BusinessController < ApplicationController
 	def admin_index
 		@business = Business.where(user_id: session[:user_id]).first
 
+		services = BusinessService.where(bus_id: @business.id)
+
+		@services = []
+
+		services.each do |service|
+			@services << service.bus_service
+		end
+
 		@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
-		
+
 		render "edit-profile", layout: "inner-basic"
 	end
 

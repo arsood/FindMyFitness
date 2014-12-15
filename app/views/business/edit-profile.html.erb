@@ -6,7 +6,6 @@
 				<a href="#">Profile</a>
 				<a href="#">Reviews</a>
 				<a href="#">Photos</a>
-				<a href="#">Deals</a>
 				<a href="#">Analytics</a>
 			</div>
 		</div>
@@ -30,7 +29,16 @@
 						Business Type:
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" placeholder="Business Type" value="<%= @business.business_type %>" />
+						<select class="form-control" name="business[business_type]">
+							<option value="Yoga" <%= if @business.business_type == "Yoga" then "selected" end %>>Yoga</option>
+							<option value="Gyms" <%= if @business.business_type == "Gyms" then "selected" end %>>Gyms</option>
+							<option value="Martial Arts" <%= if @business.business_type == "Martial Arts" then "selected" end %>>Martial Arts</option>
+							<option value="Boxing" <%= if @business.business_type == "Boxing" then "selected" end %>>Boxing</option>
+							<option value="Rock Climbing" <%= if @business.business_type == "Rock Climbing" then "selected" end %>>Rock Climbing</option>
+							<option value="Pilates" <%= if @business.business_type == "Pilates" then "selected" end %>>Pilates</option>
+							<option value="Dance" <%= if @business.business_type == "Dance" then "selected" end %>>Dance</option>
+							<option value="Other" <%= if @business.business_type == "Other" then "selected" end %>>Other</option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -103,21 +111,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-weights">
-									<input type="checkbox" name="services[weights]" id="check-weights" /> Weights
+									<input type="checkbox" name="services[weights]" id="check-weights" <%= if @services.include? "Weights" then "checked" end %> /> Weights
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-running-track">
-									<input type="checkbox" name="services[track]" id="check-running-track" /> Running Track
+									<input type="checkbox" name="services[track]" id="check-running-track" <%= if @services.include? "Running Track" then "checked" end %> /> Running Track
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-pool">
-									<input type="checkbox" name="services[pool]" id="check-pool" /> Swimming Pool
+									<input type="checkbox" name="services[pool]" id="check-pool" <%= if @services.include? "Swimming Pool" then "checked" end %> /> Swimming Pool
 								</label>
 							</div>
 						</div>
@@ -126,21 +134,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-classes">
-									<input type="checkbox" name="services[classes]" value="Fitness Classes" id="check-classes"> Fitness Classes
+									<input type="checkbox" name="services[classes]" value="Fitness Classes" id="check-classes" <%= if @services.include? "Fitness Classes" then "checked" end %>> Fitness Classes
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-instructors">
-									<input type="checkbox" name="services[instructors]" value="Personal Instructors" id="check-instructors"> Personal Instructors
+									<input type="checkbox" name="services[instructors]" value="Personal Instructors" id="check-instructors" <%= if @services.include? "Personal Instructors" then "checked" end %>> Personal Instructors
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-pilates">
-									<input type="checkbox" name="services[pilates]" value="Pilates" id="check-pilates"> Pilates
+									<input type="checkbox" name="services[pilates]" value="Pilates" id="check-pilates" <%= if @services.include? "Pilates" then "checked" end %>> Pilates
 								</label>
 							</div>
 						</div>
@@ -149,21 +157,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-spa">
-									<input type="checkbox" name="services[spa]" value="Spa" id="check-spa"> Spa
+									<input type="checkbox" name="services[spa]" value="Spa" id="check-spa" <%= if @services.include? "Spa" then "checked" end %>> Spa
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-sauna">
-									<input type="checkbox" name="services[sauna]" value="Sauna" id="check-sauna"> Sauna	
+									<input type="checkbox" name="services[sauna]" value="Sauna" id="check-sauna" <%= if @services.include? "Sauna" then "checked" end %>> Sauna	
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-massage">
-									<input type="checkbox" name="services[massage]" value="Massage" id="check-massage"> Massage Service
+									<input type="checkbox" name="services[massage]" value="Massage" id="check-massage" <%= if @services.include? "Massage Service" then "checked" end %>> Massage Service
 								</label>
 							</div>
 						</div>
@@ -172,21 +180,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-cycling">
-									<input type="checkbox" name="services[cycling]" value="Cycling" id="check-cycling"> Cycling
+									<input type="checkbox" name="services[cycling]" value="Cycling" id="check-cycling" <%= if @services.include? "Cycling" then "checked" end %>> Cycling
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-courts">
-									<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts"> Sport Courts
+									<input type="checkbox" name="services[courts]" value="Sport Courts" id="check-courts" <%= if @services.include? "Sports Courts" then "checked" end %>> Sport Courts
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-cardio">
-									<input type="checkbox" name="services[cardio]" value="Cardio" id="check-cardio"> Cardio
+									<input type="checkbox" name="services[cardio]" value="Cardio" id="check-cardio" <%= if @services.include? "Cardio" then "checked" end %>> Cardio
 								</label>
 							</div>
 						</div>
@@ -195,21 +203,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-towels">
-									<input type="checkbox" name="services[towels]" value="Towels" id="check-towels"> Towels
+									<input type="checkbox" name="services[towels]" value="Towels" id="check-towels" <%= if @services.include? "Towels" then "checked" end %>> Towels
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-steam">
-									<input type="checkbox" name="services[steam]" value="Steam Room" id="check-steam"> Steam Room
+									<input type="checkbox" name="services[steam]" value="Steam Room" id="check-steam" <%= if @services.include? "Steam Room" then "checked" end %>> Steam Room
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-cafe">
-									<input type="checkbox" name="services[cafe]" value="Cafeteria" id="check-cafe"> Cafeteria
+									<input type="checkbox" name="services[cafe]" value="Cafeteria" id="check-cafe" <%= if @services.include? "Cafeteria" then "checked" end %>> Cafeteria
 								</label>
 							</div>
 						</div>
@@ -218,21 +226,21 @@
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-child-care">
-									<input type="checkbox" name="services[child-care]" value="Child Care" id="check-child-care"> Child Care
+									<input type="checkbox" name="services[child-care]" value="Child Care" id="check-child-care" <%= if @services.include? "Child Care" then "checked" end %>> Child Care
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-diet">
-									<input type="checkbox" name="services[diet]" value="Dietary Consults" id="check-diet"> Dietary Consults
+									<input type="checkbox" name="services[diet]" value="Dietary Consults" id="check-diet" <%= if @services.include? "Dietary Consults" then "checked" end %>> Dietary Consults
 								</label>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label for="check-meditation">
-									<input type="checkbox" name="services[meditation]" value="Meditation Areas" id="check-meditation"> Meditation Areas
+									<input type="checkbox" name="services[meditation]" value="Meditation Areas" id="check-meditation" <%= if @services.include? "Meditation Areas" then "checked" end %>> Meditation Areas
 								</label>
 							</div>
 						</div>
