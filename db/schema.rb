@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20141210180927) do
   end
 
   create_table "business_photos", force: true do |t|
-    t.integer  "business_id"
+    t.string   "business_hash"
     t.integer  "contributor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20141210180927) do
   create_table "businesses", force: true do |t|
     t.string   "name"
     t.string   "business_type"
+    t.string   "business_hash"
     t.string   "address"
     t.string   "city"
     t.string   "state"

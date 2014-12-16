@@ -135,3 +135,25 @@ function initializeMap(lat, lng) {
 //Close condition that business search page
 
 } });
+
+//Execute only when business signup page is shown
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "business_signup") {
+
+//Initiate Dropzone for new business
+
+$(document).ready(function() {
+	if ($("#drop-area").length) {
+		$("div#drop-area").dropzone({
+			url: "/business/images",
+			params: {
+				authenticity_token: $("input[name='authenticity_token']").val(),
+				business_hash: $("input[name='business[business_hash]']").val()
+			},
+			addRemoveLinks: true
+		});
+	}
+});
+
+//Close condition that has to be business signup
+} });

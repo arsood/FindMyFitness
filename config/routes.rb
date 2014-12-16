@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "business-signup" => "business#signup_process"
   post "business/save" => "business#save_business"
 
+  post "business/images" => "business#image_upload"
+
   get "business-signup" => "business#signup"
   get "business/:id" => "business#business_show"
 

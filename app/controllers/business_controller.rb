@@ -1,7 +1,8 @@
 class BusinessController < ApplicationController
 	def signup
 		if session[:business_user_id]
-			render "business-signup"
+			@header_text = "Create Your Business Profile"
+			render "business-signup", layout: "inner-basic"
 		else
 			redirect_to "/"
 		end
@@ -69,6 +70,8 @@ class BusinessController < ApplicationController
 		#Pull all related reviews
 		@business_reviews = Review.where(bus_id: @business_info.id).order(created_at: :desc)
 
+		@business_photos = BusinessPhoto.where(business_hash: @business_info.business_hash)
+
 		render "business-show"
 	end
 
@@ -129,10 +132,18 @@ class BusinessController < ApplicationController
 		render "edit-profile", layout: "inner-basic"
 	end
 
+	def image_upload
+		if BusinessPhoto.create(business_hash: params[:business_hash], contributor_id: session[:tmp_user_id], business_photo: params[:file])
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "Photo upload failed." }
+		end
+	end
+
 	private
 
 	def bus_params
-		params.require(:business).permit(:name, :business_type, :address, :city, :state, :zipcode, :phone, :website, :description, :availability)
+		params.require(:business).permit(:name, :business_type, :address, :city, :state, :zipcode, :phone, :website, :description, :availability, :business_hash)
 	end
 
 	def service_params

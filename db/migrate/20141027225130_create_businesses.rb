@@ -3,6 +3,7 @@ class CreateBusinesses < ActiveRecord::Migration
     create_table :businesses do |t|
       t.string :name
       t.string :business_type
+      t.string :business_hash
       t.string :address
       t.string :city
       t.string :state

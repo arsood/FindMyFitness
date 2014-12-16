@@ -21,6 +21,9 @@ $(document).on("click", ".left-sidebar-menu a", function(event) {
 //Close condition that page is events
 } });
 
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "new_event") {
+
 //Initiate Dropzone for events
 
 $(document).ready(function() {
@@ -35,6 +38,9 @@ $(document).ready(function() {
 		});
 	}
 });
+
+//Close condition that has to be new event page
+} });
 
 //Only execute this when event show page is active
 

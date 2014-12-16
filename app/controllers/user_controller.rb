@@ -5,6 +5,8 @@ class UserController < ApplicationController
 
 		new_user = User.create(new_user_data)
 
+		session[:tmp_user_id] = new_user.id
+
 		if params[:user][:user_type] == "business"
 			session[:business_user_id] = new_user.id
 			redirect_to "/business-signup"

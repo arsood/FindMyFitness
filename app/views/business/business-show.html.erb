@@ -248,13 +248,14 @@
 
 			<!--Photos-->
 			<div id="business-photos" class="margin-top-20" style="display:none;">
-				<div>
-					<span class="medium-title">Photo of Building</span> <span>posted by <a href="#">Tom Steele</a></span>
+				<div class="medium-title">
+					Photos of Business
 				</div>
 
 				<div id="galleria" class="margin-top-20">
-					<img src="https://s3-us-west-2.amazonaws.com/sandboxapi/petalos.jpg" />
-					<img src="https://s3-us-west-2.amazonaws.com/sandboxapi/petalos.jpg" />
+					<% @business_photos.each do |photo| %>
+						<img src="<%= photo.business_photo.url %>" />
+					<% end %>
 				</div>
 			</div>
 			<!--/Photos-->
