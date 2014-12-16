@@ -21,23 +21,24 @@ $(document).on("click", ".left-sidebar-menu a", function(event) {
 //Close condition that page is events
 } });
 
+//Condition that has to be new event page
 $(document).ready(function() {
 if ($("#page_id").length && $("#page_id").val() === "new_event") {
 
-//Initiate Dropzone for events
+	//Initiate Dropzone for events
 
-$(document).ready(function() {
-	if ($("#drop-area").length) {
-		$("div#drop-area").dropzone({
-			url: "images",
-			params: {
-				authenticity_token: $("input[name='authenticity_token']").val(),
-				event_id: $("input[name='event[event_id]']").val()
-			},
-			addRemoveLinks: true
-		});
-	}
-});
+	$(document).ready(function() {
+		if ($("#drop-area").length) {
+			$("div#drop-area").dropzone({
+				url: "/event/images",
+				params: {
+					authenticity_token: $("input[name='authenticity_token']").val(),
+					event_id: $("input[name='event[event_id]']").val()
+				},
+				addRemoveLinks: true
+			});
+		}
+	});
 
 //Close condition that has to be new event page
 } });
