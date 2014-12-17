@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20141210180927) do
     t.string   "user_type"
     t.string   "city"
     t.string   "state"
+    t.string   "auth_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"

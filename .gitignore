@@ -19,4 +19,6 @@ public/system/
 
 public/assets/
 
+config/secrets.yml
+
 .DS_Store

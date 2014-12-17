@@ -51,5 +51,10 @@ Rails.application.routes.draw do
   get "profile" => "profile#notifications"
 
   #Login
+
   get "login" => "login#index"
+
+  #Omniauth
+
+  get '/auth/:provider/callback', to: 'login#fb_auth'
 end

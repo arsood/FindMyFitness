@@ -26,6 +26,8 @@ gem 'geokit-rails'
 
 gem 'pry-rails'
 
+gem 'omniauth-facebook'
+
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :user_type
       t.string :city
       t.string :state
+      t.string :auth_id
 
       t.timestamps
     end
