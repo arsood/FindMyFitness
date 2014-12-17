@@ -34,6 +34,12 @@
 	font-size:1.4em;
 }
 
+.small-container {
+	max-width:600px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .fmf-nav-menu a {
 	text-decoration:none;
 }

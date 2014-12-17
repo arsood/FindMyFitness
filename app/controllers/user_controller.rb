@@ -25,12 +25,16 @@ class UserController < ApplicationController
 				session[:first_name] = user.first_name
 				session[:last_name] = user.last_name
 				
-				redirect_to "/"
+				redirect_to "/profile"
 			else
-				render :text => "Nope sorry"
+				flash[:error] = "Sorry, that password was incorrect."
+
+				redirect_to "/login"
 			end
 		else
-			render :text => "Nope sorry"
+			flash[:error] = "Sorry, that username was not found."
+
+			redirect_to "/login"
 		end
 	end
 

@@ -48,7 +48,7 @@
 					<div class="col-sm-6">
 						<div class="medium-title">
 							<%= @business_info.address %>
-							<input type="hidden" id="business-address" value="<%= @business_info.address %>" />
+							<input type="hidden" id="business-address" value="<%= @business_info.address %>, <%= @business_info.city %>, <%= @business_info.state %> <%= @business_info.zipcode %>" />
 						</div>
 						<div class="medium-title">
 							<%= @business_info.city %>, <%= @business_info.state %>

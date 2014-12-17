@@ -9,7 +9,7 @@ class LoginController < ApplicationController
 			session[:first_name] = user.first_name
 			session[:last_name] = user.last_name
 				
-			redirect_to "/"
+			redirect_to "/profile"
 		else
 			fb_user = User.create(first_name: auth_hash.info.first_name, last_name: auth_hash.info.last_name, email_address: auth_hash.info.email, auth_id: auth_hash.uid, password: Time.now)
 
