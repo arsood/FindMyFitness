@@ -117,19 +117,24 @@ class BusinessController < ApplicationController
 	end
 
 	def admin_index
-		@business = Business.where(user_id: session[:user_id]).first
+		if session[:user_type] == "business" && session[:business_id]
+			@business = Business.where(user_id: session[:user_id]).first
 
-		services = BusinessService.where(bus_id: @business.id)
+			services = BusinessService.where(bus_id: @business.id)
 
-		@services = []
+			@services = []
 
-		services.each do |service|
-			@services << service.bus_service
+			services.each do |service|
+				@services << service.bus_service
+			end
+
+			@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
+
+			render "admin-edit-profile", layout: "inner-basic"
+		else
+			flash[:error] = "You are not logged in as a business user."
+			redirect_to "/login"
 		end
-
-		@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
-
-		render "admin-edit-profile", layout: "inner-basic"
 	end
 
 	def image_upload
