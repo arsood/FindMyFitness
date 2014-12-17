@@ -24,6 +24,10 @@ class UserController < ApplicationController
 				session[:user_type] = user.user_type
 				session[:first_name] = user.first_name
 				session[:last_name] = user.last_name
+
+				if user.user_type == "business"
+					session[:business_id] = Business.where(user_id: user.id).first.id
+				end
 				
 				redirect_to "/profile"
 			else

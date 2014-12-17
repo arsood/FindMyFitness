@@ -129,7 +129,7 @@ class BusinessController < ApplicationController
 
 		@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
 
-		render "edit-profile", layout: "inner-basic"
+		render "admin-edit-profile", layout: "inner-basic"
 	end
 
 	def image_upload
@@ -138,6 +138,14 @@ class BusinessController < ApplicationController
 		else
 			render :json => { result: "error", error: "Photo upload failed." }
 		end
+	end
+
+	def admin_reviews
+		@header_text = "Your Reviews"
+
+		@business_reviews = Review.where(bus_id: session[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		
+		render "admin-reviews", layout: "inner-basic"
 	end
 
 	private

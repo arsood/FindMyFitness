@@ -127,7 +127,7 @@
 					<%= @user.first_name %> <%= @user.last_name[0] %>.
 				</div>
 				<div class="italic">
-					Member Since <%= @user.created_at.strftime("%m/%-d/%Y") %>
+					Member Since <%= get_member_since(@user.id) %>
 				</div>
 				<div class="margin-top-10">
 					<%= @user.about_me %>
