@@ -50,6 +50,8 @@ Rails.application.routes.draw do
   get "profile/photos" => "profile#my_photos"
   post "profile/photos/delete" => "profile#delete_photo"
   get "profile" => "profile#notifications"
+  get "profile/edit" => "profile#edit"
+  post "profile/edit" => "profile#update"
 
   #Login
 

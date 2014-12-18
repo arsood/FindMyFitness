@@ -18,6 +18,8 @@ class LoginController < ApplicationController
 			session[:first_name] = fb_user.first_name
 			session[:last_name] = fb_user.last_name
 
+			flash[:new_user] = true
+
 			redirect_to "/profile"
 		end
 	end

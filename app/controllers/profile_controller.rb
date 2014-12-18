@@ -37,4 +37,27 @@ class ProfileController < ApplicationController
 
 		render "profile-notifications", layout: "inner-info"
 	end
+
+	def edit
+		@user = User.find(session[:user_id])
+
+		@sidebar_header_text = "Edit Your Profile"
+
+		render "profile-edit"
+	end
+
+	def update
+		user = User.find(session[:user_id])
+
+		user.update_attributes(user_params)
+
+		flash[:success] = "Profile edited successfully!"
+		redirect_to "/profile/edit"
+	end
+
+private
+
+	def user_params
+		params.require(:user).permit(:password, :first_name, :last_name, :email_address, :city, :state, :avatar, :about_me)
+	end
 end

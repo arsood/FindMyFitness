@@ -55,6 +55,8 @@ class BlogController < ApplicationController
 
 		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
+		@sidebar_header_text = "About the Author"
+
 		render "post"
 	end
 
