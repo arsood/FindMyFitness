@@ -48,7 +48,7 @@
 				</div>
 				<div class="row margin-top-20">
 					<div class="col-sm-8">
-						<input name="city" type="text" class="form-control" value="<%= @user.city %>" />
+						<input name="user[city]" type="text" class="form-control" value="<%= @user.city %>" />
 					</div>
 					<div class="col-sm-4">
 						<%= select_tag :state, options_for_select(us_states, @user.state), class: "form-control", name: "user[state]" %>
