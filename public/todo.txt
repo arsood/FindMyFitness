@@ -1,11 +1,11 @@
-- Edit profile page
+#- Edit profile page
 - Profile notifications
 	- New blog comment
-- Your saves
+#- Your saves
 - Business photo admin
 - Business analytics admin
 - Hash tag search (may need to charge more)
 - Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)
-- About me flow
+#- About me flow

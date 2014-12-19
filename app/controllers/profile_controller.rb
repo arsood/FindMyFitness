@@ -58,7 +58,7 @@ class ProfileController < ApplicationController
 	def saves
 		@user = User.find(session[:user_id])
 
-		@saves = BusinessSave.where(user_id: session[:user_id]).order(created_at: :desc)
+		@saves = BusinessSave.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "profile-saves", layout: "inner-info"
 	end
