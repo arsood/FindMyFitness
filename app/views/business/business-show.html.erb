@@ -10,15 +10,17 @@
 				</div>
 				<div class="col-sm-6 txt-right">
 					<%= form_tag do %>
-						<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button">+</button>
+						<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button <%= if bus_is_saved?(@business_info.id) then 'business-saved' end %>">+</button>
 					<% end %>
 				</div>
 			</div>
 
 			<!--Gym Stars-->
 			<%
+			
 			bus_avg_rating(@business_info.id)
 			if @average_rating
+			
 			%>
 			<div class="row">
 				<div class="col-sm-12">
@@ -317,5 +319,26 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--/Write a Review Modal-->
+
+<!--Save Success Modal-->
+<div class="modal fade" id="save-success-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Success!</h4>
+			</div>
+			<div class="modal-body">
+				<div class="medium-title">
+					Awesome! You have added <%= @business_info.name %> to your save list! You can view and edit your saves in your profile.
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Save Success Modal-->
 
 <!--/Main-->

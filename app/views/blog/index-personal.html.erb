@@ -14,6 +14,12 @@
 				<a href="/blog/new"><button class="fmf-ellipse-dark-blue-button small-button" type="button">Write a Post</button></a>
 			</div>
 
+			<% if @blogs.empty? %>
+				<div class="margin-top-20 large-title">
+					No posts yet. Write one!
+				</div>
+			<% end %>
+
 			<!--One Blog Feed Item-->
 			<% @blogs.each do |blog| 
 

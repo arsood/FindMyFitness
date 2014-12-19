@@ -19,15 +19,6 @@ $(document).on("click", "#toggle-bus-reviews", function() {
 	$("#business-photos").hide();
 });
 
-//Change background color of left sidebar menu items
-
-$(document).on("click", ".left-sidebar-menu a", function(event) {
-	event.preventDefault();
-	
-	$(".left-sidebar-menu a").removeClass("active");
-	$(this).addClass("active");
-});
-
 //Toggle login form show
 
 $(document).on("click", "#login-toggle-button", function(event) {

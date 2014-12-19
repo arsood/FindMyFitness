@@ -41,6 +41,14 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 	//Save business to save list
 
 	$(document).on("click", "#business-save-button", function() {
+		if ($(this).hasClass("business-saved")) {
+			var removeSaveConf = confirm("Are you sure you want to remove this business from your save list?");
+
+			if (!removeSaveConf) {
+				return false;
+			}
+		}
+
 		$.ajax({
 			url:"http://localhost:3000/business/save",
 			type:"POST",
@@ -48,8 +56,13 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 				business_id: $(this).attr("data-business"),
 				authenticity_token: $("input[name=authenticity_token]").val()
 			},
-			success:function() {
-				$("#business-save-button").attr("style", "background:#5cb85c;");
+			success:function(data) {
+				if (data.result === "ok") {
+					$("#business-save-button").addClass("business-saved");
+					$("#save-success-modal").modal("show");
+				} else {
+					$("#business-save-button").removeClass("business-saved");
+				}
 			},
 			error:function() {
 				alert("There was something wrong processing your request.");

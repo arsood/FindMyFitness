@@ -76,12 +76,21 @@ class BusinessController < ApplicationController
 	end
 
 	def save_business
-		save_business = BusinessSave.create(user_id: session[:user_id], business_id: params[:business_id])
+		if BusinessSave.where(user_id: session[:user_id], business_id: params[:business_id]).exists?
+			if BusinessSave.where(user_id: session[:user_id], business_id: params[:business_id]).first.destroy
 
-		if save_business
-			render :json => { result: "ok" }
+				render :json => { result: "destroyed" }
+			else
+				render :json => { result: "error", error: "Could not remove business from save list." }
+			end
 		else
-			render :json => { result: "error", error: "Could not save business." }
+			save_business = BusinessSave.create(user_id: session[:user_id], business_id: params[:business_id])
+
+			if save_business
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "Could not save business." }
+			end
 		end
 	end
 
