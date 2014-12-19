@@ -88,6 +88,7 @@ $(document).on("change", "#new-avatar", function() {
 		data: avatarForm,
 		success: function(data) {
 			$("#sidebar-new-avatar").attr("src", data.photo);
+			$("#header-dropdown-avatar").attr("src", data.photo);
 			$(".ajax-cover").fadeOut(600);
 		},
 		error: function() {
