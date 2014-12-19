@@ -4,7 +4,13 @@
 
 <div class="row margin-top-20">
 	<div class="col-sm-4">
-		<%= image_tag(@user.avatar.url(:thumb), class: "img-responsive") %>
+		<div class="sidebar-avatar-container">
+			<%= render "partials/extras/ajax_loader" %>
+			<%= image_tag(@user.avatar.url(:thumb), class: "img-responsive", id: "sidebar-new-avatar", data: { toggle: "tooltip", placement: "top" }, title: "Click to Change") %>
+			<%= form_tag do %>
+				<input class="hide" name="new-avatar" type="file" id="new-avatar" />
+			<% end %>
+		</div>
 	</div>
 	<div class="col-sm-8">
 		<div class="bold">

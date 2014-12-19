@@ -63,6 +63,16 @@ class ProfileController < ApplicationController
 		render "profile-saves", layout: "inner-info"
 	end
 
+	def upload
+		user = User.find(session[:user_id])
+
+		if user.update_attributes(avatar: params[:file])
+			render :json => { result: "ok", photo: user.avatar.url(:thumb) }
+		else
+			render :json => { result: "error", error: "Could not change avatar photo." }
+		end
+	end
+
 private
 
 	def user_params

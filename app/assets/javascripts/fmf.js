@@ -1,3 +1,9 @@
+//Initialize all tooltips
+
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
 //Handle business page menu toggling
 
 $(document).on("click", ".gray-menu-item.clickable", function() {
@@ -55,4 +61,38 @@ $(document).on("click", "#bus-category-top-options div a", function(event) {
 	var newCat = encodeURIComponent($(this).html());
 
 	location.href = "/businesses/find?category=" + newCat;
+});
+
+//Change avatar on click
+
+$(document).on("click", "#sidebar-new-avatar", function() {
+	$("#new-avatar").trigger("click");
+});
+
+$(document).on("change", "#new-avatar", function() {
+	$(".ajax-cover").fadeIn(600);
+
+	var uploadField = document.getElementById("new-avatar");
+	var file = uploadField.files;
+
+	var avatarForm = new FormData();
+
+	avatarForm.append("file", file[0]);
+	avatarForm.append("authenticity_token", $("input[name=authenticity_token]").val());
+
+	$.ajax({
+		url: "http://localhost:3000/profile/upload",
+		type: "POST",
+		processData: false,
+		contentType: false,
+		data: avatarForm,
+		success: function(data) {
+			$("#sidebar-new-avatar").attr("src", data.photo);
+			$(".ajax-cover").fadeOut(600);
+		},
+		error: function() {
+			alert("There was an error processing your request.");
+			$(".ajax-cover").fadeOut(600);
+		}
+	});
 });

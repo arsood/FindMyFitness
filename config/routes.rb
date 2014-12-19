@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get "profile/edit" => "profile#edit"
   post "profile/edit" => "profile#update"
   get "profile/saves" => "profile#saves"
+  post "profile/upload" => "profile#upload"
 
   #Login
 
