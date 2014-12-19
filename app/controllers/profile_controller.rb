@@ -55,6 +55,14 @@ class ProfileController < ApplicationController
 		redirect_to "/profile/edit"
 	end
 
+	def saves
+		@user = User.find(session[:user_id])
+
+		@saves = BusinessSave.where(user_id: session[:user_id]).order(created_at: :desc)
+
+		render "profile-saves", layout: "inner-info"
+	end
+
 private
 
 	def user_params

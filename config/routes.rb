@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get "profile" => "profile#notifications"
   get "profile/edit" => "profile#edit"
   post "profile/edit" => "profile#update"
+  get "profile/saves" => "profile#saves"
 
   #Login
 

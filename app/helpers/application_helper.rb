@@ -15,9 +15,24 @@ module ApplicationHelper
 		return User.find(user_id)
 	end
 
+	#Returns full business object for business
+	def get_bus_info(bus_id)
+		return Business.find(bus_id)
+	end
+
 	#Gets member since 12/12/12
 	def get_member_since(user_id)
 		return User.find(user_id).created_at.strftime("%m/%-d/%Y")
+	end
+
+	#Get average business rating
+	def bus_avg_rating(id)
+		@average_reviews = Review.where(bus_id: id).average(:star_rating).try(:round)
+	end
+
+	#Get thumbnail for a business
+	def get_bus_thumb(bus_hash)
+		return BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc).first.business_photo.url(:medium)
 	end
 
 end
