@@ -23,7 +23,7 @@
 			<!--One Review-->
 			<div class="row margin-top-20">
 				<div class="col-sm-2">
-					<%= image_tag(get_profile_pic_thumb(review.user_id), class: "img-responsive") %>
+					<%= image_tag(get_user_avatar(review.user_id, :medium), class: "img-responsive") %>
 				</div>
 				<div class="col-sm-10">
 					<div class="bold">
