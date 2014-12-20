@@ -1,4 +1,11 @@
 class LoginController < ApplicationController
+	def index
+		if session[:user_id]
+			redirect_to "/profile"
+		else
+			render "index"
+		end
+	end
 
 	def fb_auth
 		user = User.where(auth_id: auth_hash.uid).first
