@@ -11,7 +11,7 @@ class LoginController < ApplicationController
 				
 			redirect_to "/profile"
 		else
-			fb_user = User.create(first_name: auth_hash.info.first_name, last_name: auth_hash.info.last_name, email_address: auth_hash.info.email, auth_id: auth_hash.uid, password: Time.now)
+			fb_user = User.create(first_name: auth_hash.info.first_name, last_name: auth_hash.info.last_name, email_address: auth_hash.info.email, auth_id: auth_hash.uid, password: Time.now, fb_img: auth_hash.info.image)
 
 			session[:user_id] = fb_user.id
 			session[:user_type] = fb_user.user_type

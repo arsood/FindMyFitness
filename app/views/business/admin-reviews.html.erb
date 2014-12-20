@@ -9,6 +9,12 @@
 				What Your Customers Say About You
 			</div>
 
+			<% if @business_reviews.empty? %>
+				<div class="medium-title margin-top-20">
+					No reviews yet.
+				</div>
+			<% end %>
+
 			<% @business_reviews.each do |review| 
 
 				user = get_user_info(review.user_id)

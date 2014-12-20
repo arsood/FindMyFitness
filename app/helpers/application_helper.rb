@@ -1,8 +1,19 @@
 module ApplicationHelper
+	#Get avatar in any size!
+	def get_user_avatar(user_id, size)
+		user = User.find(user_id)
 
-	#Grab a user's profile pic thumb
-	def get_profile_pic_thumb(user_id)
-		return User.find(user_id).avatar.url(:thumb)
+		if user.auth_id && !user.avatar
+			return user.fb_img
+		else
+			if size == :small
+				return user.avatar.url(:thumb)
+			elsif size == :medium
+				return user.avatar.url(:medium)
+			elsif size == :original
+				return user.avatar.url
+			end
+		end
 	end
 
 	#Generate a random MD5 hash for use in unique id's

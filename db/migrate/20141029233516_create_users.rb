@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :auth_id
+      t.string :fb_img
 
       t.timestamps
     end

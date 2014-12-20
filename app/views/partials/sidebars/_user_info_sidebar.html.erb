@@ -6,7 +6,7 @@
 	<div class="col-sm-4">
 		<div class="sidebar-avatar-container">
 			<%= render "partials/extras/ajax_loader" %>
-			<%= image_tag(@user.avatar.url(:thumb), class: "img-responsive", id: "sidebar-new-avatar", data: { toggle: "tooltip", placement: "top" }, title: "Click to Change") %>
+			<%= image_tag(get_user_avatar(session[:user_id], :medium), class: "img-responsive", id: "sidebar-new-avatar", data: { toggle: "tooltip", placement: "top" }, title: "Click to Change") %>
 			<%= form_tag do %>
 				<input class="hide" name="new-avatar" type="file" id="new-avatar" />
 			<% end %>

@@ -69,6 +69,10 @@
 	padding-top:10px;
 }
 
+.no-pad {
+	padding:0 !important;
+}
+
 /*Text Decorations*/
 
 .white-text {

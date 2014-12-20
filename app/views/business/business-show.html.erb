@@ -181,7 +181,7 @@
 
 						<div class="row margin-top-10">
 							<div class="col-sm-3">
-								<img src="/assets/temp/profile-pic.jpg" class="img-responsive" />
+								<%= image_tag(get_user_avatar(current_user.id, :medium), class: "img-responsive") %>
 							</div>
 							<div class="col-sm-9">
 								<div class="bold">
@@ -225,7 +225,7 @@
 				<div class="review-wrapper">
 					<div class="row">
 						<div class="col-sm-3">
-							<%= image_tag("temp/profile-pic.jpg", :class => "img-responsive") %>
+							<%= image_tag(get_user_avatar(current_user.id, :medium), class: "img-responsive") %>
 						</div>
 						<div class="col-sm-9">
 							<div class="bold">
