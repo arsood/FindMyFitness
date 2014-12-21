@@ -11,7 +11,7 @@
 				</div>
 			<% end %>
 
-			<%= form_tag("businesses/edit") do %>
+			<%= form_tag("businesses/edit/" + @business.id.to_s) do %>
 			<div class="extra-large-title">
 				Editing <%= @business.name %> Profile
 			</div>

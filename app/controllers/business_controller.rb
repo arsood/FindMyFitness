@@ -33,7 +33,7 @@ class BusinessController < ApplicationController
 	end
 
 	def update
-		business = Business.where(user_id: session[:user_id]).first
+		business = Business.where(id: params[:business_id]).first
 
 		#Geocode a business address before updating it
 

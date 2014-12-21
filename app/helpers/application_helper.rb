@@ -3,7 +3,7 @@ module ApplicationHelper
 	def get_user_avatar(user_id, size)
 		user = User.find(user_id)
 
-		if user.auth_id && !user.avatar
+		if user.auth_id && !user.avatar.exists?
 			return user.fb_img
 		else
 			if size == :small

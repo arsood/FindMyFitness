@@ -4,7 +4,7 @@
 #- Your saves
 - Business photo admin
 - Business analytics admin
-- Hash tag search (may need to charge more)
+- Hash tag search
 - Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)
