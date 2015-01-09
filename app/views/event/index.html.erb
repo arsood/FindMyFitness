@@ -33,14 +33,6 @@
 				</div>
 			<% end %>
 
-			<% @events.each do |event| %>
-				<% 
-
-				#Get one photo for the event show
-				event_photo = EventPhoto.where(event_id: event.event_id).try(:first)
-
-				%>
-
 			<div class="txt-right">
 				<a id="hide-calendar-button" href="#">Hide Calendar</a>
 			</div>
@@ -48,6 +40,14 @@
 			<!--Events Calendar-->
 			<div id="event-calendar" class="margin-top-20"></div>
 			<!--/Events Calendar-->
+
+			<% @events.each do |event| %>
+				<% 
+
+				#Get one photo for the event show
+				event_photo = EventPhoto.where(event_id: event.event_id).try(:first)
+
+				%>
 
 			<!--One Event-->
 			<div class="row single-event">
