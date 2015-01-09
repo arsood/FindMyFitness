@@ -9,3 +9,4 @@
 - User profile page
 - Users being able to add photos for a business (ask Stella)
 #- About me flow
+#- Events calendar

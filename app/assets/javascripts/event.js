@@ -18,6 +18,35 @@ $(document).on("click", ".left-sidebar-menu a", function(event) {
 	}
 });
 
+//Initialize full calendar
+
+$(document).ready(function() {
+	$.ajax({
+		type: "GET",
+		url: "/event/all",
+		success: function(eventData) {
+			$("#event-calendar").fullCalendar({
+				header: {
+					left:"prev",
+					center:"title",
+					right:"next"
+				},
+				dayClick: function(date, jsEvent, view) {
+					$(".fc-day").css("background-color", "");
+					$(this).css("background-color", "#E6F0F7");
+				},
+				events: eventData,
+				eventClick: function(calEvent) {
+					window.location.href = "/events/" + calEvent.id;
+				}
+			});
+		},
+		error: function() {
+			alert("There was a problem retrieving the data.");
+		}
+	});
+});
+
 //Close condition that page is events
 } });
 

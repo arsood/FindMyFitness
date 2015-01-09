@@ -1,14 +1,31 @@
 class EventController < ApplicationController
 	def index
 		if params[:category]
-			@events = Event.where(event_category: params[:category]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@events = Event.where("event_date > ?", Time.now).where(event_category: params[:category]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 			@category = params[:category]
 		else
-			@events = Event.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@events = Event.where("event_date > ?", Time.now).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		end
 
 		render "index"
+	end
+
+	def get_all_events
+		events = Event.where("event_date > ?", Time.now)
+
+		events_array = []
+
+		events.each do |event|
+			events_array << {
+				id: event.id,
+				title: event.event_name,
+				start: event.event_date.strftime("%Y-%m-%d"),
+				allDay: true
+			}
+		end
+
+		render :json => events_array
 	end
 
 	def new

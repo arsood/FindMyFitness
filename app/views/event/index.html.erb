@@ -40,6 +40,11 @@
 				event_photo = EventPhoto.where(event_id: event.event_id).try(:first)
 
 				%>
+
+			<!--Events Calendar-->
+			<div id="event-calendar"></div>
+			<!--/Events Calendar-->
+
 			<!--One Event-->
 			<div class="row single-event">
 				<div class="col-sm-4">

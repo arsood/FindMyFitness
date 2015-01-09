@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get "events/:id" => "event#show"
   post "event/new" => "event#new_event_process"
   post "event/images" => "event#image_upload"
+  get "event/all" => "event#get_all_events"
 
   #Blog
 

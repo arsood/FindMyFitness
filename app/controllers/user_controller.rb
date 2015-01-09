@@ -27,9 +27,10 @@ class UserController < ApplicationController
 
 				if user.user_type == "business"
 					session[:business_id] = Business.where(user_id: user.id).first.id
+					redirect_to "/business-admin"
+				else
+					redirect_to "/profile"
 				end
-				
-				redirect_to "/profile"
 			else
 				flash[:error] = "Sorry, that password was incorrect."
 

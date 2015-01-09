@@ -280,6 +280,10 @@
 	cursor:pointer;
 }
 
+.fc-event-container:hover {
+	cursor:pointer;
+}
+
 /*Footer*/
 
 .footer-wrapper {
