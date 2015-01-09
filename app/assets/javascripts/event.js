@@ -47,6 +47,20 @@ $(document).ready(function() {
 	});
 });
 
+//Hide and show calendar
+
+$(document).on("click", "#hide-calendar-button", function(event) {
+	event.preventDefault();
+
+	if ($("#event-calendar").is(":visible")) {
+		$("#event-calendar").slideUp();
+		$(this).html("Show Calendar");
+	} else {
+		$("#event-calendar").slideDown();
+		$(this).html("Hide Calendar");
+	}
+});
+
 //Close condition that page is events
 } });
 

@@ -1,11 +1,11 @@
 class EventController < ApplicationController
 	def index
 		if params[:category]
-			@events = Event.where("event_date > ?", Time.now).where(event_category: params[:category]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@events = Event.where("event_date > ?", Time.now).where(event_category: params[:category]).paginate(:page => params[:page], :per_page => 10).order(event_date: :asc)
 
 			@category = params[:category]
 		else
-			@events = Event.where("event_date > ?", Time.now).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@events = Event.where("event_date > ?", Time.now).paginate(:page => params[:page], :per_page => 10).order(event_date: :asc)
 		end
 
 		render "index"
