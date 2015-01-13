@@ -33,13 +33,15 @@
 				</div>
 			<% end %>
 
-			<!--Events Calendar-->
-			<div class="txt-right">
-				<a id="hide-calendar-button" href="#">Hide Calendar</a>
-			</div>
+			<% if @events.first %>
+				<!--Events Calendar-->
+				<div class="txt-right">
+					<a id="hide-calendar-button" href="#">Hide Calendar</a>
+				</div>
 
-			<div id="event-calendar" class="margin-top-20"></div>
-			<!--/Events Calendar-->
+				<div id="event-calendar" class="margin-top-20"></div>
+				<!--/Events Calendar-->
+			<% end %>
 
 			<% @events.each do |event| %>
 				<% 
