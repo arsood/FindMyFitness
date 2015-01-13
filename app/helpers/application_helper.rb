@@ -46,4 +46,9 @@ module ApplicationHelper
 		return BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc).first.business_photo.url(:medium)
 	end
 
+	#Get count of notifications for a user
+	def get_notification_count(user_id)
+		return Notification.where(owner_user_id: user_id, dismissed: false).count
+	end
+
 end

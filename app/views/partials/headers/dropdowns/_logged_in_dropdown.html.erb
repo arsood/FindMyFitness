@@ -9,7 +9,7 @@
 					<%= session[:first_name] %> <%= session[:last_name] %>
 				</div>
 				<div class="txt-left">
-					<a href="/profile">15 Notifications</a>
+					<a href="/profile"><%= pluralize(get_notification_count(session[:user_id]), "Notification") %></a>
 				</div>
 			</div>
 		</div>
