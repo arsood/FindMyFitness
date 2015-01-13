@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210180927) do
+ActiveRecord::Schema.define(version: 20150113030231) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -113,6 +113,16 @@ ActiveRecord::Schema.define(version: 20141210180927) do
     t.datetime "event_date"
     t.string   "event_time"
     t.string   "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "notification_type"
+    t.integer  "item_id"
+    t.integer  "guest_user_id"
+    t.integer  "owner_user_id"
+    t.boolean  "dismissed",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 #- Edit profile page
-- Profile notifications
-	- New blog comment
+#- Profile notifications
+	#- New blog comment
 #- Your saves
 - Business photo admin
 - Business analytics admin

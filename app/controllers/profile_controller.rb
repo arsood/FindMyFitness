@@ -35,6 +35,8 @@ class ProfileController < ApplicationController
 	def notifications
 		@user = User.find(session[:user_id])
 
+		@notifications = Notification.where(owner_user_id: session[:user_id])
+
 		render "profile-notifications", layout: "inner-info"
 	end
 
