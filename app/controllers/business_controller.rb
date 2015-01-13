@@ -72,6 +72,8 @@ class BusinessController < ApplicationController
 
 		@business_photos = BusinessPhoto.where(business_hash: @business_info.business_hash)
 
+		BusinessView.create(business_id: params[:id])
+
 		render "business-show"
 	end
 
@@ -160,6 +162,10 @@ class BusinessController < ApplicationController
 		@business_reviews = Review.where(bus_id: session[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		
 		render "admin-reviews", layout: "inner-basic"
+	end
+
+	def admin_analytics
+		render "admin-analytics"
 	end
 
 	private

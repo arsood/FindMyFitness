@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113030231) do
+ActiveRecord::Schema.define(version: 20150113190423) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 20150113030231) do
   create_table "business_services", force: true do |t|
     t.integer  "bus_id"
     t.string   "bus_service"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "business_views", force: true do |t|
+    t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
