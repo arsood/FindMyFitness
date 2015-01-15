@@ -2,6 +2,11 @@
 $(document).ready(function() {
 if ($("#page_id").length && $("#page_id").val() === "business_analytics") {
 
+var d = new Date()
+var n = d.getTimezoneOffset();
+
+console.log(n);
+
 // Get the context of the canvas element we want to select
 var ctx = document.getElementById("views-chart").getContext("2d");
 
