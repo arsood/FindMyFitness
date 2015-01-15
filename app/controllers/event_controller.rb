@@ -29,10 +29,15 @@ class EventController < ApplicationController
 	end
 
 	def new
-		#Generate random hash to be associated with images
-		@event_id = Digest::MD5.hexdigest(Time.now.to_s)
+		if session[:user_id]
+			#Generate random hash to be associated with images
+			@event_id = Digest::MD5.hexdigest(Time.now.to_s)
 
-		render "new"
+			render "new"
+		else
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
+		end
 	end
 
 	def new_event_process

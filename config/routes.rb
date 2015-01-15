@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "businesses/edit/:business_id" => "business#update"
   get "business-admin/reviews" => "business#admin_reviews"
   get "business-admin/analytics" => "business#admin_analytics"
+  post "business-admin/analytics/get-views" => "business#get_analytics_views"
 
   #User
 

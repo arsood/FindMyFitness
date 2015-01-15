@@ -168,6 +168,22 @@ class BusinessController < ApplicationController
 		render "admin-analytics"
 	end
 
+	def get_analytics_views
+		analytics_type = params[:type]
+
+		if analytics_type == "24hour"
+			views = BusinessView.where(business_id: params[:business_id]).where("created_at BETWEEN ? AND ?", (Time.now - 24.hours), Time.now).order(created_at: :asc)
+
+			labels = []
+
+			views.each do |view|
+				labels << view.created_at.beginning_of_hour.strftime("%-I %p")
+			end
+
+			render :json => { labels: labels }
+		end
+	end
+
 	private
 
 	def bus_params
