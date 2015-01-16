@@ -5,14 +5,14 @@ if ($("#page_id").length && $("#page_id").val() === "business_analytics") {
 var newDate = new Date()
 var timeOff = newDate.getTimezoneOffset();
 
-function get24Hour() {
+function getAnalyticsChart(type) {
 	$.ajax({
 		type: "POST",
 		url: "http://localhost:3000/business-admin/analytics/get-views",
 		data: {
 			business_id: $("#business_id").val(),
 			authenticity_token: $("input[name=authenticity_token]").val(),
-			type: "24hour",
+			type: type,
 			time_offset: timeOff
 		},
 		success: function(data) {
@@ -29,7 +29,7 @@ function get24Hour() {
 	});
 }
 
-get24Hour();
+getAnalyticsChart("24hour");
 
 //Close condition that has to be business analytics
 } });
