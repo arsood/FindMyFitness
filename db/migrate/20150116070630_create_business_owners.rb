@@ -3,7 +3,7 @@ class CreateBusinessOwners < ActiveRecord::Migration
     create_table :business_owners do |t|
       t.integer :user_id
       t.integer :business_id
-      t.boolean :business_paid
+      t.boolean :business_paid, default: false
 
       t.timestamps
     end

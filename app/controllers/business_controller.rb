@@ -1,10 +1,11 @@
 class BusinessController < ApplicationController
 	def signup
-		if session[:business_user_id]
-			@header_text = "Create Your Business Profile"
+		if session[:user_id]
+			@header_text = "Add a New Business"
 			render "business-signup", layout: "inner-basic"
 		else
-			redirect_to "/"
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
 		end
 	end
 
@@ -15,11 +16,19 @@ class BusinessController < ApplicationController
 
 		#Merge user_id and geocode results into the business params
 
-		business_params = bus_params.merge(user_id: session[:business_user_id], lat: business_geo.lat, lng: business_geo.lng)
+		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng)
 
 		#Create the new business
 
 		newBus = Business.create(business_params)
+
+		#Make user a business user
+
+		User.find(session[:user_id]).update_attributes(user_type: "business")
+
+		#Add user as owner of this business
+
+		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id)
 		
 		#Add services to a business
 
