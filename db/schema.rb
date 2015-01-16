@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116070630) do
+ActiveRecord::Schema.define(version: 20150116203401) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -137,6 +137,14 @@ ActiveRecord::Schema.define(version: 20150116070630) do
     t.integer  "guest_user_id"
     t.integer  "owner_user_id"
     t.boolean  "dismissed",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "review_replies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.text     "reply_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

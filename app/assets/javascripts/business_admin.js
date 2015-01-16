@@ -132,3 +132,20 @@ $(document).on("click", ".profile-photos-container i", function(event) {
 
 //Close condition that has to be business admin photos
 } });
+
+//Execute only when business admin reviews page is shown
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "business_reviews") {
+
+//Set id and show modal for replying to reviews
+
+$(document).on("click", ".toggle-review-reply", function(event) {
+	event.preventDefault();
+
+	$("#review-id").val($(this).attr("data-id"));
+
+	$("#review-reply-modal").modal("show");
+});
+
+//Close condition that has to be business admin reviews
+} });

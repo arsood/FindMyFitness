@@ -176,7 +176,7 @@ class BusinessController < ApplicationController
 
 			@business_reviews = Review.where(bus_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 			
-			render "admin-reviews", layout: "inner-basic"
+			render "admin-reviews"
 		else
 			redirect_to "/"
 		end
@@ -315,6 +315,16 @@ class BusinessController < ApplicationController
 			end
 		else
 			render :json => { result: "error", error: "You do not have permission to delete this photo." }
+		end
+	end
+
+	def admin_save_reply
+		if params[:reply_text] == ""
+			redirect_to :back
+		else
+			if ReviewReply.create(user_id: session[:user_id], review_id: params[:review_id], reply_text: params[:reply_text])
+				redirect_to :back
+			end
 		end
 	end
 

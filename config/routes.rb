@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post "business-admin/analytics/get-views" => "business#get_analytics_views"
   get "business-admin/photos/:business_id" => "business#get_photos"
   post "business-admin/photos/:business_id/delete" => "business#delete_photo"
+  post "business-admin/reviews/reply" => "business#admin_save_reply"
 
   #User
 

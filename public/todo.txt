@@ -2,8 +2,9 @@
 #- Profile notifications
 	#- New blog comment
 #- Your saves
-- Business photo admin
+#- Business photo admin
 #- Business analytics admin
+- Comments on reviews
 - Hash tag search
 - Blog followers
 - User profile page
