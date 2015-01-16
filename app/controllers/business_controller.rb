@@ -128,8 +128,14 @@ class BusinessController < ApplicationController
 	end
 
 	def admin_index
-		if session[:user_type] == "business" && session[:business_id]
-			@business = Business.where(user_id: session[:user_id]).first
+		@businesses_owned = BusinessOwner.where(user_id: session[:user_id])
+
+		render "admin-index"
+	end
+
+	def admin_edit
+		if is_owner(params[:business_id])
+			@business = Business.find(params[:business_id])
 
 			services = BusinessService.where(bus_id: @business.id)
 
@@ -143,8 +149,7 @@ class BusinessController < ApplicationController
 
 			render "admin-edit-profile", layout: "inner-basic"
 		else
-			flash[:error] = "You are not logged in as a business user."
-			redirect_to "/login"
+			redirect_to "/"
 		end
 	end
 
@@ -157,15 +162,23 @@ class BusinessController < ApplicationController
 	end
 
 	def admin_reviews
-		@header_text = "Your Reviews"
+		if is_owner(params[:business_id])
+			@header_text = "Your Reviews"
 
-		@business_reviews = Review.where(bus_id: session[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
-		
-		render "admin-reviews", layout: "inner-basic"
+			@business_reviews = Review.where(bus_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			
+			render "admin-reviews", layout: "inner-basic"
+		else
+			redirect_to "/"
+		end
 	end
 
 	def admin_analytics
-		render "admin-analytics"
+		if is_owner(params[:business_id])
+			render "admin-analytics"
+		else
+			redirect_to "/"
+		end
 	end
 
 	def get_analytics_views
@@ -277,6 +290,10 @@ class BusinessController < ApplicationController
 	end
 
 	private
+
+	def is_owner(business_id)
+		return BusinessOwner.where(user_id: session[:user_id], business_id: business_id).exists?
+	end
 
 	def bus_params
 		params.require(:business).permit(:name, :business_type, :address, :city, :state, :zipcode, :phone, :website, :description, :availability, :business_hash)

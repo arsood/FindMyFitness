@@ -7,12 +7,7 @@ class UserController < ApplicationController
 
 		session[:tmp_user_id] = new_user.id
 
-		if params[:user][:user_type] == "business"
-			session[:business_user_id] = new_user.id
-			redirect_to "/business-signup"
-		else
-			redirect_to "/"
-		end
+		redirect_to "/"
 	end
 
 	def login_process
@@ -51,7 +46,7 @@ class UserController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:username, :password, :first_name, :last_name, :email_address, :city, :state, :user_type, :avatar, :about_me)
+		params.require(:user).permit(:username, :password, :first_name, :last_name, :email_address, :city, :state, :avatar, :about_me)
 	end
 
 end

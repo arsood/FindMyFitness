@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   #Business admin
 
   get "business-admin" => "business#admin_index"
+  get "business-admin/edit/:business_id" => "business#admin_edit"
   post "businesses/edit/:business_id" => "business#update"
-  get "business-admin/reviews" => "business#admin_reviews"
-  get "business-admin/analytics" => "business#admin_analytics"
+  get "business-admin/reviews/:business_id" => "business#admin_reviews"
+  get "business-admin/analytics/:business_id" => "business#admin_analytics"
   post "business-admin/analytics/get-views" => "business#get_analytics_views"
 
   #User

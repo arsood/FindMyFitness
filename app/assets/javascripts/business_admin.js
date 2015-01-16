@@ -54,3 +54,22 @@ $(document).on("click", "#analytics-year", function() {
 
 //Close condition that has to be business analytics
 } });
+
+//Execute only when business admin index page is shown
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "business_admin_index") {
+
+$(document).on("mouseenter", ".admin-select-business", function() {
+	$(this).find(".admin-select-business-label").slideDown();
+});
+
+$(document).on("mouseleave", ".admin-select-business", function() {
+	$(this).find(".admin-select-business-label").slideUp();
+});
+
+$(document).on("click", ".admin-select-business", function() {
+	window.location.href = "/business-admin/edit/" + $(this).attr("data-id");
+});
+
+//Close condition that has to be business admin index
+} });

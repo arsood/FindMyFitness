@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113190423) do
+ActiveRecord::Schema.define(version: 20150116070630) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20150113190423) do
     t.text     "post_text"
     t.string   "post_title"
     t.string   "post_privacy", default: "public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "business_owners", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.boolean  "business_paid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

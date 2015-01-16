@@ -1,0 +1,26 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_admin_index" />
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="large-title">
+		Select a Business to Manage
+	</div>
+
+	<!--One Business-->
+	<% @businesses_owned.each do |owned| 
+
+		business = get_bus_info(owned.business_id)
+
+	%>
+		<div class="row margin-top-20">
+			<div class="col-sm-3">
+				<div class="admin-select-business" style="background:url(<%= get_bus_thumb(business.business_hash) %>) no-repeat;" data-id="<%= business.id %>">
+					<div class="admin-select-business-label">
+						<%= business.name %>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+	<!--/One Business-->
+</div>
+<!--/Main-->

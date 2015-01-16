@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :password
       t.string :password_digest
-      t.string :user_type
+      t.string :user_type, default: "standard"
       t.string :city
       t.string :state
       t.string :auth_id
