@@ -16,14 +16,19 @@ function getAnalyticsChart(type) {
 			time_offset: timeOff
 		},
 		success: function(data) {
-			$("#chart-container").html("<canvas id='views-chart' height='400'></canvas>");
+			if (data.labels.length <= 1) {
+				$("#chart-container").html("<div class='medium-title'>Not enough data to show anything.</div>");
+			} else {
+				//Reset canvas on every call
+				$("#chart-container").html("<canvas id='views-chart' height='400'></canvas>");
 
-			var containerWidth = $("#chart-container").width();
-			$("#views-chart").attr("width", containerWidth);
+				var containerWidth = $("#chart-container").width();
+				$("#views-chart").attr("width", containerWidth);
 
-			var ctx = document.getElementById("views-chart").getContext("2d");
+				var ctx = document.getElementById("views-chart").getContext("2d");
 
-			var viewsChart = new Chart(ctx).Line(data);
+				var viewsChart = new Chart(ctx).Line(data);
+			}
 		},
 		error: function() {
 			alert("There was an error retrieving the data.");

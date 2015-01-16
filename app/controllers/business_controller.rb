@@ -214,7 +214,7 @@ class BusinessController < ApplicationController
 				time_offset = params[:time_offset].to_i
 				created_time = view.created_at - (time_offset.minutes)
 
-				labels << created_time.beginning_of_hour.strftime("%e")
+				labels << created_time.strftime("%e")
 			end
 
 			#Give me a count of each item in groups
@@ -248,7 +248,7 @@ class BusinessController < ApplicationController
 				time_offset = params[:time_offset].to_i
 				created_time = view.created_at - (time_offset.minutes)
 
-				labels << created_time.beginning_of_hour.strftime("%B")
+				labels << created_time.strftime("%B")
 			end
 
 			#Give me a count of each item in groups
