@@ -16,6 +16,8 @@ function getAnalyticsChart(type) {
 			time_offset: timeOff
 		},
 		success: function(data) {
+			$("#chart-container").html("<canvas id='views-chart' height='400'></canvas>");
+
 			var containerWidth = $("#chart-container").width();
 			$("#views-chart").attr("width", containerWidth);
 
@@ -30,6 +32,20 @@ function getAnalyticsChart(type) {
 }
 
 getAnalyticsChart("24hour");
+
+//Change analytics type on button click
+
+$(document).on("click", "#analytics-24-hour", function() {
+	getAnalyticsChart("24hour");
+});
+
+$(document).on("click", "#analytics-month", function() {
+	getAnalyticsChart("month");
+});
+
+$(document).on("click", "#analytics-year", function() {
+	getAnalyticsChart("year");
+});
 
 //Close condition that has to be business analytics
 } });
