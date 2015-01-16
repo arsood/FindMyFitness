@@ -174,36 +174,38 @@ class BusinessController < ApplicationController
 		if analytics_type == "24hour"
 			views = BusinessView.where(business_id: params[:business_id]).where("created_at BETWEEN ? AND ?", (Time.now - 24.hours), Time.now).order(created_at: :asc)
 
-			data_label = "24 Hour View Data"
+			labels = []
+
+			views.each do |view|
+				time_offset = params[:time_offset].to_i
+				created_time = view.created_at - (time_offset.minutes)
+
+				labels << created_time.beginning_of_hour.strftime("%-I %p")
+			end
+
+			#Give me a count of each item in groups
+
+			counts = Hash.new(0)
+
+			labels.each do |label|
+				counts[label] += 1
+			end
+
+			#Spit out JSON formatted for use in Chart.js
+
+			render :json => { labels: labels.uniq, datasets: [
+				{
+					label: "24 Hour View Data",
+		            fillColor: "rgba(151,187,205,0.2)",
+		            strokeColor: "rgba(151,187,205,1)",
+		            pointColor: "rgba(151,187,205,1)",
+		            pointStrokeColor: "#fff",
+		            pointHighlightFill: "#fff",
+		            pointHighlightStroke: "rgba(151,187,205,1)",
+		            data: counts.values
+				}
+			] }
 		end
-
-		labels = []
-
-		views.each do |view|
-			time_offset = params[:time_offset].to_i
-			created_time = view.created_at - (time_offset.minutes)
-
-			labels << created_time.beginning_of_hour.strftime("%-I %p")
-		end
-
-		counts = Hash.new(0)
-
-		labels.each do |label|
-			counts[label] += 1
-		end
-
-		render :json => { labels: labels.uniq, datasets: [
-			{
-				label: data_label,
-	            fillColor: "rgba(220,220,220,0.2)",
-	            strokeColor: "rgba(220,220,220,1)",
-	            pointColor: "rgba(220,220,220,1)",
-	            pointStrokeColor: "#fff",
-	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: "rgba(220,220,220,1)",
-	            data: counts.values
-			}
-		] }
 	end
 
 	private

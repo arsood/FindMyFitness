@@ -1,5 +1,7 @@
 <!--Main-->
 <input type="hidden" id="page_id" value="business_analytics" />
+<input type="hidden" id="business_id" value="<%= session[:business_id] %>" />
+<%= form_tag do end %>
 <div class="container margin-top-20 margin-bottom-50">
 	<div class="row">
 		<div class="col-sm-2">
@@ -11,7 +13,15 @@
 			</div>
 
 			<div class="margin-top-20">
-				<canvas id="views-chart" width="400" height="400"></canvas>
+				<div class="btn-group" role="group" aria-label="...">
+					<button type="button" class="btn btn-default active">Past 24 Hours</button>
+					<button type="button" class="btn btn-default">Past Month</button>
+					<button type="button" class="btn btn-default">Past Year</button>
+				</div>
+			</div>
+
+			<div id="chart-container" class="margin-top-20">
+				<canvas id="views-chart" height="400"></canvas>
 			</div>
 		</div>
 	</div>
