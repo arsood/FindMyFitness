@@ -7,7 +7,9 @@ class UserController < ApplicationController
 
 		session[:tmp_user_id] = new_user.id
 
-		redirect_to "/"
+		flash[:success] = "Thanks for signing up! Please log in."
+
+		redirect_to "/login"
 	end
 
 	def login_process
@@ -20,12 +22,7 @@ class UserController < ApplicationController
 				session[:first_name] = user.first_name
 				session[:last_name] = user.last_name
 
-				if user.user_type == "business"
-					session[:business_id] = Business.where(user_id: user.id).first.id
-					redirect_to "/business-admin"
-				else
-					redirect_to "/profile"
-				end
+				redirect_to "/profile"
 			else
 				flash[:error] = "Sorry, that password was incorrect."
 

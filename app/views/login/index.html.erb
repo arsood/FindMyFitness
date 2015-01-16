@@ -9,6 +9,13 @@
 			</div>
 		</div>
 	<% end %>
+	<% if flash[:success] %>
+		<div class="small-container">
+			<div class="alert alert-success">
+				<%= flash[:success] %>
+			</div>
+		</div>
+	<% end %>
 	<div class="login-wrapper">
 		<div class="bold">
 			Username
