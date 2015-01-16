@@ -1,0 +1,43 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_photos" />
+<input type="hidden" id="business_id" value="<%= params[:business_id] %>" />
+<%= form_tag do end %>
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="extra-large-title">
+				Photos of your Business
+			</div>
+
+			<div class="margin-top-10">
+				<div class="pull-right">
+					<span class="bold">Edit Mode:</span>
+					<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
+					<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<% @bus_photos.in_groups_of(4, false) do |group| %>
+				<div class="row margin-top-20">
+					<% group.each do |photo| %>
+						<div class="col-sm-3" id="photo<%= photo.id %>">
+							<div class="profile-photos-container" style="background:url(<%= photo.business_photo.url(:medium) %>) no-repeat;">
+								<i class="fa fa-times-circle hide" data-id="<%= photo.id %>"></i>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+
+			<div class="margin-top-10">
+				<%= will_paginate(@bus_photos) %>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

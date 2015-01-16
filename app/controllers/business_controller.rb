@@ -298,6 +298,26 @@ class BusinessController < ApplicationController
 		end
 	end
 
+	def get_photos
+		bus_hash = Business.find(params[:business_id]).business_hash
+
+		@bus_photos = BusinessPhoto.where(business_hash: bus_hash).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+
+		render "admin-photos"
+	end
+
+	def delete_photo
+		if is_owner(params[:business_id])
+			if BusinessPhoto.find(params[:image_id]).destroy
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "There was a problem deleting that photo." }
+			end
+		else
+			render :json => { result: "error", error: "You do not have permission to delete this photo." }
+		end
+	end
+
 	private
 
 	def is_owner(business_id)

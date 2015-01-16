@@ -6,12 +6,9 @@ Rails.application.routes.draw do
 
   post "business-signup" => "business#signup_process"
   post "business/save" => "business#save_business"
-
   post "business/images" => "business#image_upload"
-
   get "business-signup" => "business#signup"
   get "business/:id" => "business#business_show"
-
   get "businesses/find" => "business#search"
   post "review/new" => "business#new_review"
 
@@ -23,6 +20,8 @@ Rails.application.routes.draw do
   get "business-admin/reviews/:business_id" => "business#admin_reviews"
   get "business-admin/analytics/:business_id" => "business#admin_analytics"
   post "business-admin/analytics/get-views" => "business#get_analytics_views"
+  get "business-admin/photos/:business_id" => "business#get_photos"
+  post "business-admin/photos/:business_id/delete" => "business#delete_photo"
 
   #User
 

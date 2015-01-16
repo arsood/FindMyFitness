@@ -3,10 +3,19 @@
 	#- New blog comment
 #- Your saves
 - Business photo admin
-- Business analytics admin
+#- Business analytics admin
 - Hash tag search
 - Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)
+- FMF Admin panel
+- Forgot password
+- Payments
+- FMF Analytics
+- Spam reporting
+- Blog like and share
+- Homepage
+- Misc pages (about, contact, etc.)
+- Photos with reviews
 #- About me flow
 #- Events calendar
