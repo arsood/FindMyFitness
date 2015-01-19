@@ -28,6 +28,8 @@ gem 'pry-rails'
 
 gem 'omniauth-facebook'
 
+gem 'braintree'
+
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

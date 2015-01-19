@@ -30,6 +30,8 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
     bcrypt (3.1.9-x86-mingw32)
+    braintree (2.38.0)
+      builder (>= 2.0.0)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -169,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  braintree
   font-awesome-rails
   geokit-rails
   jbuilder (~> 2.0)
