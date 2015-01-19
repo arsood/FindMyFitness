@@ -23,6 +23,18 @@
 			<div id="chart-container" class="margin-top-20">
 				<!--Canvas Here-->
 			</div>
+
+			<div class="row margin-top-20 admin-analytics-numbers-wrapper">
+				<div class="col-sm-4">
+					<%= pluralize(@review_num, "Review") %>
+				</div>
+				<div class="col-sm-4">
+					<%= pluralize(@saves_num, "Save") %>
+				</div>
+				<div class="col-sm-4">
+					<%= pluralize(bus_avg_rating(params[:business_id]), "Star") %> Overall
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

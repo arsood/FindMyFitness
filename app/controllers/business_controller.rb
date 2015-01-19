@@ -184,6 +184,9 @@ class BusinessController < ApplicationController
 
 	def admin_analytics
 		if is_owner(params[:business_id])
+			@saves_num = BusinessSave.where(business_id: params[:business_id]).count
+			@review_num = Review.where(bus_id: params[:business_id]).count
+
 			render "admin-analytics"
 		else
 			redirect_to "/"
