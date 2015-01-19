@@ -215,6 +215,11 @@
 	padding:10px 0;
 }
 
+.review-reply-wrapper {
+	padding:10px 0;
+	background-color:#E8F9FF;
+}
+
 .review-wrapper {
 	padding:20px 0;
 	border-bottom:#CCC 1px solid;
