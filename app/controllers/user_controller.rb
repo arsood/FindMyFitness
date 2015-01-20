@@ -40,6 +40,51 @@ class UserController < ApplicationController
 		redirect_to "/"
 	end
 
+	def forgot_password
+		render "forgot-password"
+	end
+
+	def forgot_password_1
+		user = User.where(email_address: params[:email_address]).first
+
+		if user
+			token = Digest::MD5.hexdigest(Time.now.to_s)
+
+			user.reset_token = token
+
+			user.save
+
+			UserMailer.forgot_password(token, user).deliver
+
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "No user found." }
+		end
+	end
+
+	def forgot_password_2
+		user = User.where(email_address: params[:email_address], reset_token: params[:reset_token]).first
+
+		if user
+			render :json => { result: "ok", token: user.reset_token }
+		else
+			render :json => { result: "error", error: "Invalid token." }
+		end
+	end
+
+	def forgot_password_3
+		user = User.where(email_address: params[:email_address], reset_token: params[:reset_token]).first
+
+		if user
+			user.password = params[:new_password]
+			user.save
+
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "Invalid credentials." }
+		end
+	end
+
 	private
 
 	def user_params

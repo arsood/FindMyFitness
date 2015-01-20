@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   post "/newuser" => "user#signup_process"
   post "/login" => "user#login_process"
   get "/logout" => "user#logout_process"
+  get "/forgot-password" => "user#forgot_password"
+  post "/forgot-password/1" => "user#forgot_password_1"
+  post "/forgot-password/2" => "user#forgot_password_2"
+  post "/forgot-password/3" => "user#forgot_password_3"
 
   #Event
 

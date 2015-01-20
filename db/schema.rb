@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150120184528) do
   create_table "business_owners", force: true do |t|
     t.integer  "user_id"
     t.integer  "business_id"
-    t.boolean  "business_paid"
+    t.boolean  "business_paid", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -182,11 +182,12 @@ ActiveRecord::Schema.define(version: 20150120184528) do
     t.string   "username"
     t.string   "password"
     t.string   "password_digest"
-    t.string   "user_type"
+    t.string   "user_type",           default: "standard"
     t.string   "city"
     t.string   "state"
     t.string   "auth_id"
     t.string   "fb_img"
+    t.string   "reset_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
