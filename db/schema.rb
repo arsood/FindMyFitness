@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116203401) do
+ActiveRecord::Schema.define(version: 20150120184528) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -141,6 +141,14 @@ ActiveRecord::Schema.define(version: 20150116203401) do
     t.datetime "updated_at"
   end
 
+  create_table "payment_methods", force: true do |t|
+    t.string   "payment_token"
+    t.string   "customer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "review_replies", force: true do |t|
     t.integer  "user_id"
     t.integer  "review_id"
@@ -154,6 +162,14 @@ ActiveRecord::Schema.define(version: 20150116203401) do
     t.integer  "bus_id"
     t.integer  "star_rating"
     t.text     "review_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "plan_type"
+    t.string   "subscription_status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
