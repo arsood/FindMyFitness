@@ -43,7 +43,13 @@ module ApplicationHelper
 
 	#Get thumbnail for a business
 	def get_bus_thumb(bus_hash)
-		return BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc).first.business_photo.url(:medium)
+		photo = BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc).first
+
+		if photo
+			return photo.business_photo.url(:medium)
+		else
+			return "/assets/temp/slide1.jpg"
+		end
 	end
 
 	#Get count of notifications for a user

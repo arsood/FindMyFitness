@@ -10,7 +10,7 @@
 - User profile page
 - Users being able to add photos for a business (ask Stella)
 - FMF Admin panel
-- Forgot password
+#- Forgot password
 - Payments
 - FMF Analytics
 - Spam reporting
