@@ -20,7 +20,5 @@ public/system/
 public/assets/
 
 config/secrets.yml
-config/initializers/braintree.rb
-config/initializers/mailer_settings.rb
 
 .DS_Store
