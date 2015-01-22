@@ -5,6 +5,8 @@ if ($("#page_id").length && $("#page_id").val() === "forgot_password") {
 $(document).on("click", "#step1-button", function(event) {
 	event.preventDefault();
 
+	$(this).attr("disabled", "disabled").html("Loading...");
+
 	$.ajax({
 		url: "/forgot-password/1",
 		type: "POST",
@@ -20,6 +22,7 @@ $(document).on("click", "#step1-button", function(event) {
 			} else {
 				$("#error-container").slideDown();
 				$("#reset-error-text").html(data.error);
+				$("#step1-button").removeAttr("disabled").html("Reset Your Password");
 			}
 		},
 		error: function() {
