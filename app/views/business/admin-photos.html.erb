@@ -2,7 +2,7 @@
 <input type="hidden" id="page_id" value="business_photos" />
 <input type="hidden" id="business_id" value="<%= params[:business_id] %>" />
 <%= form_tag do end %>
-<div class="container margin-top-20 margin-bottom-50">
+<div class="container margin-top-50 margin-bottom-50">
 	<div class="row">
 		<div class="col-sm-2">
 			<%= render "partials/sidebars/business_admin_sidebar" %>
@@ -12,15 +12,22 @@
 				Photos of your Business
 			</div>
 
-			<div class="margin-top-10">
-				<div class="pull-right">
-					<span class="bold">Edit Mode:</span>
-					<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
-					<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+			<% if !@bus_photos.empty? %>
+				<div class="margin-top-10">
+					<div class="pull-right">
+						<span class="bold">Edit Mode:</span>
+						<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
+						<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+					</div>
 				</div>
-			</div>
+				<div class="clearfix"></div>
+			<% end %>
 
-			<div class="clearfix"></div>
+			<% if @bus_photos.empty? %>
+				<div class="medium-title margin-top-20">
+					No photos yet.
+				</div>
+			<% end %>
 
 			<% @bus_photos.in_groups_of(4, false) do |group| %>
 				<div class="row margin-top-20">

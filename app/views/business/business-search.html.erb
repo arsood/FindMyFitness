@@ -21,7 +21,7 @@
 		<div>
 			<div class="row one-business-search">
 				<div class="col-sm-4">
-					<a href="/business/<%= business.id %>"><%= image_tag(get_bus_thumb(business.business_hash), class: "img-responsive") %></a>
+					<a href="/business/<%= business.id %>"><%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %></a>
 				</div>
 				<div class="col-sm-8">
 					<div class="medium-title">

@@ -42,13 +42,17 @@ module ApplicationHelper
 	end
 
 	#Get thumbnail for a business
-	def get_bus_thumb(bus_hash)
-		photo = BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc).first
+	def get_bus_thumb(bus_hash, type)
+		photo = BusinessPhoto.where(business_hash: bus_hash).order(created_at: :desc)
 
-		if photo
-			return photo.business_photo.url(:medium)
+		if photo.first
+			return photo.first.business_photo.url(:medium)
 		else
-			return "/assets/temp/slide1.jpg"
+			if type == :link
+				return "/assets/temp/slide1.jpg"
+			else
+				return "temp/slide1.jpg"
+			end
 		end
 	end
 

@@ -156,7 +156,7 @@ class BusinessController < ApplicationController
 
 			@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
 
-			render "admin-edit-profile", layout: "inner-basic"
+			render "admin-edit-profile"
 		else
 			redirect_to "/"
 		end
