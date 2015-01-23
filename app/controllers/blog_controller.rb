@@ -91,6 +91,9 @@ class BlogController < ApplicationController
 			end
 		else
 			if BlogFollower.create(owner_id: params[:owner_id], follower_id: session[:user_id])
+
+				Notification.create(notification_type: "new_follower", item_id: nil, guest_user_id: session[:user_id], owner_user_id: params[:owner_id])
+
 				render :json => { result: "ok", state: "added" }
 			else
 				render :json => { result: "error", error: "There was a problem adding the follower." }
@@ -100,6 +103,12 @@ class BlogController < ApplicationController
 
 	def my_followers
 		@followers = BlogFollower.where(owner_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		render "followers"
+	end
+
+	def public_followers
+		@followers = BlogFollower.where(owner_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "followers"
 	end
