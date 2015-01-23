@@ -80,6 +80,24 @@ class BlogController < ApplicationController
 		end
 	end
 
+	def save_follower
+		follower = BlogFollower.where(owner_id: params[:owner_id], follower_id: session[:user_id])
+
+		if follower.exists?
+			if follower.first.destroy
+				render :json => { result: "ok", state: "removed" }
+			else
+				render :json => { result: "error", error: "There was an error removing the follower." }
+			end
+		else
+			if BlogFollower.create(owner_id: params[:owner_id], follower_id: session[:user_id])
+				render :json => { result: "ok", state: "added" }
+			else
+				render :json => { result: "error", error: "There was a problem adding the follower." }
+			end
+		end
+	end
+
 private
 	
 	def blog_params

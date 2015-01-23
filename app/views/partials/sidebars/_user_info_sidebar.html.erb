@@ -1,3 +1,5 @@
+<%= form_tag do end %>
+
 <div class="gray-menu-item txt-center">
 	<%= @sidebar_header_text %>
 </div>
@@ -17,15 +19,15 @@
 			<%= @user.first_name %> <%= @user.last_name[0] %>.
 		</div>
 		<div class="margin-top-10">
-			<a href="#">10 Followers</a>
+			<a href="#"><%= get_follower_num(@user.id) %> Followers</a>
 		</div>
 		<div>
-			<a href="#">10 Following</a>
+			<a href="#"><%= get_following_num(@user.id) %> Following</a>
 		</div>
 
-		<% if @user.id != session[:user_id] %>
+		<% if session[:user_id] && @user.id != session[:user_id] %>
 			<div class="margin-top-10">
-				<a href="#">Follow <%= @user.first_name %></a>
+				<a href="#" id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @user.first_name %>"><%= get_follow_text(@user) %></a>
 			</div>
 		<% end %>
 	</div>

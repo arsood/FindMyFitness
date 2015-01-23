@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get "blogs" => "blog#index_public"
   get "post/:id" => "blog#post_show"
   post "comments/:id" => "blog#save_comment"
+  post "followers/add" => "blog#save_follower"
   
   #Profile
 

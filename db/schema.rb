@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120184528) do
+ActiveRecord::Schema.define(version: 20150123194556) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
     t.integer  "commentor_id"
     t.text     "blog_comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blog_followers", force: true do |t|
+    t.integer  "owner_id"
+    t.integer  "follower_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
