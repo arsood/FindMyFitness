@@ -69,3 +69,13 @@ if ($("#page_id").length && $("#page_id").val() === "show_post") {
 
 //Close condition that has to be post show page
 } });
+
+function resizeBlockImages() {
+	$(".responsive-block-image").css("height", $(".responsive-block-image").width());
+}
+
+$(window).resize(function() {
+	resizeBlockImages();
+});
+
+resizeBlockImages();

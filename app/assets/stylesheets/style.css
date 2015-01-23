@@ -40,6 +40,10 @@
 	margin-right:auto;
 }
 
+.responsive-block-image {
+	background-size:cover !important;
+}
+
 .fmf-nav-menu a {
 	text-decoration:none;
 }
