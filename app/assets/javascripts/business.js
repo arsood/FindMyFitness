@@ -147,7 +147,7 @@ if ($("#page_id").length && $("#page_id").val() === "business_search") {
 
 //Execute only when business signup page is shown
 $(document).ready(function() {
-if ($("#page_id").length && $("#page_id").val() === "business_signup") {
+if ($("#page_id").length && ($("#page_id").val() === "business_signup" || $("#page_id").val() === "business_photos")) {
 
 	//Initiate Dropzone for new business
 

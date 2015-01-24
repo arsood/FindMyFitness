@@ -113,6 +113,12 @@ class BlogController < ApplicationController
 		render "followers"
 	end
 
+	def public_following
+		@followers = BlogFollower.where(follower_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		render "followers"
+	end
+
 private
 	
 	def blog_params

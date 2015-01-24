@@ -302,9 +302,9 @@ class BusinessController < ApplicationController
 	end
 
 	def get_photos
-		bus_hash = Business.find(params[:business_id]).business_hash
+		@bus_hash = Business.find(params[:business_id]).business_hash
 
-		@bus_photos = BusinessPhoto.where(business_hash: bus_hash).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+		@bus_photos = BusinessPhoto.where(business_hash: @bus_hash).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
 		render "admin-photos"
 	end

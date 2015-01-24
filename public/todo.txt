@@ -6,7 +6,7 @@
 #- Business analytics admin
 - Comments on reviews - Display on business show page
 - Hash tag search
-- Blog followers
+#- Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)
 - FMF Admin panel

@@ -19,10 +19,10 @@
 			<%= @user.first_name %> <%= @user.last_name[0] %>.
 		</div>
 		<div class="margin-top-10">
-			<a href="#"><%= get_follower_num(@user.id) %> Followers</a>
+			<a href="/followers/<%= @user.id %>"><%= get_follower_num(@user.id) %> Followers</a>
 		</div>
 		<div>
-			<a href="#"><%= get_following_num(@user.id) %> Following</a>
+			<a href="/following/<%= @user.id %>"><%= get_following_num(@user.id) %> Following</a>
 		</div>
 
 		<% if session[:user_id] && @user.id != session[:user_id] %>

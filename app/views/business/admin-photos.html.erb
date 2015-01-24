@@ -1,6 +1,7 @@
 <!--Main-->
 <input type="hidden" id="page_id" value="business_photos" />
 <input type="hidden" id="business_id" value="<%= params[:business_id] %>" />
+<input type="hidden" name="business[business_hash]" value="<%= @bus_hash %>" />
 <%= form_tag do end %>
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="row">
@@ -12,37 +13,53 @@
 				Photos of your Business
 			</div>
 
-			<% if !@bus_photos.empty? %>
-				<div class="margin-top-10">
-					<div class="pull-right">
-						<span class="bold">Edit Mode:</span>
-						<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
-						<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+			<div role="tabpanel" class="margin-top-20">
+				<!-- Nav Tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#current-photos-tab" role="tab" data-toggle="tab">Current Photos</a></li>
+					<li role="presentation"><a href="#add-photos-tab" role="tab" data-toggle="tab">Add New Photos</a></li>
+				</ul>
+				<!--/Nav Tabs-->
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="current-photos-tab">
+						<% if !@bus_photos.empty? %>
+							<div class="margin-top-10">
+								<div class="pull-right">
+									<span class="bold">Edit Mode:</span>
+									<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
+									<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						<% end %>
+
+						<% if @bus_photos.empty? %>
+							<div class="medium-title margin-top-20">
+								No photos yet.
+							</div>
+						<% end %>
+
+						<% @bus_photos.in_groups_of(4, false) do |group| %>
+							<div class="row margin-top-20">
+								<% group.each do |photo| %>
+									<div class="col-sm-3" id="photo<%= photo.id %>">
+										<div class="profile-photos-container" style="background:url(<%= photo.business_photo.url(:medium) %>) no-repeat;">
+											<i class="fa fa-times-circle hide" data-id="<%= photo.id %>"></i>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
+
+						<div class="margin-top-10">
+							<%= will_paginate(@bus_photos) %>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane fade" id="add-photos-tab">
+						<div class="margin-top-20 dropzone" id="drop-area"></div>
 					</div>
 				</div>
-				<div class="clearfix"></div>
-			<% end %>
-
-			<% if @bus_photos.empty? %>
-				<div class="medium-title margin-top-20">
-					No photos yet.
-				</div>
-			<% end %>
-
-			<% @bus_photos.in_groups_of(4, false) do |group| %>
-				<div class="row margin-top-20">
-					<% group.each do |photo| %>
-						<div class="col-sm-3" id="photo<%= photo.id %>">
-							<div class="profile-photos-container" style="background:url(<%= photo.business_photo.url(:medium) %>) no-repeat;">
-								<i class="fa fa-times-circle hide" data-id="<%= photo.id %>"></i>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			<% end %>
-
-			<div class="margin-top-10">
-				<%= will_paginate(@bus_photos) %>
 			</div>
 		</div>
 	</div>
