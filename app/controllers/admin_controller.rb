@@ -20,7 +20,7 @@ class AdminController < ApplicationController
 		elsif item_type == "post"
 			blog = Blog.find(params[:id])
 
-			if blog.destroy && BlogPhoto.where(post_id: blog.post_id).destroy_all
+			if blog.destroy && BlogPhoto.where(post_id: blog.post_id).destroy_all && BlogTag.where(blog_id: params[:id]).destroy_all
 				render :json => { result: "ok" }
 			else
 				render :json => { result: "error", error: "There was a problem deleting this post." }
@@ -49,6 +49,8 @@ class AdminController < ApplicationController
 			@photos = BusinessPhoto.where(business_hash: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		elsif params[:type] == "event"
 			@photos = EventPhoto.where(event_id: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		elsif params[:type] == "blog"
+			@photos = BlogPhoto.where(post_id: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		end
 
 		render "admin-photos"
@@ -63,6 +65,12 @@ class AdminController < ApplicationController
 			end
 		elsif params[:image_type] == "event"
 			if EventPhoto.find(params[:image_id]).destroy
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "There was a problem deleting the photo." }
+			end
+		elsif params[:image_type] == "blog"
+			if BlogPhoto.find(params[:image_id]).destroy
 				render :json => { result: "ok" }
 			else
 				render :json => { result: "error", error: "There was a problem deleting the photo." }

@@ -17,6 +17,8 @@ module AdminHelper
 			return photo.business_photo.url(:medium)
 		elsif type == "event"
 			return photo.event_photo.url(:medium)
+		elsif type == "blog"
+			return photo.post_photo.url(:medium)
 		end
 	end
 

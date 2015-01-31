@@ -30,8 +30,13 @@
 							<img src="<%= photo.post_photo %>" />
 						<% end %>
 					</div>
-				<% end %>
 
+					<% if session[:user_type] == "superuser" %>
+						<div class="margin-top-20">
+							<a href="/admin/photos/blog?hash=<%= @post.post_id %>" class="super-user-delete-link">Edit Photo Set</a>
+						</div>
+					<% end %>
+				<% end %>
 
 				<div class="margin-top-20">
 					<%= simple_format(@post.post_text) %>
