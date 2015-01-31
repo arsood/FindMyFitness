@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+	before_filter :admin_auth
+
 	def index
 		render "admin-index"
 	end
@@ -21,16 +23,58 @@ class AdminController < ApplicationController
 			if blog.destroy && BlogPhoto.where(post_id: blog.post_id).destroy_all
 				render :json => { result: "ok" }
 			else
-				render :json => { result: "error", error: "There was a problem deleting this event." }
+				render :json => { result: "error", error: "There was a problem deleting this post." }
 			end
 		elsif item_type == "business"
 			business = Business.find(params[:id])
 
-			if business.destroy && BusinessPhoto.where(business_hash: business.business_hash).destroy_all && Review.where(bus_id: business.id).destroy_all
+			if business.destroy && BusinessPhoto.where(business_hash: business.business_hash).destroy_all && Review.where(bus_id: business.id).destroy_all && BusinessOwner.where(business_id: business.id).destroy_all
 				render :json => { result: "ok" }
 			else
-				render :json => { result: "error", error: "There was a problem deleting this event." }
+				render :json => { result: "error", error: "There was a problem deleting this business." }
 			end
+		elsif item_type == "review"
+			review = Review.find(params[:id])
+
+			if review.destroy
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "There was a problem deleting this review." }
+			end
+		end
+	end
+
+	def photos
+		if params[:type] == "business"
+			@photos = BusinessPhoto.where(business_hash: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		elsif params[:type] == "event"
+			@photos = EventPhoto.where(event_id: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		end
+
+		render "admin-photos"
+	end
+
+	def photos_delete
+		if params[:image_type] == "business"
+			if BusinessPhoto.find(params[:image_id]).destroy
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "There was a problem deleting the photo." }
+			end
+		elsif params[:image_type] == "event"
+			if EventPhoto.find(params[:image_id]).destroy
+				render :json => { result: "ok" }
+			else
+				render :json => { result: "error", error: "There was a problem deleting the photo." }
+			end
+		end
+	end
+
+private
+
+	def admin_auth
+		if session[:user_type] != "superuser"
+			raise ActionController::RoutingError.new('Not Found')
 		end
 	end
 

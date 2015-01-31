@@ -209,6 +209,12 @@
 							<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
 						</div>
 
+						<% if session[:user_type] == "superuser" %>
+							<div class="margin-top-10">
+								<a id="super-user-delete-review" data-id="<%= @business_reviews[i].id %>" href="#" class="super-user-delete-link">Delete Review</a>
+							</div>
+						<% end %>
+
 						<div class="margin-top-10 pull-right">
 							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
 						</div>
@@ -252,9 +258,16 @@
 							<div class="margin-top-10">
 								<%= @business_reviews[i].review_text %>
 							</div>
+
 							<div class="margin-top-10">
 								<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
 							</div>
+
+							<% if session[:user_type] == "superuser" %>
+								<div class="margin-top-10">
+									<a id="super-user-delete-review" data-id="<%= @business_reviews[i].id %>" href="#" class="super-user-delete-link">Delete Review</a>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -278,6 +291,12 @@
 				<div class="margin-top-20">
 					<a href="#" data-hash="<%= @business_info.business_hash %>" id="business-report-photos">Report photos</a>
 				</div>
+
+				<% if session[:user_type] == "superuser" %>
+					<div class="margin-top-10">
+						<a href="/admin/photos/business?hash=<%= @business_info.business_hash %>" class="super-user-delete-link">Edit Photo Set</a>
+					</div>
+				<% end %>
 			</div>
 			<!--/Photos-->
 		</div>

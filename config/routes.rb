@@ -79,4 +79,6 @@ Rails.application.routes.draw do
 
   get "/admin" => "admin#index"
   post "/admin/delete" => "admin#delete"
+  get "/admin/photos/:type" => "admin#photos"
+  post "/admin/photos/delete" => "admin#photos_delete"
 end

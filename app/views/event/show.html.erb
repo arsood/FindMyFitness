@@ -26,15 +26,21 @@
 		</div>
 
 		<% if @event_photos.first %>
-		<div class="margin-top-20 medium-title">
-			Photos
-		</div>
+			<div class="margin-top-20 medium-title">
+				Photos
+			</div>
 
-		<div class="margin-top-20" id="galleria">
-			<% @event_photos.each do |photo| %>
-				<img src="<%= photo.event_photo %>" />
+			<div class="margin-top-20" id="galleria">
+				<% @event_photos.each do |photo| %>
+					<img src="<%= photo.event_photo %>" />
+				<% end %>
+			</div>
+
+			<% if session[:user_type] == "superuser" %>
+				<div class="margin-top-20">
+					<a href="/admin/photos/event?hash=<%= @event.event_id %>" class="super-user-delete-link">Edit Photo Set</a>
+				</div>
 			<% end %>
-		</div>
 		<% end %>
 	</div>
 	<div class="col-sm-4 col-sm-offset-1">

@@ -12,4 +12,12 @@ module AdminHelper
 		return Business.all.count
 	end
 
+	def get_admin_photo(photo, type)
+		if type == "business"
+			return photo.business_photo.url(:medium)
+		elsif type == "event"
+			return photo.event_photo.url(:medium)
+		end
+	end
+
 end
