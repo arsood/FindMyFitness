@@ -7,6 +7,14 @@
 			<div class="blog-item">
 				<div class="row">
 					<div class="col-sm-12">
+
+						<% if session[:user_type] == "superuser" %>
+							<div class="margin-top-20">
+								<%= form_tag do end %>
+								<a id="super-user-delete-post" data-id="<%= @post.id %>" href="#" class="super-user-delete-link">Delete Post</a>
+							</div>
+						<% end %>
+
 						<div class="medium-title">
 							<%= @post.post_title %>
 						</div>

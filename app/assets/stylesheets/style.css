@@ -595,3 +595,12 @@
 	margin-left:10px;
 	margin-right:10px;
 }
+
+.super-user-delete-link {
+	color:#F00;
+	font-size:1.5em;
+}
+
+.super-user-delete-link:hover {
+	color:#F00;
+}

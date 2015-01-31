@@ -1,0 +1,18 @@
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="large-title">
+				Analytics
+			</div>
+			<div class="medium-title margin-top-20">
+				Number of Users: <%= get_site_user_num(:all) %>
+			</div>
+			<div class="medium-title margin-top-20">
+				Number of Business Users: <%= get_site_user_num(:business) %>
+			</div>
+			<div class="medium-title margin-top-20">
+				Number of Business Pages: <%= get_bus_page_num %>
+			</div>
+		</div>
+	</div>
+</div>

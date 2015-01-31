@@ -5,6 +5,14 @@
 		<!--Main Column One-->
 		<div class="col-sm-7">
 			<div class="row">
+
+				<% if session[:user_type] == "superuser" %>
+					<div class="margin-top-20">
+						<%= form_tag do end %>
+						<a id="super-user-delete-business" data-id="<%= @business_info.id %>" href="#" class="super-user-delete-link">Delete Business</a>
+					</div>
+				<% end %>
+
 				<div class="large-title col-sm-6">
 					<%= @business_info.name %>
 				</div>
@@ -197,6 +205,10 @@
 							<%= @business_reviews[i].review_text %>
 						</div>
 
+						<div class="margin-top-10">
+							<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
+						</div>
+
 						<div class="margin-top-10 pull-right">
 							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
 						</div>
@@ -240,6 +252,9 @@
 							<div class="margin-top-10">
 								<%= @business_reviews[i].review_text %>
 							</div>
+							<div class="margin-top-10">
+								<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -258,6 +273,10 @@
 					<% @business_photos.each do |photo| %>
 						<img src="<%= photo.business_photo.url %>" />
 					<% end %>
+				</div>
+
+				<div class="margin-top-20">
+					<a href="#" data-hash="<%= @business_info.business_hash %>" id="business-report-photos">Report photos</a>
 				</div>
 			</div>
 			<!--/Photos-->

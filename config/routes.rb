@@ -74,4 +74,9 @@ Rails.application.routes.draw do
   #Omniauth
 
   get '/auth/:provider/callback', to: 'login#fb_auth'
+
+  #Admin
+
+  get "/admin" => "admin#index"
+  post "/admin/delete" => "admin#delete"
 end

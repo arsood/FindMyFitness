@@ -1,4 +1,4 @@
-<% if session[:super_user] %>
+<% if session[:user_type] == "superuser" %>
 	<div class="row super-user-bar">
 		<div class="col-sm-4">
 			FMF Super User
