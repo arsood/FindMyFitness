@@ -24,7 +24,32 @@ class BlogController < ApplicationController
 	end
 
 	def index_public
-		@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		if params[:hash_tags]
+			#@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+			given_tags = params[:hash_tags].split(",")
+			
+			statement = ""
+
+			given_tags.each_with_index do |tag, index|
+				if index == 0
+					statement += "LOWER(blog_tag) LIKE ?"
+				else
+					statement += " OR LOWER(blog_tag) LIKE ?"
+				end
+			end
+
+			search_tags = given_tags.join(", ")
+
+			matches = BlogTag.where(statement, given_tags).select(:blog_id)
+
+			matches.each do |match|
+				blog = Blog.find(match.blog_id)
+				@blogs << blog
+			end
+		else
+			@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		end
 
 		@header_text = "Blog - Inspirational posts from people like you."
 

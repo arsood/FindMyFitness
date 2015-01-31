@@ -22,4 +22,14 @@ module BlogHelper
 		return BlogFollower.where(owner_id: user_id).count
 	end
 
+	def get_post_photo(post_id)
+		photo = BlogPhoto.where(post_id: post_id).try(:first)
+
+		if photo
+			return photo.post_photo.url
+		else
+			return "/assets/temp/slide1.jpg"
+		end
+	end
+
 end

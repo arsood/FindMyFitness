@@ -10,8 +10,6 @@
 
 					user = User.find(blog.user_id)
 
-					picture = BlogPhoto.where(post_id: blog.post_id).try(:first)
-
 				%>
 				<div class="col-sm-6">
 					<div class="blog-item">
@@ -25,7 +23,7 @@
 						<div>
 							<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>
 						</div>
-						<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= picture.try(:post_photo) %>) no-repeat;"></div>
+						<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
 						<div class="margin-top-10">
 							<%= blog.post_text[0..150] %>
 						</div>
@@ -48,13 +46,15 @@
 				Search By Hash Tag
 			</div>
 
-			<div class="margin-top-10">
-				<input type="text" name="post_tags" data-role="tagsinput" class="form-control" />
-			</div>
+			<%= form_tag("/blogs", method: :get) do %>
+				<div class="margin-top-10">
+					<input type="text" name="hash_tags" data-role="tagsinput" class="form-control" />
+				</div>
 
-			<div class="margin-top-10">
-				<button id="hash-tag-search-button" type="button" class="fmf-ellipse-dark-blue-button small-button">Search Tags</button>
-			</div>
+				<div class="margin-top-10">
+					<button type="submit" class="fmf-ellipse-dark-blue-button small-button">Search Tags</button>
+				</div>
+			<% end %>
 
 			<div class="left-sidebar-menu margin-top-20">
 				<a href="/blog/me">Your Posts</a>

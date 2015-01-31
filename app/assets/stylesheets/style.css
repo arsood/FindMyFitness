@@ -581,3 +581,17 @@
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 }
+
+/*FMF Admin*/
+
+.super-user-bar {
+	background-color:#8A0000;
+	padding:10px;
+	color:#FFF;
+}
+
+.super-user-bar a {
+	color:#FFF;
+	margin-left:10px;
+	margin-right:10px;
+}

@@ -28,7 +28,7 @@
 			<!--One Profile Save-->
 			<div class="row profile-saves-wrapper">
 				<div class="col-sm-3">
-					<%= image_tag(get_bus_thumb(business_info.business_hash), class: "img-responsive") %>
+					<%= image_tag(get_bus_thumb(business_info.business_hash, :tag), class: "img-responsive") %>
 				</div>
 				<div class="col-sm-9">
 					<div>
@@ -37,9 +37,11 @@
 					<div>
 						Category: <a href="#"><%= business_info.business_type %></a>
 					</div>
-					<div class="margin-top-10">
-						<img src="/assets/stars/stars<%= bus_avg_rating(business_info.id) %>.png" />
-					</div>
+					<% if bus_avg_rating(business_info.id) %>
+						<div class="margin-top-10">
+							<img src="/assets/stars/stars<%= bus_avg_rating(business_info.id) %>.png" />
+						</div>
+					<% end %>
 					<div class="margin-top-10">
 						<%= business_info.address %>, <%= business_info.city %>, <%= business_info.state %>
 					</div>
