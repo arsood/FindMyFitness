@@ -48,6 +48,12 @@ class EventController < ApplicationController
 		redirect_to "/"
 	end
 
+	def update
+		Event.update_event(event_params, params[:id])
+
+		redirect_to "/profile/events"
+	end
+
 	def image_upload
 		if EventPhoto.create(event_photo: params[:file], event_id: params[:event_id], contributor_id: session[:user_id])
 			render :text => "ok"
@@ -81,7 +87,7 @@ class EventController < ApplicationController
 		end
 	end
 
-	private
+private
 
 	def event_params
 		params.require(:event).permit(:event_name, :event_description, :event_category, :event_date_month, :event_date_day, :event_date_year, :event_time, :event_location, :event_id)

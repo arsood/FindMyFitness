@@ -15,4 +15,19 @@ class Event < ActiveRecord::Base
 		new_event.save
 	end
 
+	def self.update_event(params, id)
+		edit_event = Event.find(id)
+		edit_event.event_name = params[:event_name]
+		edit_event.event_description = params[:event_description]
+		edit_event.event_category = params[:event_category]
+		edit_event.event_location = params[:event_location]
+		edit_event.event_time = params[:event_time]
+
+		date_obj = DateTime.parse(params[:event_date_year] + "-" + params[:event_date_month] + "-" + params[:event_date_day])
+
+		edit_event.event_date = date_obj
+		edit_event.event_id = params[:event_id]
+		edit_event.save
+	end
+
 end

@@ -85,6 +85,41 @@ class BlogController < ApplicationController
 		render "post"
 	end
 
+	def post_edit
+		@post = Blog.find(params[:id])
+
+		if @post.user_id == session[:user_id]
+			@photos = BlogPhoto.where(post_id: @post.post_id)
+			render "edit"
+		else
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
+		end
+	end
+
+	def post_update
+		blog = Blog.find(params[:id])
+
+		if blog.user_id == session[:user_id]
+			blog.update_attributes(blog_params)
+
+			#Save blog tags to db
+
+			BlogTag.where(blog_id: params[:id]).destroy_all
+
+			blog_tags_array = params[:post_tags].split(",")
+
+			blog_tags_array.each do |tag|
+				BlogTag.create(blog_id: blog.id, blog_tag: tag)
+			end
+
+			redirect_to "/post/" + blog.id.to_s
+		else
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
+		end
+	end
+
 	def save_comment
 		blog_comment = BlogComment.create(blog_id: params[:id], commentor_id: session[:user_id], blog_comment: params[:comment_text])
 
@@ -102,6 +137,14 @@ class BlogController < ApplicationController
 			render :text => "ok"
 		else
 			render :text => "not ok"
+		end
+	end
+
+	def image_delete
+		if BlogPhoto.find(params[:image_id]).destroy
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "There was a problem deleting this photo." }
 		end
 	end
 

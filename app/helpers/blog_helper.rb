@@ -32,4 +32,20 @@ module BlogHelper
 		end
 	end
 
+	def get_post_tags(id)
+		tags = BlogTag.where(blog_id: id)
+
+		tag_array = []
+
+		tags.each do |tag|
+			tag_array << tag.blog_tag
+		end
+
+		return tag_array.join(",")
+	end
+
+	def get_blog_photo(id)
+		return BlogPhoto.find(id).post_photo.url(:medium)
+	end
+
 end

@@ -1,0 +1,72 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="edit_blog_post" />
+<%= form_tag do %>
+<input type="hidden" name="post[post_id]" value="<%= @post.post_id %>" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-8">
+			<div>
+				<input name="post[post_title]" type="text" class="form-control" placeholder="Title" value="<%= @post.post_title %>" />
+			</div>
+			<div class="margin-top-20">
+				Select one or more post images (optional)
+			</div>
+
+			<div role="tabpanel" class="margin-top-20">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#blog-photos-add-tab" aria-controls="profile" role="tab" data-toggle="tab">Add New Photos</a></li>
+					<li role="presentation"><a href="#blog-photos-tab" aria-controls="home" role="tab" data-toggle="tab">Current Photos</a></li>
+				</ul>
+			
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="blog-photos-add-tab">
+						<div id="drop-area" class="dropzone margin-top-20"></div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane fade" id="blog-photos-tab">
+						<% if @photos.empty? %>
+							<div class="medium-title margin-top-20">
+								No photos yet.
+							</div>
+						<% end %>
+
+						<% @photos.in_groups_of(4, false) do |group| %>
+							<div class="row margin-top-20">
+								<% group.each do |photo| %>
+									<div class="col-sm-3" id="photo<%= photo.id %>">
+										<div class="profile-photos-container" style="background:url(<%= get_blog_photo(photo.id) %>) no-repeat;">
+											<i class="fa fa-times-circle" data-id="<%= photo.id %>"></i>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				<textarea name="post[post_text]" class="form-control new-blog-textarea" placeholder="Type your post here."><%= @post.post_text %></textarea>
+			</div>
+			<div class="margin-top-20">
+				Add some tags to your post separated by commas
+			</div>
+			<div class="margin-top-20">
+				<input type="text" name="post_tags" data-role="tagsinput" class="form-control" value="<%= get_post_tags(@post.id) %>" />
+			</div>
+			<div class="margin-top-20 new-blog-privacy">
+				<label class="radio-inline">
+					<input type="radio" name="post[post_privacy]" id="privacy-public" value="public" <%= if @post.post_privacy == "public" then "checked" end %>> Public
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="post[post_privacy]" id="privacy-private" value="private" <%= if @post.post_privacy == "private" then "checked" end %>> Private
+				</label>
+			</div>
+			<div class="margin-top-20">
+				<button type="submit" class="fmf-ellipse-turquoise-button">Edit Post</button>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

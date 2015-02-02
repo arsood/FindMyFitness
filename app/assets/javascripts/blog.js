@@ -1,12 +1,12 @@
 //Condition that has to be new blog post page
 $(document).ready(function() {
-if ($("#page_id").length && $("#page_id").val() === "new_blog_post") {
+if ($("#page_id").length && ($("#page_id").val() === "new_blog_post" || $("#page_id").val() === "edit_blog_post")) {
 
 	//Initiate Dropzone for events
 
 	if ($("#drop-area").length) {
 		$("div#drop-area").dropzone({
-			url: "images",
+			url: "/blog/images",
 			params: {
 				authenticity_token: $("input[name='authenticity_token']").val(),
 				blog_post_id: $("input[name='post[post_id]']").val()
@@ -16,6 +16,47 @@ if ($("#page_id").length && $("#page_id").val() === "new_blog_post") {
 	}
 
 //Close condition that has to be new blog post page
+} });
+
+//Condition that has to be edit blog post page
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "edit_blog_post") {
+
+	//Handle photo delete
+
+	$(document).on("click", ".profile-photos-container i", function(event) {
+		event.preventDefault();
+		
+		var deleteConfirm = confirm("Are you sure you want to delete this photo?");
+
+		if (deleteConfirm) {
+			var photoId = $(this).attr("data-id");
+			var authToken = $("input[name=authenticity_token]").val();
+
+			$.ajax({
+				url: "/post/images/delete",
+				type: "POST",
+				data: {
+					image_id: photoId,
+					authenticity_token: authToken
+				},
+				success: function(data) {
+					if (data["result"] === "ok") {
+						$("#photo" + photoId).fadeOut();
+					} else {
+						alert("There was a problem deleting this photo.");
+					}
+				},
+				error: function() {
+					alert("There was a problem deleting this photo.");
+				}
+			});
+		} else {
+			return false;
+		}
+	});
+
+//Close condition that has to be edit blog post page
 } });
 
 //Condition that has to be post show page
