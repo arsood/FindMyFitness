@@ -64,9 +64,9 @@ $(document).on("click", "#hide-calendar-button", function(event) {
 //Close condition that page is events
 } });
 
-//Condition that has to be new event page
+//Condition that has to be new or edit event page
 $(document).ready(function() {
-if ($("#page_id").length && $("#page_id").val() === "new_event") {
+if ($("#page_id").length && ($("#page_id").val() === "new_event" || $("#page_id").val() === "edit_event")) {
 
 	//Initiate Dropzone for events
 
@@ -83,7 +83,48 @@ if ($("#page_id").length && $("#page_id").val() === "new_event") {
 		}
 	});
 
-//Close condition that has to be new event page
+//Close condition that has to be new or edit event page
+} });
+
+//Condition that has to be edit event page
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "edit_event") {
+
+	//Handle photo delete
+
+	$(document).on("click", ".profile-photos-container i", function(event) {
+		event.preventDefault();
+		
+		var deleteConfirm = confirm("Are you sure you want to delete this photo?");
+
+		if (deleteConfirm) {
+			var photoId = $(this).attr("data-id");
+			var authToken = $("input[name=authenticity_token]").val();
+
+			$.ajax({
+				url: "/event/images/delete",
+				type: "POST",
+				data: {
+					image_id: photoId,
+					authenticity_token: authToken
+				},
+				success: function(data) {
+					if (data["result"] === "ok") {
+						$("#photo" + photoId).fadeOut();
+					} else {
+						alert("There was a problem deleting this photo.");
+					}
+				},
+				error: function() {
+					alert("There was a problem deleting this photo.");
+				}
+			});
+		} else {
+			return false;
+		}
+	});
+
+//End condition that has to be event edit page
 } });
 
 //Only execute this when event show page is active

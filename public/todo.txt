@@ -9,10 +9,10 @@
 #- Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)
-- FMF Admin panel
+#- FMF Admin panel
 #- Forgot password
 - Payments
-- FMF Analytics
+#- FMF Analytics
 - Spam reporting
 - Blog like and share
 - Homepage

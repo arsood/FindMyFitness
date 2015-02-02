@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.datetime "event_date"
     t.string   "event_time"
     t.string   "event_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

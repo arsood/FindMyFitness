@@ -75,6 +75,14 @@ class ProfileController < ApplicationController
 		end
 	end
 
+	def get_user_events
+		@events = Event.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		@user = User.find(session[:user_id])
+
+		render "profile-events", layout: "inner-info"
+	end
+
 private
 
 	def user_params

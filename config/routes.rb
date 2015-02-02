@@ -39,8 +39,10 @@ Rails.application.routes.draw do
   get "events" => "event#index"
   get "event/new" => "event#new"
   get "events/:id" => "event#show"
+  get "events/:id/edit" => "event#edit"
   post "event/new" => "event#new_event_process"
   post "event/images" => "event#image_upload"
+  post "event/images/delete" => "event#image_delete"
   get "event/all" => "event#get_all_events"
 
   #Blog
@@ -66,6 +68,7 @@ Rails.application.routes.draw do
   post "profile/edit" => "profile#update"
   get "profile/saves" => "profile#saves"
   post "profile/upload" => "profile#upload"
+  get "/profile/events" => "profile#get_user_events"
 
   #Login
 

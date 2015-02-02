@@ -1,0 +1,167 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="edit_event" />
+<%= form_tag do %>
+<input type="hidden" name="event[event_id]" value="<%= @event.event_id %>" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="large-title">
+				Edit Your Event
+			</div>
+
+			<div class="margin-top-20">
+				<input name="event[event_name]" type="text" class="form-control" placeholder="Event Name" value="<%= @event.event_name %>" />
+			</div>
+
+			<div role="tabpanel" class="margin-top-20">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#event-photos-add-tab" aria-controls="profile" role="tab" data-toggle="tab">Add New Photos</a></li>
+					<li role="presentation"><a href="#event-photos-tab" aria-controls="home" role="tab" data-toggle="tab">Current Photos</a></li>
+				</ul>
+			
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="event-photos-add-tab">
+						<div id="drop-area" class="dropzone margin-top-20"></div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane fade" id="event-photos-tab">
+						<% if @photos.empty? %>
+							<div class="medium-title margin-top-20">
+								No photos yet.
+							</div>
+						<% end %>
+
+						<% @photos.in_groups_of(4, false) do |group| %>
+							<div class="row margin-top-20">
+								<% group.each do |photo| %>
+									<div class="col-sm-3" id="photo<%= photo.id %>">
+										<div class="profile-photos-container" style="background:url(<%= get_event_photo(photo.id) %>) no-repeat;">
+											<i class="fa fa-times-circle" data-id="<%= photo.id %>"></i>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				<textarea name="event[event_description]" placeholder="Type your event description here." class="new-event-text"><%= @event.event_description %></textarea>
+			</div>
+
+			<div class="margin-top-10">
+				What type of event is this?
+			</div>
+
+			<div class="margin-top-10">
+				<select name="event[event_category]" class="medium-select">
+					<option>Choose a Category</option>
+					<option value="Classes">Classes</option>
+					<option value="Runs / Walks">Runs / Walks</option>
+					<option value="Lectures">Lectures</option>
+					<option value="Workshops">Workshops</option>
+				</select>
+			</div>
+
+			<div class="margin-top-20">
+				<button class="fmf-ellipse-turquoise-button">Create Event</button>
+			</div>
+
+			<div class="margin-top-10">
+				<a href="#">Cancel</a>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="large-title">
+				Date and Time
+			</div>
+
+			<div class="margin-top-10">
+				<div class="row">
+					<div class="col-sm-4">
+						<select name="event[event_date_month]" class="form-control">
+							<option value="January">Jan</option>
+							<option value="February">Feb</option>
+							<option value="March">Mar</option>
+							<option value="April">Apr</option>
+							<option value="May">May</option>
+							<option value="June">Jun</option>
+							<option value="July">Jul</option>
+							<option value="August">Aug</option>
+							<option value="September">Sep</option>
+							<option value="October">Oct</option>
+							<option value="November">Nov</option>
+							<option value="December">Dec</option>
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<select name="event[event_date_day]" class="form-control">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>
+					</div>
+					<div class="col-sm-4">
+						<select name="event[event_date_year]" class="form-control">
+							<option value="2014">2014</option>
+							<option value="2015">2015</option>
+							<option value="2016">2016</option>
+							<option value="2017">2017</option>
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+							<option value="2021">2021</option>
+							<option value="2022">2022</option>
+							<option value="2023">2023</option>
+							<option value="2024">2024</option>
+							<option value="2025">2025</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-10">
+				<input name="event[event_time]" type="text" class="form-control" placeholder="Ex: 4:30 PM" value="<%= @event.event_time %>" />
+			</div>
+
+			<div class="large-title margin-top-20">
+				Location
+			</div>
+
+			<div class="margin-top-10">
+				<input name="event[event_location]" type="text" placeholder="e.g. 123 Grand Ave., San Francisco, CA" class="form-control" value="<%= @event.event_location %>" />
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

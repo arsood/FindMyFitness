@@ -41,7 +41,9 @@ class EventController < ApplicationController
 	end
 
 	def new_event_process
-		Event.create_event(event_params)
+		event_parameters = event_params.merge(user_id: session[:user_id])
+
+		Event.create_event(event_parameters)
 
 		redirect_to "/"
 	end
@@ -57,6 +59,26 @@ class EventController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@event_photos = EventPhoto.where(event_id: @event.event_id)
+	end
+
+	def edit
+		@event = Event.find(params[:id])
+
+		if @event.user_id == session[:user_id]
+			@photos = EventPhoto.where(event_id: @event.event_id)
+			render "edit"
+		else
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
+		end
+	end
+
+	def image_delete
+		if EventPhoto.find(params[:image_id]).destroy
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "There was a problem deleting this photo." }
+		end
 	end
 
 	private
