@@ -34,6 +34,10 @@
 	font-size:1.4em;
 }
 
+.btn span.small {
+	font-size:0.7em;
+}
+
 .small-container {
 	max-width:600px;
 	margin-left:auto;

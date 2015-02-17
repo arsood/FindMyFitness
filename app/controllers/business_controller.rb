@@ -9,6 +9,10 @@ class BusinessController < ApplicationController
 		end
 	end
 
+	def learn_more
+		render "business-learn", layout: "simple-topbar"
+	end
+
 	def signup_process
 		#Geocode a business address before creating it
 

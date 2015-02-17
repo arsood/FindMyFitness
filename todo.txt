@@ -18,5 +18,6 @@
 - Homepage
 - Misc pages (about, contact, etc.)
 - Photos with reviews
+- New business signup flow
 #- About me flow
 #- Events calendar

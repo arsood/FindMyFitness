@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   #Business
 
+  get "business/learn-more" => "business#learn_more"
   post "business-signup" => "business#signup_process"
   post "business/save" => "business#save_business"
   post "business/images" => "business#image_upload"

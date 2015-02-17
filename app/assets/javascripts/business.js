@@ -166,3 +166,23 @@ if ($("#page_id").length && ($("#page_id").val() === "business_signup" || $("#pa
 
 //Close condition that has to be business signup
 } });
+
+//Execute only when business learn page is shown
+$(document).ready(function() {
+if ($("#page_id").length && $("#page_id").val() === "business_learn") {
+
+function resizeLearnBanner() {
+	var navbarHeight = $(".fmf-navbar").height();
+	var windowHeight = $(window).height();
+
+	$("#business-learn-banner").height(windowHeight - navbarHeight);
+}
+
+$(window).resize(function() {
+	resizeLearnBanner();
+});
+
+resizeLearnBanner();
+
+//Close condition that has to be business learn page
+} });
