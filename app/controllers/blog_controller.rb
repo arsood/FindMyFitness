@@ -34,10 +34,14 @@ class BlogController < ApplicationController
 			given_tags.each_with_index do |tag, index|
 				if index == 0
 					statement += "LOWER(blog_tag) LIKE ?"
+				elsif index == given_tags.length - 1
+					statement += " AND user_id != " + session[:user_id].to_s
 				else
 					statement += " OR LOWER(blog_tag) LIKE ?"
 				end
 			end
+
+			puts statement
 
 			search_tags = given_tags.join(", ")
 

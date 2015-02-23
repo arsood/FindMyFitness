@@ -32,3 +32,9 @@
 		<% end %>
 	</div>
 </div>
+
+<% if @post %>
+	<div class="margin-top-20">
+		<span class="bold">Tags: </span><%= get_tag_list(@post.id) %>
+	</div>
+<% end %>

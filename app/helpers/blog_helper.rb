@@ -48,4 +48,15 @@ module BlogHelper
 		return BlogPhoto.find(id).post_photo.url(:medium)
 	end
 
+	def get_tag_list(id)
+		tags = BlogTag.where(blog_id: id)
+		tag_list_array = []
+		
+		tags.each do |tag|
+			tag_list_array << tag.blog_tag
+		end
+
+		return tag_list_array.join(", ")
+	end
+
 end
