@@ -24,18 +24,20 @@
             Stay connected with the fitness community near you.
         </div>
         <div class="row margin-top-20">
-            <div class="col-sm-5">
-                <input type="text" class="form-control input-lg" placeholder="Gyms, yoga, boxing..." />
-            </div>
-            <div class="col-sm-5">
-                <input type="text" class="form-control input-lg" placeholder="Address, neighborhood, etc..." />
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-info btn-lg btn-block">Search</button>
-            </div>
+            <%= form_tag("/businesses/find", method: :get) do %>
+                <div class="col-sm-5">
+                    <input name="query" type="text" class="form-control input-lg" placeholder="Gyms, yoga, boxing..." />
+                </div>
+                <div class="col-sm-5">
+                    <input name="location" type="text" class="form-control input-lg" placeholder="Address, neighborhood, etc..." />
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">Search</button>
+                </div>
+            <% end %>
         </div>
 
-        <div class="home-search-categories-container margin-top-20">
+        <div id="bus-category-top-options" class="home-search-categories-container margin-top-20">
             <div class="row">
                 <div class="col-sm-2 txt-center white-text">
                     Categories:
@@ -71,89 +73,47 @@
 <!--Top Header-->
 
 <div class="container margin-top-50 margin-bottom-50">
-    <div class="home-location">
-        popular events near <%= @my_location %> <a href="#">(Change Location)</a>
-    </div>
-
-    <!--Home Cards-->
-    <div class="row margin-top-20">
-        <!--One Card-->
-        <div class="col-sm-4">
-            <div class="home-card">
-                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
-                <div class="home-card-content-container">
-                    <div class="margin-top-20">
-                        <a href="#">Nike Women's Half Marathon</a>
-                    </div>
-
-                    <div class="margin-top-10 gray-text">
-                        Hosted by Nike
-                    </div>
-
-                    <div class="margin-top-10">
-                        February 4, 2015
-                    </div>
-
-                    <div class="margin-top-10">
-                        Union Square, San Francisco, CA
-                    </div>
-                </div>
-            </div>
+    <% if @events.length > 0 %>
+        <div class="home-location">
+            popular events near <%= @my_location %> <!-- <a href="#">(Change Location)</a> -->
         </div>
-        <!--/One Card-->
-        <!--One Card-->
-        <div class="col-sm-4">
-            <div class="home-card">
-                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
-                <div class="home-card-content-container">
-                    <div class="margin-top-20">
-                        <a href="#">Nike Women's Half Marathon</a>
-                    </div>
 
-                    <div class="margin-top-10 gray-text">
-                        Hosted by Nike
-                    </div>
+        <!--Home Cards-->
+        <% @events.in_groups_of(3, false) do |group| %>
+            <div class="row margin-top-20">
+                <% group.each do |event| %>
+                    <!--One Card-->
+                    <div class="col-sm-4">
+                        <div class="home-card">
+                            <div class="home-card-image" style="background:url(<%= get_event_thumb(event.event_id, :background) %>) no-repeat;"></div>
+                            <div class="home-card-content-container">
+                                <div class="margin-top-20">
+                                    <a href="/events/<%= event.id %>"><%= event.event_name %></a>
+                                </div>
 
-                    <div class="margin-top-10">
-                        February 4, 2015
-                    </div>
+                                <div class="margin-top-10 gray-text">
+                                    Hosted by Someone
+                                </div>
 
-                    <div class="margin-top-10">
-                        Union Square, San Francisco, CA in the best awesome spot on planet earth
+                                <div class="margin-top-10">
+                                    <%= event.event_date.strftime("%B %-d, %Y") %>
+                                </div>
+
+                                <div class="margin-top-10">
+                                    <%= event.event_location %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <!--/One Card-->
+                <% end %>
             </div>
-        </div>
-        <!--/One Card-->
-        <!--One Card-->
-        <div class="col-sm-4">
-            <div class="home-card">
-                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
-                <div class="home-card-content-container">
-                    <div class="margin-top-20">
-                        <a href="#">Nike Women's Half Marathon</a>
-                    </div>
-
-                    <div class="margin-top-10 gray-text">
-                        Hosted by Nike
-                    </div>
-
-                    <div class="margin-top-10">
-                        February 4, 2015
-                    </div>
-
-                    <div class="margin-top-10">
-                        Union Square, San Francisco, CA in the best awesome spot on planet earth
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/One Card-->
-    </div>
-    <!--/Home Cards-->
+        <% end %>
+        <!--/Home Cards-->
+    <% end %>
 
     <div class="margin-top-50 txt-center">
-        <a href="#" class="fmf-ellipse-turquoise-button">See More</a>
+        <a href="/events" class="fmf-ellipse-turquoise-button">See More</a>
     </div>
 
     <div class="margin-top-50 txt-center">
@@ -199,6 +159,6 @@
     </div>
 
     <div class="margin-top-50 txt-center">
-        <a href="#" class="fmf-ellipse-turquoise-button">Sign Up Now</a>
+        <a href="#" class="fmf-ellipse-turquoise-button" data-toggle="modal" data-target="#signup-modal">Sign Up Now</a>
     </div>
 </div>

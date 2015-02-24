@@ -56,6 +56,21 @@ module ApplicationHelper
 		end
 	end
 
+	#Get thumbnail for an event
+	def get_event_thumb(event_hash, type)
+		photo = EventPhoto.where(event_id: event_hash).order(created_at: :desc)
+
+		if photo.first
+			return photo.first.event_photo.url(:medium)
+		else
+			if type == :link
+				return "/assets/temp/slide1.jpg"
+			else
+				return "temp/slide1.jpg"
+			end
+		end
+	end
+
 	#Get count of notifications for a user
 	def get_notification_count(user_id)
 		return Notification.where(owner_user_id: user_id, dismissed: false).count

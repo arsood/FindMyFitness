@@ -15,7 +15,7 @@
 #- FMF Analytics
 - Spam reporting
 - Blog like and share
-- Homepage
+#- Homepage
 - Misc pages (about, contact, etc.)
 - Photos with reviews
 - New business signup flow

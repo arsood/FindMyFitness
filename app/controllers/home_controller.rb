@@ -9,7 +9,9 @@ class HomeController < ApplicationController
 			@my_location = "somewhere"
 		end
 
+		@events = Event.where("event_date > ?", Time.now).limit(6)
+
 		render "index", layout: "home"
 	end
-	
+
 end
