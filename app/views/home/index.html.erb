@@ -1,3 +1,204 @@
-<% if session[:user_id] %>
-	<%= image_tag @user.avatar.url %>
-<% end %>
+<input type="hidden" id="page_id" value="homepage" />
+
+<!--Top Header-->
+<div id="homepage-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#homepage-carousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="/assets/temp/home1.jpg" />
+        </div>
+
+        <div class="item">
+            <img src="/assets/temp/home2.jpg" />
+        </div>
+    </div>
+
+    <div id="home-search-container" class="container">
+        <div class="extra-large-title white-text">
+            Stay connected with the fitness community near you.
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-sm-5">
+                <input type="text" class="form-control input-lg" placeholder="Gyms, yoga, boxing..." />
+            </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control input-lg" placeholder="Address, neighborhood, etc..." />
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-info btn-lg btn-block">Search</button>
+            </div>
+        </div>
+
+        <div class="home-search-categories-container margin-top-20">
+            <div class="row">
+                <div class="col-sm-2 txt-center white-text">
+                    Categories:
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Yoga</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Gyms</a>
+                </div>
+                <div class="col-sm-2 txt-center">
+                    <a href="#">Martial Arts</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Boxing</a>
+                </div>
+                <div class="col-sm-2 txt-center">
+                    <a href="#">Rock Climbing</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Pilates</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Dance</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Other</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Top Header-->
+
+<div class="container margin-top-50 margin-bottom-50">
+    <div class="home-location">
+        popular events near <%= @my_location %> <a href="#">(Change Location)</a>
+    </div>
+
+    <!--Home Cards-->
+    <div class="row margin-top-20">
+        <!--One Card-->
+        <div class="col-sm-4">
+            <div class="home-card">
+                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
+                <div class="home-card-content-container">
+                    <div class="margin-top-20">
+                        <a href="#">Nike Women's Half Marathon</a>
+                    </div>
+
+                    <div class="margin-top-10 gray-text">
+                        Hosted by Nike
+                    </div>
+
+                    <div class="margin-top-10">
+                        February 4, 2015
+                    </div>
+
+                    <div class="margin-top-10">
+                        Union Square, San Francisco, CA
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/One Card-->
+        <!--One Card-->
+        <div class="col-sm-4">
+            <div class="home-card">
+                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
+                <div class="home-card-content-container">
+                    <div class="margin-top-20">
+                        <a href="#">Nike Women's Half Marathon</a>
+                    </div>
+
+                    <div class="margin-top-10 gray-text">
+                        Hosted by Nike
+                    </div>
+
+                    <div class="margin-top-10">
+                        February 4, 2015
+                    </div>
+
+                    <div class="margin-top-10">
+                        Union Square, San Francisco, CA in the best awesome spot on planet earth
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/One Card-->
+        <!--One Card-->
+        <div class="col-sm-4">
+            <div class="home-card">
+                <div class="home-card-image" style="background:url(/assets/temp/slide1.jpg) no-repeat;"></div>
+                <div class="home-card-content-container">
+                    <div class="margin-top-20">
+                        <a href="#">Nike Women's Half Marathon</a>
+                    </div>
+
+                    <div class="margin-top-10 gray-text">
+                        Hosted by Nike
+                    </div>
+
+                    <div class="margin-top-10">
+                        February 4, 2015
+                    </div>
+
+                    <div class="margin-top-10">
+                        Union Square, San Francisco, CA in the best awesome spot on planet earth
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/One Card-->
+    </div>
+    <!--/Home Cards-->
+
+    <div class="margin-top-50 txt-center">
+        <a href="#" class="fmf-ellipse-turquoise-button">See More</a>
+    </div>
+
+    <div class="margin-top-50 txt-center">
+        <div class="extra-large-title regular-weight">
+            Connecting People with Fitness Communities
+        </div>
+    </div>
+
+    <div class="row margin-top-50">
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-findcenters.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Find Centers Near You
+            </div>
+            <div class="margin-top-10 txt-center">
+                Lorem
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-attendevents.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Attend Local Events
+            </div>
+            <div class="margin-top-10 txt-center">
+                Lorem
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-blogs.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Stay Inspired with Blogs
+            </div>
+            <div class="margin-top-10 txt-center">
+                Lorem
+            </div>
+        </div>
+    </div>
+
+    <div class="margin-top-50 txt-center">
+        <a href="#" class="fmf-ellipse-turquoise-button">Sign Up Now</a>
+    </div>
+</div>

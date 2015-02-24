@@ -1,9 +1,15 @@
 class HomeController < ApplicationController
-	def index
-		if session[:user_id]
-			@user = User.find(session[:user_id])
 
-			render "index", layout: false
+	def index
+		location = Geokit::Geocoders::IpGeocoder.geocode(request.remote_ip)
+		
+		if location.success
+			@my_location = location.city + ", " + location.state_code
+		else
+			@my_location = "somewhere"
 		end
+
+		render "index", layout: "home"
 	end
+	
 end

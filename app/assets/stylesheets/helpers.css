@@ -97,6 +97,10 @@
 	font-size:1em;
 }
 
+.regular-weight {
+	font-weight:normal !important;
+}
+
 .large-text {
 	font-size:1.5em;
 }
@@ -109,6 +113,10 @@
 .extra-large-title {
 	font-size:2em;
 	font-weight:bold;
+}
+
+.small-text {
+	font-size:0.8em;
 }
 
 /*Border Radius*/

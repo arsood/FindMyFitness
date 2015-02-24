@@ -10,6 +10,11 @@
 	height:90px;
 }
 
+.fmf-nav-menu.small-nav {
+	height:40px;
+	margin-top:40px;
+}
+
 .fmf-nav-menu li {
 	display:inline;
 	margin-left:30px;

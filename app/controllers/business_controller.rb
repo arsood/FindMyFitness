@@ -1,5 +1,4 @@
 class BusinessController < ApplicationController
-	geocode_ip_address
 
 	def signup
 		if session[:user_id]
@@ -122,7 +121,7 @@ class BusinessController < ApplicationController
 		if search_location && search_location != ""
 			@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => search_location).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		else
-			@user_loc = Geokit::Geocoders::IpGeocoder.geocode(session[:geo_location])
+			@user_loc = Geokit::Geocoders::IpGeocoder.geocode(request.remote_ip)
 
 			#User category parameter if present
 

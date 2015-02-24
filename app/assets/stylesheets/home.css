@@ -1,4 +1,37 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+#home-search-container {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	-moz-transform:translate(-50%, -50%);
+	-webkit-transform:translate(-50%, -50%);
+}
+
+.home-search-categories-container {
+	padding:20px;
+	background:rgba(0, 0, 0, 0.4);
+	border-radius:5px;
+}
+
+.home-search-categories-container a:hover {
+	color:#FFF;
+	text-decoration:none;
+}
+
+.home-location {
+	text-transform:uppercase;
+}
+
+.home-card {
+	border:#CCC 1px solid;
+	border-radius:5px;
+}
+
+.home-card-image {
+	width:100%;
+	background-size:cover !important;
+}
+
+.home-card-content-container {
+	padding:20px;
+}
