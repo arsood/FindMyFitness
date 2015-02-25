@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
   create_table "blog_tags", force: true do |t|
     t.integer  "blog_id"
     t.string   "blog_tag"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
 
   create_table "business_views", force: true do |t|
     t.integer  "business_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

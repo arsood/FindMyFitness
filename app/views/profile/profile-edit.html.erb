@@ -32,12 +32,14 @@
 				<div class="margin-top-10">
 					<input name="user[email_address]" type="text" class="form-control" value="<%= @user.email_address %>" />
 				</div>
-				<div class="bold margin-top-20">
-					New Password
-				</div>
-				<div class="margin-top-10">
-					<input name="user[password]" type="password" class="form-control" placeholder="Enter a new password here" />
-				</div>
+				<% if !session[:social_user] %>
+					<div class="bold margin-top-20">
+						New Password
+					</div>
+					<div class="margin-top-10">
+						<input name="user[password]" type="password" class="form-control" placeholder="Enter a new password here" />
+					</div>
+				<% end %>
 				<div class="row margin-top-20">
 					<div class="bold col-sm-8">
 						City

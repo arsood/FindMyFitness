@@ -32,24 +32,31 @@ class BlogController < ApplicationController
 			statement = ""
 
 			given_tags.each_with_index do |tag, index|
+				puts "index is: " + index.to_s
 				if index == 0
 					statement += "LOWER(blog_tag) LIKE ?"
 				elsif index == given_tags.length - 1
+					statement += " OR LOWER(blog_tag) LIKE ?"
 					statement += " AND user_id != " + session[:user_id].to_s
 				else
 					statement += " OR LOWER(blog_tag) LIKE ?"
 				end
 			end
 
-			puts statement
+			given_tags.map! do |tag|
+				"%" + tag + "%"
+			end
 
-			search_tags = given_tags.join(", ")
+			match_condition = given_tags.unshift("SELECT DISTINCT blog_id FROM blog_tags WHERE " + statement)
+			matches = BlogTag.find_by_sql match_condition
 
-			matches = BlogTag.where(statement, given_tags).select(:blog_id)
+			blogs = []
 
 			matches.each do |match|
 				blog = Blog.find(match.blog_id)
-				@blogs << blog
+				blogs << blog
+
+				@blogs = blogs.paginate(:page => params[:page], :per_page => 10)
 			end
 		else
 			@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
@@ -70,7 +77,7 @@ class BlogController < ApplicationController
 		blog_tags_array = params[:post_tags].split(",")
 
 		blog_tags_array.each do |tag|
-			BlogTag.create(blog_id: added_blog.id, blog_tag: tag)
+			BlogTag.create(blog_id: added_blog.id, blog_tag: tag, user_id: session[:user_id])
 		end
 
 		redirect_to "/"

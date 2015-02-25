@@ -5,7 +5,7 @@
 #- Business photo admin
 #- Business analytics admin
 - Comments on reviews - Display on business show page
-- Hash tag search
+#- Hash tag search
 #- Blog followers
 - User profile page
 - Users being able to add photos for a business (ask Stella)

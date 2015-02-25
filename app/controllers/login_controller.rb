@@ -15,6 +15,7 @@ class LoginController < ApplicationController
 			session[:user_type] = user.user_type
 			session[:first_name] = user.first_name
 			session[:last_name] = user.last_name
+			session[:social_user] = true
 				
 			redirect_to "/profile"
 		else
@@ -24,6 +25,7 @@ class LoginController < ApplicationController
 			session[:user_type] = fb_user.user_type
 			session[:first_name] = fb_user.first_name
 			session[:last_name] = fb_user.last_name
+			session[:social_user] = true
 
 			flash[:new_user] = true
 

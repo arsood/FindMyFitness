@@ -308,9 +308,20 @@
 				Your Recent Searches
 			</div>
 
-			<div class="margin-top-20">
-				You have no recent searches
-			</div>
+			<% if @recent_searches.empty? %>
+				<div class="margin-top-20">
+					You have no recent searches
+				</div>
+			<% end %>
+
+			<% 
+				@recent_searches.each do |search| 
+				business = get_bus_info(search.business_id)
+			%>
+				<div class="margin-top-20">
+					<a href="/business/<%= business.id %>"><%= business.name %></a> <span class="small italic">in <%= business.city %>, <%= business.state %>
+				</div>
+			<% end %>
 
 			<div class="margin-top-20">
 				<img src="http://placehold.it/300x250" />

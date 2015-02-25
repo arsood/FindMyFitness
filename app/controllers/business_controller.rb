@@ -86,7 +86,9 @@ class BusinessController < ApplicationController
 
 		@business_photos = BusinessPhoto.where(business_hash: @business_info.business_hash)
 
-		BusinessView.create(business_id: params[:id])
+		BusinessView.create(business_id: params[:id], user_id: session[:user_id])
+
+		@recent_searches = BusinessView.where(user_id: session[:user_id]).select(:business_id).distinct.order(created_at: :desc).limit(5)
 
 		render "business-show"
 	end
