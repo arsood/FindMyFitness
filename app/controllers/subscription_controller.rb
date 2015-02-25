@@ -23,14 +23,13 @@ class SubscriptionController < ApplicationController
 			if subscription_result.success?
 				Subscription.create(user_id: session[:user_id], plan_type: "fmf_business", subscription_status: "active", customer_id: customer_result.customer.id, customer_token: customer_result.customer.credit_cards[0].token, subscription_id: subscription_result.subscription.id)
 			else
-				p subscription_result.errors
-				flash[:error] = subscription_result.errors
+				flash[:error] = "There was an error creating the subscription."
 				redirect_to "/subscribe"
 			end
 		else
-			flash[:error] = customer_result.errors
+			flash[:error] = "There was an error with your card. Please try again."
 			redirect_to "/subscribe"
 		end
 	end
-
+	
 end
