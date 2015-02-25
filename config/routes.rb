@@ -95,4 +95,5 @@ Rails.application.routes.draw do
   #Subscriptions
 
   get "/subscribe" => "subscription#pay"
+  post "/subscribe" => "subscription#subscribe"
 end

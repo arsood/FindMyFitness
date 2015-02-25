@@ -180,6 +180,9 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.integer  "user_id"
     t.string   "plan_type"
     t.string   "subscription_status"
+    t.integer  "customer_id"
+    t.string   "customer_token"
+    t.integer  "subscription_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

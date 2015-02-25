@@ -1,4 +1,4 @@
-<%= form_tag do %>
+<%= form_tag("/subscribe", id: "payment-form") do %>
 <!--Finish Payment-->
 <div class="gray-background padding-20">
 	<div class="container">
@@ -36,7 +36,7 @@
 			</div>
 			<div class="row margin-top-10">
 				<div class="col-sm-12">
-					<input type="text" class="form-control" required />
+					<input data-braintree-name="cardholder_name" type="text" class="form-control" required />
 				</div>
 			</div>
 
@@ -46,7 +46,7 @@
 						Card Number <sup>*</sup>
 					</div>
 					<div class="margin-top-10">
-						<input type="tel" class="form-control" required />
+						<input data-braintree-name="number" type="tel" class="form-control" required />
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -54,7 +54,7 @@
 						CVV <sup>*</sup>
 					</div>
 					<div class="margin-top-10">
-						<input type="tel" class="form-control" required />
+						<input data-braintree-name="cvv" type="tel" class="form-control" required />
 					</div>
 				</div>
 			</div>
@@ -64,13 +64,13 @@
 			</div>
 			<div class="row margin-top-10">
 				<div class="col-sm-4">
-					<select class="form-control" required>
+					<select data-braintree-name="expiration_month" class="form-control" required>
 						<option value="">Month</option>
 						<option value="01">01</option>
 					</select>
 				</div>
 				<div class="col-sm-4">
-					<select class="form-control" required>
+					<select data-braintree-name="expiration_year" class="form-control" required>
 						<option value="">Year</option>
 						<option value="2015">2015</option>
 					</select>
@@ -86,28 +86,36 @@
 			</div>
 			<div class="row margin-top-10">
 				<div class="col-sm-12">
-					<input type="text" class="form-control" required />
+					<input name="customer_address" type="text" class="form-control" required />
 				</div>
 			</div>
 
 			<div class="row margin-top-20">
-				<div class="col-sm-8">
+				<div class="col-sm-6">
 					<div>
 						City <sup>*</sup>
 					</div>
 					<div class="margin-top-10">
-						<input type="text" class="form-control" required />
+						<input name="customer_city" type="text" class="form-control" required />
 					</div>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<div>
 						State <sup>*</sup>
 					</div>
 					<div class="margin-top-10">
-						<select class="form-control" required>
+						<select name="customer_state" class="form-control" required>
 							<option value="">State</option>
 							<option value="CA">CA</option>
 						</select>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div>
+						Zipcode <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<input data-braintree-name="postal_code" type="tel" class="form-control" required />
 					</div>
 				</div>
 			</div>
@@ -116,14 +124,8 @@
 				Phone Number <sup>*</sup>
 			</div>
 			<div class="row margin-top-10">
-				<div class="col-sm-4">
-					<input type="tel" class="form-control" required />
-				</div>
-				<div class="col-sm-4">
-					<input type="tel" class="form-control" required />
-				</div>
-				<div class="col-sm-4">
-					<input type="tel" class="form-control" required />
+				<div class="col-sm-12">
+					<input name="customer_phone" type="tel" class="form-control" required />
 				</div>
 			</div>
 		</div>
@@ -152,3 +154,8 @@
 </div>
 <!--Finish Payment-->
 <% end %>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script>
+	braintree.setup("<%= @client_token %>", "custom", {id: "payment-form"});
+</script>
