@@ -25,8 +25,6 @@ class BlogController < ApplicationController
 
 	def index_public
 		if params[:hash_tags]
-			#@blogs = Blog.all.where("user_id != ?", session[:user_id]).where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
-
 			given_tags = params[:hash_tags].split(",")
 			
 			statement = ""
@@ -38,13 +36,14 @@ class BlogController < ApplicationController
 				elsif index == given_tags.length - 1
 					statement += " OR LOWER(blog_tag) LIKE ?"
 					statement += " AND user_id != " + session[:user_id].to_s
+					statement += " ORDER BY created_at DESC"
 				else
 					statement += " OR LOWER(blog_tag) LIKE ?"
 				end
 			end
 
 			given_tags.map! do |tag|
-				"%" + tag + "%"
+				"%" + tag.downcase + "%"
 			end
 
 			match_condition = given_tags.unshift("SELECT DISTINCT blog_id FROM blog_tags WHERE " + statement)
