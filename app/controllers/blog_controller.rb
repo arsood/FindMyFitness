@@ -92,7 +92,7 @@ class BlogController < ApplicationController
 
 		@sidebar_header_text = "About the Author"
 
-		render "post"
+		render "post", layout: "blog-post"
 	end
 
 	def post_edit

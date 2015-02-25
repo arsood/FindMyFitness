@@ -24,17 +24,5 @@
 		<div>
 			<a href="/following/<%= @user.id %>"><%= get_following_num(@user.id) %> Following</a>
 		</div>
-
-		<% if session[:user_id] && @user.id != session[:user_id] %>
-			<div class="margin-top-10">
-				<a href="#" id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @user.first_name %>"><%= get_follow_text(@user) %></a>
-			</div>
-		<% end %>
 	</div>
 </div>
-
-<% if @post %>
-	<div class="margin-top-20">
-		<span class="bold">Tags: </span><%= get_tag_list(@post.id) %>
-	</div>
-<% end %>
