@@ -1,5 +1,4 @@
 class AdminController < ApplicationController
-
 	before_filter :admin_auth
 
 	def index
@@ -76,6 +75,31 @@ class AdminController < ApplicationController
 				render :json => { result: "error", error: "There was a problem deleting the photo." }
 			end
 		end
+	end
+
+	def manage_users
+		if params[:username] && params[:username] != ""
+			@users = User.where(username: params[:username]).paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
+		else
+			@users = User.all.paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
+		end
+		render "admin-add"
+	end
+
+	def manage_users_process
+		user = User.find(params[:user_id])
+
+		if params[:user_action] == "revoke"
+			if Business.where(user_id: params[:user_id]).exists?
+				user.update_attributes(user_type: "business")
+			else
+				user.update_attributes(user_type: "standard")
+			end
+		else
+			user.update_attributes(user_type: "superuser")
+		end
+
+		redirect_to "/admin/users/manage"
 	end
 
 private
