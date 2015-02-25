@@ -11,6 +11,12 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#aaaaaa',GradientType=0 ); /* IE6-9 */
 }
 
+/*Backgrounds*/
+
+.gray-background {
+	background-color:#30353c;
+}
+
 /*Alignments*/
 
 .txt-center {
@@ -59,6 +65,10 @@
 
 .padding-10 {
 	padding:10px;
+}
+
+.padding-20 {
+	padding:20px;
 }
 
 .padding-left-20 {

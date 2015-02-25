@@ -91,4 +91,8 @@ Rails.application.routes.draw do
   post "/admin/photos/delete" => "admin#photos_delete"
   get "/admin/users/manage" => "admin#manage_users"
   post "/admin/users/manage" => "admin#manage_users_process"
+
+  #Subscriptions
+
+  get "/subscribe" => "subscription#pay"
 end
