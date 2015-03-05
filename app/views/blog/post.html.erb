@@ -31,6 +31,10 @@
 						<% end %>
 					</div>
 
+					<div class="margin-top-20">
+						<a href="#" class="report-photos-button" data-hash="<%= @post.post_id %>" data-type="blog">Report as Spam</a>
+					</div>
+
 					<% if session[:user_type] == "superuser" %>
 						<div class="margin-top-20">
 							<a href="/admin/photos/blog?hash=<%= @post.post_id %>" class="super-user-delete-link">Edit Photo Set</a>
@@ -129,5 +133,7 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--/Write Comment Modal-->
+
+<%= render "partials/modals/photos_spam_modal" %>
 
 <!--/Main-->

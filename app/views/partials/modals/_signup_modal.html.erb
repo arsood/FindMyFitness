@@ -31,7 +31,7 @@
 							About Me
 						</div>
 						<div class="margin-top-20">
-							<textarea name="user[about_me]" class="form-control" placeholder="Tell us a little about yourself!"></textarea>
+							<textarea name="user[about_me]" class="form-control" placeholder="Tell us a little about yourself!" required></textarea>
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -45,7 +45,7 @@
 										Username
 									</div>
 									<div class="margin-top-10">
-										<input name="user[username]" type="text" class="form-control" />
+										<input name="user[username]" type="text" class="form-control" required />
 									</div>
 								</div>
 								<div class="col-sm-6">
@@ -53,7 +53,7 @@
 										Password
 									</div>
 									<div class="margin-top-10">
-										<input name="user[password]" type="password" class="form-control" />
+										<input name="user[password]" type="password" class="form-control" required />
 									</div>
 								</div>
 							</div>
@@ -64,7 +64,7 @@
 										First Name
 									</div>
 									<div class="margin-top-10">
-										<input name="user[first_name]" type="text" class="form-control" />
+										<input name="user[first_name]" type="text" class="form-control" required />
 									</div>
 								</div>
 								<div class="col-sm-6">
@@ -72,7 +72,7 @@
 										Last Name
 									</div>
 									<div class="margin-top-10">
-										<input name="user[last_name]" type="text" class="form-control" />
+										<input name="user[last_name]" type="text" class="form-control" required />
 									</div>
 								</div>
 							</div>
@@ -82,7 +82,7 @@
 									Email
 								</div>
 								<div class="margin-top-10">
-									<input name="user[email_address]" type="email" class="form-control" />
+									<input name="user[email_address]" type="email" class="form-control" required />
 								</div>
 							</div>
 
@@ -92,7 +92,7 @@
 										City
 									</div>
 									<div class="margin-top-10">
-										<input name="user[city]" type="text" class="form-control" />
+										<input name="user[city]" type="text" class="form-control" required />
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -100,9 +100,7 @@
 										State
 									</div>
 									<div class="margin-top-10">
-										<select name="user[state]" class="form-control">
-											<option>CA</option>
-										</select>
+										<%= select_tag("user[state]", options_for_select(us_states), { class: "form-control", required: true }) %>
 									</div>
 								</div>
 							</div>
@@ -110,7 +108,7 @@
 							<div class="margin-top-20">
 								<div class="checkbox">
 									<label>
-										<input type="checkbox"> I agree to the Terms of Service
+										<input type="checkbox" required> I agree to the Terms of Service
 									</label>
 								</div>
 							</div>

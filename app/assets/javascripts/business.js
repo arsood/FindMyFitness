@@ -2,8 +2,38 @@
 $(document).ready(function() {
 if ($("#page_id").length && $("#page_id").val() === "business_show") {
 
-	//Get business map
+	//Report review as spam
+	$(document).on("click", ".business-review-report-spam", function(event) {
+		event.preventDefault();
 
+		$("#spam-confirm-button").attr("data-id", $(this).attr("data-id"));
+		$("#spam-confirm-modal").modal("show");
+	});
+
+	$(document).on("click", "#spam-confirm-button", function(event) {
+		event.preventDefault();
+
+		$("#spam-confirm-button").attr("disabled", "disabled");
+
+		$.ajax({
+			url: "/report/review",
+			type: "POST",
+			data: {
+				review_id: $(this).attr("data-id"),
+				authenticity_token: $("input[name='authenticity_token']").val()
+			},
+			success: function() {
+				$("#spam-confirm-modal").modal("hide");
+				$("#spam-confirm-button").removeAttr("disabled");
+			},
+			error: function() {
+				alert("Something went wrong. Please try again.");
+				$("#spam-confirm-button").removeAttr("disabled");
+			}
+		});
+	});
+
+	//Get business map
 	$.ajax({
 		url: "https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAnfmjbf-Fz9g-6i1q6tBE5GMSHXqwPLpk&address=" + encodeURIComponent($("#business-address").val()),
 		type: "GET",
@@ -50,7 +80,7 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 		}
 
 		$.ajax({
-			url:"http://localhost:3000/business/save",
+			url:"/business/save",
 			type:"POST",
 			data: {
 				business_id: $(this).attr("data-business"),

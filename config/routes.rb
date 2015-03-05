@@ -96,4 +96,8 @@ Rails.application.routes.draw do
 
   get "/subscribe" => "subscription#pay"
   post "/subscribe" => "subscription#subscribe"
+
+  #Spam reporting
+  post "/report/review" => "spam#report_review"
+  post "/report/photos" => "spam#report_photos"
 end

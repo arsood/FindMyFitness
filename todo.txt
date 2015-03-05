@@ -13,7 +13,7 @@
 #- Forgot password
 - Payments
 #- FMF Analytics
-- Spam reporting
+#- Spam reporting
 - Blog like and share
 #- Homepage
 - Misc pages (about, contact, etc.)

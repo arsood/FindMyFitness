@@ -289,7 +289,7 @@
 				</div>
 
 				<div class="margin-top-20">
-					<a href="#" data-hash="<%= @business_info.business_hash %>" id="business-report-photos">Report photos</a>
+					<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
 				</div>
 
 				<% if session[:user_type] == "superuser" %>
@@ -389,5 +389,8 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!--/Save Success Modal-->
+
+<%= render "partials/modals/review_spam_confirm_modal" %>
+<%= render "partials/modals/photos_spam_modal" %>
 
 <!--/Main-->
