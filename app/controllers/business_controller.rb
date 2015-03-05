@@ -1,4 +1,5 @@
 class BusinessController < ApplicationController
+	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos]
 
 	def signup
 		if session[:user_id]
@@ -338,7 +339,7 @@ class BusinessController < ApplicationController
 		end
 	end
 
-	private
+private
 
 	def is_owner(business_id)
 		return BusinessOwner.where(user_id: session[:user_id], business_id: business_id).exists?

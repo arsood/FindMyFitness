@@ -2,7 +2,7 @@ class SubscriptionController < ApplicationController
 
 	def pay
 		@client_token = Braintree::ClientToken.generate
-		render "pay", layout: "home"
+		render "pay", layout: "simple-topbar"
 	end
 
 	def subscribe
@@ -22,6 +22,7 @@ class SubscriptionController < ApplicationController
 
 			if subscription_result.success?
 				Subscription.create(user_id: session[:user_id], plan_type: "fmf_business", subscription_status: "active", customer_id: customer_result.customer.id, customer_token: customer_result.customer.credit_cards[0].token, subscription_id: subscription_result.subscription.id)
+				redirect_to "/business-admin"
 			else
 				flash[:error] = "There was an error creating the subscription."
 				redirect_to "/subscribe"
