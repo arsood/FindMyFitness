@@ -8,10 +8,10 @@
 #- Hash tag search
 #- Blog followers
 - User profile page
-- Users being able to add photos for a business (ask Stella)
+#- Users being able to add photos for a business (ask Stella)
 #- FMF Admin panel
 #- Forgot password
-- Payments
+#- Payments
 #- FMF Analytics
 #- Spam reporting
 - Blog like and share

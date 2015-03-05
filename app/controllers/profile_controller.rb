@@ -32,6 +32,12 @@ class ProfileController < ApplicationController
 		end
 	end
 
+	def profile
+		@user = User.find(params[:id])
+
+		render "profile", layout: "inner-info"
+	end
+
 	def notifications
 		@user = User.find(session[:user_id])
 
@@ -81,6 +87,22 @@ class ProfileController < ApplicationController
 		@user = User.find(session[:user_id])
 
 		render "profile-events", layout: "inner-info"
+	end
+
+	def reviews
+		@reviews = Review.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+
+		@user = User.find(session[:user_id])
+
+		render "profile-reviews", layout: "inner-info"
+	end
+
+	def public_reviews
+		@reviews = Review.where(user_id: params[:id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+
+		@user = User.find(params[:id])
+
+		render "profile-reviews-public", layout: "inner-info"
 	end
 
 private

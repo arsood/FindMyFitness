@@ -1,0 +1,67 @@
+<!--Main--> 
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/profile_left_sidebar_public" %>
+		</div>
+		<div class="col-sm-10">
+			<% if @reviews.empty? %>
+				<div class="medium-title margin-top-20">
+					No reviews yet.
+				</div>
+			<% end %>
+
+			<% @reviews.each do |review| 
+
+				business = get_bus_info(review.bus_id)
+
+			%>
+			<!--One Review-->
+			<div class="row margin-top-20">
+				<div class="col-sm-12">
+					<div class="bold">
+						<a href="/business/<%= business.id %>"><%= business.name %></a>
+					</div>
+					<div class="italic">
+						Review On: <%= review.created_at.strftime("%B %-d, %Y") %>
+					</div>
+					<div class="margin-top-10">
+						<img src="/assets/stars/stars<%= review.star_rating %>.png" />
+					</div>
+					<div class="margin-top-10">
+						<%= review.review_text %>
+					</div>
+				</div>
+			</div>
+			<%
+
+			review_replies = ReviewReply.where(review_id: review.id).order(created_at: :desc)
+
+			review_replies.each do |reply|
+
+			user = get_user_info(reply.user_id)
+
+			%>
+				<div class="row review-reply-wrapper margin-top-20">
+					<div class="col-sm-1">
+						<%= image_tag(get_user_avatar(reply.user_id, :small), class: "img-responsive") %>
+					</div>
+					<div class="col-sm-11">
+						<div class="italic">
+							Admin: <%= user.first_name %> <%= user.last_name %>
+						</div>
+						<div class="margin-top-10">
+							<%= reply.reply_text %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+			<!--/One Review-->
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate(@reviews) %>
+			</div>
+		</div>
+	</div>
+</div>

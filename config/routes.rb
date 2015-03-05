@@ -74,6 +74,9 @@ Rails.application.routes.draw do
   get "profile/saves" => "profile#saves"
   post "profile/upload" => "profile#upload"
   get "/profile/events" => "profile#get_user_events"
+  get "profile/reviews" => "profile#reviews"
+  get "profile/:id" => "profile#profile"
+  get "profile/:id/reviews" => "profile#public_reviews"
 
   #Login
 
