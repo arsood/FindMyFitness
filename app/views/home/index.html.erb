@@ -85,7 +85,7 @@
                     <!--One Card-->
                     <div class="col-sm-4">
                         <div class="home-card">
-                            <div class="home-card-image" style="background:url(<%= get_event_thumb(event.event_id, :background) %>) no-repeat;"></div>
+                            <div class="home-card-image" style="background:url(<%= get_event_thumb(event.event_id, :link) %>) no-repeat;"></div>
                             <div class="home-card-content-container">
                                 <div class="margin-top-20">
                                     <a href="/events/<%= event.id %>"><%= event.event_name %></a>

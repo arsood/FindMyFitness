@@ -49,9 +49,9 @@ module ApplicationHelper
 			return photo.first.business_photo.url(:medium)
 		else
 			if type == :link
-				return "/assets/temp/slide1.jpg"
+				return "/assets/image-placeholder.jpg"
 			else
-				return "temp/slide1.jpg"
+				return "image-placeholder.jpg"
 			end
 		end
 	end
@@ -64,9 +64,9 @@ module ApplicationHelper
 			return photo.first.event_photo.url(:medium)
 		else
 			if type == :link
-				return "/assets/temp/slide1.jpg"
+				return "/assets/image-placeholder.jpg"
 			else
-				return "temp/slide1.jpg"
+				return "image-placeholder.jpg"
 			end
 		end
 	end
