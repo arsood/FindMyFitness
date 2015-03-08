@@ -45,7 +45,7 @@ class EventController < ApplicationController
 
 		Event.create_event(event_parameters)
 
-		redirect_to "/"
+		redirect_to "/events"
 	end
 
 	def update

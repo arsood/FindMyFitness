@@ -44,7 +44,7 @@ class BusinessController < ApplicationController
 
 		reset_session
 		
-		redirect_to "/"
+		redirect_to "/login"
 	end
 
 	def update
@@ -166,7 +166,7 @@ class BusinessController < ApplicationController
 
 			render "admin-edit-profile"
 		else
-			redirect_to "/"
+			redirect_to :back
 		end
 	end
 

@@ -79,7 +79,7 @@ class BlogController < ApplicationController
 			BlogTag.create(blog_id: added_blog.id, blog_tag: tag, user_id: session[:user_id])
 		end
 
-		redirect_to "/"
+		redirect_to "/blog/me"
 	end
 
 	def post_show
