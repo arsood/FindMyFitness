@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
 		new_event.event_category = params[:event_category]
 		new_event.event_location = params[:event_location]
 		new_event.event_time = params[:event_time]
+		new_event.business_id = params[:business_id]
+		new_event.lat = params[:lat]
+		new_event.lng = params[:lng]
 
 		date_obj = DateTime.parse(params[:event_date_year] + "-" + params[:event_date_month] + "-" + params[:event_date_day])
 
@@ -22,6 +25,8 @@ class Event < ActiveRecord::Base
 		edit_event.event_category = params[:event_category]
 		edit_event.event_location = params[:event_location]
 		edit_event.event_time = params[:event_time]
+		edit_event.lat = params[:lat]
+		edit_event.lng = params[:lng]
 
 		date_obj = DateTime.parse(params[:event_date_year] + "-" + params[:event_date_month] + "-" + params[:event_date_day])
 

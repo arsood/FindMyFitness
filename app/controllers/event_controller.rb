@@ -33,7 +33,7 @@ class EventController < ApplicationController
 			#Generate random hash to be associated with images
 			@event_id = Digest::MD5.hexdigest(Time.now.to_s)
 
-			render "new"
+			render "new", layout: "nothing"
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"
@@ -47,13 +47,13 @@ class EventController < ApplicationController
 
 		Event.create_event(event_parameters)
 
-		redirect_to "/events"
+		redirect_to "/business-admin/events/" + session[:business_id].to_s
 	end
 
 	def update
 		Event.update_event(event_params, params[:id])
 
-		redirect_to "/profile/events"
+		redirect_to "/business-admin/events/" + session[:business_id].to_s
 	end
 
 	def image_upload
@@ -72,9 +72,9 @@ class EventController < ApplicationController
 	def edit
 		@event = Event.find(params[:id])
 
-		if @event.user_id == session[:user_id]
+		if @event.business_id == session[:business_id]
 			@photos = EventPhoto.where(event_id: @event.event_id)
-			render "edit"
+			render "edit", layout: "nothing"
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"

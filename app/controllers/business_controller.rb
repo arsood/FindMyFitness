@@ -1,5 +1,5 @@
 class BusinessController < ApplicationController
-	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos]
+	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos, :admin_events]
 
 	def signup
 		if session[:signing_up]
@@ -37,7 +37,13 @@ class BusinessController < ApplicationController
 
 		#Save user as the owner of this business
 
-		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id)
+		if session[:signing_up]
+			business_paid = "paid"
+		else
+			business_paid = "unpaid"
+		end
+
+		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id, account_type: business_paid)
 
 		if session[:signing_up]
 			reset_session
@@ -190,6 +196,12 @@ class BusinessController < ApplicationController
 		else
 			redirect_to "/"
 		end
+	end
+
+	def admin_events
+		@events = Event.where(business_id: params[:business_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+
+		render "admin-events", layout: "nothing"
 	end
 
 	def admin_analytics
