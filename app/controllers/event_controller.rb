@@ -72,7 +72,7 @@ class EventController < ApplicationController
 	def edit
 		@event = Event.find(params[:id])
 
-		if @event.business_id == session[:business_id]
+		if session[:business_id] && @event.business_id == session[:business_id]
 			@photos = EventPhoto.where(event_id: @event.event_id)
 			render "edit", layout: "nothing"
 		else
