@@ -29,7 +29,7 @@ class EventController < ApplicationController
 	end
 
 	def new
-		if session[:user_id]
+		if session[:business_id]
 			#Generate random hash to be associated with images
 			@event_id = Digest::MD5.hexdigest(Time.now.to_s)
 
@@ -41,7 +41,9 @@ class EventController < ApplicationController
 	end
 
 	def new_event_process
-		event_parameters = event_params.merge(user_id: session[:user_id])
+		event_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:event_location])
+
+		event_parameters = event_params.merge(business_id: session[:business_id], lat: event_geo.lat, lng: event_geo.lng)
 
 		Event.create_event(event_parameters)
 

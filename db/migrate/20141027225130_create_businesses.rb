@@ -11,11 +11,12 @@ class CreateBusinesses < ActiveRecord::Migration
       t.integer :phone
       t.string :website
       t.string :availability
+      t.string :account_type, default: "unpaid"
       t.text :description
       t.integer :user_id
       t.float :lat
       t.float :lng
-      t.integer :views, :default => 0
+      t.integer :views, default: 0
 
       t.timestamps
     end

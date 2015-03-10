@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20150123194556) do
   create_table "business_owners", force: true do |t|
     t.integer  "user_id"
     t.integer  "business_id"
-    t.boolean  "business_paid", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.integer  "phone"
     t.string   "website"
     t.string   "availability"
+    t.string   "account_type",  default: "unpaid"
     t.text     "description"
     t.integer  "user_id"
     t.float    "lat"
@@ -136,7 +136,9 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.datetime "event_date"
     t.string   "event_time"
     t.string   "event_id"
-    t.integer  "user_id"
+    t.integer  "business_id"
+    t.float    "lat"
+    t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

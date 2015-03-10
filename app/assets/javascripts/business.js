@@ -132,10 +132,12 @@ $(document).on("click", "#toggle-bus-photos", function() {
 
 	//Run gallery on click
 
-	resizeGalleria();
-	Galleria.run('#galleria', {
-		wait: true
-	});
+	if ($("#galleria").length) {
+		resizeGalleria();
+		Galleria.run('#galleria', {
+			wait: true
+		});
+	}
 });
 
 //Only execute when business search page is shown

@@ -4,6 +4,20 @@ module EventHelper
 		return EventPhoto.find(id).event_photo.url(:medium)
 	end
 
+	def get_first_event_photo(event_hash, photo_type)
+		event_photo = EventPhoto.where(event_id: event_hash).try(:first)
+		
+		if event_photo
+			return event_photo.event_photo.url(:medium)
+		else
+			if photo_type == :link
+				return "image-placeholder.jpg"
+			else
+				return "/assets/image-placeholder.jpg"
+			end
+		end
+	end
+
 	def month_options
 		[
 			["Jan", "January"],

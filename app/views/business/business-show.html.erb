@@ -76,63 +76,65 @@
 							<a href="<%= @business_info.website %>" target="_blank"><%= @business_info.website %></a>
 						</div>
 
-						<div class="margin-top-20 bold">
-							Services:
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<% for i in 0..2 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
+						<% if @business_info.account_type == "paid" %>
+							<div class="margin-top-20 bold">
+								Services:
 							</div>
-							<div class="col-sm-6">
-								<% for i in 3..5 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 0..2 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 3..5 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
 							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-sm-6">
-								<% for i in 6..8 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 6..8 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 9..11 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
 							</div>
-							<div class="col-sm-6">
-								<% for i in 9..11 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
-							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-sm-6">
-								<% for i in 12..14 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 12..14 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 15..17 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
 							</div>
-							<div class="col-sm-6">
-								<% for i in 15..17 %>
-									<div>
-										<%= @services_info[i].try(:bus_service) %>
-									</div>
-								<% end %>
-							</div>
-						</div>
 
-						<div class="margin-top-50">
-							<hr />
-						</div>
+							<div class="margin-top-50">
+								<hr />
+							</div>
+						<% end %>
 					</div>
 					<div class="col-sm-6">
 						<div id="map-canvas"></div>
@@ -144,14 +146,16 @@
 					</div>
 				</div>
 
-				<div class="margin-top-20">
-					<div class="medium-title">
-						Description
+				<% if @business_info.account_type == "paid" %>
+					<div class="margin-top-20">
+						<div class="medium-title">
+							Description
+						</div>
+						<div class="margin-top-10">
+							<%= @business_info.description %>
+						</div>
 					</div>
-					<div class="margin-top-10">
-						<%= @business_info.description %>
-					</div>
-				</div>
+				<% end %>
 
 				<!-- <div class="margin-top-20">
 					<button type="button" class="fmf-ellipse-dark-blue-button regular-text">Get deals now</button>
@@ -282,15 +286,21 @@
 					Photos of Business
 				</div>
 
-				<div id="galleria" class="margin-top-20">
-					<% @business_photos.each do |photo| %>
-						<img src="<%= photo.business_photo.url %>" />
-					<% end %>
-				</div>
+				<% if @business_photos.any? %>
+					<div id="galleria" class="margin-top-20">
+						<% @business_photos.each do |photo| %>
+							<img src="<%= photo.business_photo.url %>" />
+						<% end %>
+					</div>
 
-				<div class="margin-top-20">
-					<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
-				</div>
+					<div class="margin-top-20">
+						<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
+					</div>
+				<% else %>
+					<div class="margin-top-20">
+						No photos yet.
+					</div>
+				<% end %>
 
 				<% if session[:user_type] == "superuser" %>
 					<div class="margin-top-10">

@@ -2,9 +2,8 @@ class BusinessController < ApplicationController
 	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos]
 
 	def signup
-		if session[:user_id]
-			@header_text = "Add a New Business"
-			render "business-signup", layout: "inner-basic"
+		if session[:signing_up]
+			render "business-signup", layout: "nothing"
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"
@@ -22,29 +21,32 @@ class BusinessController < ApplicationController
 
 		#Merge user_id and geocode results into the business params
 
-		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng)
+		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng, user_id: session[:user_id])
 
 		#Create the new business
 
 		newBus = Business.create(business_params)
-
-		#Make user a business user
-
-		User.find(session[:user_id]).update_attributes(user_type: "business")
-
-		#Add user as owner of this business
-
-		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id)
 		
 		#Add services to a business
 
-		service_params.each do |service|
-			BusinessService.create("bus_id" => newBus.id ,"bus_service" => service[1])
+		if params[:service]
+			service_params.each do |service|
+				BusinessService.create(bus_id: newBus.id , bus_service: service[1])
+			end
 		end
 
-		reset_session
-		
-		redirect_to "/login"
+		#Save user as the owner of this business
+
+		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id)
+
+		if session[:signing_up]
+			reset_session
+
+			flash[:success] = "You're all set! Please log in to your admin panel."
+			redirect_to "/login"
+		else
+			redirect_to "/business/" + newBus.id.to_s
+		end
 	end
 
 	def update
@@ -72,7 +74,7 @@ class BusinessController < ApplicationController
 		
 		flash[:bus_update_success] = true
 
-		redirect_to "/business-admin"
+		redirect_to "/business-admin/edit/" + business.id.to_s
 	end
 
 	def business_show
@@ -164,14 +166,14 @@ class BusinessController < ApplicationController
 
 			@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
 
-			render "admin-edit-profile"
+			render "admin-edit-profile", layout: "nothing"
 		else
 			redirect_to :back
 		end
 	end
 
 	def image_upload
-		if BusinessPhoto.create(business_hash: params[:business_hash], contributor_id: session[:tmp_user_id], business_photo: params[:file])
+		if BusinessPhoto.create(business_hash: params[:business_hash], contributor_id: session[:user_id], business_photo: params[:file])
 			render :json => { result: "ok" }
 		else
 			render :json => { result: "error", error: "Photo upload failed." }
@@ -184,7 +186,7 @@ class BusinessController < ApplicationController
 
 			@business_reviews = Review.where(bus_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 			
-			render "admin-reviews"
+			render "admin-reviews", layout: "nothing"
 		else
 			redirect_to "/"
 		end
@@ -195,7 +197,7 @@ class BusinessController < ApplicationController
 			@saves_num = BusinessSave.where(business_id: params[:business_id]).count
 			@review_num = Review.where(bus_id: params[:business_id]).count
 
-			render "admin-analytics"
+			render "admin-analytics", layout: "nothing"
 		else
 			redirect_to "/"
 		end
@@ -314,7 +316,7 @@ class BusinessController < ApplicationController
 
 		@bus_photos = BusinessPhoto.where(business_hash: @bus_hash).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
-		render "admin-photos"
+		render "admin-photos", layout: "nothing"
 	end
 
 	def delete_photo
@@ -342,7 +344,13 @@ class BusinessController < ApplicationController
 private
 
 	def is_owner(business_id)
-		return BusinessOwner.where(user_id: session[:user_id], business_id: business_id).exists?
+		owner = BusinessOwner.where(user_id: session[:user_id], business_id: business_id).exists?
+
+		if owner || session[:user_type] == "superuser"
+			return true
+		else
+			return false
+		end
 	end
 
 	def bus_params

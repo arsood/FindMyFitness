@@ -44,17 +44,12 @@
 			<% end %>
 
 			<% @events.each do |event| %>
-				<% 
-
-				#Get one photo for the event show
-				event_photo = EventPhoto.where(event_id: event.event_id).try(:first)
-
-				%>
-
 			<!--One Event-->
 			<div class="row single-event">
 				<div class="col-sm-4">
-					<a href="/events/<%= event.id %>"><%= if event_photo then image_tag(event_photo.event_photo.url(:medium), { class: "img-responsive" }) end %></a>
+					<a href="/events/<%= event.id %>">
+					<%= image_tag(get_first_event_photo(event.event_id, :link), class: "img-responsive") %>
+					</a>
 				</div>
 				<div class="col-sm-8">
 					<div>

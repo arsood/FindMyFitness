@@ -44,7 +44,9 @@
 						<%= number_to_phone(business.phone, area_code: true) %>
 					</div>
 					<div class="margin-top-10">
-						<%= business.description[0..145] %>
+						<% if business.description %>
+							<%= business.description[0..145] %>
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -65,6 +67,12 @@
 	</div>
 	<div class="col-sm-4">
 		<div id="map-canvas"></div>
+
+		<div class="margin-top-20">
+			<a data-toggle="modal" data-target="#add-business-modal" href="#">If you don't see the business you want to review, you can add the establishment by clicking here.</a>
+		</div>
 	</div>
 </div>
 <!--/Main-->
+
+<%= render "partials/modals/add_business_modal" %>

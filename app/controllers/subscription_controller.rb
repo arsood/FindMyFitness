@@ -1,13 +1,10 @@
 class SubscriptionController < ApplicationController
 
 	def pay
-		if session[:user_id]
-			@client_token = Braintree::ClientToken.generate
-			render "pay", layout: "simple-topbar"
-		else
-			flash[:error] = "You must be logged in to do that."
-			redirect_to "/login"
-		end
+		reset_session
+
+		@client_token = Braintree::ClientToken.generate
+		render "pay", layout: "nothing"
 	end
 
 	def subscribe
@@ -26,10 +23,16 @@ class SubscriptionController < ApplicationController
 			)
 
 			if subscription_result.success?
-				Subscription.where(user_id: session[:user_id]).destroy_all
+				new_user = User.create(username: params[:new_username], password: params[:new_password], user_type: "business")
+
+				Subscription.where(user_id: new_user.id).destroy_all
 				
-				Subscription.create(user_id: session[:user_id], plan_type: "fmf_business", subscription_status: "active", customer_id: customer_result.customer.id, customer_token: customer_result.customer.credit_cards[0].token, subscription_id: subscription_result.subscription.id)
-				redirect_to "/business-admin"
+				Subscription.create(user_id: new_user.id, plan_type: "fmf_business", subscription_status: "active", customer_id: customer_result.customer.id, customer_token: customer_result.customer.credit_cards[0].token, subscription_id: subscription_result.subscription.id)
+				
+				session[:user_id] = new_user.id
+				session[:signing_up] = true
+
+				redirect_to "/business-signup"
 			else
 				flash[:error] = "There was an error creating the subscription."
 				redirect_to "/subscribe"
