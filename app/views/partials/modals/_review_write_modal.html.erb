@@ -1,0 +1,54 @@
+<!--Write a Review Modal-->
+<div class="modal fade" id="review-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<%= form_tag("/review/new") do %>
+				<input type="hidden" name="business_id" value="<%= @business_info.id %>" />
+				<input type="hidden" name="review_hash" value="<%= generate_random_md5 %>" />
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Review This Business</h4>
+				</div>
+				<div class="modal-body">
+					<div role="tabpanel">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#review-tab" aria-controls="home" role="tab" data-toggle="tab">Your Review</a></li>
+							<li role="presentation"><a href="#review-photos-tab" aria-controls="profile" role="tab" data-toggle="tab">Add Photos</a></li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="review-tab">
+								<div class="bold margin-top-20">
+									How would you rate this business?
+								</div>
+
+								<div class="margin-top-10 business-review-modal-stars">
+									<i id="review-star-1" class="fa fa-star-o review-star"></i> <i id="review-star-2" class="fa fa-star-o review-star"></i> <i id="review-star-3" class="fa fa-star-o review-star"></i> <i id="review-star-4" class="fa fa-star-o review-star"></i> <i id="review-star-5" class="fa fa-star-o review-star"></i>
+									<input id="review-star-value" type="hidden" name="review_stars" />
+								</div>
+
+								<div class="bold margin-top-20">
+									Your review
+								</div>
+
+								<div class="margin-top-20">
+									<textarea id="review-text" name="review" class="form-control"></textarea>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="review-photos-tab">
+								<div id="drop-area" class="dropzone margin-top-20"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save Review</button>
+				</div>
+			<% end %>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Write a Review Modal-->

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "business/:id" => "business#business_show"
   get "businesses/find" => "business#search"
   post "review/new" => "business#new_review"
+  post "review/images" => "business#review_image_upload"
 
   #Business admin
 

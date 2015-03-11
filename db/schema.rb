@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123194556) do
+ActiveRecord::Schema.define(version: 20150311190926) do
 
   create_table "blog_comments", force: true do |t|
     t.integer  "blog_id"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
   end
 
   create_table "business_services", force: true do |t|
-    t.integer  "bus_id"
+    t.integer  "business_id"
     t.string   "bus_service"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -163,6 +163,17 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.datetime "updated_at"
   end
 
+  create_table "review_photos", force: true do |t|
+    t.string   "review_hash"
+    t.integer  "contributor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "review_photo_file_name"
+    t.string   "review_photo_content_type"
+    t.integer  "review_photo_file_size"
+    t.datetime "review_photo_updated_at"
+  end
+
   create_table "review_replies", force: true do |t|
     t.integer  "business_id"
     t.integer  "review_id"
@@ -173,9 +184,10 @@ ActiveRecord::Schema.define(version: 20150123194556) do
 
   create_table "reviews", force: true do |t|
     t.integer  "user_id"
-    t.integer  "bus_id"
+    t.integer  "business_id"
     t.integer  "star_rating"
     t.text     "review_text"
+    t.string   "review_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

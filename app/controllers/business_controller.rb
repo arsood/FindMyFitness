@@ -31,7 +31,7 @@ class BusinessController < ApplicationController
 
 		if params[:service]
 			service_params.each do |service|
-				BusinessService.create(bus_id: newBus.id , bus_service: service[1])
+				BusinessService.create(business_id: newBus.id , bus_service: service[1])
 			end
 		end
 
@@ -72,10 +72,10 @@ class BusinessController < ApplicationController
 		
 		#Add services to the business
 
-		BusinessService.where(bus_id: business.id).destroy_all
+		BusinessService.where(business_id: business.id).destroy_all
 
 		service_params.each do |service|
-			BusinessService.create("bus_id" => business.id ,"bus_service" => service[1])
+			BusinessService.create("business_id" => business.id ,"bus_service" => service[1])
 		end
 		
 		flash[:bus_update_success] = true
@@ -88,10 +88,10 @@ class BusinessController < ApplicationController
 		@business_info = Business.find(params[:id])
 		
 		#Pull all services related to that business
-		@services_info = BusinessService.where(bus_id: @business_info.id)
+		@services_info = BusinessService.where(business_id: @business_info.id)
 
 		#Pull all related reviews
-		@business_reviews = Review.where(bus_id: @business_info.id).order(created_at: :desc)
+		@business_reviews = Review.where(business_id: @business_info.id).order(created_at: :desc)
 
 		@business_photos = BusinessPhoto.where(business_hash: @business_info.business_hash)
 
@@ -100,6 +100,14 @@ class BusinessController < ApplicationController
 		@recent_searches = BusinessView.where(user_id: session[:user_id]).select(:business_id).distinct.order(created_at: :desc).limit(5)
 
 		render "business-show"
+	end
+
+	def review_image_upload
+		if ReviewPhoto.create(review_hash: params[:review_hash], contributor_id: session[:user_id], review_photo: params[:file])
+			render :json => { result: "ok" }
+		else
+			render :json => { result: "error", error: "There was an error uploading the file." }
+		end
 	end
 
 	def save_business
@@ -147,7 +155,7 @@ class BusinessController < ApplicationController
 	end
 
 	def new_review
-		Review.create(user_id: session[:user_id], bus_id: params[:business_id], star_rating: params[:review_stars], review_text: params[:review])
+		Review.create(user_id: session[:user_id], business_id: params[:business_id], star_rating: params[:review_stars], review_text: params[:review], review_hash: params[:review_hash])
 
 		redirect_to :back
 	end
@@ -162,7 +170,7 @@ class BusinessController < ApplicationController
 		if is_owner(params[:business_id])
 			@business = Business.find(params[:business_id])
 
-			services = BusinessService.where(bus_id: @business.id)
+			services = BusinessService.where(business_id: @business.id)
 
 			@services = []
 
@@ -190,7 +198,7 @@ class BusinessController < ApplicationController
 		if is_owner(params[:business_id])
 			@header_text = "Your Reviews"
 
-			@business_reviews = Review.where(bus_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@business_reviews = Review.where(business_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 			
 			render "admin-reviews", layout: "nothing"
 		else
@@ -227,7 +235,7 @@ class BusinessController < ApplicationController
 	def admin_analytics
 		if is_owner(params[:business_id])
 			@saves_num = BusinessSave.where(business_id: params[:business_id]).count
-			@review_num = Review.where(bus_id: params[:business_id]).count
+			@review_num = Review.where(business_id: params[:business_id]).count
 
 			render "admin-analytics", layout: "nothing"
 		else

@@ -122,6 +122,21 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 		$("#review-text").val("");
 	});
 
+	//Initiate Dropzone for reviews
+
+	$(document).ready(function() {
+		if ($("#drop-area").length) {
+			$("div#drop-area").dropzone({
+				url: "/review/images",
+				params: {
+					authenticity_token: $("input[name='authenticity_token']").val(),
+					review_hash: $("input[name='review_hash']").val()
+				},
+				addRemoveLinks: true
+			});
+		}
+	});
+
 //Close condition that business show page
 } });
 
