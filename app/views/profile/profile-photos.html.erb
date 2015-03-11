@@ -12,6 +12,7 @@
 						<option value="business" <%= if !params[:cat] || params[:cat] == "business" then "selected" end %>>Business Photos</option>
 						<option value="event" <%= if params[:cat] && params[:cat] == "event" then "selected" end %>>Event Photos</option>
 						<option value="blog" <%= if params[:cat] && params[:cat] == "blog" then "selected" end %>>Blog Photos</option>
+						<option value="review" <%= if params[:cat] && params[:cat] == "review" then "selected" end %>>Review Photos</option>
 					</select>
 				</div>
 				<div class="col-sm-offset-4 col-sm-4">

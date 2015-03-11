@@ -2,3 +2,7 @@ sup {
 	top:0em;
 	font-size:1.2em;
 }
+
+.review-carousel img {
+	width:100%;
+}

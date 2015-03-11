@@ -11,6 +11,9 @@ class ProfileController < ApplicationController
 		elsif params[:cat] && params[:cat] == "blog"
 			@my_photos = BlogPhoto.where(contributor_id: session[:user_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 			@photo_col = "post_photo"
+		elsif params[:cat] && params[:cat] == "review"
+			@my_photos = ReviewPhoto.where(contributor_id: session[:user_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+			@photo_col = "review_photo"
 		end
 
 		render "profile-photos", layout: "inner-info"
