@@ -69,6 +69,12 @@ class BlogController < ApplicationController
 	def create
 		new_blog = blog_params.merge(user_id: session[:user_id])
 
+		#Add in business id if it's a business user
+
+		if session[:business_id]
+			new_blog.merge!(business_id: session[:business_id])
+		end
+
 		added_blog = Blog.create(new_blog)
 
 		#Save blog tags to db
@@ -79,7 +85,11 @@ class BlogController < ApplicationController
 			BlogTag.create(blog_id: added_blog.id, blog_tag: tag, user_id: session[:user_id])
 		end
 
-		redirect_to "/blog/me"
+		if session[:business_id]
+			redirect_to "/business-admin/blogs/" + session[:business_id].to_s
+		else
+			redirect_to "/blog/me"
+		end
 	end
 
 	def post_show
@@ -123,7 +133,11 @@ class BlogController < ApplicationController
 				BlogTag.create(blog_id: blog.id, blog_tag: tag)
 			end
 
-			redirect_to "/post/" + blog.id.to_s
+			if session[:business_id]
+				redirect_to "/business-admin/blogs/" + session[:business_id].to_s
+			else
+				redirect_to "/post/" + blog.id.to_s
+			end
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"

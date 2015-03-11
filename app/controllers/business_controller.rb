@@ -1,5 +1,5 @@
 class BusinessController < ApplicationController
-	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos, :admin_events]
+	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos, :admin_events, :admin_blogs]
 
 	def signup
 		if session[:signing_up]
@@ -202,6 +202,26 @@ class BusinessController < ApplicationController
 		@events = Event.where(business_id: params[:business_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
 		render "admin-events", layout: "nothing"
+	end
+
+	def admin_blogs
+		@posts = Blog.where(business_id: session[:business_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
+
+		render "admin-blogs", layout: "nothing"
+	end
+
+	def admin_blogs_new
+		@post_id = Digest::MD5.hexdigest(Time.now.to_s)
+		@posts = Blog.where(business_id: session[:business_id])
+		render "admin-post-new", layout: "nothing"
+	end
+
+	def admin_blogs_edit
+		@post = Blog.find(params[:post_id])
+
+		@photos = BlogPhoto.where(post_id: @post.post_id)
+
+		render "admin-post-edit", layout: "nothing"
 	end
 
 	def admin_analytics

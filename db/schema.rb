@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
     t.text     "post_text"
     t.string   "post_title"
     t.string   "post_privacy", default: "public"
+    t.integer  "business_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

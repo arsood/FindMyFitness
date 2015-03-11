@@ -71,6 +71,21 @@ module ApplicationHelper
 		end
 	end
 
+	#Get thumbnail for a blog post
+	def get_post_thumb(post_hash, type)
+		photo = BlogPhoto.where(post_id: post_hash).order(created_at: :desc)
+
+		if photo.first
+			return photo.first.post_photo.url(:medium)
+		else
+			if type == :link
+				return "/assets/image-placeholder.jpg"
+			else
+				return "image-placeholder.jpg"
+			end
+		end
+	end
+
 	#Get count of notifications for a user
 	def get_notification_count(user_id)
 		return Notification.where(owner_user_id: user_id, dismissed: false).count
