@@ -367,7 +367,7 @@ class BusinessController < ApplicationController
 		if params[:reply_text] == ""
 			redirect_to :back
 		else
-			if ReviewReply.create(user_id: session[:user_id], review_id: params[:review_id], reply_text: params[:reply_text])
+			if ReviewReply.create(business_id: session[:business_id], review_id: params[:review_id], reply_text: params[:reply_text])
 				redirect_to :back
 			end
 		end

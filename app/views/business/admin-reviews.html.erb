@@ -50,16 +50,16 @@
 
 			review_replies.each do |reply|
 
-			user = get_user_info(reply.user_id)
+			business = get_bus_info(reply.business_id)
 
 			%>
 				<div class="row review-reply-wrapper margin-top-20">
 					<div class="col-sm-1">
-						<%= image_tag(get_user_avatar(reply.user_id, :small), class: "img-responsive") %>
+						<%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %>
 					</div>
 					<div class="col-sm-11">
 						<div class="italic">
-							Admin: <%= user.first_name %> <%= user.last_name %>
+							<%= business.name %>
 						</div>
 						<div class="margin-top-10">
 							<%= reply.reply_text %>

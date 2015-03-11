@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20150123194556) do
   end
 
   create_table "review_replies", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "business_id"
     t.integer  "review_id"
     t.text     "reply_text"
     t.datetime "created_at"

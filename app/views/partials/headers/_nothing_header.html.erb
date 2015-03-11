@@ -6,7 +6,11 @@
 				<a href="/"><%= image_tag("logo.png") %></a>
 			</div>
 			<div class="col-sm-6">
-				
+				<% if session[:user_id] %>
+					<div class="margin-top-20 txt-right">
+						<a href="/logout">Logout</a>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>
