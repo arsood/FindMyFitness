@@ -2,14 +2,12 @@ class BusinessController < ApplicationController
 	before_filter :check_subscription, only: [:admin_reviews, :admin_analytics, :get_photos, :admin_events, :admin_blogs]
 
 	def signup
-		# if session[:signing_up]
-		# 	render "business-signup", layout: "nothing"
-		# else
-		# 	flash[:error] = "You must be logged in to do that."
-		# 	redirect_to "/login"
-		# end
-
-		render "business-signup", layout: "nothing"
+		if session[:signing_up]
+			render "business-signup", layout: "nothing"
+		else
+			flash[:error] = "You must be logged in to do that."
+			redirect_to "/login"
+		end
 	end
 
 	def learn_more
