@@ -1,0 +1,32 @@
+<!--Main-->
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<% if @notifications.empty? %>
+				<div class="medium-title">
+					No notifications yet.
+				</div>
+			<% end %>
+
+			<% @notifications.each do |notification|
+
+				guest_user_info = get_user_info(notification.guest_user_id)
+
+				set_notification_dismissed(notification.id)
+
+			%>
+				<div class="profile-notification-entry <%= if !notification.dismissed then 'active' end %>">
+					<a href="/profile/<%= notification.guest_user_id %>"><%= guest_user_info.first_name %> <%= guest_user_info.last_name[0] %>.</a> <%= get_notification_text(notification.notification_type) %> <a href="<%= get_notification_link(notification.notification_type, notification.item_id) %>"><%= get_notification_title(notification.notification_type, notification.item_id) %></a> <span class="gray-text"><%= time_ago_in_words(notification.created_at) %> ago</span>
+				</div>
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate(@notifications) %>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

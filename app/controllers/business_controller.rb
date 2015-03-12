@@ -29,7 +29,7 @@ class BusinessController < ApplicationController
 		
 		#Add services to a business
 
-		if params[:service]
+		if params[:services]
 			service_params.each do |service|
 				BusinessService.create(business_id: newBus.id , bus_service: service[1])
 			end
@@ -155,7 +155,11 @@ class BusinessController < ApplicationController
 	end
 
 	def new_review
-		Review.create(user_id: session[:user_id], business_id: params[:business_id], star_rating: params[:review_stars], review_text: params[:review], review_hash: params[:review_hash])
+		review = Review.create(user_id: session[:user_id], business_id: params[:business_id], star_rating: params[:review_stars], review_text: params[:review], review_hash: params[:review_hash])
+
+		owner_id = BusinessOwner.where(business_id: params[:business_id]).first.user_id
+
+		Notification.create(notification_type: "new_review", item_id: review.id, guest_user_id: session[:user_id], owner_user_id: owner_id)
 
 		redirect_to :back
 	end
@@ -164,6 +168,12 @@ class BusinessController < ApplicationController
 		@businesses_owned = BusinessOwner.where(user_id: session[:user_id])
 
 		render "admin-index"
+	end
+
+	def admin_notifications
+		@notifications = Notification.where(owner_user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		render "admin-notifications", layout: "nothing"
 	end
 
 	def admin_edit
