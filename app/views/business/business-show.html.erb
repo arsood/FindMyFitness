@@ -304,32 +304,31 @@
 							<% end %>
 						</div>
 					</div>
+
+					<%
+					review_replies = ReviewReply.where(review_id: @business_reviews[i].id).order(created_at: :desc)
+
+					review_replies.each do |reply|
+
+					business = get_bus_info(reply.business_id)
+
+					%>
+						<div class="row review-reply-wrapper margin-top-20">
+							<div class="col-sm-2">
+								<%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %>
+							</div>
+							<div class="col-sm-10">
+								<div class="italic">
+									<%= business.name %>
+								</div>
+								<div class="margin-top-10">
+									<%= reply.reply_text %>
+								</div>
+							</div>
+						</div>
+					<% end %>
 				</div>
 				<!--/One Review-->
-
-				<%
-				review_replies = ReviewReply.where(review_id: @business_reviews[i].id).order(created_at: :desc)
-
-				review_replies.each do |reply|
-
-				business = get_bus_info(reply.business_id)
-
-				%>
-					<div class="row review-reply-wrapper margin-top-20">
-						<div class="col-sm-1">
-							<%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %>
-						</div>
-						<div class="col-sm-11">
-							<div class="italic">
-								<%= business.name %>
-							</div>
-							<div class="margin-top-10">
-								<%= reply.reply_text %>
-							</div>
-						</div>
-					</div>
-				<% end %>
-				
 				<% end %>
 			</div>
 			<!--/Reviews-->

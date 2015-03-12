@@ -159,7 +159,7 @@ class BusinessController < ApplicationController
 
 		owner_id = BusinessOwner.where(business_id: params[:business_id]).first.user_id
 
-		Notification.create(notification_type: "new_review", item_id: review.id, guest_user_id: session[:user_id], owner_user_id: owner_id)
+		Notification.create(notification_type: "new_review", item_id: params[:business_id], guest_user_id: session[:user_id], owner_user_id: owner_id)
 
 		redirect_to :back
 	end
