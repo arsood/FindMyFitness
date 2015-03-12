@@ -166,6 +166,12 @@
 						<i class="fa fa-angle-double-left"></i> Go back to search
 					</a>
 				</div>
+
+				<% if session[:user_id] %>
+					<div class="margin-top-20">
+						<a href="/business/<%= params[:id] %>/edit">Edit this public listing</a>
+					</div>
+				<% end %>
 				<!--/Info and Contact Info-->
 			</div>
 

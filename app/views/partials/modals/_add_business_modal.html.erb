@@ -1,4 +1,5 @@
 <%= form_tag("/business-signup") do %>
+    <input type="hidden" name="business[business_hash]" value="<%= generate_random_md5 %>" />
     <div id="add-business-modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
