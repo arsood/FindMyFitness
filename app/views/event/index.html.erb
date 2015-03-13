@@ -15,9 +15,11 @@
 				<a href="#" data-category="Workshops">Workshops</a>
 			</div>
 
-			<div class="margin-top-20">
-				<a href="/event/new" class="fmf-ellipse-turquoise-button">Create an Event</a>
-			</div>
+			<% if session[:business_id] %>
+				<div class="margin-top-20">
+					<a href="/event/new" class="fmf-ellipse-turquoise-button">Create an Event</a>
+				</div>
+			<% end %>
 		</div>
 		<div class="col-sm-9">
 			

@@ -17,8 +17,10 @@
 					<%= @business_info.name %>
 				</div>
 				<div class="col-sm-6 txt-right">
-					<%= form_tag do %>
-						<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button <%= if bus_is_saved?(@business_info.id) then 'business-saved' end %>">+</button>
+					<% if session[:user_id] && !session[:business_id] %>
+						<%= form_tag do %>
+							<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button <%= if bus_is_saved?(@business_info.id) then 'business-saved' end %>">+</button>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
@@ -167,7 +169,7 @@
 					</a>
 				</div>
 
-				<% if session[:user_id] %>
+				<% if session[:user_id] && @business_info.account_type == "unpaid" %>
 					<div class="margin-top-20">
 						<a href="#" data-toggle="modal" data-target="#edit-business-modal">Edit this public listing</a>
 					</div>
@@ -234,9 +236,11 @@
 					<% end %>
 				</div>
 
-				<div class="write-review-button txt-center margin-top-20">
-					<a href="#" data-toggle="modal" data-target="#review-modal">Write a review...</a>
-				</div>
+				<% if session[:user_id] && !session[:business_id] %>
+					<div class="write-review-button txt-center margin-top-20">
+						<a href="#" data-toggle="modal" data-target="#review-modal">Write a review...</a>
+					</div>
+				<% end %>
 
 				<% 
 
@@ -378,7 +382,7 @@
 							<% end %>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="business-add-photos-tab">
-							<% if session[:user_id] %>
+							<% if session[:user_id] && !session[:business_id] %>
 								<input type="hidden" name="business_hash" value="<%= @business_info.business_hash %>" />
 								<div class="margin-top-10 dropzone" id="drop-area-business"></div>
 							<% else %>
