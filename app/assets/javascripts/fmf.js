@@ -81,7 +81,7 @@ $(document).on("change", "#new-avatar", function() {
 	avatarForm.append("authenticity_token", $("input[name=authenticity_token]").val());
 
 	$.ajax({
-		url: window.location.host + "/profile/upload",
+		url: "http://" + window.location.host + "/profile/upload",
 		type: "POST",
 		processData: false,
 		contentType: false,

@@ -8,7 +8,7 @@ var timeOff = newDate.getTimezoneOffset();
 function getAnalyticsChart(type) {
 	$.ajax({
 		type: "POST",
-		url: window.location.host + "/business-admin/analytics/get-views",
+		url: "http://" + window.location.host + "/business-admin/analytics/get-views",
 		data: {
 			business_id: $("#business_id").val(),
 			authenticity_token: $("input[name=authenticity_token]").val(),
