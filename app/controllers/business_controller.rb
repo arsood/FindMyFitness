@@ -15,6 +15,16 @@ class BusinessController < ApplicationController
 	end
 
 	def signup_process
+		#Save user as the owner of this business
+
+		if session[:signing_up]
+			business_paid = "paid"
+		else
+			business_paid = "unpaid"
+		end
+
+		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id, account_type: business_paid)
+
 		#Geocode a business address before creating it
 
 		business_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:business][:address] + ", " + params[:business][:city] + ", " + params[:business][:state] + " " + params[:business][:zipcode])
@@ -34,16 +44,6 @@ class BusinessController < ApplicationController
 				BusinessService.create(business_id: newBus.id , bus_service: service[1])
 			end
 		end
-
-		#Save user as the owner of this business
-
-		if session[:signing_up]
-			business_paid = "paid"
-		else
-			business_paid = "unpaid"
-		end
-
-		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id, account_type: business_paid)
 
 		if session[:signing_up]
 			reset_session

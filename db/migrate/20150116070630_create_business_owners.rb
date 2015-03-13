@@ -3,7 +3,6 @@ class CreateBusinessOwners < ActiveRecord::Migration
     create_table :business_owners do |t|
       t.integer :user_id
       t.integer :business_id
-      t.string :account_type
 
       t.timestamps
     end
