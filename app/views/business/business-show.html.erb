@@ -169,7 +169,7 @@
 
 				<% if session[:user_id] %>
 					<div class="margin-top-20">
-						<a href="/business/<%= params[:id] %>/edit">Edit this public listing</a>
+						<a href="#" data-toggle="modal" data-target="#edit-business-modal">Edit this public listing</a>
 					</div>
 				<% end %>
 				<!--/Info and Contact Info-->
@@ -341,31 +341,54 @@
 
 			<!--Photos-->
 			<div id="business-photos" class="margin-top-20" style="display:none;">
-				<div class="medium-title">
-					Photos of Business
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#business-photos-tab" aria-controls="home" role="tab" data-toggle="tab">Photos</a></li>
+						<li role="presentation"><a href="#business-add-photos-tab" aria-controls="profile" role="tab" data-toggle="tab">Add Photos</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="business-photos-tab">
+							<div class="medium-title margin-top-20">
+								Photos of Business
+							</div>
+
+							<% if @business_photos.any? %>
+								<div id="galleria" class="margin-top-20">
+									<% @business_photos.each do |photo| %>
+										<img src="<%= photo.business_photo.url %>" />
+									<% end %>
+								</div>
+
+								<div class="margin-top-20">
+									<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
+								</div>
+							<% else %>
+								<div class="margin-top-20">
+									No photos yet.
+								</div>
+							<% end %>
+
+							<% if session[:user_type] == "superuser" %>
+								<div class="margin-top-10">
+									<a href="/admin/photos/business?hash=<%= @business_info.business_hash %>" class="super-user-delete-link">Edit Photo Set</a>
+								</div>
+							<% end %>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="business-add-photos-tab">
+							<% if session[:user_id] %>
+								<input type="hidden" name="business_hash" value="<%= @business_info.business_hash %>" />
+								<div class="margin-top-10 dropzone" id="drop-area-business"></div>
+							<% else %>
+								<div class="margin-top-10 medium-title">
+									Login to add photos.
+								</div>
+							<% end %>
+						</div>
+					</div>
 				</div>
-
-				<% if @business_photos.any? %>
-					<div id="galleria" class="margin-top-20">
-						<% @business_photos.each do |photo| %>
-							<img src="<%= photo.business_photo.url %>" />
-						<% end %>
-					</div>
-
-					<div class="margin-top-20">
-						<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
-					</div>
-				<% else %>
-					<div class="margin-top-20">
-						No photos yet.
-					</div>
-				<% end %>
-
-				<% if session[:user_type] == "superuser" %>
-					<div class="margin-top-10">
-						<a href="/admin/photos/business?hash=<%= @business_info.business_hash %>" class="super-user-delete-link">Edit Photo Set</a>
-					</div>
-				<% end %>
 			</div>
 			<!--/Photos-->
 		</div>
@@ -407,4 +430,8 @@
 <%= render "partials/modals/review_spam_confirm_modal" %>
 
 <%= render "partials/modals/photos_spam_modal" %>
+
+<% if @business_info.account_type == "unpaid" %>
+	<%= render "partials/modals/edit_business_modal" %>
+<% end %>
 <!--/Main-->

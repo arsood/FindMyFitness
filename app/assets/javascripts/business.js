@@ -137,6 +137,21 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 		}
 	});
 
+	//Initiate Dropzone for business photos
+
+	$(document).ready(function() {
+		if ($("#drop-area-business").length) {
+			$("div#drop-area-business").dropzone({
+				url: "/business/images",
+				params: {
+					authenticity_token: $("input[name='authenticity_token']").val(),
+					business_hash: $("input[name='business_hash']").val()
+				},
+				addRemoveLinks: true
+			});
+		}
+	});
+
 //Close condition that business show page
 } });
 

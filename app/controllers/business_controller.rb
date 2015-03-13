@@ -72,15 +72,21 @@ class BusinessController < ApplicationController
 		
 		#Add services to the business
 
-		BusinessService.where(business_id: business.id).destroy_all
+		if params[:services]
+			BusinessService.where(business_id: business.id).destroy_all
 
-		service_params.each do |service|
-			BusinessService.create("business_id" => business.id ,"bus_service" => service[1])
+			service_params.each do |service|
+				BusinessService.create("business_id" => business.id ,"bus_service" => service[1])
+			end
 		end
 		
 		flash[:bus_update_success] = true
 
-		redirect_to "/business-admin/edit/" + business.id.to_s
+		if session[:business_id]
+			redirect_to "/business-admin/edit/" + business.id.to_s
+		else
+			redirect_to "/business/" + business.id.to_s
+		end
 	end
 
 	def business_show
@@ -98,6 +104,8 @@ class BusinessController < ApplicationController
 		BusinessView.create(business_id: params[:id], user_id: session[:user_id])
 
 		@recent_searches = BusinessView.where(user_id: session[:user_id]).select(:business_id).distinct.order(created_at: :desc).limit(5)
+
+		@account_type = BusinessOwner.where(business_id: params[:id]).first.account_type
 
 		render "business-show"
 	end
