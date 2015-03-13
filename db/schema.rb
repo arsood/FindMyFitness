@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20150311190926) do
   create_table "business_owners", force: true do |t|
     t.integer  "user_id"
     t.integer  "business_id"
-    t.string   "account_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

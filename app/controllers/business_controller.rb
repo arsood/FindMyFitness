@@ -23,19 +23,21 @@ class BusinessController < ApplicationController
 			business_paid = "unpaid"
 		end
 
-		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id, account_type: business_paid)
-
 		#Geocode a business address before creating it
 
 		business_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:business][:address] + ", " + params[:business][:city] + ", " + params[:business][:state] + " " + params[:business][:zipcode])
 
 		#Merge user_id and geocode results into the business params
 
-		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng, user_id: session[:user_id])
+		business_params = bus_params.merge(lat: business_geo.lat, lng: business_geo.lng, user_id: session[:user_id], account_type: business_paid)
 
 		#Create the new business
 
 		newBus = Business.create(business_params)
+
+		#Save the business owner
+
+		BusinessOwner.create(user_id: session[:user_id], business_id: newBus.id)
 		
 		#Add services to a business
 
@@ -105,7 +107,7 @@ class BusinessController < ApplicationController
 
 		@recent_searches = BusinessView.where(user_id: session[:user_id]).select(:business_id).distinct.order(created_at: :desc).limit(5)
 
-		@account_type = BusinessOwner.where(business_id: params[:id]).first.account_type
+		@account_type = @business_info.account_type
 
 		render "business-show"
 	end
@@ -416,6 +418,6 @@ private
 	end
 
 	def service_params
-		params.require(:services).permit(:weights, :track, :pool, :classes, :instructors, :pilates, :spa, :sauna, :massage, :cycling, :courts, :cardio, :diet, :towels, :steam, :cafe, :child_care, :meditation)
+		params.require(:services).permit(:sauna, :group_cycling, :pool, :juice_bar, :basketball, :towels, :spa, :group_exercise, :cardio, :weights, :weight_equipment, :child_care, :diet, :trainers, :massage, :laundry, :lockers, :functional_training)
 	end
 end
