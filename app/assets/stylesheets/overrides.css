@@ -10,3 +10,7 @@ sup {
 #homepage-carousel img {
 	width:100%;
 }
+
+.big-textarea {
+	min-height:200px;
+}

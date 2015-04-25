@@ -28,7 +28,7 @@ module BlogHelper
 		if photo
 			return photo.post_photo.url
 		else
-			return "/assets/temp/slide1.jpg"
+			return "/assets/image-placeholder.jpg"
 		end
 	end
 
