@@ -38,6 +38,8 @@ class ProfileController < ApplicationController
 	def profile
 		@user = User.find(params[:id])
 
+		@edit_button = false
+
 		render "profile", layout: "inner-info"
 	end
 
@@ -45,6 +47,8 @@ class ProfileController < ApplicationController
 		@user = User.find(session[:user_id])
 
 		@notifications = Notification.where(owner_user_id: session[:user_id]).order(created_at: :desc)
+
+		@edit_button = true
 
 		render "profile-notifications", layout: "inner-info"
 	end

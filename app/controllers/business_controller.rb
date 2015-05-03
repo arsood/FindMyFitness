@@ -101,6 +101,17 @@ class BusinessController < ApplicationController
 		#Pull all related reviews
 		@business_reviews = Review.where(business_id: @business_info.id).order(created_at: :desc)
 
+		#Get all photos from associated reviews too
+		@review_photos = []
+
+		@business_reviews.each do |review|
+			review_photos = ReviewPhoto.where(review_hash: review.review_hash)
+
+			review_photos.each do |photo|
+				@review_photos << photo.review_photo.url
+			end
+		end
+
 		@business_photos = BusinessPhoto.where(business_hash: @business_info.business_hash)
 
 		BusinessView.create(business_id: params[:id], user_id: session[:user_id])

@@ -361,6 +361,10 @@
 
 							<% if @business_photos.any? %>
 								<div id="galleria" class="margin-top-20">
+									<% @review_photos.each do |photo| %>
+										<img src="<%= photo %>" />
+									<% end %>
+
 									<% @business_photos.each do |photo| %>
 										<img src="<%= photo.business_photo.url %>" />
 									<% end %>
