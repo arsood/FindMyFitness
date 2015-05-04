@@ -158,7 +158,9 @@ class BlogController < ApplicationController
 
 		blog_owner_id = Blog.find(params[:id]).user_id
 
-		Notification.create(notification_type: "blog_comment", item_id: params[:id], guest_user_id: session[:user_id], owner_user_id: blog_owner_id)
+		if blog_owner_id != session[:user_id]
+			Notification.create(notification_type: "blog_comment", item_id: params[:id], guest_user_id: session[:user_id], owner_user_id: blog_owner_id)
+		end
 
 		redirect_to "/post/" + params[:id]
 	end
