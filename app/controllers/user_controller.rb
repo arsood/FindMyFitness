@@ -25,6 +25,7 @@ class UserController < ApplicationController
 				if user.user_type == "business"
 					business_owned = BusinessOwner.where(user_id: user.id).first
 					session[:business_id] = business_owned.business_id
+					session[:business_name] = Business.find(business_owned.business_id).name
 				end
 
 				if user.user_type == "superuser"

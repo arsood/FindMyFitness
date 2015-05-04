@@ -120,7 +120,11 @@ class BusinessController < ApplicationController
 
 		@account_type = @business_info.account_type
 
-		render "business-show"
+		if session[:user_type] == "business"
+			render "business-show", layout: "business-topbar"
+		else
+			render "business-show"
+		end
 	end
 
 	def review_image_upload
@@ -172,7 +176,11 @@ class BusinessController < ApplicationController
 			end
 		end
 
-		render "business-search"
+		if session[:user_type] == "business"
+			render "business-search", layout: "business-topbar"
+		else
+			render "business-search"
+		end
 	end
 
 	def new_review
@@ -194,7 +202,7 @@ class BusinessController < ApplicationController
 	def admin_notifications
 		@notifications = Notification.where(owner_user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "admin-notifications", layout: "nothing"
+		render "admin-notifications", layout: "business-topbar"
 	end
 
 	def admin_edit
@@ -211,7 +219,7 @@ class BusinessController < ApplicationController
 
 			@header_text = "Welcome Back, " + @business.name + ". What would you like to do today?"
 
-			render "admin-edit-profile", layout: "nothing"
+			render "admin-edit-profile", layout: "business-topbar"
 		else
 			redirect_to :back
 		end
@@ -231,7 +239,7 @@ class BusinessController < ApplicationController
 
 			@business_reviews = Review.where(business_id: params[:business_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 			
-			render "admin-reviews", layout: "nothing"
+			render "admin-reviews", layout: "business-topbar"
 		else
 			redirect_to "/"
 		end
@@ -240,19 +248,19 @@ class BusinessController < ApplicationController
 	def admin_events
 		@events = Event.where(business_id: params[:business_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
-		render "admin-events", layout: "nothing"
+		render "admin-events", layout: "business-topbar"
 	end
 
 	def admin_blogs
 		@posts = Blog.where(business_id: session[:business_id]).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
-		render "admin-blogs", layout: "nothing"
+		render "admin-blogs", layout: "business-topbar"
 	end
 
 	def admin_blogs_new
 		@post_id = Digest::MD5.hexdigest(Time.now.to_s)
 		@posts = Blog.where(business_id: session[:business_id])
-		render "admin-post-new", layout: "nothing"
+		render "admin-post-new", layout: "business-topbar"
 	end
 
 	def admin_blogs_edit
@@ -260,7 +268,7 @@ class BusinessController < ApplicationController
 
 		@photos = BlogPhoto.where(post_id: @post.post_id)
 
-		render "admin-post-edit", layout: "nothing"
+		render "admin-post-edit", layout: "business-topbar"
 	end
 
 	def admin_analytics
@@ -268,7 +276,7 @@ class BusinessController < ApplicationController
 			@saves_num = BusinessSave.where(business_id: params[:business_id]).count
 			@review_num = Review.where(business_id: params[:business_id]).count
 
-			render "admin-analytics", layout: "nothing"
+			render "admin-analytics", layout: "business-topbar"
 		else
 			redirect_to "/"
 		end
@@ -387,7 +395,7 @@ class BusinessController < ApplicationController
 
 		@bus_photos = BusinessPhoto.where(business_hash: @bus_hash).paginate(:page => params[:page], :per_page => 8).order(created_at: :desc)
 
-		render "admin-photos", layout: "nothing"
+		render "admin-photos", layout: "business-topbar"
 	end
 
 	def delete_photo

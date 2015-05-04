@@ -62,7 +62,11 @@ class BlogController < ApplicationController
 
 		@header_text = "Blog - Inspirational posts from people like you."
 
-		render "index-public", layout: "inner-basic"
+		if session[:user_type] == "business"
+			render "index-public", layout: "business-topbar"
+		else
+			render "index-public", layout: "inner-basic"
+		end
 	end
 
 	def create
@@ -101,7 +105,11 @@ class BlogController < ApplicationController
 
 		@sidebar_header_text = "About the Author"
 
-		render "post", layout: "blog-post"
+		if session[:user_type] == "business"
+			render "post", layout: "business-topbar"
+		else
+			render "post", layout: "blog-post"
+		end
 	end
 
 	def post_edit

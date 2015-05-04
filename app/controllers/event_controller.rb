@@ -8,7 +8,11 @@ class EventController < ApplicationController
 			@events = Event.where("event_date > ?", Time.now).paginate(:page => params[:page], :per_page => 10).order(event_date: :asc)
 		end
 
-		render "index"
+		if session[:user_type] == "business"
+			render "index", layout: "business-topbar"
+		else
+			render "index"
+		end
 	end
 
 	def get_all_events
@@ -33,7 +37,7 @@ class EventController < ApplicationController
 			#Generate random hash to be associated with images
 			@event_id = Digest::MD5.hexdigest(Time.now.to_s)
 
-			render "new", layout: "nothing"
+			render "new", layout: "business-topbar"
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"
@@ -67,6 +71,12 @@ class EventController < ApplicationController
 	def show
 		@event = Event.find(params[:id])
 		@event_photos = EventPhoto.where(event_id: @event.event_id)
+
+		if session[:user_type] == "business"
+			render "show", layout: "business-topbar"
+		else
+			render "show"
+		end
 	end
 
 	def edit
