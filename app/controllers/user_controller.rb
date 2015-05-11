@@ -5,11 +5,23 @@ class UserController < ApplicationController
 
 		new_user = User.create(new_user_data)
 
-		session[:tmp_user_id] = new_user.id
+		if new_user.errors
+			flash[:error] = "There was an error with the signup"
+		else
+			session[:tmp_user_id] = new_user.id
 
-		flash[:success] = "Thanks for signing up! Please log in."
+			flash[:success] = "Thanks for signing up! Please log in."
+		end
 
 		redirect_to "/login"
+	end
+
+	def check_username
+		if User.where(username: params[:username]).exists?
+			render :json => { result: "ok", taken: "taken" }
+		else
+			render :json => { result: "ok", taken: "no" }
+		end
 	end
 
 	def login_process
