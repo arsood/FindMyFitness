@@ -59,4 +59,8 @@ module BlogHelper
 		return tag_list_array.join(", ")
 	end
 
+	def get_likes(post_id)
+		return BlogLike.where(post_id: post_id).count
+	end
+
 end

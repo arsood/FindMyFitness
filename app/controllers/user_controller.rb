@@ -5,7 +5,7 @@ class UserController < ApplicationController
 
 		new_user = User.create(new_user_data)
 
-		if new_user.errors
+		if new_user.errors[:name].any?
 			flash[:error] = "There was an error with the signup"
 		else
 			session[:tmp_user_id] = new_user.id

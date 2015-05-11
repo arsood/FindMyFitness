@@ -45,7 +45,7 @@
 					<%= simple_format(blog.post_text) %>
 				</div>
 				<div class="margin-top-10">
-					<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="#">Share</a> | <a href="/post/<%= blog.id %>/edit">Edit Post</a>
+					<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="/post/<%= blog.id %>">Share</a> | <a href="/post/<%= blog.id %>/edit">Edit Post</a>
 				</div>
 			</div>
 			<% end %>

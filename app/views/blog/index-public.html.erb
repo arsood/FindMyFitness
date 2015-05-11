@@ -29,7 +29,14 @@
 									<%= blog.post_text[0..150] %>
 								</div>
 								<div class="margin-top-10">
-									<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="/post/<%= blog.id %>">Share</a>
+									<%= pluralize(get_likes(blog.id), "Like") %>
+								</div>
+								<div class="margin-top-10">
+									<% if session[:user_id] %>
+										<a href="#">Like</a> | 
+									<% end %>
+									<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | 
+									<a href="/post/<%= blog.id %>">Share</a>
 								</div>
 							</div>
 							<!--/One Blog Feed Item-->
