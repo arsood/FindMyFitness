@@ -120,3 +120,29 @@ $(window).resize(function() {
 });
 
 resizeBlockImages();
+
+//Like a post
+
+$(document).on("click", ".blog-like-button", function(event) {
+	event.preventDefault();
+
+	if ($(this).hasClass("post-liked")) {
+		return false;
+	} else {
+		var that = this;
+
+		$.ajax({
+			url: "/post/like",
+			type: "POST",
+			data: {
+				authenticity_token: $("input[name='authenticity_token']").val(),
+				post_id: $(this).attr("data-id")
+			},
+			success: function(data) {
+				if (data.result === "ok") {
+					$(that).addClass("post-liked");
+				}
+			}
+		});
+	}
+});

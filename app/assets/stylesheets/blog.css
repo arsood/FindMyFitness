@@ -1,4 +1,3 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.post-liked, .post-liked:active, .post-liked:visited, .post-liked:link {
+	color:#E8A81E;
+}

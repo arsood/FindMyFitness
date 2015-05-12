@@ -159,6 +159,8 @@ module ApplicationHelper
 			return "has started following you."
 		elsif type == "new_review"
 			return "has left you a review."
+		elsif type == "post_like"
+			return "has liked your post,"
 		end
 	end
 
@@ -170,6 +172,9 @@ module ApplicationHelper
 			return "View all of your followers"
 		elsif type == "new_review"
 			return "View your business page"
+		elsif type == "post_like"
+			blog_post = Blog.find(item_id)
+			return blog_post.post_title	
 		end
 	end
 
@@ -180,6 +185,8 @@ module ApplicationHelper
 			return "/followers"
 		elsif type == "new_review"
 			return "/business/" + item_id.to_s
+		elsif type == "post_like"
+			return "/post/" + item_id.to_s
 		end
 	end
 

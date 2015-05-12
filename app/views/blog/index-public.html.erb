@@ -11,6 +11,8 @@
 
 							user = User.find(blog.user_id)
 
+							like_exists = BlogLike.where(user_id: session[:user_id], post_id: blog.id).exists?
+
 						%>
 						<div class="col-sm-6">
 							<div class="blog-item">
@@ -33,7 +35,7 @@
 								</div>
 								<div class="margin-top-10">
 									<% if session[:user_id] %>
-										<a href="#">Like</a> | 
+										<a data-id="<%= blog.id %>" class="blog-like-button <%= if like_exists then 'post-liked' end %>" href="#">Like</a> | 
 									<% end %>
 									<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | 
 									<a href="/post/<%= blog.id %>">Share</a>
@@ -69,7 +71,7 @@
 
 			<div class="left-sidebar-menu margin-top-20">
 				<a href="/blog/me">Your Posts</a>
-				<a href="/saves">Saves</a>
+				<a href="/profile/saves">Your Saves</a>
 				<a href="/events">Events</a>
 			</div>
 		</div>

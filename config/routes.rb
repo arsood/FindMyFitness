@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   get "post/:id/edit" => "blog#post_edit"
   post "post/:id/edit" => "blog#post_update"
   post "post/images/delete" => "blog#image_delete"
+  post "post/like" => "blog#like_post"
   post "comments/:id" => "blog#save_comment"
   post "followers/add" => "blog#save_follower"
   get "followers" => "blog#my_followers"

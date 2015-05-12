@@ -103,6 +103,8 @@ class BlogController < ApplicationController
 
 		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
+		@like_exists = BlogLike.where(user_id: session[:user_id], post_id: @post.id).exists?
+
 		@sidebar_header_text = "About the Author"
 
 		if session[:user_type] == "business"
@@ -218,6 +220,20 @@ class BlogController < ApplicationController
 		@followers = BlogFollower.where(follower_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
 		render "followers"
+	end
+
+	def like_post
+		user_id = Blog.find(params[:post_id]).user_id
+
+		if user_id == session[:user_id]
+			render :json => { result: "error" }
+		else
+			BlogLike.create(user_id: session[:user_id], post_id: params[:post_id])
+
+			Notification.create(notification_type: "post_like", item_id: params[:post_id], guest_user_id: session[:user_id], owner_user_id: user_id)
+
+			render :json => { result: "ok" }
+		end
 	end
 
 private
