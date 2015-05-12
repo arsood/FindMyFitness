@@ -3,7 +3,7 @@ class LoginController < ApplicationController
 		if session[:user_id]
 			redirect_to "/profile"
 		else
-			render "index"
+			render "index", layout: "standard-20"
 		end
 	end
 
