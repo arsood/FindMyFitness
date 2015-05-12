@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   post "/forgot-password/1" => "user#forgot_password_1"
   post "/forgot-password/2" => "user#forgot_password_2"
   post "/forgot-password/3" => "user#forgot_password_3"
-  post "check-username" => "user#check_username"
+  post "check-email" => "user#check_email"
 
   #Event
 

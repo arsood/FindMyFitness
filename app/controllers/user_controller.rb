@@ -16,8 +16,8 @@ class UserController < ApplicationController
 		redirect_to "/login"
 	end
 
-	def check_username
-		if User.where(username: params[:username]).exists?
+	def check_email
+		if User.where(email_address: params[:email_address]).exists?
 			render :json => { result: "ok", taken: "taken" }
 		else
 			render :json => { result: "ok", taken: "no" }
@@ -112,7 +112,7 @@ class UserController < ApplicationController
 private
 
 	def user_params
-		params.require(:user).permit(:username, :password, :first_name, :last_name, :email_address, :city, :state, :avatar, :about_me)
+		params.require(:user).permit(:password, :first_name, :last_name, :email_address, :city, :state, :avatar, :about_me)
 	end
 
 end

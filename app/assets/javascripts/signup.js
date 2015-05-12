@@ -1,16 +1,16 @@
-$(document).on("blur", "input[name='user[username]']", function() {
+$(document).on("blur", "input[name='user[email_address]']", function() {
 	$.ajax({
-		url: "/check-username",
+		url: "/check-email",
 		type: "POST",
 		data: {
-			username: $(this).val(),
+			email_address: $(this).val(),
 			authenticity_token: $("input[name='authenticity_token']").val()
 		},
 		success: function(data) {
 			if (data.taken === "taken") {
-				$("#signup-username-error").slideDown();
+				$("#signup-email-error").slideDown();
 			} else {
-				$("#signup-username-error").slideUp();
+				$("#signup-email-error").slideUp();
 			}
 		}
 	});
