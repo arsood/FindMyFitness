@@ -1,0 +1,275 @@
+<!--Main-->
+<%= form_tag do %>
+<input type="hidden" id="page_id" value="business_signup" />
+<input type="hidden" name="business[business_hash]" value="<%= generate_random_md5 %>" />
+<div class="container margin-top-20 margin-bottom-50">
+	<div role="tabpanel">
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#business-info-tab" role="tab" data-toggle="tab">Business Info</a></li>
+			<li role="presentation"><a href="#business-photos-tab" role="tab" data-toggle="tab">Photos</a></li>
+		</ul>
+	</div>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="business-info-tab">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="bold">
+								Name:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" name="business[name]" class="form-control" placeholder="Your Business Name" />
+							</div>
+
+							<div class="bold margin-top-20">
+								Business Type:
+							</div>
+							<div class="margin-top-10">
+								<select class="form-control" name="business[business_type]">
+									<option value="Yoga">Yoga</option>
+									<option value="Gyms">Gyms</option>
+									<option value="Martial Arts">Martial Arts</option>
+									<option value="Boxing">Boxing</option>
+									<option value="Rock Climbing">Rock Climbing</option>
+									<option value="Pilates">Pilates</option>
+									<option value="Dance">Dance</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
+
+							<div class="bold margin-top-20">
+								Hours and Availability:
+							</div>
+							<div class="margin-top-10">
+								<textarea name="business[availability]" class="form-control" placeholder="Example: M - F 8 AM to 9 PM"></textarea>
+							</div>
+						</div>
+						<div class="col-sm-8 business-signup-services">
+							<div class="bold">
+								Select Your Business Services:
+							</div>
+							<div class="margin-top-10">
+								<div class="row">
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-sauna">
+												<input type="checkbox" name="services[sauna]" value="Sauna/Steam Room" id="check-sauna"> Sauna/Steam Room
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-group-cycling">
+												<input type="checkbox" name="services[group_cycling]" value="Group Cycling" id="check-group-cycling"> Group Cycling
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-pool">
+												<input type="checkbox" name="services[pool]" value="Swimming Pool" id="check-pool"> Swimming Pool
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-juice-bar">
+												<input type="checkbox" name="services[juice_bar]" value="Juice Bar" id="check-juice-bar"> Juice Bar
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-basketball">
+												<input type="checkbox" name="services[basketball]" value="Basketball Court" id="check-basketball"> Basketball Court
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-towels">
+												<input type="checkbox" name="services[towels]" value="Towel Service" id="check-towels"> Towel Service
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="row margin-top-10">
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-spa">
+												<input type="checkbox" name="services[spa]" value="Spa" id="check-spa"> Spa
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-group-exercise">
+												<input type="checkbox" name="services[group_exercise]" value="Group Exercise Classes" id="check-group-exercise"> Group Exercise Classes	
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-cardio">
+												<input type="checkbox" name="services[cardio]" value="Cardio Equipment" id="check-cardio"> Cardio Equipment
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-weights">
+												<input type="checkbox" name="services[weights]" value="Free Weights" id="check-weights"> Free Weights
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-weight-equipment">
+												<input type="checkbox" name="services[weight_equipment]" value="Weight Equipment" id="check-weight-equipment"> Weight Equipment
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-child-care">
+												<input type="checkbox" name="services[child_care]" value="Child Care" id="check-child-care"> Child Care
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="row margin-top-10">
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-diet">
+												<input type="checkbox" name="services[diet]" value="Dietary Consultation" id="check-diet"> Dietary Consultation
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-trainers">
+												<input type="checkbox" name="services[trainers]" value="Personal Trainers" id="check-trainers"> Personal Trainers
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-massage">
+												<input type="checkbox" name="services[massage]" value="Massage Therapy" id="check-massage"> Massage Therapy
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-laundry">
+												<input type="checkbox" name="services[laundry]" value="Laundry Services" id="check-laundry"> Laundry Services
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-lockers">
+												<input type="checkbox" name="services[lockers]" value="Locker Rooms" id="check-lockers"> Locker Rooms
+											</label>
+										</div>
+									</div>
+									<div class="col-sm-2">
+										<div class="checkbox">
+											<label for="check-functional-training">
+												<input type="checkbox" name="services[functional_training]" value="Functional Training" id="check-functional-training"> Functional Training
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-6">
+							<div class="medium-title">
+								Location
+							</div>
+							<div class="margin-top-20 bold">
+								Address:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" name="business[address]" class="form-control" placeholder="Address" />
+							</div>
+							<div class="row margin-top-20">
+								<div class="col-sm-4">
+									<div class="bold">
+										City:
+									</div>
+									<div class="margin-top-10">
+										<input type="text" name="business[city]" class="form-control" placeholder="City" />
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="bold">
+										State:
+									</div>
+									<div class="margin-top-10">
+										<%= select_tag("business[state]", options_for_select(us_states), class: "form-control", required: true) %>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="bold">
+										Zipcode:
+									</div>
+									<div class="margin-top-10">
+										<input type="text" name="business[zipcode]" class="form-control" placeholder="Zipcode" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="medium-title">
+								Contact Information
+							</div>
+							<div class="margin-top-20 bold">
+								Phone Number:
+							</div>
+							<div class="margin-top-10">
+								<input type="tel" name="business[phone]" class="form-control" placeholder="Phone Number" />
+							</div>
+							<div class="margin-top-20 bold">
+								Website:
+							</div>
+							<div class="margin-top-10">
+								<input type="text" name="business[website]" class="form-control" placeholder="Website" />
+							</div>
+						</div>
+					</div>
+					<div class="margin-top-50">
+						<div class="medium-title">
+							Description
+						</div>
+						<div class="margin-top-10">
+							<textarea name="business[description]" class="form-control bus-description-edit"></textarea>
+						</div>
+					</div>
+					<div class="margin-top-20 pull-right">
+						<a href="/">
+							<button class="fmf-ellipse-gray-button">Cancel</button>
+						</a>
+						<button class="fmf-ellipse-turquoise-button margin-left-20" type="submit">Submit Business</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="business-photos-tab">
+			<div class="row margin-top-20">
+				<div class="medium-title margin-top-20">
+					Add Photos of the Business
+				</div>
+				<div class="margin-top-20 dropzone" id="drop-area">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

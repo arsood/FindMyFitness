@@ -1,0 +1,169 @@
+<input type="hidden" id="page_id" value="homepage" />
+
+<!--Top Header-->
+<div id="homepage-carousel" class="carousel slide" data-ride="carousel" data-interval="20000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#homepage-carousel" data-slide-to="1"></li>
+        <li data-target="#homepage-carousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="/assets/home/home_slide1.jpg" />
+        </div>
+
+        <div class="item">
+            <img src="/assets/home/home_slide2.jpg" />
+        </div>
+
+        <div class="item">
+            <img src="/assets/home/home_slide3.jpg" />
+        </div>
+    </div>
+
+    <div id="home-search-container" class="container">
+        <div class="extra-large-title regular-weight white-text">
+            Stay connected with the fitness community near you.
+        </div>
+        <div class="row margin-top-20">
+            <%= form_tag("/businesses/find", method: :get) do %>
+                <div class="col-sm-5">
+                    <input name="query" type="text" class="form-control input-lg" placeholder="Gyms, yoga, boxing..." />
+                </div>
+                <div class="col-sm-5">
+                    <input name="location" type="text" class="form-control input-lg" placeholder="Address, neighborhood, etc..." />
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">Search</button>
+                </div>
+            <% end %>
+        </div>
+
+        <div id="bus-category-top-options" class="home-search-categories-container margin-top-20">
+            <div class="row">
+                <div class="col-sm-2 txt-center white-text">
+                    Categories:
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Yoga</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Gyms</a>
+                </div>
+                <div class="col-sm-2 txt-center">
+                    <a href="#">Martial Arts</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Boxing</a>
+                </div>
+                <div class="col-sm-2 txt-center">
+                    <a href="#">Rock Climbing</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Pilates</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Dance</a>
+                </div>
+                <div class="col-sm-1 txt-center">
+                    <a href="#">Other</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Top Header-->
+
+<div class="container margin-top-50 margin-bottom-50">
+    <% if @events.length > 0 %>
+        <div class="home-location">
+            popular events near <%= @my_location %> <!-- <a href="#">(Change Location)</a> -->
+        </div>
+
+        <!--Home Cards-->
+        <% @events.in_groups_of(3, false) do |group| %>
+            <div class="row margin-top-20">
+                <% group.each do |event| %>
+                    <!--One Card-->
+                    <div class="col-sm-4">
+                        <div class="home-card">
+                            <div class="home-card-image" style="background:url(<%= get_event_thumb(event.event_id, :link) %>) no-repeat;"></div>
+                            <div class="home-card-content-container">
+                                <div class="margin-top-20">
+                                    <a href="/events/<%= event.id %>"><%= event.event_name %></a>
+                                </div>
+
+                                <div class="margin-top-10 gray-text">
+                                    Hosted by <%= get_bus_name(event.business_id) %>
+                                </div>
+
+                                <div class="margin-top-10">
+                                    <%= event.event_date.strftime("%B %-d, %Y") %>
+                                </div>
+
+                                <div class="margin-top-10">
+                                    <%= event.event_location %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/One Card-->
+                <% end %>
+            </div>
+        <% end %>
+        <!--/Home Cards-->
+
+        <div class="margin-top-50 txt-center">
+            <a href="/events" class="fmf-ellipse-turquoise-button">See More</a>
+        </div>
+    <% end %>
+
+    <div class="margin-top-50 txt-center">
+        <div class="extra-large-title regular-weight">
+            Connecting People with Fitness Communities
+        </div>
+    </div>
+
+    <div class="row margin-top-20">
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-findcenters.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Find Gyms and Studios Near You
+            </div>
+            <div class="margin-top-10 txt-center">
+                Switch up your workout and try something new. Need help finding a yoga studio, a rock climbing facility or a boxing gym? Use our search engine and get to know what is around you.
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-attendevents.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Check Out Local Events
+            </div>
+            <div class="margin-top-10 txt-center">
+                Click on events and see when the next 5k will occur in your city.  If a 5k won't do, search for a marathon or a triathlon. Our events page features many walks and runs for individuals of all levels.
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <%= image_tag("home/home-blogs.png", class: "img-responsive") %>
+            </div>
+            <div class="margin-top-20 large-title regular-weight txt-center">
+                Create a Blog
+            </div>
+            <div class="margin-top-10 txt-center">
+                Keep a blog about your progress. Show us your journey. Have a new pre-work shake you can't stop raving about? Write about it. Show users what has helped you and follow others to see what works for them. Connect with users with the same goals and interests.
+            </div>
+        </div>
+    </div>
+
+    <div class="margin-top-50 txt-center">
+        <a href="#" class="fmf-ellipse-turquoise-button" data-toggle="modal" data-target="#signup-modal">Sign Up Now</a>
+    </div>
+</div>

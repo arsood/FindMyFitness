@@ -1,0 +1,83 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="events" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="gray-menu-item">
+				Categories
+			</div>
+
+			<div class="left-sidebar-menu">
+				<a href="#" data-category="All">All</a>
+				<a href="#" data-category="Classes">Classes</a>
+				<a href="#" data-category="Runs / Walks">Runs / Walks</a>
+				<a href="#" data-category="Lectures">Lectures</a>
+				<a href="#" data-category="Workshops">Workshops</a>
+			</div>
+
+			<% if session[:user_type] == "business" %>
+				<div class="margin-top-20">
+					<a href="/event/new" class="fmf-ellipse-turquoise-button">Create an Event</a>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-sm-9">
+			
+			<% if @category %>
+				<div class="medium-title">
+					<%= @category %>
+				</div>
+			<% end %>
+
+			<% if !@events.first %>
+				<div class="large-title">
+					Nothing found... Try again.
+				</div>
+			<% end %>
+
+			<% if @events.first %>
+				<!--Events Calendar-->
+				<div class="txt-right">
+					<a id="hide-calendar-button" href="#">Hide Calendar</a>
+				</div>
+
+				<div id="event-calendar" class="margin-top-20"></div>
+				<!--/Events Calendar-->
+			<% end %>
+
+			<% @events.each do |event| %>
+			<!--One Event-->
+			<div class="row single-event">
+				<div class="col-sm-4">
+					<a href="/events/<%= event.id %>">
+					<%= image_tag(get_first_event_photo(event.event_id, :link), class: "img-responsive") %>
+					</a>
+				</div>
+				<div class="col-sm-8">
+					<div>
+						<a class="big-link" href="/events/<%= event.id %>"><%= event.event_name %></a>
+					</div>
+					<div>
+						<%= event.event_date.strftime("%B %-d, %Y") %>
+					</div>
+					<div class="margin-top-10">
+						<%= event.event_location %>
+					</div>
+					<div class="margin-top-10">
+						<%= event.event_description[0..150] + "..." %>
+					</div>
+					<div class="margin-top-10">
+						<a href="/events/<%= event.id %>">View event <i class="fa fa-angle-double-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<!--/One Event-->
+			<% end %>
+		</div>
+
+		<div class="margin-top-20">
+			<%= will_paginate @events %>
+		</div>
+	</div>
+</div>
+<!--/Main-->

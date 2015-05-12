@@ -14,3 +14,7 @@ sup {
 .big-textarea {
 	min-height:200px;
 }
+
+.no-bg {
+	background-color:transparent !important;
+}

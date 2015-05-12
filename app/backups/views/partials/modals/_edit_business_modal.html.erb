@@ -1,0 +1,65 @@
+<%= form_tag("/businesses/edit/" + params[:id].to_s) do %>
+    <div id="edit-business-modal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit This Business</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="bold">
+                                Business Name
+                            </div>
+                            <div class="margin-top-10">
+                                <input name="business[name]" type="text" class="form-control" value="<%= @business_info.name %>" required />
+                            </div>
+                            <div class="bold margin-top-20">
+                                Business Address
+                            </div>
+                            <div class="margin-top-10">
+                                <input name="business[address]" type="text" class="form-control" placeholder="Address" value="<%= @business_info.address %>" required />
+                            </div>
+                            <div class="row margin-top-20">
+                                <div class="col-sm-4">
+                                    <input name="business[city]" type="text" class="form-control" placeholder="City" value="<%= @business_info.city %>" required />
+                                </div>
+                                <div class="col-sm-4">
+                                    <%= select_tag("business[state]", options_for_select(us_states, @business_info.state), class: "form-control", required: true) %>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input name="business[zipcode]" type="text" class="form-control" placeholder="Zipcode" value="<%= @business_info.zipcode %>" required />
+                                </div>
+                            </div>
+                            <div class="bold margin-top-20">
+                                Business Hours
+                            </div>
+                            <div class="margin-top-10">
+                                <input name="business[availability]" type="text" class="form-control" placeholder="Ex: M-F 8am to 9pm" value="<%= @business_info.availability %>" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bold">
+                                Phone Number
+                            </div>
+                            <div class="margin-top-10">
+                                <input name="business[phone]" type="tel" class="form-control" placeholder="Ex: 4156576475" value="<%= @business_info.phone %>" />
+                            </div>
+                            <div class="bold margin-top-20">
+                                Website
+                            </div>
+                            <div class="margin-top-10">
+                                <input name="business[website]" type="text" class="form-control" placeholder="Ex: http://mygym.com" value="<%= @business_info.website %>" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Business</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<% end %>

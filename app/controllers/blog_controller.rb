@@ -118,7 +118,7 @@ class BlogController < ApplicationController
 		if session[:user_type] == "business"
 			render "post", layout: "business-topbar"
 		else
-			render "post", layout: "blog-post"
+			render "post", layout: "standard-20"
 		end
 	end
 

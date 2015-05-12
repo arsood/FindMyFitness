@@ -1,0 +1,14 @@
+<% if session[:user_type] == "superuser" %>
+	<div class="row super-user-bar">
+		<div class="col-sm-4">
+			FMF Super User
+		</div>
+		<div class="col-sm-8 txt-right">
+			<a href="/admin">Admin Dashboard</a>
+			|
+			<a href="/admin/users/manage">Manage Users</a>
+			|
+			<a href="/logout">Logout</a>
+		</div>
+	</div>
+<% end %>

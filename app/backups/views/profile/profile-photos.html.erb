@@ -1,0 +1,63 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="profile_photos" />
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/profile_left_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="row">
+				<div class="col-sm-4">
+					<select id="profile-photo-cat-select" class="form-control">
+						<option value="business" <%= if !params[:cat] || params[:cat] == "business" then "selected" end %>>Business Photos</option>
+						<option value="event" <%= if params[:cat] && params[:cat] == "event" then "selected" end %>>Event Photos</option>
+						<option value="blog" <%= if params[:cat] && params[:cat] == "blog" then "selected" end %>>Blog Photos</option>
+						<option value="review" <%= if params[:cat] && params[:cat] == "review" then "selected" end %>>Review Photos</option>
+					</select>
+				</div>
+				<div class="col-sm-offset-4 col-sm-4">
+					<div class="pull-right">
+						<span class="bold">Edit Mode:</span>
+						<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
+						<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+					</div>
+				</div>
+			</div>
+
+			<%= form_tag("/profile", id: "photo-form") do end %>
+
+			<% if @my_photos.empty? %>
+				<div class="margin-top-20">
+					<div class="large-title">
+						No photos to show
+					</div>
+				</div>
+			<% end %>
+			
+			<% @my_photos.in_groups_of(4, false).each do |group| %>
+				<div class="row margin-top-20">
+					<% group.each do |photo| %>
+					<!--One Photo-->
+					<div class="col-sm-3" id="photo<%= photo.id %>">
+						<div class="profile-photos-container" style="background:url(<%= photo.public_send(@photo_col).url %>) no-repeat;">
+							<i class="fa fa-times-circle hide" data-id="<%= photo.id %>" data-type="<%= @photo_col %>"></i>
+						</div>
+						<!--<div class="margin-top-10">
+							<a href="#">Working Out...</a>
+						</div>
+						<div>
+							<a href="#">24 Hour Fitness</a>
+						</div>-->
+					</div>
+					<!--/One Photo-->
+					<% end %>
+				</div>
+			<% end %>
+
+			<div class="margin-top-10">
+				<%= will_paginate(@my_photos) %>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

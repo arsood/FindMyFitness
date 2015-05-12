@@ -1,0 +1,45 @@
+<%= form_tag do end %>
+
+<div class="gray-menu-item txt-center">
+	<%= @sidebar_header_text %>
+</div>
+
+<div class="row margin-top-20">
+	<div class="col-sm-4">
+		<div class="sidebar-avatar-container">
+			<%= image_tag(get_user_avatar(@user.id, :medium), class: "img-responsive") %>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		<div class="bold">
+			<%= @user.first_name %> <%= @user.last_name[0] %>.
+		</div>
+		<div class="margin-top-10">
+			<a href="/followers/<%= @user.id %>"><%= get_follower_num(@user.id) %> Followers</a>
+		</div>
+		<div>
+			<a href="/following/<%= @user.id %>"><%= get_following_num(@user.id) %> Following</a>
+		</div>
+
+		<% if session[:user_id] && @user.id != session[:user_id] %>
+			<div class="margin-top-10">
+				<a href="#" id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @user.first_name %>"><%= get_follow_text(@user) %></a>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<% if @post %>
+	<div class="margin-top-20">
+		<span class="bold">Tags: </span><%= get_tag_list(@post.id) %>
+	</div>
+<% end %>
+
+<div class="margin-top-20">
+	<span class='st_sharethis_large' displayText='ShareThis'></span>
+	<span class='st_facebook_large' displayText='Facebook'></span>
+	<span class='st_twitter_large' displayText='Tweet'></span>
+	<span class='st_linkedin_large' displayText='LinkedIn'></span>
+	<span class='st_pinterest_large' displayText='Pinterest'></span>
+	<span class='st_email_large' displayText='Email'></span>
+</div>

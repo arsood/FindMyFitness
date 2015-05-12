@@ -1,0 +1,58 @@
+<!--Main-->
+<div class="container margin-top-20 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/profile_left_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="medium-title">
+				<% if @saves.empty? %>
+					No saves yet.
+				<% else %>
+					Your Saves
+				<% end %>
+			</div>
+
+			<% @saves.each do |save| 
+
+			business_info = get_bus_info(save.business_id)
+
+			%>
+			<!--One Profile Save-->
+			<div class="row profile-saves-wrapper">
+				<div class="col-sm-3">
+					<%= image_tag(get_bus_thumb(business_info.business_hash, :tag), class: "img-responsive") %>
+				</div>
+				<div class="col-sm-9">
+					<div>
+						<a href="/business/<%= business_info.id %>" class="large-text"><%= business_info.name %></a>
+					</div>
+					<div>
+						Category: <a href="#"><%= business_info.business_type %></a>
+					</div>
+					<% if bus_avg_rating(business_info.id) %>
+						<div class="margin-top-10">
+							<img src="/assets/stars/stars<%= bus_avg_rating(business_info.id) %>.png" />
+						</div>
+					<% end %>
+					<div class="margin-top-10">
+						<%= business_info.address %>, <%= business_info.city %>, <%= business_info.state %>
+					</div>
+					<div>
+						<%= business_info.phone %>
+					</div>
+					<div class="margin-top-10">
+						<%= business_info.description %>
+					</div>
+				</div>
+			</div>
+			<!--/One Profile Save-->
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate(@saves) %>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

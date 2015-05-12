@@ -1,0 +1,100 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_reviews" /> 
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="extra-large-title">
+				What Your Customers Say About You
+			</div>
+
+			<% if @business_reviews.empty? %>
+				<div class="medium-title margin-top-20">
+					No reviews yet.
+				</div>
+			<% end %>
+
+			<% @business_reviews.each do |review| 
+
+				user = get_user_info(review.user_id)
+
+			%>
+			<!--One Review-->
+			<div class="row margin-top-20">
+				<div class="col-sm-2">
+					<%= image_tag(get_user_avatar(review.user_id, :medium), class: "img-responsive") %>
+				</div>
+				<div class="col-sm-10">
+					<div class="bold">
+						<%= user.first_name %> <%= user.last_name %>
+					</div>
+					<div class="italic">
+						Member since <%= get_member_since(user.id) %>
+					</div>
+					<div class="margin-top-10">
+						<img src="/assets/stars/stars<%= review.star_rating %>.png" />
+					</div>
+					<div class="margin-top-10">
+						<%= review.review_text %>
+					</div>
+					<div class="margin-top-10">
+						<a href="#" class="toggle-review-reply" data-id="<%= review.id %>">Reply to Review</a>
+					</div>
+				</div>
+			</div>
+			<%
+
+			review_replies = ReviewReply.where(review_id: review.id).order(created_at: :desc)
+
+			review_replies.each do |reply|
+
+			business = get_bus_info(reply.business_id)
+
+			%>
+				<div class="row review-reply-wrapper margin-top-20">
+					<div class="col-sm-1">
+						<%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %>
+					</div>
+					<div class="col-sm-11">
+						<div class="italic">
+							<%= business.name %>
+						</div>
+						<div class="margin-top-10">
+							<%= reply.reply_text %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+			<!--/One Review-->
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate(@business_reviews) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="review-reply-modal" class="modal fade">
+	<%= form_tag("/business-admin/reviews/reply") do %>
+		<input type="hidden" id="review-id" name="review_id" value="" />
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Submit Your Reply</h4>
+				</div>
+				<div class="modal-body">
+					<textarea name="reply_text" class="form-control" placeholder="Reply to this review here."></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save Reply</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	<% end %>
+</div><!-- /.modal -->
+<!--/Main-->

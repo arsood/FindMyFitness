@@ -1,0 +1,46 @@
+<!--Main-->
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="margin-top-10">
+				<a href="/business-admin/blogs/<%= session[:business_id] %>/new" class="btn btn-primary">Add New Post</a>
+			</div>
+			<div class="medium-title margin-top-10">
+				<% if @posts.empty? %>
+					No posts yet.
+				<% else %>
+					Your Posts
+				<% end %>
+			</div>
+
+			<% @posts.each do |post| %>
+				<!--One Event-->
+				<div class="row single-event">
+					<div class="col-sm-3">
+						<a href="/business-admin/blogs/<%= session[:business_id] %>/edit/<%= post.id %>"><%= image_tag(get_post_thumb(post.post_id, :link), class: "img-responsive") %></a>
+					</div>
+					<div class="col-sm-9">
+						<div>
+							<a class="big-link" href="/business-admin/blogs/<%= session[:business_id] %>/edit/<%= post.id %>"><%= post.post_title %></a>
+						</div>
+						<div class="margin-top-10">
+							<%= post.post_text %>
+						</div>
+						<div class="margin-top-10">
+							<a href="/business-admin/blogs/<%= session[:business_id] %>/edit/<%= post.id %>">Edit post <i class="fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<!--/One Event-->
+			<% end %>
+
+			<div class="margin-top-20">
+				<%= will_paginate(@posts) %>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

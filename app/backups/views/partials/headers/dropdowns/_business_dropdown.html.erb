@@ -1,0 +1,37 @@
+<li class="txt-right options-top-button"><a id="options-menu-toggle" href="#" class="btn btn-primary">Hi, <%= session[:business_name] %>! | <i class="fa fa-chevron-down"></i></a>
+	<div id="options-top-menu">
+		<div class="row">
+			<div class="col-sm-12 bold txt-left">
+				<%= session[:business_name] %>
+			</div>
+		</div>
+
+		<!-- <div class="row margin-top-20 txt-left">
+			<div class="col-sm-6">
+				<a href="/profile">My Profile</a>
+			</div>
+			<div class="col-sm-6">
+				<a href="/blog/me">My Blog</a>
+			</div>
+		</div>
+		<div class="row txt-left">
+			<div class="col-sm-6">
+				<a href="/profile/edit">Edit Profile</a>
+			</div>
+			<div class="col-sm-6">
+				<a href="/profile/saves">My Saves</a>
+			</div>
+		</div> -->
+
+		<div class="margin-top-20">
+			<a href="/logout" class="btn btn-primary btn-block">Logout</a>
+		</div>
+
+		<% if session[:user_type] == "business" %>
+			<div class="margin-top-10">
+				<a href="/business-admin/edit/<%= session[:business_id] %>" class="btn btn-success btn-block">Business Admin</a>
+			</div>
+		<% end %>
+
+	</div>
+</li>

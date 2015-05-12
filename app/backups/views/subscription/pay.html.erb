@@ -1,0 +1,220 @@
+<%= form_tag("/subscribe", id: "payment-form") do %>
+<!--Finish Payment-->
+<div class="gray-background padding-20">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 white-text margin-top-10">
+				PAYMENT INFORMATION
+			</div>
+			<div class="col-sm-6 txt-right">
+				<button type="submit" class="btn btn-info payment-next-step-button">
+					Next Step
+					<i class="fa fa-chevron-right margin-left-20"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Finish Payment-->
+
+<div class="container margin-top-50 margin-bottom-50">
+	<% if flash[:error] %>
+		<div class="alert alert-danger">
+			<%= flash[:error] %>
+		</div>
+	<% end %>
+	<div class="medium-title gray-text">
+		FIND MY FITNESS BUSINESS SUBSCRIPTION
+	</div>
+	<div class="medium-title regular-weight">
+		$99/Month during our trial period then $199 after that
+	</div>
+	<div class="text-muted">
+		* Note: Our trial period is from March 2015 - June 2015
+	</div>
+
+	<div class="row margin-top-20">
+		<div id="cc-info" class="col-sm-7">
+			<div class="gray-text">
+				BUSINESS USER ACCOUNT
+			</div>
+
+			<div class="margin-top-20">
+				Username <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input name="new_username" type="text" class="form-control" required />
+			</div>
+
+			<div class="margin-top-20">
+				Password <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input name="new_password" type="password" class="form-control" required />
+			</div>
+
+			<div class="margin-top-20">
+				Password Confirm <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input type="password" class="form-control" required />
+			</div>
+
+			<div class="gray-text margin-top-50">
+				CREDIT CARD INFORMATION
+			</div>
+
+			<div class="margin-top-20">
+				Cardholder Name <sup>*</sup>
+			</div>
+			<div class="row margin-top-10">
+				<div class="col-sm-12">
+					<input data-braintree-name="cardholder_name" type="text" class="form-control" required />
+				</div>
+			</div>
+
+			<div class="row margin-top-20">
+				<div class="col-sm-8">
+					<div>
+						Card Number <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<input data-braintree-name="number" type="tel" class="form-control" required />
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div>
+						CVV <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<input data-braintree-name="cvv" type="tel" class="form-control" required />
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				Expiration Date <sup>*</sup>
+			</div>
+			<div class="row margin-top-10">
+				<div class="col-sm-4">
+					<select data-braintree-name="expiration_month" class="form-control" required>
+						<option value="">Month</option>
+						<option value="01">01</option>
+					</select>
+				</div>
+				<div class="col-sm-4">
+					<select data-braintree-name="expiration_year" class="form-control" required>
+						<option value="">Year</option>
+						<option value="2015">2015</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="gray-text margin-top-50">
+				BILLING ADDRESS
+			</div>
+
+			<div class="margin-top-20">
+				Address <sup>*</sup>
+			</div>
+			<div class="row margin-top-10">
+				<div class="col-sm-12">
+					<input name="customer_address" type="text" class="form-control" required />
+				</div>
+			</div>
+
+			<div class="row margin-top-20">
+				<div class="col-sm-6">
+					<div>
+						City <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<input name="customer_city" type="text" class="form-control" required />
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div>
+						State <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<select name="customer_state" class="form-control" required>
+							<option value="">State</option>
+							<option value="CA">CA</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div>
+						Zipcode <sup>*</sup>
+					</div>
+					<div class="margin-top-10">
+						<input data-braintree-name="postal_code" type="tel" class="form-control" required />
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				Phone Number <sup>*</sup>
+			</div>
+			<div class="row margin-top-10">
+				<div class="col-sm-12">
+					<input name="customer_phone" type="tel" class="form-control" required />
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-sm-5">
+			<div class="gray-text">
+				BUSINESS USER ACCOUNT
+			</div>
+
+			<div class="margin-top-20">
+				Username <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input name="new_username" type="text" class="form-control" required />
+			</div>
+
+			<div class="margin-top-20">
+				Password <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input name="new_password" type="password" class="form-control" required />
+			</div>
+
+			<div class="margin-top-20">
+				Password Confirm <sup>*</sup>
+			</div>
+			<div class="margin-top-10">
+				<input type="password" class="form-control" required />
+			</div>
+		</div> -->
+	</div>
+
+	<div class="margin-top-50">
+		<sup>*</sup> Required Fields
+	</div>
+</div>
+
+<!--Finish Payment-->
+<div class="gray-background padding-20">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 white-text margin-top-10">
+				PAYMENT INFORMATION
+			</div>
+			<div class="col-sm-6 txt-right">
+				<button type="submit" class="btn btn-info payment-next-step-button">
+					Next Step
+					<i class="fa fa-chevron-right margin-left-20"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--Finish Payment-->
+<% end %>
+
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script>
+	braintree.setup("<%= @client_token %>", "custom", {id: "payment-form"});
+</script>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FindMyFitness</title>
+  <meta charset="utf8" />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "partials/headers/super_user_header" %>
+
+<%= render "partials/headers/nothing_header" %>
+
+<%= yield %>
+
+<%= render "partials/footers/standard_footer" %>
+
+<%= javascript_include_tag 'application' %>
+
+</body>
+</html>

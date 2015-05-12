@@ -1,0 +1,445 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_show" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<!--Main Column One-->
+		<div class="col-sm-7">
+			<div class="row">
+
+				<% if session[:user_type] == "superuser" %>
+					<div class="margin-top-20">
+						<%= form_tag do end %>
+						<a id="super-user-delete-business" data-id="<%= @business_info.id %>" href="#" class="super-user-delete-link">Delete Business</a>
+					</div>
+				<% end %>
+
+				<div class="large-title col-sm-6">
+					<%= @business_info.name %>
+				</div>
+				<div class="col-sm-6 txt-right">
+					<% if session[:user_id] && session[:user_type] != "business" %>
+						<%= form_tag do %>
+							<button data-business="<%= @business_info.id %>" id="business-save-button" type="button" class="fmf-ellipse-dark-blue-button <%= if bus_is_saved?(@business_info.id) then 'business-saved' end %>">+</button>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+
+			<!--Gym Stars-->
+			<%
+			
+			bus_avg_rating(@business_info.id)
+			if @average_rating
+			
+			%>
+			<div class="row">
+				<div class="col-sm-12">
+					<img src="/assets/stars/stars<%= @average_rating %>.png" />
+				</div>
+			</div>
+			<% end %>
+			<!--/Gym Stars-->
+
+			<!--Business Menu-->
+			<div class="clearfix margin-top-20 gray-rollover-menu">
+				<div id="toggle-bus-info" class="col-sm-4 gray-menu-item clickable txt-center gray-menu-item-active">
+					INFO
+				</div>
+				<div id="toggle-bus-reviews" class="col-sm-4 gray-menu-item clickable txt-center">
+					REVIEWS
+				</div>
+				<div id="toggle-bus-photos" class="col-sm-4 gray-menu-item clickable txt-center">
+					PHOTOS
+				</div>
+			</div>
+			<!--/Business Menu-->
+
+			<!--Info and Contact Info-->
+			<div id="business-info" class="margin-top-20">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="medium-title">
+							<%= @business_info.address %>
+							<input type="hidden" id="business-address" value="<%= @business_info.address %>, <%= @business_info.city %>, <%= @business_info.state %> <%= @business_info.zipcode %>" />
+						</div>
+						<div class="medium-title">
+							<%= @business_info.city %>, <%= @business_info.state %>
+						</div>
+
+						<div class="margin-top-20">
+							<%= simple_format(@business_info.availability) %>
+						</div>
+						
+						<div class="margin-top-20">
+							<%= number_to_phone(@business_info.phone, area_code: true) %>
+						</div>
+
+						<div class="margin-top-20">
+							<a href="<%= @business_info.website %>" target="_blank"><%= @business_info.website %></a>
+						</div>
+
+						<% if @business_info.account_type == "paid" %>
+							<div class="margin-top-20 bold">
+								Services:
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 0..2 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 3..5 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 6..8 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 9..11 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<% for i in 12..14 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+								<div class="col-sm-6">
+									<% for i in 15..17 %>
+										<div>
+											<%= @services_info[i].try(:bus_service) %>
+										</div>
+									<% end %>
+								</div>
+							</div>
+
+							<div class="margin-top-50">
+								<hr />
+							</div>
+						<% end %>
+					</div>
+					<div class="col-sm-6">
+						<div id="map-canvas"></div>
+						<div>
+							<button id="business-get-directions" class="light-blue-large-button txt-center">
+								Get directions <i class="fa fa-angle-double-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<% if @business_info.account_type == "paid" %>
+					<div class="margin-top-20">
+						<div class="medium-title">
+							Description
+						</div>
+						<div class="margin-top-10">
+							<%= @business_info.description %>
+						</div>
+					</div>
+				<% end %>
+
+				<!-- <div class="margin-top-20">
+					<button type="button" class="fmf-ellipse-dark-blue-button regular-text">Get deals now</button>
+				</div> -->
+
+				<div class="margin-top-20">
+					<a href="<%= request.referrer %>">
+						<i class="fa fa-angle-double-left"></i> Go back to search
+					</a>
+				</div>
+
+				<% if session[:user_id] && @business_info.account_type == "unpaid" %>
+					<div class="margin-top-20">
+						<a href="#" data-toggle="modal" data-target="#edit-business-modal">Edit this public listing</a>
+					</div>
+				<% end %>
+				<!--/Info and Contact Info-->
+			</div>
+
+			<!--Reviews-->
+			<div id="business-reviews" class="margin-top-20" style="display:none;">
+				<div class="medium-title">
+					Recent Reviews
+				</div>
+
+				<div class="row margin-top-20">
+
+					<% 
+					#Show the first two reviews if there are more than 2
+
+					if @business_reviews.length > 2 
+						for i in 0..1 do
+							current_user = User.find(@business_reviews[i].user_id)
+					%>
+
+					<!--One Review Column-->
+					<div class="col-sm-6">
+						<div>
+							<%= image_tag("stars/stars" + @business_reviews[i].star_rating.to_s + ".png") %>
+						</div>
+
+						<div class="row margin-top-10">
+							<div class="col-sm-3">
+								<%= image_tag(get_user_avatar(current_user.id, :medium), class: "img-responsive") %>
+							</div>
+							<div class="col-sm-9">
+								<div class="bold">
+									<%= current_user.first_name %> <%= current_user.last_name %>
+								</div>
+								<div class="italic">
+									Member since <%= current_user.created_at.strftime("%Y") %>
+								</div>
+							</div>
+						</div>
+
+						<div class="margin-top-10">
+							<%= @business_reviews[i].review_text %>
+						</div>
+
+						<div class="margin-top-10">
+							<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
+						</div>
+
+						<% if session[:user_type] == "superuser" %>
+							<div class="margin-top-10">
+								<a id="super-user-delete-review" data-id="<%= @business_reviews[i].id %>" href="#" class="super-user-delete-link">Delete Review</a>
+							</div>
+						<% end %>
+
+						<div class="margin-top-10 pull-right">
+							<a href="#">Read More <i class="fa fa-angle-double-right"></i></a>
+						</div>
+					</div>
+					<!--/One Review Column-->
+						<% end %>
+					<% end %>
+				</div>
+
+				<% if session[:user_id] && !session[:business_id] %>
+					<div class="write-review-button txt-center margin-top-20">
+						<a href="#" data-toggle="modal" data-target="#review-modal">Write a review...</a>
+					</div>
+				<% end %>
+
+				<% 
+
+				if @business_reviews.length > 2 
+					start_it = 2
+				else
+					start_it = 0
+				end
+
+				for i in start_it..@business_reviews.length - 1 
+					current_user = User.find(@business_reviews[i].user_id)
+
+					review_photos = ReviewPhoto.where(review_hash: @business_reviews[i].review_hash)
+				%>
+				<!--One Review-->
+				<div class="review-wrapper">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-sm-6 col-sm-offset-6">
+									<%= image_tag(get_user_avatar(current_user.id, :medium), class: "img-responsive") %>
+								</div>
+							</div>
+							<!--Review Image Carousel-->
+							<div class="margin-top-10">
+								<div id="review-carousel-<%= @business_reviews[i].id %>" class="carousel slide review-carousel" data-ride="carousel">
+								    <!-- Wrapper for slides -->
+								    <div class="carousel-inner" role="listbox">
+								    	<% review_photos.each_with_index do |photo, index| %>
+									        <div class="item <%= if index == 0 then 'active' end %>">
+									            <img src="<%= photo.review_photo.url(:medium) %>" />
+									        </div>
+									    <% end %>
+								    </div>
+
+								    <!-- Controls -->
+								    <a class="left carousel-control" href="#review-carousel-<%= @business_reviews[i].id %>" role="button" data-slide="prev">
+								        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								        <span class="sr-only">Previous</span>
+								    </a>
+								    <a class="right carousel-control" href="#review-carousel-<%= @business_reviews[i].id %>" role="button" data-slide="next">
+								        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								        <span class="sr-only">Next</span>
+								    </a>
+								</div>
+							</div>
+							<!--/Review Image Carousel-->
+						</div>
+						<div class="col-sm-9">
+							<div class="bold">
+								<%= current_user.first_name %> <%= current_user.last_name %>
+							</div>
+							<div class="italic">
+								Member since <%= current_user.created_at.strftime("%Y") %>
+							</div>
+							<div class="margin-top-10">
+								<%= image_tag("stars/stars" + @business_reviews[i].star_rating.to_s + ".png") %>
+							</div>
+							<div class="margin-top-10">
+								<%= @business_reviews[i].review_text %>
+							</div>
+
+							<div class="margin-top-10">
+								<a href="#" class="business-review-report-spam" data-id="<%= @business_reviews[i].id %>">Report as spam</a>
+							</div>
+
+							<% if session[:user_type] == "superuser" %>
+								<div class="margin-top-10">
+									<a id="super-user-delete-review" data-id="<%= @business_reviews[i].id %>" href="#" class="super-user-delete-link">Delete Review</a>
+								</div>
+							<% end %>
+						</div>
+					</div>
+
+					<%
+					review_replies = ReviewReply.where(review_id: @business_reviews[i].id).order(created_at: :desc)
+
+					review_replies.each do |reply|
+
+					business = get_bus_info(reply.business_id)
+
+					%>
+						<div class="row review-reply-wrapper margin-top-20">
+							<div class="col-sm-2">
+								<%= image_tag(get_bus_thumb(business.business_hash, :helper), class: "img-responsive") %>
+							</div>
+							<div class="col-sm-10">
+								<div class="italic">
+									<%= business.name %>
+								</div>
+								<div class="margin-top-10">
+									<%= reply.reply_text %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+				<!--/One Review-->
+				<% end %>
+			</div>
+			<!--/Reviews-->
+
+			<!--Photos-->
+			<div id="business-photos" class="margin-top-20" style="display:none;">
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#business-photos-tab" aria-controls="home" role="tab" data-toggle="tab">Photos</a></li>
+						<li role="presentation"><a href="#business-add-photos-tab" aria-controls="profile" role="tab" data-toggle="tab">Add Photos</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="business-photos-tab">
+							<div class="medium-title margin-top-20">
+								Photos of Business
+							</div>
+
+							<% if @business_photos.any? %>
+								<div id="galleria" class="margin-top-20">
+									<% @review_photos.each do |photo| %>
+										<img src="<%= photo %>" />
+									<% end %>
+
+									<% @business_photos.each do |photo| %>
+										<img src="<%= photo.business_photo.url %>" />
+									<% end %>
+								</div>
+
+								<div class="margin-top-20">
+									<a href="#" data-hash="<%= @business_info.business_hash %>" data-type="business" class="report-photos-button">Report photos</a>
+								</div>
+							<% else %>
+								<div class="margin-top-20">
+									No photos yet.
+								</div>
+							<% end %>
+
+							<% if session[:user_type] == "superuser" %>
+								<div class="margin-top-10">
+									<a href="/admin/photos/business?hash=<%= @business_info.business_hash %>" class="super-user-delete-link">Edit Photo Set</a>
+								</div>
+							<% end %>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="business-add-photos-tab">
+							<% if session[:user_id] && !session[:business_id] %>
+								<input type="hidden" name="business_hash" value="<%= @business_info.business_hash %>" />
+								<div class="margin-top-10 dropzone" id="drop-area-business"></div>
+							<% else %>
+								<div class="margin-top-10 medium-title">
+									Login to add photos.
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/Photos-->
+		</div>
+		<!--/Main Column One-->
+
+		<!--Main Column Two-->
+		<div class="col-sm-4 col-sm-offset-1">
+			<div class="gray-menu-item txt-center">
+				Your Recent Searches
+			</div>
+
+			<% if @recent_searches.empty? %>
+				<div class="margin-top-20">
+					You have no recent searches
+				</div>
+			<% end %>
+
+			<% 
+				@recent_searches.each do |search| 
+				business = get_bus_info(search.business_id)
+			%>
+				<div class="margin-top-20">
+					<a href="/business/<%= business.id %>"><%= business.name %></a> <span class="small italic">in <%= business.city %>, <%= business.state %>
+				</div>
+			<% end %>
+
+			<div class="margin-top-20">
+				<img src="http://placehold.it/300x250" />
+			</div>
+		</div>
+		<!--/Main Column Two-->
+	</div>
+</div>
+
+<%= render "partials/modals/review_write_modal" %>
+
+<%= render "partials/modals/save_success_modal" %>
+
+<%= render "partials/modals/review_spam_confirm_modal" %>
+
+<%= render "partials/modals/photos_spam_modal" %>
+
+<% if @business_info.account_type == "unpaid" %>
+	<%= render "partials/modals/edit_business_modal" %>
+<% end %>
+<!--/Main-->

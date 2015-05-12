@@ -1,0 +1,39 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="login" />
+<%= form_tag("/login") do %>
+<div class="container margin-top-50 margin-bottom-50">
+	<% if flash[:error] %>
+		<div class="small-container">
+			<div class="alert alert-danger">
+				<%= flash[:error] %>
+			</div>
+		</div>
+	<% end %>
+	<% if flash[:success] %>
+		<div class="small-container">
+			<div class="alert alert-success">
+				<%= flash[:success] %>
+			</div>
+		</div>
+	<% end %>
+	<div class="login-wrapper">
+		<div class="bold">
+			Username
+		</div>
+		<div class="margin-top-20">
+			<input name="username" type="text" class="form-control" placeholder="Username" />
+		</div>
+		<div class="bold margin-top-20">
+			Password
+		</div>
+		<div class="margin-top-20">
+			<input name="password" type="password" class="form-control" placeholder="Password" />
+		</div>
+		<div class="margin-top-20 txt-center">
+			<a href="/auth/facebook" class="btn btn-primary"><i class="fa fa-facebook"></i> | Login with Facebook</a>
+			<button type="submit" class="btn btn-primary">Login</button>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

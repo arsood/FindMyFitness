@@ -1,0 +1,38 @@
+<!--Main-->
+<%= form_tag do end %>
+<input type="hidden" id="page_id" value="fmf_admin_photos" />
+<div class="container margin-top-20 margin-bottom-50">
+	<% if !@photos.empty? %>
+		<div class="margin-top-10">
+			<div class="pull-right">
+				<span class="bold">Edit Mode:</span>
+				<a id="profile-edit-on" href="#" class="btn btn-default">On</a>
+				<a id="profile-edit-off" href="#" class="btn btn-primary">Off</a>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	<% end %>
+
+	<% if @photos.empty? %>
+		<div class="medium-title margin-top-20">
+			No photos yet.
+		</div>
+	<% end %>
+
+	<% @photos.in_groups_of(4, false) do |group| %>
+		<div class="row margin-top-20">
+			<% group.each do |photo| %>
+				<div class="col-sm-3" id="photo<%= photo.id %>">
+					<div class="profile-photos-container" style="background:url(<%= get_admin_photo(photo, params[:type]) %>) no-repeat;">
+						<i class="fa fa-times-circle hide" data-id="<%= photo.id %>" data-type="<%= params[:type] %>"></i>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+
+	<div class="margin-top-10">
+		<%= will_paginate(@photos) %>
+	</div>
+</div>
+<!--/Main-->

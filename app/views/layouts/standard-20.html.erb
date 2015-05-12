@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FindMyFitness</title>
+  <meta charset="utf8" />
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "partials/headers/super_user_header" %>
+
+<%= render "partials/headers/standard_20_header" %>
+
+<%= yield %>
+
+<%= render "partials/footers/standard_footer" %>
+
+<%= render "partials/modals/signup_modal" %>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<%= javascript_include_tag 'application' %>
+
+</body>
+</html>

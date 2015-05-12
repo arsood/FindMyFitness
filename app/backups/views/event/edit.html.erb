@@ -1,0 +1,109 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="edit_event" />
+<%= form_tag do %>
+<input type="hidden" name="event[event_id]" value="<%= @event.event_id %>" />
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="large-title">
+				Edit Your Event
+			</div>
+
+			<div class="margin-top-20">
+				<input name="event[event_name]" type="text" class="form-control" placeholder="Event Name" value="<%= @event.event_name %>" />
+			</div>
+
+			<div role="tabpanel" class="margin-top-20">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#event-photos-add-tab" aria-controls="profile" role="tab" data-toggle="tab">Add New Photos</a></li>
+					<li role="presentation"><a href="#event-photos-tab" aria-controls="home" role="tab" data-toggle="tab">Current Photos</a></li>
+				</ul>
+			
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="event-photos-add-tab">
+						<div id="drop-area" class="dropzone margin-top-20"></div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane fade" id="event-photos-tab">
+						<% if @photos.empty? %>
+							<div class="medium-title margin-top-20">
+								No photos yet.
+							</div>
+						<% end %>
+
+						<% @photos.in_groups_of(4, false) do |group| %>
+							<div class="row margin-top-20">
+								<% group.each do |photo| %>
+									<div class="col-sm-3" id="photo<%= photo.id %>">
+										<div class="profile-photos-container" style="background:url(<%= get_event_photo(photo.id) %>) no-repeat;">
+											<i class="fa fa-times-circle" data-id="<%= photo.id %>"></i>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-20">
+				<textarea name="event[event_description]" placeholder="Type your event description here." class="new-event-text"><%= @event.event_description %></textarea>
+			</div>
+
+			<div class="margin-top-10">
+				What type of event is this?
+			</div>
+
+			<div class="margin-top-10">
+				<select name="event[event_category]" class="medium-select">
+					<option>Choose a Category</option>
+					<option value="Classes" <%= if @event.event_category == "Classes" then "selected" end %>>Classes</option>
+					<option value="Runs / Walks" <%= if @event.event_category == "Runs / Walks" then "selected" end %>>Runs / Walks</option>
+					<option value="Lectures" <%= if @event.event_category == "Lectures" then "selected" end %>>Lectures</option>
+					<option value="Workshops" <%= if @event.event_category == "Workshops" then "selected" end %>>Workshops</option>
+				</select>
+			</div>
+
+			<div class="margin-top-20">
+				<button class="fmf-ellipse-turquoise-button">Edit Event</button>
+			</div>
+
+			<div class="margin-top-10">
+				<a href="/business-admin/events/<%= session[:business_id] %>">Cancel</a>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="large-title">
+				Date and Time
+			</div>
+
+			<div class="margin-top-10">
+				<div class="row">
+					<div class="col-sm-4">
+						<%= select_tag :month_select, options_for_select(month_options, @event.event_date.strftime("%B")), class: "form-control", name: "event[event_date_month]" %>
+					</div>
+					<div class="col-sm-4">
+						<%= select_tag :day_select, options_for_select(day_options, @event.event_date.strftime("%-d")), class: "form-control", name: "event[event_date_day]" %>
+					</div>
+					<div class="col-sm-4">
+						<%= select_tag :year_select, options_for_select(year_options, @event.event_date.strftime("%Y")), class: "form-control", name: "event[event_date_year]" %>
+					</div>
+				</div>
+			</div>
+
+			<div class="margin-top-10">
+				<input name="event[event_time]" type="text" class="form-control" placeholder="Ex: 4:30 PM" value="<%= @event.event_time %>" />
+			</div>
+
+			<div class="large-title margin-top-20">
+				Location
+			</div>
+
+			<div class="margin-top-10">
+				<input name="event[event_location]" type="text" placeholder="e.g. 123 Grand Ave., San Francisco, CA" class="form-control" value="<%= @event.event_location %>" />
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+<!--/Main-->

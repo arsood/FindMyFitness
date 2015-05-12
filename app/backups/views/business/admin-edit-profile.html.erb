@@ -1,0 +1,267 @@
+<!--Main-->
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<% if flash[:bus_update_success] %>
+				<div class="alert alert-success">
+					Business updated successfully!
+				</div>
+			<% end %>
+
+			<%= form_tag("/businesses/edit/" + @business.id.to_s) do %>
+			<div class="extra-large-title">
+				Editing <%= @business.name %> Profile
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-6">
+					<div class="bold">
+						Name:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" name="business[name]" class="form-control" placeholder="Your Business Name" value="<%= @business.name %>" />
+					</div>
+				</div>
+			</div>
+			<div class="row margin-top-20">
+				<div class="col-sm-6">
+					<div class="bold">
+						Business Type:
+					</div>
+					<div class="margin-top-10">
+						<select class="form-control" name="business[business_type]">
+							<option value="Yoga" <%= if @business.business_type == "Yoga" then "selected" end %>>Yoga</option>
+							<option value="Gyms" <%= if @business.business_type == "Gyms" then "selected" end %>>Gyms</option>
+							<option value="Martial Arts" <%= if @business.business_type == "Martial Arts" then "selected" end %>>Martial Arts</option>
+							<option value="Boxing" <%= if @business.business_type == "Boxing" then "selected" end %>>Boxing</option>
+							<option value="Rock Climbing" <%= if @business.business_type == "Rock Climbing" then "selected" end %>>Rock Climbing</option>
+							<option value="Pilates" <%= if @business.business_type == "Pilates" then "selected" end %>>Pilates</option>
+							<option value="Dance" <%= if @business.business_type == "Dance" then "selected" end %>>Dance</option>
+							<option value="Other" <%= if @business.business_type == "Other" then "selected" end %>>Other</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row margin-top-50">
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Location
+					</div>
+					<div class="margin-top-20 bold">
+						Address:
+					</div>
+					<div class="margin-top-10">
+						<input type="text" name="business[address]" class="form-control" placeholder="Address" value="<%= @business.address %>" />
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="bold">
+								City:
+							</div>
+							<div class="margin-top-10">
+								<input name="business[city]" type="text" class="form-control" placeholder="City" value="<%= @business.city %>" />
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								State:
+							</div>
+							<div class="margin-top-10">
+								<select name="business[state]" class="form-control">
+									<option>CA</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="bold">
+								Zipcode:
+							</div>
+							<div class="margin-top-10">
+								<input name="business[zipcode]" type="text" class="form-control" placeholder="Zipcode" value="<%= @business.zipcode %>" />
+							</div>
+						</div>
+					</div>
+					<div class="margin-top-20 medium-title">
+						Contact Information
+					</div>
+					<div class="margin-top-20 bold">
+						Phone Number:
+					</div>
+					<div class="margin-top-10">
+						<input name="business[phone]" type="text" class="form-control" value="<%= @business.phone %>" />
+					</div>
+					<div class="margin-top-20 bold">
+						Website:
+					</div>
+					<div class="margin-top-10">
+						<input name="business[website]" type="text" class="form-control" placeholder="Website" value="<%= @business.website %>" />
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="medium-title">
+						Business Hours
+					</div>
+					<div class="margin-top-20">
+						<textarea name="business[availability]" class="form-control" placeholder="Example: M-F 8am to 9pm"><%= @business.availability %></textarea>
+					</div>
+					<div class="medium-title margin-top-20">
+						Business Services
+					</div>
+					<div class="row margin-top-20">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-weights">
+									<input type="checkbox" name="services[sauna]" id="check-sauna" value="Sauna/Steam Room" <%= if @services.include? "Sauna/Steam Room" then "checked" end %> /> Sauna/Steam Room
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-group-cycling">
+									<input type="checkbox" name="services[group_cycling]" id="check-group-cycling" value="Group Cycling" <%= if @services.include? "Group Cycling" then "checked" end %> /> Group Cycling
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-pool">
+									<input type="checkbox" name="services[pool]" id="check-pool" value="Swimming Pool" <%= if @services.include? "Swimming Pool" then "checked" end %> /> Swimming Pool
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-juice-bar">
+									<input type="checkbox" name="services[juice_bar]" value="Juice Bar" id="check-juice-bar" <%= if @services.include? "Juice Bar" then "checked" end %>> Juice Bar
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-basketball">
+									<input type="checkbox" name="services[basketball]" value="Basketball Court" id="check-basketball" <%= if @services.include? "Basketball Court" then "checked" end %>> Basketball Court
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-towels">
+									<input type="checkbox" name="services[towels]" value="Towel Service" id="check-towels" <%= if @services.include? "Towel Service" then "checked" end %>> Towel Service
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-spa">
+									<input type="checkbox" name="services[spa]" value="Spa" id="check-spa" <%= if @services.include? "Spa" then "checked" end %>> Spa
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-group-exercise">
+									<input type="checkbox" name="services[group_exercise]" value="Group Exercise Classes" id="check-group-exercise" <%= if @services.include? "Group Exercise Classes" then "checked" end %>> Group Exercise Classes	
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-cardio">
+									<input type="checkbox" name="services[cardio]" value="Cardio Equipment" id="check-cardio" <%= if @services.include? "Cardio Equipment" then "checked" end %>> Cardio Equipment
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-weights">
+									<input type="checkbox" name="services[weights]" value="Free Weights" id="check-weights" <%= if @services.include? "Free Weights" then "checked" end %>> Free Weights
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-weight-equipment">
+									<input type="checkbox" name="services[weight_equipment]" value="Weight Equipment" id="check-weight-equipment" <%= if @services.include? "Weight Equipment" then "checked" end %>> Weight Equipment
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-child-care">
+									<input type="checkbox" name="services[child_care]" value="Child Care" id="check-child-care" <%= if @services.include? "Child Care" then "checked" end %>> Child Care
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-diet">
+									<input type="checkbox" name="services[diet]" value="Dietary Consultation" id="check-diet" <%= if @services.include? "Dietary Consultation" then "checked" end %>> Dietary Consultation
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-trainers">
+									<input type="checkbox" name="services[trainers]" value="Personal Trainers" id="check-trainers" <%= if @services.include? "Personal Trainers" then "checked" end %>> Personal Trainers
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-massage">
+									<input type="checkbox" name="services[massage]" value="Massage Therapy" id="check-massage" <%= if @services.include? "Massage Therapy" then "checked" end %>> Massage Therapy
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row margin-top-10">
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-laundry">
+									<input type="checkbox" name="services[laundry]" value="Laundry Services" id="check-laundry" <%= if @services.include? "Laundry Services" then "checked" end %>> Laundry Services
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-lockers">
+									<input type="checkbox" name="services[lockers]" value="Locker Rooms" id="check-lockers" <%= if @services.include? "Locker Rooms" then "checked" end %>> Locker Rooms
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<label for="check-functional-training">
+									<input type="checkbox" name="services[functional_training]" value="Functional Training" id="check-functional-training" <%= if @services.include? "Functional Training" then "checked" end %>> Functional Training
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="margin-top-50">
+				<div class="medium-title">
+					Description
+				</div>
+				<div class="margin-top-10">
+					<textarea name="business[description]" class="form-control bus-description-edit"><%= @business.description %></textarea>
+				</div>
+			</div>
+			<div class="margin-top-20 pull-right">
+				<button type="submit" class="fmf-ellipse-turquoise-button margin-left-20">Finish Editing</button>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<!--/Main-->

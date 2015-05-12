@@ -1,0 +1,72 @@
+<!--Main-->
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="col-sm-7">
+		<div class="row">
+			<div class="col-sm-6">
+				<% if session[:user_type] == "superuser" %>
+					<div class="margin-top-20">
+						<%= form_tag do end %>
+						<a id="super-user-delete-event" data-id="<%= @event.id %>" href="#" class="super-user-delete-link">Delete Event</a>
+					</div>
+				<% end %>
+				<div class="large-title">
+					<%= @event.event_name %>
+				</div>
+				<div>
+					<%= @event.event_date.strftime("%B %-d, %Y") %>
+				</div>
+			</div>
+			<div class="col-sm-6 txt-right">
+				<button id="event-save-button" type="button" class="fmf-ellipse-dark-blue-button">+</button>
+			</div>
+		</div>
+
+		<div class="margin-top-20">
+			<%= simple_format(@event.event_description) %>
+		</div>
+
+		<% if @event_photos.first %>
+			<div class="margin-top-20 medium-title">
+				Photos
+			</div>
+
+			<div class="margin-top-20" id="galleria">
+				<% @event_photos.each do |photo| %>
+					<img src="<%= photo.event_photo %>" />
+				<% end %>
+			</div>
+
+			<div class="margin-top-20">
+				<a href="#" class="report-photos-button" data-type="event" data-hash="<%= @event.event_id %>">Report as Spam</a>
+			</div>
+
+			<% if session[:user_type] == "superuser" %>
+				<div class="margin-top-20">
+					<a href="/admin/photos/event?hash=<%= @event.event_id %>" class="super-user-delete-link">Edit Photo Set</a>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="col-sm-4 col-sm-offset-1">
+		<div class="medium-title">
+			<%= @event.event_date.strftime("%B %-d, %Y") %>
+		</div>
+		<div>
+			<%= @event.event_time %>
+		</div>
+		<div class="margin-top-20" id="map-canvas">
+		</div>
+		<div>
+			<button id="event-get-directions" class="light-blue-large-button txt-center">
+				Get directions <i class="fa fa-angle-double-right"></i>
+			</button>
+		</div>
+		<div class="margin-top-20">
+			<%= @event.event_location %>
+			<input type="hidden" id="event-location" value="<%= @event.event_location %>" />
+		</div>
+	</div>
+</div>
+<!--/Main-->
+
+<%= render "partials/modals/photos_spam_modal" %>

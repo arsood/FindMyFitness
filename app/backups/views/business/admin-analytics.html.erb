@@ -1,0 +1,41 @@
+<!--Main-->
+<input type="hidden" id="page_id" value="business_analytics" />
+<input type="hidden" id="business_id" value="<%= params[:business_id] %>" />
+<%= form_tag do end %>
+<div class="container margin-top-50 margin-bottom-50">
+	<div class="row">
+		<div class="col-sm-2">
+			<%= render "partials/sidebars/business_admin_sidebar" %>
+		</div>
+		<div class="col-sm-10">
+			<div class="extra-large-title">
+				Your Analytics
+			</div>
+
+			<div class="margin-top-20">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" id="analytics-24-hour">Past 24 Hours</button>
+					<button type="button" class="btn btn-default" id="analytics-month">Past Month</button>
+					<button type="button" class="btn btn-default" id="analytics-year">Past Year</button>
+				</div>
+			</div>
+
+			<div id="chart-container" class="margin-top-20">
+				<!--Canvas Here-->
+			</div>
+
+			<div class="row margin-top-20 admin-analytics-numbers-wrapper">
+				<div class="col-sm-4">
+					<%= pluralize(@review_num, "Review") %>
+				</div>
+				<div class="col-sm-4">
+					<%= pluralize(@saves_num, "Save") %>
+				</div>
+				<div class="col-sm-4">
+					<%= pluralize(bus_avg_rating(params[:business_id]), "Star") %> Overall
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/Main-->

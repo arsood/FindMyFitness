@@ -1,0 +1,133 @@
+<!--Signup Modal-->
+<div class="modal fade" id="signup-modal">
+	<div class="modal-dialog modal-lg">
+		<%= form_tag("/newuser", multipart: true) do %>
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="large-title">
+					Be a part of the fitness revolution and join now!
+				</div>
+				<div class="margin-top-10">
+					You'll be able to write reviews, post photos, create your own blog and follow others with the same passion as you. Let's focus on health and get fit.
+				</div>
+				<div class="text-muted">
+					* if you're a business owner and would like to sign up for a business account, click <a href="/business/learn-more">here</a>
+				</div>
+
+				<div class="row margin-top-20">
+					<div class="col-sm-6">
+						<div class="medium-title">
+							Sign Up Using Facebook
+						</div>
+						<div class="margin-top-50">
+							<a href="/auth/facebook" class="fmf-ellipse-turquoise-button">
+								<i class="fa fa-facebook"></i> | Sign Up With Facebook
+							</a>
+						</div>
+						<div class="margin-top-50 medium-title">
+							Upload Profile Image
+						</div>
+						<div class="margin-top-20">
+							<input id="avatar" name="avatar" type="file">
+						</div>
+						<div class="margin-top-20 medium-title">
+							About Me
+						</div>
+						<div class="margin-top-20">
+							<textarea name="user[about_me]" class="form-control" placeholder="Tell us a little about yourself!" required></textarea>
+						</div>
+					</div>
+					<div class="col-sm-6">
+							<div class="medium-title">
+								New User
+							</div>
+
+							<div id="signup-email-error" class="margin-top-20 alert alert-danger" style="display:none;">
+								Email has already been used
+							</div>
+
+							<div class="row margin-top-20">
+								<div class="col-sm-6">
+									<div class="bold">
+										Email
+									</div>
+									<div class="margin-top-10">
+										<input name="user[email_address]" type="email" class="form-control" required />
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="bold">
+										Password
+									</div>
+									<div class="margin-top-10">
+										<input name="user[password]" type="password" class="form-control" required />
+									</div>
+								</div>
+							</div>
+
+							<div class="row margin-top-20">
+								<div class="col-sm-6">
+									<div class="bold">
+										First Name
+									</div>
+									<div class="margin-top-10">
+										<input name="user[first_name]" type="text" class="form-control" required />
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="bold">
+										Last Name
+									</div>
+									<div class="margin-top-10">
+										<input name="user[last_name]" type="text" class="form-control" required />
+									</div>
+								</div>
+							</div>
+
+							<!-- <div class="margin-top-20">
+								<div class="bold">
+									Email
+								</div>
+								<div class="margin-top-10">
+									<input name="user[email_address]" type="email" class="form-control" required />
+								</div>
+							</div> -->
+
+							<div class="row margin-top-20">
+								<div class="col-sm-8">
+									<div class="bold">
+										City
+									</div>
+									<div class="margin-top-10">
+										<input name="user[city]" type="text" class="form-control" required />
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="bold">
+										State
+									</div>
+									<div class="margin-top-10">
+										<%= select_tag("user[state]", options_for_select(us_states), { class: "form-control", required: true }) %>
+									</div>
+								</div>
+							</div>
+
+							<div class="margin-top-20">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" required> I agree to the Terms of Service
+									</label>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Signup</button>
+			</div>
+		</div><!-- /.modal-content -->
+		<% end %>
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--/Signup Modal-->

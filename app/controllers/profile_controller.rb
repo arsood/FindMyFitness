@@ -58,7 +58,7 @@ class ProfileController < ApplicationController
 
 		@sidebar_header_text = "Edit Your Profile"
 
-		render "profile-edit"
+		render "profile-edit", layout: "standard-20"
 	end
 
 	def update

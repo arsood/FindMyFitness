@@ -123,7 +123,7 @@ class BusinessController < ApplicationController
 		if session[:user_type] == "business"
 			render "business-show", layout: "business-topbar"
 		else
-			render "business-show"
+			render "business-show", layout: "standard-20"
 		end
 	end
 
@@ -179,7 +179,7 @@ class BusinessController < ApplicationController
 		if session[:user_type] == "business"
 			render "business-search", layout: "business-topbar"
 		else
-			render "business-search"
+			render "business-search", layout: "standard-20"
 		end
 	end
 
