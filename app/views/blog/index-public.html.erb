@@ -24,7 +24,7 @@
 									</div>
 								</div>
 								<div>
-									<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>
+									<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name[0] + "." %></a>
 								</div>
 								<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
 								<div class="margin-top-10">

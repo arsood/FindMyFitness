@@ -205,7 +205,7 @@
 							</div>
 							<div class="col-sm-9">
 								<div class="bold">
-									<%= current_user.first_name %> <%= current_user.last_name %>
+									<%= current_user.first_name %> <%= current_user.last_name[0] + "." %>
 								</div>
 								<div class="italic">
 									Member since <%= current_user.created_at.strftime("%Y") %>
@@ -291,7 +291,7 @@
 						</div>
 						<div class="col-sm-9">
 							<div class="bold">
-								<%= current_user.first_name %> <%= current_user.last_name %>
+								<%= current_user.first_name %> <%= current_user.last_name[0] + "." %>
 							</div>
 							<div class="italic">
 								Member since <%= current_user.created_at.strftime("%Y") %>
