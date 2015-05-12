@@ -23,6 +23,14 @@ class BlogController < ApplicationController
 		end
 	end
 
+	def index_specific
+		@blogs = Blog.where(user_id: params[:user_id]).paginate(:page => params[:page], :per_page => 5).order(created_at: :desc)
+
+		@user = User.find(params[:user_id])
+
+		render "index-personal", layout: "inner-info"
+	end
+
 	def index_public
 		if params[:hash_tags]
 			given_tags = params[:hash_tags].split(",")

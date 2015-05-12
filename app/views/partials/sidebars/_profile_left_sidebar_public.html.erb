@@ -1,5 +1,5 @@
 <div class="left-sidebar-menu">
 	<a href="/profile/<%= @user.id %>"><%= @user.first_name %>'s Profile</a>
 	<a href="/profile/<%= @user.id %>/reviews"><%= @user.first_name %>'s Reviews</a>
-	<a href="/blog/me"><%= @user.first_name %>'s Blog Posts</a>
+	<a href="/blog/<%= @user.id %>"><%= @user.first_name %>'s Blog Posts</a>
 </div>

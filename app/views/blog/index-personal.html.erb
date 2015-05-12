@@ -2,7 +2,11 @@
 <div class="container margin-top-20 margin-bottom-50">
 	<div class="row">
 		<div class="col-sm-3">
-			<%= render "partials/sidebars/profile_left_sidebar" %>
+			<% if !params[:user_id] %>
+				<%= render "partials/sidebars/profile_left_sidebar" %>
+			<% else %>
+				<%= render "partials/sidebars/profile_left_sidebar_public" %>
+			<% end %>
 		</div>
 		<div class="col-sm-9">
 			<div>
@@ -45,7 +49,10 @@
 					<%= simple_format(blog.post_text) %>
 				</div>
 				<div class="margin-top-10">
-					<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="/post/<%= blog.id %>">Share</a> | <a href="/post/<%= blog.id %>/edit">Edit Post</a>
+					<a href="/post/<%= blog.id %>"><%= get_comment_count(blog.id) %> Comments</a> | <a href="/post/<%= blog.id %>">Share</a> 
+					<% if !params[:user_id] %>
+						| <a href="/post/<%= blog.id %>/edit">Edit Post</a>
+					<% end %>
 				</div>
 			</div>
 			<% end %>

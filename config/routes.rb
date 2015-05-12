@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   post "blog/new" => "blog#create"
   post "blog/images" => "blog#image_upload"
   get "blog/me" => "blog#index_personal"
+  get "blog/:user_id" => "blog#index_specific"
   get "blogs" => "blog#index_public"
   get "post/:id" => "blog#post_show"
   get "post/:id/edit" => "blog#post_edit"
