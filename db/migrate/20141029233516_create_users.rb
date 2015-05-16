@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :email_address
       t.text :about_me
-      t.string :username
       t.string :password
       t.string :password_digest
       t.string :user_type, default: "standard"

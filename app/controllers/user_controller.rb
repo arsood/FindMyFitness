@@ -25,7 +25,7 @@ class UserController < ApplicationController
 	end
 
 	def login_process
-		user = User.where(username: params[:username]).first
+		user = User.where(email_address: params[:email_address]).first
 
 		if user
 			if user.authenticate(params[:password])
@@ -53,7 +53,7 @@ class UserController < ApplicationController
 				redirect_to "/login"
 			end
 		else
-			flash[:error] = "Sorry, that username was not found."
+			flash[:error] = "Sorry, that email was not found."
 
 			redirect_to "/login"
 		end
