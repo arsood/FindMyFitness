@@ -23,7 +23,7 @@ class SubscriptionController < ApplicationController
 			)
 
 			if subscription_result.success?
-				new_user = User.create(username: params[:new_username], password: params[:new_password], user_type: "business")
+				new_user = User.create(email_address: params[:new_email], password: params[:new_password], user_type: "business")
 
 				Subscription.where(user_id: new_user.id).destroy_all
 				
