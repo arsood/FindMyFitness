@@ -68,9 +68,11 @@
 	<div class="col-sm-4">
 		<div id="map-canvas"></div>
 
-		<div class="margin-top-20">
-			<a data-toggle="modal" data-target="#add-business-modal" href="#">If you don't see the business you want to review, you can add the establishment by clicking here.</a>
-		</div>
+		<% if session[:user_id] %>
+			<div class="margin-top-20">
+				<a data-toggle="modal" data-target="#add-business-modal" href="#">If you don't see the business you want to review, you can add the establishment by clicking here.</a>
+			</div>
+		<% end %>
 	</div>
 </div>
 <!--/Main-->
