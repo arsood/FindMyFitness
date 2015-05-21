@@ -75,7 +75,7 @@ class EventController < ApplicationController
 		if session[:user_type] == "business"
 			render "show", layout: "business-topbar"
 		else
-			render "show"
+			render "show", layout: "standard-20"
 		end
 	end
 
