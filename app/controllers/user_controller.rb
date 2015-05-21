@@ -65,7 +65,7 @@ class UserController < ApplicationController
 	end
 
 	def forgot_password
-		render "forgot-password"
+		render "forgot-password", layout: "standard-20"
 	end
 
 	def forgot_password_1
