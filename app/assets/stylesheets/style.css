@@ -69,6 +69,12 @@
 	margin-top:-30px;
 }
 
+.fmf-header-search input {
+	color:#333 !important;
+	border-radius:5px;
+	padding:7px;
+}
+
 .login-top-button, .options-top-button {
 	position:relative;
 }
