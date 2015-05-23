@@ -2,4 +2,6 @@
 	<a href="/profile/<%= @user.id %>"><%= @user.first_name %>'s Profile</a>
 	<a href="/profile/<%= @user.id %>/reviews"><%= @user.first_name %>'s Reviews</a>
 	<a href="/blog/<%= @user.id %>"><%= @user.first_name %>'s Blog Posts</a>
+	<a href="/followers/<%= @user.id %>"><%= @user.first_name %>'s Followers</a>
+	<a href="/following/<%= @user.id %>">Who <%= @user.first_name %> is Following</a>
 </div>

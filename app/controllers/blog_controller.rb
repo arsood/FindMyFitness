@@ -218,6 +218,12 @@ class BlogController < ApplicationController
 		render "followers", layout: "standard-20"
 	end
 
+	def my_following
+		@followers = BlogFollower.where(follower_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		render "following", layout: "standard-20"
+	end
+
 	def public_followers
 		@followers = BlogFollower.where(owner_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
@@ -227,7 +233,7 @@ class BlogController < ApplicationController
 	def public_following
 		@followers = BlogFollower.where(follower_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "followers", layout: "standard-20"
+		render "following", layout: "standard-20"
 	end
 
 	def like_post
