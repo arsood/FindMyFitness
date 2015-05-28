@@ -1,11 +1,16 @@
 class HomeController < ApplicationController
 
 	def index
-		location = Geokit::Geocoders::IpGeocoder.geocode(request.remote_ip)
-		
-		if location.success
-			@my_location = location.city + ", " + location.state_code
-		else
+
+		begin
+			location = request.location
+
+			if location[:data][:city] != ""
+				@my_location = location[:data][:city] + ", " + location[:data][:region_code]
+			else
+				@my_location = "somewhere"
+			end
+		rescue
 			@my_location = "somewhere"
 		end
 
