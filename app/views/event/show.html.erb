@@ -18,7 +18,9 @@
 				</div>
 			</div>
 			<div class="col-sm-6 txt-right">
-				<button id="event-save-button" data-id="<%= @event.id %>" type="button" class="fmf-ellipse-dark-blue-button <%= if @event_saved then 'save-success' end %>">+</button>
+				<% if session[:user_id] && session[:user_type] != "business" %>
+					<button id="event-save-button" data-id="<%= @event.id %>" type="button" class="fmf-ellipse-dark-blue-button <%= if @event_saved then 'save-success' end %>">+</button>
+				<% end %>
 			</div>
 		</div>
 
