@@ -128,9 +128,8 @@ if ($("#page_id").length && $("#page_id").val() === "edit_event") {
 } });
 
 //Only execute this when event show page is active
-
 $(document).ready(function() {
-if ($("#event-save-button").length) {
+if ($("#page_id").length && $("#page_id").val() === "event_show") {
 
 //Initialize Galleria
 
@@ -176,6 +175,30 @@ $(document).on("click", "#event-get-directions", function() {
 	window.open("https://google.com/maps/search/" + encodeURIComponent($("#event-location").val()));
 });
 
-//Close document ready and event page condition
+$(document).on("click", "#event-save-button", function() {
+	var authToken = $("input[name=authenticity_token]").val();
 
+	$.ajax({
+		url: "/events/save",
+		type: "POST",
+		data: {
+			event_id: $(this).attr("data-id"),
+			authenticity_token: authToken
+		},
+		success: function(data) {
+			if (data.action === "save") {
+				$("#event-save-button").addClass("save-success");
+				$("#event-save-success-modal").modal("show");
+			} else {
+				$("#event-save-button").removeClass("save-success");
+				$("#event-unsave-success-modal").modal("show");
+			}
+		},
+		error: function() {
+			alert("There was an error processing the save. Please try again.");
+		}
+	});
+});
+
+//Close document ready and event page condition
 } });

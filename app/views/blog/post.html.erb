@@ -71,7 +71,7 @@
 						<%= image_tag(user.avatar.url(:thumb), class: "img-responsive") %>
 					</div>
 					<div class="col-sm-10">
-						<% if @type == "standard" %>
+						<% if user.user_type == "standard" %>
 							<div class="bold">
 								<%= user.first_name %> <%= user.last_name[0] + "." %>
 							</div>

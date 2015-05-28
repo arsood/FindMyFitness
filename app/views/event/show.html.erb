@@ -1,4 +1,5 @@
 <!--Main-->
+<input type="hidden" id="page_id" value="event_show" />
 <div class="container margin-top-50 margin-bottom-50">
 	<div class="col-sm-7">
 		<div class="row">
@@ -17,7 +18,7 @@
 				</div>
 			</div>
 			<div class="col-sm-6 txt-right">
-				<button id="event-save-button" type="button" class="fmf-ellipse-dark-blue-button">+</button>
+				<button id="event-save-button" data-id="<%= @event.id %>" type="button" class="fmf-ellipse-dark-blue-button <%= if @event_saved then 'save-success' end %>">+</button>
 			</div>
 		</div>
 
@@ -69,4 +70,6 @@
 </div>
 <!--/Main-->
 
+<%= render "partials/modals/event_save_success_modal" %>
+<%= render "partials/modals/event_unsave_success_modal" %>
 <%= render "partials/modals/photos_spam_modal" %>

@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   post "event/images" => "event#image_upload"
   post "event/images/delete" => "event#image_delete"
   get "event/all" => "event#get_all_events"
+  post "events/save" => "event#save_event"
 
   #Blog
 
@@ -86,6 +87,7 @@ Rails.application.routes.draw do
   get "/profile/events" => "profile#get_user_events"
   get "profile/reviews" => "profile#reviews"
   get "profile/:id" => "profile#profile"
+  get "profile/:id/events" => "profile#get_public_user_events"
   get "profile/:id/reviews" => "profile#public_reviews"
 
   #Login

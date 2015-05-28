@@ -72,6 +72,8 @@ class EventController < ApplicationController
 		@event = Event.find(params[:id])
 		@event_photos = EventPhoto.where(event_id: @event.event_id)
 
+		@event_saved = EventSave.where(user_id: session[:user_id], event_id: params[:id]).exists?
+
 		if session[:user_type] == "business"
 			render "show", layout: "business-topbar"
 		else
@@ -96,6 +98,19 @@ class EventController < ApplicationController
 			render :json => { result: "ok" }
 		else
 			render :json => { result: "error", error: "There was a problem deleting this photo." }
+		end
+	end
+
+	def save_event
+		event_save = EventSave.where(user_id: session[:user_id], event_id: params[:event_id])
+
+		if event_save.first
+			event_save.first.destroy
+
+			render :json => { result: "ok", action: "unsave" }
+		else
+			EventSave.create(user_id: session[:user_id], event_id: params[:event_id])
+			render :json => { result: "ok", action: "save" }
 		end
 	end
 

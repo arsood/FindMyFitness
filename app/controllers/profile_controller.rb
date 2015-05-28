@@ -89,11 +89,19 @@ class ProfileController < ApplicationController
 	end
 
 	def get_user_events
-		@events = Event.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		@saved_events = EventSave.where(user_id: session[:user_id]).paginate(:page => params[:page], :per_page => 10)
 
 		@user = User.find(session[:user_id])
 
 		render "profile-events", layout: "inner-info"
+	end
+
+	def get_public_user_events
+		@saved_events = EventSave.where(user_id: params[:id]).paginate(:page => params[:page], :per_page => 10)
+
+		@user = User.find(params[:id])
+
+		render "profile-events-public", layout: "inner-info"
 	end
 
 	def reviews

@@ -88,7 +88,7 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 			},
 			success:function(data) {
 				if (data.result === "ok") {
-					$("#business-save-button").addClass("business-saved");
+					$("#business-save-button").addClass("save-success");
 					$("#save-success-modal").modal("show");
 				} else {
 					$("#business-save-button").removeClass("business-saved");
