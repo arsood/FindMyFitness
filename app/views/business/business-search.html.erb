@@ -1,11 +1,11 @@
 <!--Main-->
 <input type="hidden" id="page_id" value="business_search" />
 
-<% if params[:location] %>
+<% if params[:location] && params[:location] != "" %>
 <input type="hidden" id="location-address" value="<%= params[:location] %>" />
 <% end %>
-<% if !params[:location] %>
-<input type="hidden" id="location-address" value="<%= @user_loc.full_address %>" />
+<% if !params[:location] || params[:location] == "" %>
+<input type="hidden" id="location-address" value="<%= @user_loc['city'] %>, <%= @user_loc['region_code'] %>" />
 <% end %>
 
 <input type="hidden" id="page_id" value="business_show" />
