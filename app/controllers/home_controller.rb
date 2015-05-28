@@ -3,8 +3,8 @@ class HomeController < ApplicationController
 	def index
 		location = request.location
 
-		if location.data.city != ""
-			@my_location = location.data.city + ", " + location.data.region_code
+		if location.data["city"] != ""
+			@my_location = location.data["city"] + ", " + location.data["region_code"]
 		else
 			@my_location = "somewhere"
 		end
