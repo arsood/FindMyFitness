@@ -8,9 +8,19 @@ module BlogHelper
 		follower = BlogFollower.where(owner_id: user.id, follower_id: session[:user_id]).exists?
 
 		if follower
-			return "Unfollow " + user.first_name
+			if user.user_type == "standard"
+				return "Unfollow " + user.first_name
+			else
+				business = Business.where(user_id: user.id).first
+				return "Unfollow " + business.name
+			end
 		else
-			return "Follow " + user.first_name
+			if user.user_type == "standard"
+				return "Follow " + user.first_name
+			else
+				business = Business.where(user_id: user.id).first
+				return "Follow " + business.name
+			end
 		end 
 	end
 

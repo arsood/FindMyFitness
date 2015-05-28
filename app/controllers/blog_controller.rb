@@ -107,6 +107,13 @@ class BlogController < ApplicationController
 		@post = Blog.find(params[:id])
 		@user = User.find(@post.user_id)
 
+		if @user.user_type == "business"
+			@business = Business.where(user_id: @user.id).first
+			@type = "business"
+		else
+			@type = "standard"
+		end
+
 		@post_photos = BlogPhoto.where(post_id: @post.post_id)
 
 		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)

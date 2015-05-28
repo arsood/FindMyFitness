@@ -84,7 +84,7 @@ class EventController < ApplicationController
 
 		if session[:business_id] && @event.business_id == session[:business_id]
 			@photos = EventPhoto.where(event_id: @event.event_id)
-			render "edit", layout: "nothing"
+			render "edit", layout: "business-topbar"
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"

@@ -11,15 +11,24 @@
 		</div>
 	</div>
 	<div class="col-sm-8">
-		<div class="bold">
-			<%= @user.first_name %> <%= @user.last_name[0] %>.
-		</div>
-		<div class="margin-top-10">
-			<a href="/followers/<%= @user.id %>"><%= get_follower_num(@user.id) %> Followers</a>
-		</div>
-		<div>
-			<a href="/following/<%= @user.id %>"><%= get_following_num(@user.id) %> Following</a>
-		</div>
+		<% if @type == "standard" %>
+			<div class="bold">
+				<%= @user.first_name %> <%= @user.last_name[0] %>.
+			</div>
+		<% else %>
+			<div class="bold">
+				<%= @business.name %>
+			</div>
+		<% end %>
+
+		<% if @type == "standard" %>
+			<div class="margin-top-10">
+				<a href="/followers/<%= @user.id %>"><%= get_follower_num(@user.id) %> Followers</a>
+			</div>
+			<div>
+				<a href="/following/<%= @user.id %>"><%= get_following_num(@user.id) %> Following</a>
+			</div>
+		<% end %>
 
 		<% if session[:user_id] && @user.id != session[:user_id] %>
 			<div class="margin-top-10">

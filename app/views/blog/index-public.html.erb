@@ -11,6 +11,10 @@
 
 							user = User.find(blog.user_id)
 
+							if user.user_type == "business"
+								business = Business.where(user_id: user.id).try(:first)
+							end
+
 							like_exists = BlogLike.where(user_id: session[:user_id], post_id: blog.id).exists?
 
 						%>
@@ -24,7 +28,11 @@
 									</div>
 								</div>
 								<div>
-									<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name[0] + "." %></a>
+									<% if user.user_type == "standard" %>
+										<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name[0] + "." %></a>
+									<% else %>
+										<a href="/business/<%= business.id %>"><%= business.name %></a>
+									<% end %>
 								</div>
 								<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
 								<div class="margin-top-10">
