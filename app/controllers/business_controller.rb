@@ -165,14 +165,18 @@ class BusinessController < ApplicationController
 		if search_location && search_location != ""
 			@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => search_location).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		else
-			@user_loc = request.location.data
+			begin
+				@user_loc = request.location.data
 
-			#User category parameter if present
+				#User category parameter if present
 
-			if params[:category]
-				@businesses = Business.where(business_type: params[:category]).within(5, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
-			else
-				@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+				if params[:category]
+					@businesses = Business.where(business_type: params[:category]).within(5, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+				else
+					@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+				end
+			rescue
+				@businesses = []
 			end
 		end
 
