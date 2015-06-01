@@ -62,9 +62,11 @@
 			</div>
 		<% end %>
 
-		<div class="margin-top-20">
-			<%= will_paginate @businesses %>
-		</div>
+		<% if !@fail %>
+			<div class="margin-top-20">
+				<%= will_paginate @businesses %>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-sm-4">
 		<div id="map-canvas"></div>
