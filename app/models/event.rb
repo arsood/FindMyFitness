@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	acts_as_mappable
 
 	def self.create_event(params)
 		new_event = Event.new
