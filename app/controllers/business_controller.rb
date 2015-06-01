@@ -176,6 +176,7 @@ class BusinessController < ApplicationController
 					@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 				end
 			rescue
+				@fail = true
 				@businesses = []
 			end
 		end
