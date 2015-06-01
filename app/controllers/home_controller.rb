@@ -9,7 +9,11 @@ class HomeController < ApplicationController
 			@my_location = "somewhere"
 		end
 
-		@events = Event.where("event_date > ?", Time.now).limit(6)
+		if @my_location == "somewhere"
+			@events = Event.where("event_date > ?", Time.now).limit(6)
+		else
+			@events = Event.where("event_date > ?", Time.now).limit(6).within(20, :origin => [location.data["latitude"], location.data["longitude"]])
+		end
 
 		render "index", layout: "home"
 	end

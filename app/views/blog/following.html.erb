@@ -12,28 +12,47 @@
 
 				user = User.find(follower.owner_id)
 
+				if user.user_type == "business"
+					business_flag = true
+					business = Business.where(user_id: user.id).first
+				end
+
 			%>
 				<!--One Follower-->
 				<div class="col-sm-4">
 					<div class="row">
 						<div class="col-sm-6">
-							<% user_avatar = get_user_avatar(user.id, :medium) 
-								if user_avatar == "profile-placeholder.png"
-							%>
-								<div class="responsive-block-image" style="background:url('/assets/profile-placeholder.png') no-repeat;">
-								</div>
+							<% if !business_flag %>
+								<% user_avatar = get_user_avatar(user.id, :medium) 
+									if user_avatar == "profile-placeholder.png"
+								%>
+									<div class="responsive-block-image" style="background:url('/assets/profile-placeholder.png') no-repeat;">
+									</div>
+								<% else %>
+									<div class="responsive-block-image" style="background:url(<%= user_avatar %>) no-repeat;">
+									</div>
+								<% end %>
 							<% else %>
-								<div class="responsive-block-image" style="background:url(<%= user_avatar %>) no-repeat;">
-								</div>
+								<div class="responsive-block-image" style="background:url('<%= get_bus_thumb(business.business_hash, :link) %>') no-repeat;">
+									</div>
 							<% end %>
 						</div>
 						<div class="col-sm-6">
-							<div class="medium-title margin-top-50">
-								<%= user.first_name %> <%= user.last_name[0] + "." %>
-							</div>
-							<div>
-								<a href="/profile/<%= user.id %>">Visit Profile</a>
-							</div>
+							<% if !business_flag %>
+								<div class="medium-title margin-top-50">
+									<%= user.first_name %> <%= user.last_name[0] + "." %>
+								</div>
+								<div>
+									<a href="/profile/<%= user.id %>">Visit Profile</a>
+								</div>
+							<% else %>
+								<div class="medium-title margin-top-50">
+									<%= business.name %>
+								</div>
+								<div>
+									<a href="/business/<%= business.id %>">Visit Business</a>
+								</div>
+							<% end %>
 						</div>
 					</div>
 				</div>
