@@ -1,7 +1,12 @@
 class LoginController < ApplicationController
 	def index
 		if session[:user_id]
-			redirect_to "/profile"
+			if session[:user_type] == "standard"
+				redirect_to "/profile"
+			else
+				business_id = Business.where(user_id: session[:user_id]).first.id
+				redirect_to "/business-admin/edit/" + business_id.to_s
+			end	
 		else
 			render "index", layout: "standard-20"
 		end
