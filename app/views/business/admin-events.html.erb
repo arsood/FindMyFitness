@@ -17,17 +17,10 @@
 			</div>
 
 			<% @events.each do |event| %>
-				<% 
-
-				#Get one photo for the event show
-				event_photo = EventPhoto.where(event_id: event.event_id).try(:first)
-
-				%>
-
 				<!--One Event-->
 				<div class="row single-event">
 					<div class="col-sm-3">
-						<a href="/events/<%= event.id %>/edit"><%= if event_photo then image_tag(event_photo.event_photo.url(:medium), { class: "img-responsive" }) end %></a>
+						<a href="/events/<%= event.id %>/edit"><%= image_tag(get_event_thumb(event.event_id, :helper), class: "img-responsive") %></a>
 					</div>
 					<div class="col-sm-9">
 						<div>

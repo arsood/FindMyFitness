@@ -45,7 +45,7 @@ class EventController < ApplicationController
 	end
 
 	def new_event_process
-		event_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:event_location])
+		event_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:event][:event_location])
 
 		event_parameters = event_params.merge(business_id: session[:business_id], lat: event_geo.lat, lng: event_geo.lng)
 
@@ -55,7 +55,11 @@ class EventController < ApplicationController
 	end
 
 	def update
-		Event.update_event(event_params, params[:id])
+		event_geo = Geokit::Geocoders::GoogleGeocoder.geocode(params[:event][:event_location])
+
+		event_parameters = event_params.merge(lat: event_geo.lat, lng: event_geo.lng)
+
+		Event.update_event(event_parameters, params[:id])
 
 		redirect_to "/business-admin/events/" + session[:business_id].to_s
 	end
