@@ -7,8 +7,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :address
       t.string :city
       t.string :state
-      t.integer :zipcode
-      t.integer :phone
+      t.string :zipcode
+      t.string :phone
       t.string :website
       t.string :availability
       t.string :account_type, default: "unpaid"

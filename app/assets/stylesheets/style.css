@@ -1,5 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
 .fmf-navbar {
-	background-color:#444;
+	background-color:#30353c;
 	-webkit-box-shadow: 0px 5px 15px 0px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 5px 15px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 5px 15px 0px rgba(50, 50, 50, 0.75);
@@ -313,8 +315,8 @@
 .footer-wrapper {
 	width:100%;
 	overflow:hidden;
-	background-color:#444;
-	border-top:#06C 4px solid;
+	background-color:#30353c;
+	border-top:#15b4db 4px solid;
 }
 
 .footer-container {

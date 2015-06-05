@@ -1,3 +1,7 @@
+body {
+	font-family: 'Lato', sans-serif;
+}
+
 sup {
 	top:0em;
 	font-size:1.2em;
@@ -17,4 +21,8 @@ sup {
 
 .no-bg {
 	background-color:transparent !important;
+}
+
+a {
+	color:#15b4db;
 }
