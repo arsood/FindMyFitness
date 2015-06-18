@@ -40,7 +40,11 @@ class ProfileController < ApplicationController
 
 		@edit_button = false
 
-		render "profile", layout: "inner-info"
+		if session[:user_type] == "standard"
+			render "profile", layout: "inner-info"
+		else
+			render "profile", layout: "business-info-topbar"
+		end
 	end
 
 	def notifications

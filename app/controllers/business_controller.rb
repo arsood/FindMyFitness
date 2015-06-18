@@ -11,6 +11,7 @@ class BusinessController < ApplicationController
 	end
 
 	def learn_more
+		reset_session
 		render "business-learn", layout: "simple-topbar"
 	end
 
