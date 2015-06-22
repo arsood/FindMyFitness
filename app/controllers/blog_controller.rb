@@ -28,7 +28,15 @@ class BlogController < ApplicationController
 
 		@user = User.find(params[:user_id])
 
-		render "index-personal", layout: "inner-info"
+		if @user.user_type == "business"
+			@business = Business.where(user_id: @user.id).first
+		end
+
+		if session[:user_type] == "standard"
+			render "index-personal", layout: "inner-info"
+		else
+			render "index-personal", layout: "inner-info-business"
+		end
 	end
 
 	def index_public

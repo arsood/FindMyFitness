@@ -32,7 +32,7 @@
 									<% if user.user_type == "standard" %>
 										<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name[0] + "." %></a>
 									<% else %>
-										<a href="/business/<%= business.id %>"><%= business.name %></a>
+										<a href="/profile/<%= user.id %>"><%= business.name %></a>
 									<% end %>
 								</div>
 								<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>

@@ -1,8 +1,17 @@
-<div class="left-sidebar-menu">
-	<a href="/profile/<%= @user.id %>"><%= @user.first_name %>'s Profile</a>
-	<a href="/profile/<%= @user.id %>/reviews"><%= @user.first_name %>'s Reviews</a>
-	<a href="/blog/<%= @user.id %>"><%= @user.first_name %>'s Blog Posts</a>
-	<a href="/followers/<%= @user.id %>"><%= @user.first_name %>'s Followers</a>
-	<a href="/following/<%= @user.id %>">Who <%= @user.first_name %> is Following</a>
-	<a href="/profile/<%= @user.id %>/events">Events <%= @user.first_name %> Saved</a>
-</div>
+<% if @user.user_type == "standard" %>
+	<div class="left-sidebar-menu">
+		<a href="/profile/<%= @user.id %>"><%= @user.first_name %>'s Profile</a>
+		<a href="/profile/<%= @user.id %>/reviews"><%= @user.first_name %>'s Reviews</a>
+		<a href="/blog/<%= @user.id %>"><%= @user.first_name %>'s Blog Posts</a>
+		<a href="/followers/<%= @user.id %>"><%= @user.first_name %>'s Followers</a>
+		<a href="/following/<%= @user.id %>">Who <%= @user.first_name %> is Following</a>
+		<a href="/profile/<%= @user.id %>/events">Events <%= @user.first_name %> Saved</a>
+	</div>
+<% else %>
+	<div class="left-sidebar-menu">
+		<a href="/business/<%= @business.id %>"><%= @business.name %>'s Profile</a>
+		<a href="/blog/<%= @user.id %>"><%= @business.name %>'s Blog Posts</a>
+		<a href="/followers/<%= @user.id %>"><%= @business.name %>'s Followers</a>
+		<a href="/following/<%= @user.id %>">Who <%= @business.name %> is Following</a>
+	</div>
+<% end %>

@@ -40,10 +40,14 @@ class ProfileController < ApplicationController
 
 		@edit_button = false
 
-		if session[:user_type] == "standard"
-			render "profile", layout: "inner-info"
+		if @user.user_type == "business"
+			@business = Business.where(user_id: @user.id).first
+		end
+
+		if session[:user_type] == "business"
+			render "profile", layout: "inner-info-business"
 		else
-			render "profile", layout: "business-info-topbar"
+			render "profile", layout: "inner-info"
 		end
 	end
 
