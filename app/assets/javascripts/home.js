@@ -28,8 +28,8 @@ function resizeHomeCards() {
 	var maxCard = Math.max.apply(null, cardHeights);
 	var realHeight = maxCard * 2;
 
-	$(".home-card-image").height(maxCard);
-	$(".home-card").height(realHeight);
+	$(".home-card-image").height(maxCard + 100);
+	$(".home-card").height(realHeight + 100);
 }
 
 resizeHomeCards();

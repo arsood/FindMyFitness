@@ -9,7 +9,7 @@
 
 .home-search-categories-container {
 	padding:20px;
-	background:rgba(0, 0, 0, 0.4);
+	background:rgba(48, 53, 60, 0.4) !important;
 	border-radius:5px;
 }
 
@@ -30,6 +30,7 @@
 .home-card-image {
 	width:100%;
 	background-size:cover !important;
+	background-position:center !important;
 }
 
 .home-card-content-container {
