@@ -107,7 +107,7 @@ $(document).on("click", ".blog-like-button", function(event) {
 				if (data.result === "ok") {
 					$(that).addClass("post-liked");
 
-					var likeTextEl = $(that).parents("blog-item").children(".blog-like-text");
+					var likeTextEl = $(that).parents(".blog-item").children(".blog-like-text");
 					var likeText = likeTextEl.html();
 					var splitLikeText = likeText.split(" ");
 
