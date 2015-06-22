@@ -23,7 +23,12 @@ module ApplicationHelper
 
 	#Returns full user object for a user
 	def get_user_info(user_id)
-		return User.find(user_id)
+		user = User.find(user_id)
+		if user.user_type == "standard"
+			return user
+		else
+			return Business.where(user_id: user.id).first
+		end
 	end
 
 	#Returns full business object for business
