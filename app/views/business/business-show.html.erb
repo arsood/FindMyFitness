@@ -362,7 +362,7 @@
 								Photos of Business
 							</div>
 
-							<% if @business_photos.any? %>
+							<% if @business_photos.any? || @review_photos.any? %>
 								<div id="galleria" class="margin-top-20">
 									<% @review_photos.each do |photo| %>
 										<img src="<%= photo %>" />
