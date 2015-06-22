@@ -64,6 +64,9 @@
 
 					user = User.find(post.commentor_id)
 
+					if user.user_type == "business"
+						business = Business.where(user_id: user.id).first
+					end
 				%>
 				<!--One Comment-->
 				<div class="row margin-top-20">
@@ -77,7 +80,7 @@
 							</div>
 						<% else %>
 							<div class="bold">
-								<%= @business.name %>
+								<%= business.name %>
 							</div>
 						<% end %>
 						<div class="margin-top-10">
