@@ -153,9 +153,15 @@
 					<% end %>
 
 					<% if session[:user_id] && @user && @user.id != session[:user_id] %>
-						<div class="margin-top-10">
-							<button id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @user.first_name %>" class="fmf-ellipse-turquoise-button"><%= get_follow_text(@user) %></button>
-						</div>
+						<% if !@business %>
+							<div class="margin-top-10">
+								<button id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @user.first_name %>" class="fmf-ellipse-turquoise-button"><%= get_follow_text(@user) %></button>
+							</div>
+						<% else %>
+							<div class="margin-top-10">
+								<button id="follow-user-link" data-id="<%= @user.id %>" data-name="<%= @business.name %>" class="fmf-ellipse-turquoise-button"><%= get_follow_text(@user) %></button>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
