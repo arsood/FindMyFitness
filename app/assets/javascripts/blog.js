@@ -110,8 +110,10 @@ $(document).on("click", ".blog-like-button", function(event) {
 					var likeTextEl = $(that).parents(".blog-item").children(".blog-like-text");
 					var likeText = likeTextEl.html();
 					var splitLikeText = likeText.split(" ");
+					var newLikeNum = parseInt(splitLikeText[0]);
+					var newLike = newLikeNum++;
 
-					likeTextEl.html(parseInt(splitLikeText[0])++ + " Like");
+					likeTextEl.html(newLikeNum + " Like");
 				}
 			}
 		});
