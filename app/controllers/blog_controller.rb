@@ -114,21 +114,19 @@ class BlogController < ApplicationController
 			@type = "standard"
 		end
 
-		render :json => @type
+		@post_photos = BlogPhoto.where(post_id: @post.post_id)
 
-		# @post_photos = BlogPhoto.where(post_id: @post.post_id)
+		@post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		# @post_comments = BlogComment.where(blog_id: @post.id).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		@like_exists = BlogLike.where(user_id: session[:user_id], post_id: @post.id).exists?
 
-		# @like_exists = BlogLike.where(user_id: session[:user_id], post_id: @post.id).exists?
+		@sidebar_header_text = "About the Author"
 
-		# @sidebar_header_text = "About the Author"
-
-		# if session[:user_type] == "business"
-		# 	render "post", layout: "business-topbar"
-		# else
-		# 	render "post", layout: "standard-20"
-		# end
+		if session[:user_type] == "business"
+			render "post", layout: "business-topbar"
+		else
+			render "post", layout: "standard-20"
+		end
 	end
 
 	def post_edit
