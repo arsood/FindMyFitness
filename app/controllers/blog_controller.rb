@@ -68,7 +68,7 @@ class BlogController < ApplicationController
 			@blogs = Blog.all.where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		end
 
-		@header_text = "Blog - Inspirational posts from people like you."
+		@header_text = "Blogs - recently added"
 
 		if session[:user_type] == "business"
 			render "index-public", layout: "business-topbar"
