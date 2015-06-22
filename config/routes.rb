@@ -115,4 +115,10 @@ Rails.application.routes.draw do
   #Spam reporting
   post "/report/review" => "spam#report_review"
   post "/report/photos" => "spam#report_photos"
+
+  #Misc
+  get "/about" => "misc#about"
+  get "/contact" => "misc#contact"
+  get "/careers" => "misc#careers"
+  get "/advertise" => "misc#advertise"
 end
