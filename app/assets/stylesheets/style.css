@@ -53,6 +53,7 @@
 
 .responsive-block-image {
 	background-size:cover !important;
+	background-position:center !important;
 }
 
 .fmf-nav-menu a {
