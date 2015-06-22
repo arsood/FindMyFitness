@@ -106,6 +106,12 @@ $(document).on("click", ".blog-like-button", function(event) {
 			success: function(data) {
 				if (data.result === "ok") {
 					$(that).addClass("post-liked");
+
+					var likeTextEl = $(that).parents("blog-item").children(".blog-like-text");
+					var likeText = likeTextEl.html();
+					var splitLikeText = likeText.split(" ");
+
+					likeTextEl.html(parseInt(splitLikeText[0])++ + " Like");
 				}
 			}
 		});

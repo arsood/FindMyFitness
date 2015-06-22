@@ -246,15 +246,11 @@ class BlogController < ApplicationController
 	def like_post
 		user_id = Blog.find(params[:post_id]).user_id
 
-		if user_id == session[:user_id]
-			render :json => { result: "error" }
-		else
-			BlogLike.create(user_id: session[:user_id], post_id: params[:post_id])
+		BlogLike.create(user_id: session[:user_id], post_id: params[:post_id])
 
-			Notification.create(notification_type: "post_like", item_id: params[:post_id], guest_user_id: session[:user_id], owner_user_id: user_id)
+		Notification.create(notification_type: "post_like", item_id: params[:post_id], guest_user_id: session[:user_id], owner_user_id: user_id)
 
-			render :json => { result: "ok" }
-		end
+		render :json => { result: "ok" }
 	end
 
 private
