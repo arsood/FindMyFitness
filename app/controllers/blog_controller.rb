@@ -104,9 +104,10 @@ class BlogController < ApplicationController
 	end
 
 	def post_show
+		@post = Blog.find(params[:id])
+		@user = User.find(@post.user_id)
+
 		render :json => @user
-		# @post = Blog.find(params[:id])
-		# @user = User.find(@post.user_id)
 
 		# if @user.user_type == "business"
 		# 	@business = Business.where(user_id: @user.id).first
