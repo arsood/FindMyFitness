@@ -281,6 +281,7 @@ class BusinessController < ApplicationController
 		if is_owner(params[:business_id])
 			@saves_num = BusinessSave.where(business_id: params[:business_id]).count
 			@review_num = Review.where(business_id: params[:business_id]).count
+			@all_views = BusinessView.where(business_id: params[:business_id]).count
 
 			render "admin-analytics", layout: "business-topbar"
 		else

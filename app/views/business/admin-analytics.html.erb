@@ -25,14 +25,17 @@
 			</div>
 
 			<div class="row margin-top-20 admin-analytics-numbers-wrapper">
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<%= pluralize(@review_num, "Review") %>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<%= pluralize(@saves_num, "Save") %>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-3">
 					<%= pluralize(bus_avg_rating(params[:business_id]), "Star") %> Overall
+				</div>
+				<div class="col-sm-3">
+					<%= pluralize(number_to_human(@all_views), "Total View") %>
 				</div>
 			</div>
 		</div>
