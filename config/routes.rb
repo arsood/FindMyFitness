@@ -121,4 +121,5 @@ Rails.application.routes.draw do
   get "/contact" => "misc#contact"
   get "/careers" => "misc#careers"
   get "/advertise" => "misc#advertise"
+  get "/terms" => "misc#terms"
 end

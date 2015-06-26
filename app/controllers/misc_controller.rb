@@ -18,4 +18,9 @@ class MiscController < ApplicationController
 		@header_text = "Advertise with Us"
 		render "advertise", layout: "inner-basic"
 	end
+
+	def terms
+		@header_text = "Terms of Use"
+		render "terms", layout: "inner-basic"
+	end
 end
