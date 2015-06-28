@@ -152,6 +152,10 @@ if ($("#page_id").length && $("#page_id").val() === "business_show") {
 		}
 	});
 
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+
 //Close condition that business show page
 } });
 
