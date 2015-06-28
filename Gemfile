@@ -34,6 +34,8 @@ gem 'rails-erd'
 
 gem 'geocoder'
 
+gem 'fancybox2-rails', '~> 0.2.8'
+
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby

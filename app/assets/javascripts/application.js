@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require_tree ../../../vendor/assets/javascripts/
+//= require fancybox
 //= require_tree .

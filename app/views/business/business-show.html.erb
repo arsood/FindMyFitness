@@ -272,7 +272,7 @@
 									    <!-- Wrapper for slides -->
 									    <div class="carousel-inner" role="listbox">
 									    	<% review_photos.each_with_index do |photo, index| %>
-										        <div class="item <%= if index == 0 then 'active' end %>">
+										        <div class="item <%= if index == 0 then 'active' end %> fancybox" rel="gallery<%= business_reviews[i].id %>" data-fancybox-href="<%= photo.review_photo.url %>">
 										            <img src="<%= photo.review_photo.url(:medium) %>" />
 										        </div>
 										    <% end %>
@@ -445,4 +445,10 @@
 <% if @business_info.account_type == "unpaid" %>
 	<%= render "partials/modals/edit_business_modal" %>
 <% end %>
+
+<script>
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
 <!--/Main-->
