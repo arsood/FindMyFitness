@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "arun.emboldenmedia@gmail.com"
+  default from: "noreply@findmyfitness.com"
 
   def forgot_password(token, user)
   	@token = token

@@ -1,8 +1,9 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-	:address        => 'smtp.gmail.com',
-	:port           => 587,
-	:user_name      => Rails.application.secrets.mailer_user_name,
-	:password       => Rails.application.secrets.mailer_password,
-	:authentication => :plain
+	:port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      Rails.application.secrets.mandrill_username,
+    :password =>       Rails.application.secrets.mandrill_api_key,
+    :domain =>         'findmyfitness.com',
+    :authentication => :plain
 }
