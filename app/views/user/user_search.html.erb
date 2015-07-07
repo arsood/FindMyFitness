@@ -1,16 +1,14 @@
 <!--Main-->
 <div class="container margin-top-20 margin-bottom-50">
-	<% if @followers.empty? %>
+	<% if @users.empty? %>
 		<div class="medium-title">
-			Nothing here yet.
+			Nothing Found :(
 		</div>
 	<% end %>
 
-	<% @followers.in_groups_of(3, false) do |group| %>
+	<% @users.in_groups_of(3, false) do |group| %>
 		<div class="row margin-top-20">
-			<% group.each do |follower| 
-
-				user = User.find(follower.follower_id)
+			<% group.each do |user|
 
 				if user.user_type == "business"
 					business_flag = true
@@ -62,7 +60,7 @@
 	<% end %>
 
 	<div class="margin-top-20">
-		<%= will_paginate(@followers) %>
+		<%= will_paginate(@users) %>
 	</div>
 </div>
 <!--/Main-->

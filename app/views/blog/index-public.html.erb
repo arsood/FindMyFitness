@@ -76,6 +76,20 @@
 				</div>
 			<% end %>
 
+			<div class="margin-top-20 bold">
+				Search Users
+			</div>
+
+			<%= form_tag("/users/search", method: :get) do %>
+				<div class="margin-top-10">
+					<input type="text" name="q" class="form-control" required />
+				</div>
+
+				<div class="margin-top-10">
+					<button type="submit" class="fmf-ellipse-dark-blue-button small-button">Search Users</button>
+				</div>
+			<% end %>
+
 			<div class="left-sidebar-menu margin-top-20">
 				<a href="/blog/me">Your Posts</a>
 				<a href="/profile/saves">Your Saves</a>

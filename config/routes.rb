@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   post "/forgot-password/2" => "user#forgot_password_2"
   post "/forgot-password/3" => "user#forgot_password_3"
   post "check-email" => "user#check_email"
+  get "/users/search" => "user#search_users"
 
   #Event
 
@@ -122,4 +123,5 @@ Rails.application.routes.draw do
   get "/careers" => "misc#careers"
   get "/advertise" => "misc#advertise"
   get "/terms" => "misc#terms"
+  get "/privacy" => "misc#privacy"
 end

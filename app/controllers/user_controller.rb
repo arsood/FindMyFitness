@@ -109,6 +109,14 @@ class UserController < ApplicationController
 		end
 	end
 
+	def search_users
+		query = "%" + params[:q] + "%"
+
+		@users = User.where("first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ?", query, query, query).distinct.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+
+		render "user_search", layout: "standard-20"
+	end
+
 private
 
 	def user_params

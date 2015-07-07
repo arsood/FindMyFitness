@@ -21,6 +21,11 @@ class MiscController < ApplicationController
 
 	def terms
 		@header_text = "Terms of Use"
-		render "terms", layout: "inner-basic"
+		render "terms2", layout: "inner-basic"
+	end
+
+	def privacy
+		@header_text = "Privacy Policy"
+		render "privacy", layout: "inner-basic"
 	end
 end
