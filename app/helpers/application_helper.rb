@@ -161,11 +161,13 @@ module ApplicationHelper
 			return "has left you a review."
 		elsif type == "post_like"
 			return "has liked your post,"
+		elsif type == "old_blog_comment"
+			return "has commented on the post,"
 		end
 	end
 
 	def get_notification_title(type, item_id)
-		if type == "blog_comment"
+		if type == "blog_comment" || type == "old_blog_comment"
 			blog_post = Blog.find(item_id)
 			return blog_post.post_title
 		elsif type == "new_follower"
@@ -179,7 +181,7 @@ module ApplicationHelper
 	end
 
 	def get_notification_link(type, item_id)
-		if type == "blog_comment"
+		if type == "blog_comment" || type == "old_blog_comment"
 			return "/post/" + item_id.to_s
 		elsif type == "new_follower"
 			return "/followers"

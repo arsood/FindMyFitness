@@ -177,6 +177,8 @@ class BlogController < ApplicationController
 	end
 
 	def save_comment
+		old_posters = BlogComment.where(blog_id: params[:id]).where.not(commentor_id: session[:user_id])
+
 		blog_comment = BlogComment.create(blog_id: params[:id], commentor_id: session[:user_id], blog_comment: params[:comment_text])
 
 		#Create notification for user
@@ -185,6 +187,14 @@ class BlogController < ApplicationController
 
 		if blog_owner_id != session[:user_id]
 			Notification.create(notification_type: "blog_comment", item_id: params[:id], guest_user_id: session[:user_id], owner_user_id: blog_owner_id)
+		end
+
+		#Create notification for users who have previously commented on the same post
+
+		if old_posters.any?
+			old_posters.each do |poster|
+				Notification.create(notification_type: "old_blog_comment", item_id: params[:id], guest_user_id: session[:user_id], owner_user_id: poster.commentor_id)
+			end
 		end
 
 		redirect_to "/post/" + params[:id]

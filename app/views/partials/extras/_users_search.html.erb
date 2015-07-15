@@ -1,0 +1,8 @@
+<div class="row">
+	<div class="col-sm-5 col-sm-offset-7">
+		<form method="GET" action="/users/search" class="form-inline txt-right">
+			<input type="text" class="form-control" name="q" value="<%= if params[:q] then params[:q] end %>" />
+			<button type="submit" class="btn btn-primary margin-left-10">Search Users</button>
+		</form>
+	</div>
+</div>
