@@ -198,7 +198,7 @@ module ApplicationHelper
 			return "/post/" + item_id.to_s
 		elsif type == "review_reply"
 			business_id = Review.find(item_id).business_id
-			return "/business/" + business_id
+			return "/business/" + business_id.to_s
 		end
 	end
 
