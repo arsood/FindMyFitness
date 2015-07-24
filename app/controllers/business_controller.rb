@@ -422,6 +422,10 @@ class BusinessController < ApplicationController
 			redirect_to :back
 		else
 			if ReviewReply.create(business_id: session[:business_id], review_id: params[:review_id], reply_text: params[:reply_text])
+				user_id = Review.find(params[:review_id]).user_id
+
+				Notification.create(notification_type: "review_reply", item_id: params[:review_id], guest_user_id: session[:business_id], owner_user_id: user_id)
+				
 				redirect_to :back
 			end
 		end
