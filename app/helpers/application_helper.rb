@@ -166,7 +166,7 @@ module ApplicationHelper
 		elsif type == "old_blog_comment"
 			return "has commented on the post,"
 		elsif type == "review_reply"
-			return "has replied to your review,"
+			return "has replied to your review from"
 		end
 	end
 
