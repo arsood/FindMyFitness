@@ -166,7 +166,7 @@ module ApplicationHelper
 		elsif type == "old_blog_comment"
 			return "has commented on the post,"
 		elsif type == "review_reply"
-			return "has replied to your review from"
+			return "has replied to your review. See the business page"
 		end
 	end
 
@@ -182,8 +182,7 @@ module ApplicationHelper
 			blog_post = Blog.find(item_id)
 			return blog_post.post_title	
 		elsif type == "review_reply"
-			business_id = Review.find(item_id).business_id
-			return Business.find(business_id).name
+			return "here."
 		end
 	end
 
