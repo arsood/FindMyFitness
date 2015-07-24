@@ -252,13 +252,21 @@ class BlogController < ApplicationController
 	def public_followers
 		@followers = BlogFollower.where(owner_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "followers", layout: "standard-20"
+		if session[:user_type] == "standard"
+			render "followers", layout: "standard-20"
+		else
+			render "followers", layout: "business-topbar"
+		end
 	end
 
 	def public_following
 		@followers = BlogFollower.where(follower_id: params[:user_id]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "following", layout: "standard-20"
+		if session[:user_type] == "standard"
+			render "following", layout: "standard-20"
+		else
+			render "following", layout: "business-topbar"
+		end
 	end
 
 	def like_post

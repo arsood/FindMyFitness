@@ -26,17 +26,12 @@
 			</div>
 
 			<!--Gym Stars-->
-			<%
-			
-			bus_avg_rating(@business_info.id)
-			if @average_rating
-			
-			%>
-			<div class="row">
-				<div class="col-sm-12">
-					<img src="/assets/stars/stars<%= @average_rating %>.png" />
+			<% if bus_avg_rating(@business_info.id) %>
+				<div class="row">
+					<div class="col-sm-12">
+						<img src="/assets/stars/stars<%= bus_avg_rating(@business_info.id) %>.png" />
+					</div>
 				</div>
-			</div>
 			<% end %>
 			<!--/Gym Stars-->
 
@@ -205,7 +200,7 @@
 							</div>
 							<div class="col-sm-9">
 								<div class="bold">
-									<%= current_user.first_name %> <%= current_user.last_name[0] + "." %>
+									<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name[0] + "." %></a>
 								</div>
 								<div class="italic">
 									Member since <%= current_user.created_at.strftime("%Y") %>
@@ -294,7 +289,7 @@
 						</div>
 						<div class="col-sm-9">
 							<div class="bold">
-								<%= current_user.first_name %> <%= current_user.last_name[0] + "." %>
+								<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name[0] + "." %></a>
 							</div>
 							<div class="italic">
 								Member since <%= current_user.created_at.strftime("%Y") %>

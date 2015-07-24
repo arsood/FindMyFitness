@@ -32,10 +32,8 @@
 						Category: <a href="#"><%= business.business_type %></a>
 					</div>
 					<div class="margin-top-10">
-						<%
-						bus_avg_rating(business.id) 
-						if @average_reviews %>
-						<img src="/assets/stars/stars<%= @average_reviews %>.png" />
+						<% if bus_avg_rating(business.id) %>
+							<img src="/assets/stars/stars<%= bus_avg_rating(business.id) %>.png" />
 						<% end %>
 					</div>
 					<div class="margin-top-10">

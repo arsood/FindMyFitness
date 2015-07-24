@@ -38,7 +38,9 @@ module ApplicationHelper
 
 	#Get average business rating
 	def bus_avg_rating(id)
-		return Review.where(business_id: id).average(:star_rating).try(:round)
+		rating = Review.where(business_id: id).average(:star_rating).try(:round)
+	
+		return rating
 	end
 
 	#Get thumbnail for a business

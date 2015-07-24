@@ -1,7 +1,12 @@
+<%
+	bus_user_id = Business.find(params[:business_id]).user_id
+%>
 <div class="bus-left-sidebar-menu">
 	<a href="/business-admin/notifications/<%= params[:business_id] %>">Notifications</a>
 	<a href="/business-admin/edit/<%= params[:business_id] %>">Profile</a>
 	<a href="/business-admin/reviews/<%= params[:business_id] %>">Reviews</a>
+	<a href="/followers/<%= bus_user_id %>">Your Followers</a>
+	<a href="/following/<%= bus_user_id %>">Who You Are Following</a>
 	<a href="/business-admin/photos/<%= params[:business_id] %>">Photos</a>
 	<a href="/business-admin/analytics/<%= params[:business_id] %>">Analytics</a>
 	<a href="/business-admin/events/<%= params[:business_id] %>">Events</a>
