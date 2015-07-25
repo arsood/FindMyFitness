@@ -9,6 +9,9 @@ class SubscriptionController < ApplicationController
 
 	def subscribe
 		if User.where(email_address: params[:new_email]).exists?
+			flash[:error] = "That email already exists."
+			redirect_to "/subscribe"
+		else
 			customer_result = Braintree::Customer.create(
 				:first_name => session[:first_name],
 				:last_name => session[:last_name],
@@ -42,9 +45,6 @@ class SubscriptionController < ApplicationController
 				flash[:error] = "There was an error with your card. Please try again."
 				redirect_to "/subscribe"
 			end
-		else
-			flash[:error] = "That email has already been taken."
-			redirect_to "/subscribe"
 		end
 	end
 	
