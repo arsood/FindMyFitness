@@ -163,10 +163,7 @@
 						State <sup>*</sup>
 					</div>
 					<div class="margin-top-10">
-						<select name="customer_state" class="form-control" required>
-							<option value="">State</option>
-							<option value="CA">CA</option>
-						</select>
+						<%= select_tag("customer_state", options_for_select(us_states), { class: "form-control", required: true }) %>
 					</div>
 				</div>
 				<div class="col-sm-3">
