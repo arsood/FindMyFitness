@@ -114,7 +114,11 @@ class UserController < ApplicationController
 
 		@users = User.where("first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ?", query, query, query).distinct.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 
-		render "user_search", layout: "standard-20"
+		if session[:user_type] == "standard"
+			render "user_search", layout: "standard-20"
+		else
+			render "user_search", layout: "business-topbar"
+		end
 	end
 
 private
