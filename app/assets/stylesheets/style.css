@@ -78,6 +78,20 @@
 	padding:7px;
 }
 
+.category-nav {
+	margin:0;
+	padding:0;
+	width:100%;
+	box-sizing:border-box;
+}
+
+.category-nav li {
+	list-style-type:none;
+	display:inline-block;
+	width:9.7%;
+	text-align:center;
+}
+
 .login-top-button, .options-top-button {
 	position:relative;
 }

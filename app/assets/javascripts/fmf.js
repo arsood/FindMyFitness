@@ -55,7 +55,7 @@ $(document).on("click", "#signup-toggle-button", function(event) {
 
 //Click on nav menu categories
 
-$(document).on("click", "#bus-category-top-options div a", function(event) {
+$(document).on("click", "#bus-category-top-options a", function(event) {
 	event.preventDefault();
 
 	var newCat = encodeURIComponent($(this).html());
