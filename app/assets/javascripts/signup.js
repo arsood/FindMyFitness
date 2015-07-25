@@ -1,4 +1,4 @@
-$(document).on("blur", "input[name='user[email_address]']", function() {
+$(document).on("blur", "input[name='user[email_address]'], input[name='new_email']", function() {
 	$.ajax({
 		url: "/check-email",
 		type: "POST",
