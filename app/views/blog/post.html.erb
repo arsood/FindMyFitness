@@ -72,7 +72,7 @@
 				<!--One Comment-->
 				<div class="row margin-top-20">
 					<div class="col-sm-2">
-						<%= image_tag(user.avatar.url(:thumb), class: "img-responsive") %>
+						<%= image_tag(get_user_avatar(user.id, :medium), class: "img-responsive") %>
 					</div>
 					<div class="col-sm-10">
 						<% if user.user_type == "standard" %>
