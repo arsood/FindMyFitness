@@ -16,8 +16,6 @@ class SubscriptionController < ApplicationController
 		)
 
 		if customer_result.success?
-			p "Success in creating customer"
-
 			subscription_result = Braintree::Subscription.create(
 				:payment_method_token => customer_result.customer.credit_cards[0].token,
 				:plan_id => "fmf_business",
@@ -25,8 +23,6 @@ class SubscriptionController < ApplicationController
 			)
 
 			if subscription_result.success?
-				p "Subscription created"
-
 				new_user = User.create(email_address: params[:new_email], password: params[:new_password], user_type: "business")
 
 				Subscription.where(user_id: new_user.id).destroy_all
