@@ -16,6 +16,8 @@ class SubscriptionController < ApplicationController
 		)
 
 		if customer_result.success?
+			p "Success in creating customer"
+			
 			subscription_result = Braintree::Subscription.create(
 				:payment_method_token => customer_result.customer.credit_cards[0].token,
 				:plan_id => "fmf_business",
