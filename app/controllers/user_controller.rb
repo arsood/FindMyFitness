@@ -122,7 +122,8 @@ class UserController < ApplicationController
 		end
 
 		business_users.each do |bu|
-			matched_users << bu
+			b_user = User.find(bu.user_id)
+			matched_users << b_user
 		end
 
 		@users = matched_users.paginate(:page => params[:page], :per_page => 10)
