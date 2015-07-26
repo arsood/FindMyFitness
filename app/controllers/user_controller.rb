@@ -112,7 +112,20 @@ class UserController < ApplicationController
 	def search_users
 		query = "%" + params[:q] + "%"
 
-		@users = User.where("first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ?", query, query, query).distinct.paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+		standard_users = User.where("first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ?", query, query, query).where("user_type != 'business'").distinct.order(created_at: :desc)
+		business_users = Business.where("name LIKE ?", query).distinct.order(created_at: :desc)
+
+		matched_users = []
+
+		standard_users.each do |su|
+			matched_users << su
+		end
+
+		business_users.each do |bu|
+			matched_users << bu
+		end
+
+		@users = matched_users.paginate(:page => params[:page], :per_page => 10)
 
 		if session[:user_type] == "standard"
 			render "user_search", layout: "standard-20"
