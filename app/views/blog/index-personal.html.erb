@@ -46,7 +46,11 @@
 				<div>
 					<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name %></a>
 				</div>
-				<div class="blog-feed-image margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
+
+				<% if get_post_photo(blog.post_id) %>
+					<div class="blog-feed-image margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
+				<% end %>
+				
 				<div class="margin-top-10">
 					<%= simple_format(blog.post_text) %>
 				</div>

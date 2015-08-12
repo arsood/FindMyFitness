@@ -38,7 +38,7 @@ module BlogHelper
 		if photo
 			return photo.post_photo.url
 		else
-			return "/assets/image-placeholder.jpg"
+			return nil
 		end
 	end
 
