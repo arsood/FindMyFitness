@@ -38,9 +38,9 @@
 								<% if get_post_photo(blog.post_id) %>
 									<div class="blog-feed-image blog-feed-image-small margin-top-20" style="background:url(<%= get_post_photo(blog.post_id) %>) no-repeat;"></div>
 								<% end %>
-								
+
 								<div class="margin-top-10">
-									<%= blog.post_text[0..150] %>
+									<%= blog.post_text %>
 								</div>
 								<div class="margin-top-10 blog-like-text">
 									<%= pluralize(get_likes(blog.id), "Like") %>
