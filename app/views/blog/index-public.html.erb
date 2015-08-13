@@ -40,7 +40,7 @@
 								<% end %>
 
 								<div class="margin-top-10">
-									<%= blog.post_text %>
+									<%= simple_format(blog.post_text) %>
 								</div>
 								<div class="margin-top-10 blog-like-text">
 									<%= pluralize(get_likes(blog.id), "Like") %>
