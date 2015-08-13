@@ -34,7 +34,7 @@ gem 'rails-erd'
 
 gem 'geocoder'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 1'
 
 gem 'fancybox2-rails', '~> 0.2.8'
 
