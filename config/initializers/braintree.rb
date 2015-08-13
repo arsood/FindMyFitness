@@ -1,4 +1,4 @@
-environment = "sandbox"
+environment = "production"
 
 if environment == "production"
 	Braintree::Configuration.environment = :production

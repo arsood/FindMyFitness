@@ -34,6 +34,8 @@ gem 'rails-erd'
 
 gem 'geocoder'
 
+gem 'aws-sdk'
+
 gem 'fancybox2-rails', '~> 0.2.8'
 
 gem 'font-awesome-rails'
