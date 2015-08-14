@@ -1,4 +1,4 @@
-var environment = "test";
+var environment = "production";
 
 if (environment === "test") {
 	var endpointBase = "http://localhost:3000/";
@@ -41,4 +41,8 @@ $(document).on("click", "#spam-photos-confirm-button", function(event) {
 			$("#spam-photos-confirm-button").removeAttr("disabled");
 		}
 	});
+});
+
+$(document).on("click", "#reload-page", function() {
+	window.location.reload();
 });

@@ -181,10 +181,18 @@ class BusinessController < ApplicationController
 			end
 		end
 
-		if session[:user_type] == "business"
-			render "business-search", layout: "business-topbar"
+		if !@fail
+			if session[:user_type] == "business"
+				render "business-search", layout: "business-topbar"
+			else
+				render "business-search", layout: "standard-20"
+			end
 		else
-			render "business-search", layout: "standard-20"
+			if session[:user_type] == "business"
+				render "location-not-found", layout: "business-topbar"
+			else
+				render "location-not-found", layout: "standard-20"
+			end
 		end
 	end
 
