@@ -78,8 +78,8 @@ class AdminController < ApplicationController
 	end
 
 	def manage_users
-		if params[:username] && params[:username] != ""
-			@users = User.where(username: params[:username]).paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
+		if params[:email] && params[:email] != ""
+			@users = User.where(email_address: params[:email]).paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
 		else
 			@users = User.all.paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
 		end
