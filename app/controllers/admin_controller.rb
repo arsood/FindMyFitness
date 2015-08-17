@@ -2,7 +2,7 @@ class AdminController < ApplicationController
 	before_filter :admin_auth
 
 	def index
-		render "admin-index"
+		render "admin-index", layout: "standard-20"
 	end
 
 	def delete
