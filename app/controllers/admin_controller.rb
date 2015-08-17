@@ -83,7 +83,8 @@ class AdminController < ApplicationController
 		else
 			@users = User.all.paginate(:page => params[:page], :per_page => 50).order(created_at: :desc)
 		end
-		render "admin-add"
+		
+		render "admin-add", layout: "standard-20"
 	end
 
 	def manage_users_process
