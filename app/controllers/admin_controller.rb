@@ -52,7 +52,7 @@ class AdminController < ApplicationController
 			@photos = BlogPhoto.where(post_id: params[:hash]).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
 		end
 
-		render "admin-photos"
+		render "admin-photos", layout: "standard-20"
 	end
 
 	def photos_delete
