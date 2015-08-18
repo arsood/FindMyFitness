@@ -413,8 +413,13 @@
 			<% end %>
 
 			<% 
-				@recent_searches.each do |search| 
-				business = get_bus_info(search.business_id)
+				@recent_searches.each do |search|
+
+				if Business.where(id: search.business_id).exists?
+					business = get_bus_info(search.business_id)
+				else
+					next
+				end
 			%>
 				<div class="margin-top-20">
 					<a href="/business/<%= business.id %>"><%= business.name %></a> <span class="small italic">in <%= business.city %>, <%= business.state %>
