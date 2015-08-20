@@ -40,6 +40,9 @@
 						<%= business.address %>
 					</div>
 					<div>
+						<%= business.city %>, <%= business.state %> <%= business.zipcode %>
+					</div>
+					<div>
 						<%= number_to_phone(business.phone, area_code: true) %>
 					</div>
 					<div class="margin-top-10">
