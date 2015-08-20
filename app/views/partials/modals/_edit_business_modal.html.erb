@@ -57,15 +57,15 @@
                             </div>
                             <div class="margin-top-10">
                                 <select class="form-control" name="business[business_type]">
-                                    <option value="Yoga">Yoga</option>
-                                    <option value="Gyms">Gyms</option>
-                                    <option value="Martial Arts">Martial Arts</option>
-                                    <option value="Boxing">Boxing</option>
-                                    <option value="Rock Climbing">Rock Climbing</option>
-                                    <option value="Pilates">Pilates</option>
-                                    <option value="Dance">Dance</option>
-                                    <option value="For Kids">For Kids</option>
-                                    <option value="Other">Other</option>
+                                    <option value="Yoga" <%= if @business_info.business_type == "Yoga" then "selected" end %>>Yoga</option>
+                                    <option value="Gyms" <%= if @business_info.business_type == "Gyms" then "selected" end %>>Gyms</option>
+                                    <option value="Martial Arts" <%= if @business_info.business_type == "Martial Arts" then "selected" end %>>Martial Arts</option>
+                                    <option value="Boxing" <%= if @business_info.business_type == "Boxing" then "selected" end %>>Boxing</option>
+                                    <option value="Rock Climbing" <%= if @business_info.business_type == "Rock Climbing" then "selected" end %>>Rock Climbing</option>
+                                    <option value="Pilates" <%= if @business_info.business_type == "Pilates" then "selected" end %>>Pilates</option>
+                                    <option value="Dance" <%= if @business_info.business_type == "Dance" then "selected" end %>>Dance</option>
+                                    <option value="For Kids" <%= if @business_info.business_type == "For Kids" then "selected" end %>>For Kids</option>
+                                    <option value="Other" <%= if @business_info.business_type == "Other" then "selected" end %>>Other</option>
                                 </select>
                             </div>
                         </div>
