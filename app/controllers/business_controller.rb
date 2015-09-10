@@ -167,7 +167,7 @@ class BusinessController < ApplicationController
 		#Get location from query or from IP geocode
 
 		if search_location && search_location != ""
-			@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => search_location).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => search_location).includes(:business_services).paginate(:page => params[:page], :per_page => 10)
 		else
 			begin
 				@user_loc = request.location.data
@@ -175,9 +175,9 @@ class BusinessController < ApplicationController
 				#User category parameter if present
 
 				if params[:category]
-					@businesses = Business.where(business_type: params[:category]).within(5, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+					@businesses = Business.where(business_type: params[:category]).within(5, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10)
 				else
-					@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+					@businesses = Business.where("LOWER(name) LIKE ? OR LOWER(description) LIKE ?", search_query, search_query).within(20, :origin => [@user_loc["latitude"], @user_loc["longitude"]]).includes(:business_services).paginate(:page => params[:page], :per_page => 10)
 				end
 			rescue
 				@fail = true
