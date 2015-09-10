@@ -11,7 +11,11 @@ class BusinessController < ApplicationController
 	end
 
 	def learn_more
-		render "business-learn", layout: "simple-topbar"
+		if session[:user_type] == "business"
+			render "business-learn", layout: "business-topbar"
+		else
+			render "business-learn", layout: "simple-topbar"
+		end
 	end
 
 	def signup_process
