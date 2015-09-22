@@ -4,6 +4,15 @@
 	<div class="row">
 		<div class="col-sm-9">
 
+			<!--Blog Tabs-->
+			<div>
+				<ul class="nav nav-tabs">
+					<li class="<%= if params[:cat] && params[:cat] == "all" || !params[:cat] then "active" end %>"><a href="/blogs?cat=all">All Posts</a></li>
+					<li class="<%= if params[:cat] && params[:cat] == "following" then "active" end %>"><a href="/blogs?cat=following">Who You're Following</a></li>
+				</ul>
+			</div>
+			<!--/Blog Tabs-->
+
 			<% if @blogs %>
 				<% @blogs.each do |blog| 
 

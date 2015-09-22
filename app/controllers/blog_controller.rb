@@ -73,7 +73,14 @@ class BlogController < ApplicationController
 				@blogs = blogs.paginate(:page => params[:page], :per_page => 10)
 			end
 		else
-			@blogs = Blog.all.where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			#If there is a category specified only show those posts
+			if params[:cat] && params[:cat] == "all" || !params[:cat]
+				@blogs = Blog.all.where(post_privacy: "public").paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			else
+				following = BlogFollower.where(follower_id: session[:user_id])
+
+				@blogs = Blog.where("user_id IN (?)", following.ids).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
+			end
 		end
 
 		@header_text = "Blogs - recently added"
