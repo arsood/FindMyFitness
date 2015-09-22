@@ -4,10 +4,10 @@
   <title>FindMyFitness</title>
   <meta charset="utf8" />
 
-  <% if @business_info %>
+  <% if @business_info && @business_info.account_type == "paid" %>
   	<meta name="description" content="<%= @business_info.description %>" />
   <% end %>
-  
+
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
