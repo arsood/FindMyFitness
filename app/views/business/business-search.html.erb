@@ -82,3 +82,39 @@
 <!--/Main-->
 
 <%= render "partials/modals/add_business_modal" %>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script>
+	function initializeSearchMap(locations) {
+		var bounds = new google.maps.LatLngBounds();
+
+		var mapOptions = {
+			zoom: 15
+		}
+
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+		for (var i = 0; i < locations.length; i++) {
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+				map: map
+			});
+
+			bounds.extend(marker.position);
+		}
+
+		map.fitBounds(bounds);
+	}
+
+	var locations = [];
+
+	<% @businesses.each do |business| %>
+		locations.push({
+			lat: <%= business.lat %>,
+			lng: <%= business.lng %>
+		});
+	<% end %>
+
+	initializeSearchMap(locations);
+</script>
