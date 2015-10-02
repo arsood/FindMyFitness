@@ -98,7 +98,8 @@
 		for (var i = 0; i < locations.length; i++) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-				map: map
+				map: map,
+				icon: locations[i].icon
 			});
 
 			bounds.extend(marker.position);
@@ -119,7 +120,7 @@
 		locations.push({
 			lat: <%= business.lat %>,
 			lng: <%= business.lng %>,
-			icon: "https://maps.google.com/mapfiles/kml/shapes/schools_maps.png"
+			icon: "http://findmyfitness.com/assets/markers/number_<%= startingNumber += 1 %>.png"
 		});
 	<% end %>
 
