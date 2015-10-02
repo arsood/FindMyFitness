@@ -98,8 +98,7 @@
 		for (var i = 0; i < locations.length; i++) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-				map: map,
-				label: locations[i].number
+				map: map
 			});
 
 			bounds.extend(marker.position);
