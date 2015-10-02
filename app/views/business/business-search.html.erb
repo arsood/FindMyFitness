@@ -111,16 +111,16 @@
 	var locations = [];
 
 	<% if !params[:page] || params[:page] == "1" %>
-		var startingNumber = 0;
+		<% startingNumber = 0 %>
 	<% else %>
-		var startingNumber = <%= params[:page].to_i * 10 %>;
+		<% startingNumber = params[:page].to_i * 10 %>
 	<% end %>
 
 	<% @businesses.each do |business| %>
 		locations.push({
 			lat: <%= business.lat %>,
 			lng: <%= business.lng %>,
-			number: startingNumber++
+			number: <%= startingNumber += 1 %>
 		});
 	<% end %>
 
