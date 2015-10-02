@@ -1,3 +1,15 @@
+<% if !params[:page] || params[:page] == "1" %>
+	<% 
+		startingNumberJS = 0
+		startingNumberRB = 0
+	%>
+<% else %>
+	<% 
+		startingNumberJS = params[:page].to_i * 10 
+		startingNumberRB = 0
+	%>
+<% end %>
+
 <!--Main-->
 <input type="hidden" id="page_id" value="business_search" />
 
@@ -26,7 +38,7 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="medium-title">
-						<a href="/business/<%= business.id %>"><%= business.name %></a>
+						<a href="/business/<%= business.id %>"><%= startingNumberRB += 1 %><%= business.name %></a>
 					</div>
 					<div>
 						Category: <a href="#"><%= business.business_type %></a>
@@ -110,17 +122,11 @@
 
 	var locations = [];
 
-	<% if !params[:page] || params[:page] == "1" %>
-		<% startingNumber = 0 %>
-	<% else %>
-		<% startingNumber = params[:page].to_i * 10 %>
-	<% end %>
-
 	<% @businesses.each do |business| %>
 		locations.push({
 			lat: <%= business.lat %>,
 			lng: <%= business.lng %>,
-			icon: "http://findmyfitness.com/assets/markers/number_<%= startingNumber += 1 %>.png"
+			icon: "http://findmyfitness.com/assets/markers/number_<%= startingNumberJS += 1 %>.png"
 		});
 	<% end %>
 
