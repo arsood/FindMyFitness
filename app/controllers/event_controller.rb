@@ -33,7 +33,7 @@ class EventController < ApplicationController
 	end
 
 	def new
-		if session[:business_id]
+		if session[:business_id] || session[:user_type] == "superuser"
 			#Generate random hash to be associated with images
 			@event_id = Digest::MD5.hexdigest(Time.now.to_s)
 
