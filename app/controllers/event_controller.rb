@@ -49,9 +49,13 @@ class EventController < ApplicationController
 
 		event_parameters = event_params.merge(business_id: session[:business_id], lat: event_geo.lat, lng: event_geo.lng)
 
-		Event.create_event(event_parameters)
+		created_event = Event.create_event(event_parameters)
 
-		redirect_to "/business-admin/events/" + session[:business_id].to_s
+		if session[:user_type] == "business"
+			redirect_to "/business-admin/events/" + session[:business_id].to_s
+		else
+			redirect_to "/events/" + created_event.id
+		end
 	end
 
 	def update
@@ -61,7 +65,11 @@ class EventController < ApplicationController
 
 		Event.update_event(event_parameters, params[:id])
 
-		redirect_to "/business-admin/events/" + session[:business_id].to_s
+		if session[:user_type] == "business"
+			redirect_to "/business-admin/events/" + session[:business_id].to_s
+		else
+			redirect_to "/events/" + created_event.id
+		end
 	end
 
 	def image_upload

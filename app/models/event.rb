@@ -17,6 +17,8 @@ class Event < ActiveRecord::Base
 		new_event.event_date = date_obj
 		new_event.event_id = params[:event_id]
 		new_event.save
+
+		return new_event
 	end
 
 	def self.update_event(params, id)
@@ -34,6 +36,8 @@ class Event < ActiveRecord::Base
 		edit_event.event_date = date_obj
 		edit_event.event_id = params[:event_id]
 		edit_event.save
+
+		return edit_event
 	end
 
 end
