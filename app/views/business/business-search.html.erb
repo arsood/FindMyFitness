@@ -6,7 +6,7 @@
 <% else %>
 	<% 
 		startingNumberJS = params[:page].to_i * 10 
-		startingNumberRB = 0
+		startingNumberRB = params[:page].to_i * 10
 	%>
 <% end %>
 
@@ -38,7 +38,7 @@
 				</div>
 				<div class="col-sm-8">
 					<div class="medium-title">
-						<a href="/business/<%= business.id %>"><%= startingNumberRB += 1 %><%= business.name %></a>
+						<a href="/business/<%= business.id %>"><%= startingNumberRB += 1 %>. <%= business.name %></a>
 					</div>
 					<div>
 						Category: <a href="#"><%= business.business_type %></a>
