@@ -15,7 +15,7 @@
 				<a href="#" data-category="Workshops">Workshops</a>
 			</div>
 
-			<% if session[:user_type] == "business" %>
+			<% if session[:user_type] == "business" || session[:user_type] == "superuser" %>
 				<div class="margin-top-20">
 					<a href="/event/new" class="fmf-ellipse-turquoise-button">Create an Event</a>
 				</div>
