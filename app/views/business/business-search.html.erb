@@ -98,7 +98,8 @@
 		for (var i = 0; i < locations.length; i++) {
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-				map: map
+				map: map,
+				label: locations[i].number
 			});
 
 			bounds.extend(marker.position);
@@ -109,10 +110,17 @@
 
 	var locations = [];
 
+	<% if params[:page] || params[:page] == "1" %>
+		var startingNumber = 0;
+	<% else %>
+		var startingNumber = <%= params[:page].to_i * 10 %>;
+	<% end %>
+
 	<% @businesses.each do |business| %>
 		locations.push({
 			lat: <%= business.lat %>,
-			lng: <%= business.lng %>
+			lng: <%= business.lng %>,
+			number: startingNumber++
 		});
 	<% end %>
 
