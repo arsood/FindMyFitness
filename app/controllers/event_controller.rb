@@ -54,7 +54,7 @@ class EventController < ApplicationController
 		if session[:user_type] == "business"
 			redirect_to "/business-admin/events/" + session[:business_id].to_s
 		else
-			redirect_to "/events/" + created_event.id
+			redirect_to "/events/" + created_event.id.to_s
 		end
 	end
 
@@ -68,7 +68,7 @@ class EventController < ApplicationController
 		if session[:user_type] == "business"
 			redirect_to "/business-admin/events/" + session[:business_id].to_s
 		else
-			redirect_to "/events/" + created_event.id
+			redirect_to "/events/" + created_event.id.to_s
 		end
 	end
 
