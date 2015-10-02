@@ -99,9 +99,11 @@
                                     <a href="/events/<%= event.id %>"><%= event.event_name %></a>
                                 </div>
 
-                                <div class="margin-top-10 gray-text">
-                                    Hosted by <%= get_bus_name(event.business_id) %>
-                                </div>
+                                <% if event.business_id %>
+                                    <div class="margin-top-10 gray-text">
+                                        Hosted by <%= get_bus_name(event.business_id) %>
+                                    </div>
+                                <% end %>
 
                                 <div class="margin-top-10">
                                     <%= event.event_date.strftime("%B %-d, %Y") %>
