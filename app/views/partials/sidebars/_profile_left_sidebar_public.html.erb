@@ -1,4 +1,4 @@
-<% if @user.user_type == "standard" %>
+<% if @user.user_type == "standard" || @user.user_type == "superuser" %>
 	<div class="left-sidebar-menu">
 		<a href="/profile/<%= @user.id %>"><%= @user.first_name %>'s Profile</a>
 		<a href="/profile/<%= @user.id %>/reviews"><%= @user.first_name %>'s Reviews</a>
