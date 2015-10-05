@@ -37,7 +37,7 @@
 									</div>
 								</div>
 								<div>
-									<% if user.user_type == "standard" %>
+									<% if user.user_type == "standard" || user.user_type == "superuser" %>
 										<a href="/profile/<%= user.id %>"><%= user.first_name %> <%= user.last_name[0] + "." %></a>
 									<% else %>
 										<a href="/profile/<%= user.id %>"><%= business.name %></a>
