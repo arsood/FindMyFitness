@@ -55,6 +55,9 @@
 									<%= pluralize(get_likes(blog.id), "Like") %>
 								</div>
 								<div class="margin-top-10">
+									Tags: <%= get_tag_list(blog.id) %>
+								</div>
+								<div class="margin-top-10">
 									<% if session[:user_id] %>
 										<a data-id="<%= blog.id %>" class="blog-like-button <%= if like_exists then 'post-liked' end %>" href="#">Like</a> | 
 									<% end %>
