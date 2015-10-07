@@ -55,7 +55,7 @@
 									<%= pluralize(get_likes(blog.id), "Like") %>
 								</div>
 								<div class="margin-top-10">
-									Tags: <%= get_tag_list(blog.id) %>
+									<span class="bold">Tags:</span> <%= get_tag_list(blog.id) %>
 								</div>
 								<div class="margin-top-10">
 									<% if session[:user_id] %>
