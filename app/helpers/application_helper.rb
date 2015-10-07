@@ -63,7 +63,7 @@ module ApplicationHelper
 		photo = EventPhoto.where(event_id: event_hash).order(created_at: :desc)
 
 		if photo.first
-			return photo.first.event_photo.url(:medium)
+			return photo.first.event_photo.url
 		else
 			if type == :link
 				return "/assets/image-placeholder.jpg"
