@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 		if @my_location == "somewhere"
 			@events = Event.where("event_date > ?", Time.now).limit(6)
 		else
-			@events = Event.where("event_date > ?", Time.now).limit(6).within(125, :origin => [location.data["latitude"], location.data["longitude"]])
+			@events = Event.where("event_date > ?", Time.now).limit(6).within(125, :origin => [location.data["latitude"], location.data["longitude"]]).by_distance(:origin => [location.data["latitude"], location.data["longitude"]])
 		end
 
 		render "index", layout: "home"
