@@ -16,7 +16,7 @@
 	</div>
 	<div class="col-sm-8">
 		<div class="bold">
-			<%= @user.first_name %> <%= @user.last_name[0] %>.
+			<%= @user.first_name %> <%= @user.last_name %>
 		</div>
 		<div class="margin-top-10">
 			<a href="/followers/<%= @user.id %>"><%= get_follower_num(@user.id) %> Followers</a>

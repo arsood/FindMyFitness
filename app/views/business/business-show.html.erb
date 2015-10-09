@@ -200,7 +200,7 @@
 							</div>
 							<div class="col-sm-9">
 								<div class="bold">
-									<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name[0] + "." %></a>
+									<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name %></a>
 								</div>
 								<div class="italic">
 									Member since <%= current_user.created_at.strftime("%Y") %>
@@ -289,7 +289,7 @@
 						</div>
 						<div class="col-sm-9">
 							<div class="bold">
-								<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name[0] + "." %></a>
+								<a href="/profile/<%= current_user.id %>"><%= current_user.first_name %> <%= current_user.last_name %></a>
 							</div>
 							<div class="italic">
 								Member since <%= current_user.created_at.strftime("%Y") %>
