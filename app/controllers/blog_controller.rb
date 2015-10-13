@@ -149,7 +149,12 @@ class BlogController < ApplicationController
 
 		if @post.user_id == session[:user_id]
 			@photos = BlogPhoto.where(post_id: @post.post_id)
-			render "edit"
+			
+			if session[:user_type] == "business"
+				render "edit", layout: "business-topbar"
+			else
+				render "edit", layout: "standard-20"
+			end
 		else
 			flash[:error] = "You must be logged in to do that."
 			redirect_to "/login"
